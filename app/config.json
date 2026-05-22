@@ -1,0 +1,9 @@
+{
+  "serviceName": "Not in Education, Employment, or Training",
+  "useServiceNavigation": true,
+  "plugins": {
+    "govuk-frontend": {
+      "rebrand": true
+    }
+  }
+}

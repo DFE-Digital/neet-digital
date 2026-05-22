@@ -1,0 +1,79 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Where are you at with eductaion – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" action="/which-parts-of-college-do-you-need-help-with" method="post">
+
+       <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Where are you at with eductaion?
+      </h1>
+    </legend>
+    <div class="govuk-radios" data-module="govuk-radios">
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="education-status" name="educationStatus" type="radio" value="college">
+        <label class="govuk-label govuk-radios__label" for="education-status">
+          In college or about to start
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="education-status-2" name="educationStatus" type="radio" value="sixth form">
+        <label class="govuk-label govuk-radios__label" for="education-status-2">
+          In sixth form or about to start
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio" value="sixth form college">
+        <label class="govuk-label govuk-radios__label" for="education-status-3">
+          In sixth form college or about to start
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="education-status-4" name="educationStatus" type="radio" value="homeschooling">
+        <label class="govuk-label govuk-radios__label" for="education-status-4">
+          I’m homeschooled
+        </label>
+      </div>
+      <div class="govuk-radios__item">
+        <input class="govuk-radios__input" id="education-status-5" name="educationStatus" type="radio" value="being in a pupil referral unit">
+        <label class="govuk-label govuk-radios__label" for="education-status-5">
+          I’m in a pupil referral unit (PRU)
+        </label>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<details class="govuk-details">
+        <summary class="govuk-details__summary">
+         <span class="govuk-details__summary-text">
+           Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We're asking this so we can better understand who in college or sixth form can help you. This information does not get collected or reported to anyone.
+        </details>
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

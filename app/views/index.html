@@ -1,0 +1,60 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+
+    <p class="govuk-body-l">Prototype index page</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Prototype flows</h2>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th class="govuk-table__header" scope="col">Description</th>
+          <th class="govuk-table__header" scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell">Full user journey</td>
+          <td class="govuk-table__cell">
+            <a class="govuk-link" href="/Find-out-who-can-help-you-as-a-young-person">start journey</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Individual pages</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="/Find-out-who-can-help-you-as-a-young-person">Find out who can help you as a young person</a></li>
+      <li><a class="govuk-link" href="/whats-your-first-name">What's your first name?</a></li>
+      <li><a class="govuk-link" href="/current-situation">How are you finding your current situation?</a></li>
+      <li><a class="govuk-link" href="/what-do-you-need-to-do">What do you need to do?</a></li>
+      <li><a class="govuk-link" href="/where-are-you-at-with-education">Where are you at with education?</a></li>
+      <li><a class="govuk-link" href="/which-parts-of-college-or-sixthform-do-you-need-help-with">Which parts of college or sixth form do you need help with?</a></li>
+      <li><a class="govuk-link" href="/which-parts-of-hs-or-pru-do-you-need-help-with">Which parts of HS or PRU do you need help with?</a></li>
+      <li><a class="govuk-link" href="/which-parts-of-apprenticeship-do-you-need-help-with">Which parts of getting an apprenticeship do you need help with?</a></li>
+      <li><a class="govuk-link" href="/which-parts-of-job-do-you-need-help-with">Which parts of getting a job do you need help with?</a></li>
+      <li><a class="govuk-link" href="/which-parts-of-job-or-apps-do-you-need-help-with">Which parts of getting a job or apprenticeship do you need help with?</a></li>
+      <li><a class="govuk-link" href="/what-are-you-finding-difficult">What are you finding difficult?</a></li>
+      <li><a class="govuk-link" href="/check-your-answers">Check your answers</a></li>
+      <li><a class="govuk-link" href="/what-you-can-do-next">What you can do next</a></li>
+      <li><a class="govuk-link" href="/switch-course">I want to switch to a different course</a></li>
+      <li><a class="govuk-link" href="/pass-maths-resit">I want to pass my GCSE maths resit</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}

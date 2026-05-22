@@ -1,0 +1,110 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Find out who can help you as a young person – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block content %}
+<section class="neet-course-details-hero">
+  <div class="govuk-width-container neet-course-page__hero-inner">
+    {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+    <div class="govuk-grid-row  govuk-!-padding-bottom-4"></div>
+    <h1 class="govuk-heading-xl neet-course-page__hero-title">What you can do next</h1>
+    <p class="govuk-body-l">Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and get suggestions of what to say.</p>
+  </div>
+</section>
+  <div class="govuk-width-container">
+    <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
+      <div class="govuk-grid-column-two-thirds">
+  
+  
+      <h2 class="govuk-heading-m">
+        How to use these guides
+      </h2>
+
+      <p>If you’re speaking to someone in person, you might find it useful to take the guide with you so you can refer to it.</p>
+      <p>You can screenshot, text or email each guide to yourself.</p>
+
+      </div>
+    </div>
+
+    <div class="dfe-grid-container">
+      <div class="dfe-card">
+        <img src="/public/images/want-to-switch-course.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="/switch-course" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">I want to switch to a different course</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+      <div class="dfe-card">
+        <img src="/public/images/pass-gcse-maths.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="/pass-maths-resit" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">I want to pass my GCSE maths resit</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+      <div class="dfe-card">
+        <img src="/public/images/use-what-learn.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">I’m not sure I’ll use what I’m learning right now</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+      <div class="dfe-card">
+        <img src="/public/images/attendancepng.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">My attendance is not great but I’m too behind to fix it</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+      <div class="dfe-card">
+        <img src="/public/images/CV.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">I do not know what to put on my CV</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+      <div class="dfe-card">
+        <img src="/public/images/apply-for-jobs.png" alt="Sample Image">
+        <div class="dfe-card-container">
+          <h3 class="govuk-heading-m">
+            <a href="#" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">I’m applying for jobs but feel like I’m getting nowhere</a>
+          </h3>
+          <p>Give me some example content please, and thank you.</p>
+          <p class="govuk-body-s">even more content if needed</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="govuk-grid-row govuk-!-padding-top-4">
+      <div class="govuk-grid-column-two-thirds">
+        <h3 class="govuk-heading-m">
+          Talk to someone about your mental health
+        </h3>
+        <p>If you need help urgently, you do not have to deal with it by yourself. There are people who can help you.</p>
+        <div class="govuk-button-group">
+          <a class="govuk-link" href="#">View helplines</a>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}

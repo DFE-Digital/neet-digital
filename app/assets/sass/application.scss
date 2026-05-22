@@ -1,0 +1,180 @@
+//
+// For guidance on how to add CSS and SCSS see:
+// https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
+//
+
+.neet-advice-hero {
+  height: 223px;
+  overflow: hidden;
+  padding: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+.neet-advice-hero__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 30%;  
+  display: block;
+}
+
+.dfe-grid-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+@media (min-width: 641px) {
+    .dfe-grid-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .dfe-card {
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 640px) {
+    .dfe-card {
+        max-width: 100%;
+    }
+}
+
+.dfe-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #b1b4b6;
+}
+
+.dfe-card>picture,
+.dfe-card>picture>img {
+    max-width: 100%;
+}
+
+.dfe-card-container {
+    padding: 20px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+
+.dfe-card-container :last-child {
+    margin-top: auto;
+}
+
+.dfe-card-container h2+p:last-child,
+.dfe-card-container h3+p:last-child {
+    margin-top: 0;
+}
+
+.dfe-card:hover,
+.dfe-card:focus-within {
+    background-color: #003a69;
+}
+
+.dfe-card:hover a,
+.dfe-card:focus-within a,
+.dfe-card:hover p,
+.dfe-card:focus-within p,
+.dfe-card:hover .govuk-heading-m,
+.dfe-card:focus-within .govuk-heading-m {
+    color: #ffffff;
+}
+
+.dfe-card:focus-within {
+    outline: 3px solid #ffdd00;
+}
+
+.dfe-card-container .dfe-card-link--retake:focus,
+.dfe-card-container .dfe-card-link--header:focus {
+    color: #0b0c0c;
+}
+
+.dfe-card-link--retake {
+    position: relative;
+    z-index: 2;
+}
+
+.dfe-card-link--header {
+    text-decoration: none;
+    color: #347ca9;
+}
+
+.dfe-card-link--header:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+// Add extra styles here
+.govuk-main-wrapper:has(.neet-course-details-hero),
+.govuk-main-wrapper:has(.neet-advice-hero) {
+  padding-top: 0;
+}
+
+.neet-course-details-hero {
+  background: govuk-colour("blue", $variant: "tint-80");
+  color: govuk-colour("black");
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+
+.neet-course-page__hero-inner {
+  padding-top: govuk-spacing(2);
+  padding-bottom: govuk-spacing(8);
+}
+
+.neet-course-page__hero-copy {
+  max-width: 760px;
+}
+
+.neet-course-page__hero-inner--compact {
+  padding-top: 70px;
+  padding-bottom: 55px;
+}
+
+.neet-course-page__hero-inner--compact .neet-course-page__hero-copy {
+  max-width: 100%;
+  flex: 1;
+}
+
+.neet-course-page__hero-copy--wide {
+  max-width: 780px;
+}
+
+.neet-course-page__hero-title {
+  color: govuk-colour("black");
+  margin-bottom: 1.25rem;
+  @include govuk-font-size(48);
+}
+
+.neet-course-page__hero-text {
+  color: govuk-colour("black");
+  margin-bottom: 0;
+  max-width: 700px;
+}
+
+.neet-course-page__hero-icon-wrap {
+  flex-shrink: 0;
+}
+
+.neet-course-page__hero-icon {
+  width: 100%;
+  height: auto;
+}
