@@ -1,0 +1,58 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  What is your first name– {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        What's your first name? (optional)
+      </h1>
+    <form class="form" action="/current-situation" method="post">
+      
+      
+      <div class="govuk-form-group govuk-form-group--error">
+  <label class="govuk-label" for="full-name">
+    Full name
+  </label>
+  <p id="full-name-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span> Enter your full name
+  </p>
+  <input class="govuk-input govuk-input--error" id="first-name" name="firstName" type="text" spellcheck="false" aria-describedby="first-name-error" autocomplete="name">
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+         <span class="govuk-details__summary-text">
+           Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We're asking this so we can refer to you. We do not collect or report your name to anyone.         </div>
+        </details>
+        <div class="govuk-button-group">
+         {{ govukButton({
+           text: "Continue"
+         }) }}
+         <a class="govuk-link" href="/current-situation">Cancel</a>
+        </div>
+
+
+     </form>
+    </div>
+  </div>
+
+
+
+{% endblock %}
