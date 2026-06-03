@@ -1,0 +1,82 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What do you need to do – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      What do you need help with?
+    </h1>
+    <p class="govuk-body"> It's okay if you're not sure or feeling stuck with lots of things. Lots of young people feel
+      that way.</p>
+    <p class="govuk-body">You can choose what feels closest for now.</p>
+
+    <form class="form" action="./what-do-you-need-to-do-v3.html" >
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="tasks-hint">
+          <div id="tasks-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="task" name="task" type="checkbox"
+                value="Switch to a different course">
+              <label class="govuk-label govuk-checkboxes__label" for="task">I’m unsure about my current course or what
+                to do when I finish</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="task-2" name="task" type="checkbox"
+                value="Understand how my course can help me get to my goal">
+              <label class="govuk-label govuk-checkboxes__label" for="task-2">I need to pass my GCSE maths or English
+                resit</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="task-3" name="task" type="checkbox"
+                value="Pass my GCSE maths or English resit" aria-controls="conditional-task-3" aria-expanded="false">
+              <label class="govuk-label govuk-checkboxes__label" for="task-3">Applying for jobs or get an
+                apprenticeship</label>
+            </div>
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="task-3" name="task" type="checkbox"
+                value="Pass my GCSE maths or English resit" aria-controls="conditional-task-3" aria-expanded="false">
+              <label class="govuk-label govuk-checkboxes__label" for="task-3">Help with my CV or get work
+                experience</label>
+            </div>
+          </div>
+      </div>
+      </fieldset>
+      <div class="govuk-button-group">
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+        <a class="govuk-link" href="#">Cancel</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
