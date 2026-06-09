@@ -192,3 +192,101 @@
     width: 6%;
     height: auto;
 }
+
+
+.govuk-header {
+  padding: 16px 0px 12px 0px !important;
+}
+
+
+.govuk-header__logotype {
+  display: none !important;
+}
+
+.govuk-header__logo {
+  background-image: url("/public/images/department-for-education_white.png") !important;
+  background-repeat: no-repeat !important;
+  background-size: contain !important;
+  background-position: left center !important;
+  display: block !important;
+  width: 276px !important; 
+  height: 36px !important;
+}
+
+.govuk-width-container.feedback-container {
+  background-color: #F4F8FB !important;
+  border-top: 1px solid #8eb8dc !important;
+  padding: 0px 30px !important;
+  margin-top: 60px !important;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+.hero-image {
+  width: 100%;
+  height: 150px;        
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 0%;
+  display: block;
+}
+
+
+
+
+
+
+div.feedback-left {
+    padding-top: 30px;
+}
+
+div.feedback-right {
+    padding-top: 30px;
+}
+
+
+
+.feedback-left button {
+  margin-left: 10px;
+}
+
+.feedback-right {
+  margin-left: auto;
+}
+
+
+
+.govuk-button.feedback  {
+  background-color: #F4F8FB !important;
+  padding: 8px 35px; 
+  border: 1px solid #000000 !important;
+  box-shadow: 0 2px 0 #000000 !important;
+}
+
+
+
+.govuk-header__link .govuk-header__logotype{
+  height: 30px;
+}
+
+.govuk-header__link:focus .govuk-header__logotype{
+  content: url(/public/images/department-for-education_black.png);
+  height: 30px;
+}
+
+
+.govuk-main-wrapper {
+  padding-bottom: 0px !important;
+}
+
+

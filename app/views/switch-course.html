@@ -1,33 +1,63 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  I want to switch to a different course – {{ serviceName }} – GOV.UK Prototype Kit
+I want to switch to a different course  – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
 
 
 {% block pageScripts %}
-  <script type="text/javascript">
-    var $element = document.querySelector('#step-by-step-navigation')
-    var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-  </script>
+<script type="text/javascript">
+  var $element = document.querySelector('#step-by-step-navigation')
+  var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
+</script>
 {% endblock %}
-{% block beforeContent %}
-{{ govukBackLink({
-      text: "Back",
-      href: "javascript:window.history.back()"
-    }) }}
-{% endblock %}
-{% block content %}
-<section class="neet-advice-hero">
-  <img src="/public/images/switch-course-advice-hero.png" alt="" class="neet-advice-hero__image">
-</section>
+
+<!-- Hero image -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">I’m not sure what to do after college or sixth form</h1>
+    <p>Lorem sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. I am a very engaging proposition for everyone to scan down further  :) </p>
+    <!-- Text or email links top -->
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-s">
+          <a href="#">Text or email this page</a>
+        </p>
+      </div>
+    </div>
+    <div class="hero-image">
+    <img  src="/public/images/mentor-student-image.png" alt="">
+    </div>
+  </div>
+</div>
+
+
 
 <div class="govuk-width-container">
-  <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-left-4">
+  <div class="govuk-grid-row govuk-!-padding-top-0 govuk-!-padding-left-4">
     <div class="govuk-grid-column-full-width">
-      <h2 class="govuk-heading-l">I want to switch to a different course</h2>
-       <p>It can be difficult if you thought you’d like your course, but it just does not feel right.</p>
-      <div data-module="appstepnav" id="step-by-step-navigation" class="app-step-nav js-hidden app-step-nav--large" data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all sections" data-hide-all-text="Hide all sections">
+      <div data-module="appstepnav" id="step-by-step-navigation" class="app-step-nav js-hidden app-step-nav--large"
+        data-show-text="Show" data-hide-text="Hide" data-show-all-text="Show all sections"
+        data-hide-all-text="Hide all sections">
         <ol class="app-step-nav__steps">
 
           <li class="app-step-nav__step js-step" id="who-to-speak-to-and-when">
@@ -36,7 +66,8 @@
                 <span class="app-step-nav__circle app-step-nav__circle--number">
                   <span class="app-step-nav__circle-inner">
                     <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 1<span
+                        class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
                     </span>
                   </span>
                 </span>
@@ -44,8 +75,10 @@
               </h2>
             </div>
             <div class="app-step-nav__panel js-panel" id="step-panel-who-to-speak-to-and-when-1">
-              <p class="app-step-nav__paragraph"><strong>Course tutor:</strong> speak to your course tutor as soon as possible. They should be able to let you know how switching courses works at your college.</p>
-              <p class="app-step-nav__paragraph"><strong>Any teacher:</strong> If you're not getting on with your course tutor, it's okay to speak to any teacher you feel comfortable with.</p>
+              <p class="app-step-nav__paragraph"><strong>Course tutor:</strong> speak to your course tutor as soon as
+                possible. They should be able to let you know how switching courses works at your college.</p>
+              <p class="app-step-nav__paragraph"><strong>Any teacher:</strong> If you're not getting on with your course
+                tutor, it's okay to speak to any teacher you feel comfortable with.</p>
             </div>
           </li>
 
@@ -55,7 +88,8 @@
                 <span class="app-step-nav__circle app-step-nav__circle--number">
                   <span class="app-step-nav__circle-inner">
                     <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 2<span
+                        class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
                     </span>
                   </span>
                 </span>
@@ -63,7 +97,9 @@
               </h2>
             </div>
             <div class="app-step-nav__panel js-panel" id="step-panel-what-you-might-need-to-do-2">
-              <p class="app-step-nav__paragraph">The tutor or teacher will want to understand why you want to change course. It's a good idea to have a think about why you want to change and how long you've been considering it so you can talk about it.</p>
+              <p class="app-step-nav__paragraph">The tutor or teacher will want to understand why you want to change
+                course. It's a good idea to have a think about why you want to change and how long you've been
+                considering it so you can talk about it.</p>
               <p class="app-step-nav__paragraph">You might also need to put your request in writing.</p>
             </div>
           </li>
@@ -74,7 +110,8 @@
                 <span class="app-step-nav__circle app-step-nav__circle--number">
                   <span class="app-step-nav__circle-inner">
                     <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 3<span
+                        class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
                     </span>
                   </span>
                 </span>
@@ -88,8 +125,11 @@
                 <li>the course you want to do has space</li>
                 <li>switching would cause any clashes with your lessons</li>
               </ul>
-              <p class="app-step-nav__paragraph">They should help you create a plan, even if you cannot switch immediately — it's okay to be disappointed if that is the case. They should help you understand what your next step will be so you don't feel stuck.</p>
-              <p class="app-step-nav__paragraph">You might want to ask to speak to your college careers adviser. They can give you advice on:</p>
+              <p class="app-step-nav__paragraph">They should help you create a plan, even if you cannot switch
+                immediately — it's okay to be disappointed if that is the case. They should help you understand what
+                your next step will be so you don't feel stuck.</p>
+              <p class="app-step-nav__paragraph">You might want to ask to speak to your college careers adviser. They
+                can give you advice on:</p>
               <ul class="govuk-list govuk-list--bullet">
                 <li>changing course at your college or a different college</li>
                 <li>understanding different options</li>
@@ -104,7 +144,8 @@
                 <span class="app-step-nav__circle app-step-nav__circle--number">
                   <span class="app-step-nav__circle-inner">
                     <span class="app-step-nav__circle-background">
-                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4<span class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
+                      <span class="govuk-visually-hidden govuk-!-display-none-print">Step</span> 4<span
+                        class="govuk-visually-hidden govuk-!-display-none-print" aria-hidden="true">:</span>
                     </span>
                   </span>
                 </span>
@@ -112,10 +153,13 @@
               </h2>
             </div>
             <div class="app-step-nav__panel js-panel" id="step-panel-what-you-can-say-4">
-              <p class="app-step-nav__paragraph">Here are a few prompts of what to say to a tutor or teacher about wanting to change course:</p>
+              <p class="app-step-nav__paragraph">Here are a few prompts of what to say to a tutor or teacher about
+                wanting to change course:</p>
               <p class="app-step-nav__paragraph">"Can you explain to me how switching courses works?"</p>
-              <p class="app-step-nav__paragraph">"I want to change course. Are you the best person to speak to about that, or is there someone else I should speak to in college?"</p>
-              <p class="app-step-nav__paragraph">"I want to switch courses to [course name]. I think it will suit me better. Can you help me put a plan in place of how to get there?"</p>
+              <p class="app-step-nav__paragraph">"I want to change course. Are you the best person to speak to about
+                that, or is there someone else I should speak to in college?"</p>
+              <p class="app-step-nav__paragraph">"I want to switch courses to [course name]. I think it will suit me
+                better. Can you help me put a plan in place of how to get there?"</p>
               <p class="app-step-nav__paragraph">"How do I make an appointment with a careers adviser?"</p>
             </div>
           </li>
@@ -123,8 +167,42 @@
         </ol>
       </div>
 
+
+      <!-- Footer links -->
+      <div class="govuk-!-margin-top-6">
+        <p class="govuk-body">
+          <strong>A title lorem ipsum</strong><br>
+          Some text? lorem ipsum
+        </p>
+
+        <p class="govuk-body-s">
+          <a href="#" style="margin-bottom: 20px">View a printable version of the whole guide</a><br>
+          <a href="#">Email this guide</a>
+        </p>
+      </div>
+
     </div>
   </div>
+
+  <!-- Feedback -->
+  <div class="govuk-width-container feedback-container">
+
+  <div class="feedback-left">
+    <span class="govuk-body" style="font-size: 16px; margin-right: 20px; line-height: 2;"><strong>Is this page useful?</strong></span>
+    <button class="govuk-button feedback" style="font-size: 16px; color: #000000;">Yes</button>
+    <button class="govuk-button feedback" style="font-size: 16px; color: #000000;">No</button>
+  </div>
+
+  <div class="feedback-right">
+    <a href="#" class="govuk-button feedback" style="font-size: 16px; color: #000000; ">
+      Report a problem with this page
+    </a>
+  </div>
+</div>
+
+
+</div>
+</div>
 </div>
 
 {% endblock %}
