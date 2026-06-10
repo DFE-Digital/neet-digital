@@ -249,14 +249,14 @@
 
 
 .hero-image {
-  width: 100%;
+  width: 80% !important;
   height: 150px;        
   overflow: hidden;
   margin-bottom: 20px;
 }
 
 .hero-image img {
-  width: 100%;
+  width: 80%;
   height: 100%;
   object-fit: cover;
   object-position: center 0%;
@@ -319,10 +319,22 @@ h3.govuk-heading-s.blue-quote {
 }
 
 
-// Footer
+//white-banner 
 
-.govuk-grid-column-two-thirds {
-    margin-bottom: 40px !important;
+section.neet-course-details-hero {
+    background-color: #ffffff !important;
 }
+
+
+.mental-health-support {
+    background-color: #f4f8fb !important;
+    padding: 30px;
+    margin: 40px 0px 0px 15px;
+    border-radius: 10px;
+    border: 1px solid #8eb8dc;
+}
+
+
+
 
 
