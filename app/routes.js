@@ -42,11 +42,11 @@ router.post('/where-are-you-at-with-education', (req, res) => {
   if (hasCollegeTask && (hasJobTask || hasApprenticeship)) {
     res.redirect('/what-are-you-finding-difficult')
   } else if (hasJobTask && hasApprenticeship) {
-    res.redirect('/which-parts-of-job-or-apps-do-you-need-help-with')
+    res.redirect('/check-your-answers')
   } else if (hasJobTask) {
-    res.redirect('/which-parts-of-job-do-you-need-help-with')
+    res.redirect('/check-your-answers')
   } else if (hasApprenticeship) {
-    res.redirect('/which-parts-of-apprenticeship-do-you-need-help-with')
+    res.redirect('/check-your-answers')
   } else {
     res.redirect('/where-are-you-at-with-education')
   }
@@ -59,15 +59,15 @@ router.post('/which-parts-of-college-do-you-need-help-with', (req, res) => {
   const hsPruStatuses = ['homeschooling', 'being in a pupil referral unit (PRU)']
 
   if (collegeStatuses.includes(educationStatus)) {
-    res.redirect('/which-parts-of-college-or-sixthform-do-you-need-help-with')
+    res.redirect('/check-your-answers')
   } else if (hsPruStatuses.includes(educationStatus)) {
-    res.redirect('/which-parts-of-hs-or-pru-do-you-need-help-with')
+    res.redirect('/check-your-answers')
   } else {
     res.redirect('/check-your-answers')
   }
 })
 
-router.post('/which-parts-of-college-or-sixthform-do-you-need-help-with', (req, res) => {
+router.post('/check-your-answers', (req, res) => {
   res.redirect('/check-your-answers')
 })
 
