@@ -32,127 +32,131 @@ href: "javascript:window.history.back()"
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
-      <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl govuk-!-margin-bottom-6">What you can do next</h1>
-        <p class="govuk-body-l">
-          Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and get
-          suggestions of what to say.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
 
-<div class="govuk-width-container">
-  <div class="govuk-grid-row">
-
-    <div class="govuk-grid-column-two-thirds">
-      <h2 class="govuk-heading-m">How to use these guides</h2>
-      <p class="govuk-body">
-        If you’re speaking to someone in person, you might find it useful to take the guide with you so you can refer to
-        it.
-      </p>
-      <p class="govuk-body">
-        You can screenshot, text or email each guide to yourself.
-      </p>
-
-      <p class="govuk-body-s govuk-!-margin-bottom-6">
-        <a href="#" class="govuk-link">Text or email this page</a>
-      </p>
-    </div>
-
-    <div class="govuk-grid-column-full">
-      <div class="dfe-grid-container">
-
-        {% set cards = [
-        { title: "I’m not sure what to do after college or sixth form", href: "/round4-mvp/switch-course", img:
-        "/public/images/want-to-switch-course.png" },
-        { title: "I want to switch to a different course", href: "/pass-maths-resit", img:
-        "/public/images/pass-gcse-maths.png" },
-        { title: "I’m not sure I’ll use what I’m learning right now", href: "#", img:
-        "/public/images/use-what-learn.png" },
-        { title: "I want to switch subjects", href: "#", img: "/public/images/attendancepng.png" },
-        { title: "Understand how my course can help with my goal", href: "#", img: "/public/images/CV.png" },
-        { title: "I’m struggling to pass my course", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I want to pass my GCSE maths resit", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I want to pass my GCSE English resit", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I do not hear back from applications", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I never get feedback so do not know what to improve", href: "#", img:
-        "/public/images/apply-for-jobs.png" },
-        { title: "I’m trying to get my first job", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I’ve done volunteering but cannot get a paid job", href: "#", img: "/public/images/apply-for-jobs.png"
-        },
-        { title: "I cannot find an apprenticeship where I live", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "Create a CV or make my CV better", href: "#", img: "/public/images/apply-for-jobs.png" },
-        { title: "I need to get some work experience", href: "#", img: "/public/images/apply-for-jobs.png" }
-        ] %}
-
-        {% for card in cards %}
-        <div class="dfe-card">
-          <img src="{{ card.img }}" alt="">
-          <div class="dfe-card-container">
-            <h3 class="govuk-heading-m">
-              <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">
-                {{ card.title }}
-              </a>
-            </h3>
-            <p class="govuk-body">
-              Find out how to improve your situation with practical tips and guidance.
-            </p>
+      <!-- HERO SECTION START -->
+      <div class="govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6 govuk-!-margin-top-0"
+        style="background-color:#f3f7fb;">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                What you can do next
+              </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
+                get suggestions of what to say.
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img src="/public/images/image-example-2.png" alt="" style="max-width:100%;">
+            </div>
           </div>
         </div>
-        {% endfor %}
-
       </div>
-    </div>
+      <!-- HERO SECTION END -->
 
-    <!-- Mental health support start -->
-    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4 govuk-!-padding-right-15 mental-health-support">
-      <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
-      <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
-      <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-      <p class="govuk-body">There are people
-        who can help you.</p>
-      <p class="govuk-body">
-        <a class="govuk-link" href="#">View helplines</a>
-      </p>
-    </div>
-    <!-- Mental health support end -->
+      <div class="govuk-width-container">
+        <div class="govuk-grid-row">
 
+          <div class="govuk-grid-column-two-thirds">
+            <h2 class="govuk-heading-m">How to use these guides</h2>
+            <p class="govuk-body">
+              If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
+              refer to
+              it.
+            </p>
+            <p class="govuk-body">
+              You can screenshot, text or email each guide to yourself.
+            </p>
 
-    <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body-s govuk-!-margin-top-6 govuk-!-margin-bottom-0">
-        <a href="#">View a printable version of the whole guide</a>
-      </p>
-    </div>
+          </div>
 
-  </div>
-</div>
+          <div class="govuk-grid-column-full">
+            <div class="dfe-grid-container">
 
-<!-- Feedback grey -->
-<div class="govuk-width-container feedback-container grey">
+              {% set cards = [
+              { title: "I’m not sure what to do after college or sixth form", href: "/round4-mvp/switch-course", img:
+              "/public/images/want-to-switch-course.png" },
+              { title: "I want to switch to a different course", href: "/pass-maths-resit", img:
+              "/public/images/pass-gcse-maths.png" },
+              { title: "I’m not sure I’ll use what I’m learning right now", href: "#", img:
+              "/public/images/use-what-learn.png" },
+              { title: "I want to switch subjects", href: "#", img: "/public/images/attendancepng.png" },
+              { title: "Understand how my course can help with my goal", href: "#", img: "/public/images/CV.png" },
+              { title: "I’m struggling to pass my course", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I want to pass my GCSE maths resit", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I want to pass my GCSE English resit", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I do not hear back from applications", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I never get feedback so do not know what to improve", href: "#", img:
+              "/public/images/apply-for-jobs.png" },
+              { title: "I’m trying to get my first job", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I’ve done volunteering but cannot get a paid job", href: "#", img:
+              "/public/images/apply-for-jobs.png"
+              },
+              { title: "I cannot find an apprenticeship where I live", href: "#", img:
+              "/public/images/apply-for-jobs.png" },
+              { title: "Create a CV or make my CV better", href: "#", img: "/public/images/apply-for-jobs.png" },
+              { title: "I need to get some work experience", href: "#", img: "/public/images/apply-for-jobs.png" }
+              ] %}
 
-  <div class="feedback-left grey">
-    <span class="govuk-body" style="font-size: 19px; margin-right: 20px; line-height: 2;"><strong>Is this page
-        useful?</strong></span>
-    <button class="govuk-button feedback grey" style="color: #000000;">Yes</button>
-    <button class="govuk-button feedback grey" style="color: #000000;">No</button>
-  </div>
+              {% for card in cards %}
+              <div class="dfe-card">
+                <img src="{{ card.img }}" alt="">
+                <div class="dfe-card-container">
+                  <h3 class="govuk-heading-m">
+                    <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state dfe-card-link--header">
+                      {{ card.title }}
+                    </a>
+                  </h3>
+                  <p class="govuk-body">
+                    Find out how to improve your situation with practical tips and guidance.
+                  </p>
+                </div>
+              </div>
+              {% endfor %}
 
-  <div class="feedback-right grey">
-    <a href="#" class="govuk-button feedback grey" style="font-size: 16px; color: #000000; ">
-      Help us design this page lorem ipsum
-    </a>
-  </div>
-</div>
+            </div>
+          </div>
 
-{% endblock %}
+          <!-- Mental health support start -->
+          <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4 govuk-!-padding-right-15 mental-health-support">
+            <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
+            <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
+            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+            <p class="govuk-body">There are people
+              who can help you.</p>
+            <p class="govuk-body">
+              <a class="govuk-link" href="#">View helplines</a>
+            </p>
+          </div>
+          <!-- Mental health support end -->
 
-{% block pageScripts %}
-<script>
-  var $element = document.querySelector('#step-by-step-navigation')
-  if ($element) {
-    new GOVUK.Modules.AppStepNav($element).init()
-  }
-</script>
-{% endblock %}
+        </div>
+      </div>
+
+      <!-- FEEDBACK GREY -->
+      <div class="govuk-width-container feedback-container grey govuk-!-margin-bottom-6">
+        <div class="feedback-left grey">
+          <span class="govuk-body" style="font-size: 19px; margin-right: 20px; line-height: 2;"><strong>Is this page
+              useful?</strong></span>
+          <button class="govuk-button feedback grey" style="color: #000000;">Yes</button>
+          <button class="govuk-button feedback grey" style="color: #000000;">No</button>
+        </div>
+
+        <div class="feedback-right grey">
+          <a href="#" class="govuk-button feedback grey" style="font-size: 16px; color: #000000; ">
+            Help us design this page lorem ipsum
+          </a>
+        </div>
+      </div>
+
+      {% endblock %}
+
+      {% block pageScripts %}
+      <script>
+        var $element = document.querySelector('#step-by-step-navigation')
+        if ($element) {
+          new GOVUK.Modules.AppStepNav($element).init()
+        }
+      </script>
+      {% endblock %}
