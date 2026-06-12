@@ -6,38 +6,60 @@
 
 {% block header %}
   <header>
-    {{govukHeader()}}
+    {{ govukHeader() }}
   </header>
 {% endblock %}
 
 {% block content %}
 
+<!-- HERO SECTION -->
+<section class="govuk-!-padding-6" style="background-color:#f3f7fb;">
+  <div class="govuk-width-container">
+    
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
 
-<section class="neet-course-details-hero">
-  <div class="govuk-width-container neet-course-page__hero-inner">
-    <h1 class="govuk-heading-l neet-course-page__hero-title">Find out who can help you as a young person</h1>
-    <p class="govuk-body-l neet-course-page__hero-text">See who can help with things like applying for jobs, changing your college course or resitting GCSE maths or English.</p>
+        <h1 class="govuk-heading-l">
+          Find out who can help you as a young person
+        </h1>
+
+        <p class="govuk-body-l govuk-!-margin-bottom-6">
+          See who can help with things like applying for jobs, changing your college course or resitting GCSE maths or English.
+        </p>
+
+
+      </div>
+
+      <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+        <img src="/public/images/neet-home-image.png" alt="" style="max-width:100%;">
+      </div>
+    </div>
+
   </div>
 </section>
 
-  <div class="govuk-width-container">
-    <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
-      <div class="govuk-grid-column-two-thirds">
-  
+
+<!-- MAIN CONTENT -->
+<div class="govuk-width-container govuk-!-padding-top-6 govuk-!-margin-bottom-6">
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
 
       <h2 class="govuk-heading-m">
         How this tool can help you
       </h2>
 
-      <p>55% of young people have said something would stop them asking for help. </p>
-      <p>Taking that step can be hard, especially if you're not sure who the right person to speak to is.</p>
-      <p>This tool can help you understand who can help you.</p>
+      <p class="govuk-body">55% of young people have said something would stop them asking for help.</p>
+      <p class="govuk-body">Taking that step can be hard, especially if you're not sure who the right person to speak to is.</p>
+      <p class="govuk-body">This tool can help you understand who can help you.</p>
 
-      <h3 class="govuk-heading-m">
+      <h2 class="govuk-heading-m">
         Who would find this useful
-      </h3>
-      <p>This tool is for young people aged 16 to 24 who are having a hard time in college, sixth form, or with job applications.</p>
-      <p>You might find this useful if you’re:</p>
+      </h2>
+
+      <p class="govuk-body">This tool is for young people aged 16 to 24 who are having a hard time in college, sixth form, or with job applications.</p>
+      <p class="govuk-body">You might find this useful if you’re:</p>
+
       <ul class="govuk-list govuk-list--bullet">
         <li>stuck resitting GCSE maths or English over and over again</li>
         <li>on a course you’re not enjoying or did not choose</li>
@@ -45,29 +67,31 @@
         <li>applying for jobs but never get feedback</li>
       </ul>
 
-      <p>If any of this feels familiar, you’re not on your own. Lots of young people are in a similar situation.</p>
-      <h4 class="govuk-heading-m">
+      <p class="govuk-body">If any of this feels familiar, you’re not on your own. Lots of young people are in a similar situation.</p>
+
+      <h2 class="govuk-heading-m">
         What to expect
-      </h4>
-      <p>You'll answer a few questions. Some questions are optional, such as your name. You can choose what you feel comfortable sharing.</p>
-      <p>It will take 5 minutes to complete.</p>
-      <p>At the end, you’ll get:</p>
+      </h2>
+
+      <p class="govuk-body">You’ll answer a few questions. Some questions are optional, such as your name. You can choose what you feel comfortable sharing.</p>
+      <p class="govuk-body">It will take 5 minutes to complete.</p>
+
       <ul class="govuk-list govuk-list--bullet">
-        <li>information about how the system works </li>
+        <li>information about how the system works</li>
         <li>advice on who to speak to</li>
         <li>suggestions of what to say or how to ask for help</li>
       </ul>
-      {{ govukButton({
-        text: "Start now",
-        href: "whats-your-first-name",
-        isStartButton: true
-      }) }}
 
-    </div>
-    <div class="govuk-grid-column-one-third">
-      <img src="/public/images/neet-home-image.png" alt="" class="neet-course-page__hero-icon">
+      
+        {{ govukButton({
+          text: "Start now",
+          href: "whats-your-first-name",
+          isStartButton: true
+        }) }}
+        
     </div>
   </div>
-  </div>
+
+</div>
 
 {% endblock %}
