@@ -310,7 +310,7 @@ div.feedback-right {
 
 
 //Blue quotes
-h3.govuk-heading-s.blue-quote {
+p.govuk-body.blue-quote {
     background-color: #d2e2f1;
     padding: 20px 30px;
     border-radius: 10px;
@@ -329,6 +329,14 @@ section.neet-course-details-hero {
     background-color: #f4f8fb !important;
     padding: 30px;
     margin: 40px 0px 0px 15px;
+    border-radius: 10px;
+    border: 1px solid #8eb8dc;
+}
+
+.mental-health-support-m {
+    background-color: #f4f8fb !important;
+    padding: 30px;
+    margin: 40px 0px 0px 40px;
     border-radius: 10px;
     border: 1px solid #8eb8dc;
 }

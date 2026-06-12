@@ -58,7 +58,8 @@ href: "javascript:window.history.back()"
       <div class="govuk-width-container">
         <div class="govuk-grid-row">
 
-          <div class="govuk-grid-column-two-thirds">
+          <div
+            class="govuk-grid-column-two-thirds govuk-!-padding-left-6 govuk-!-padding-top-2 govuk-!-padding-bottom-3">
             <h2 class="govuk-heading-m">How to use these guides</h2>
             <p class="govuk-body">
               If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
@@ -76,27 +77,27 @@ href: "javascript:window.history.back()"
 
               {% set cards = [
               { title: "I’m not sure what to do after college or sixth form", href: "/round4-mvp/switch-course", img:
-              "/public/images/want-to-switch-course.png" },
+              "/public/images/image-1.png" },
               { title: "I want to switch to a different course", href: "/pass-maths-resit", img:
-              "/public/images/pass-gcse-maths.png" },
+              "/public/images/image-2.png" },
               { title: "I’m not sure I’ll use what I’m learning right now", href: "#", img:
-              "/public/images/use-what-learn.png" },
-              { title: "I want to switch subjects", href: "#", img: "/public/images/attendancepng.png" },
-              { title: "Understand how my course can help with my goal", href: "#", img: "/public/images/CV.png" },
-              { title: "I’m struggling to pass my course", href: "#", img: "/public/images/apply-for-jobs.png" },
-              { title: "I want to pass my GCSE maths resit", href: "#", img: "/public/images/apply-for-jobs.png" },
-              { title: "I want to pass my GCSE English resit", href: "#", img: "/public/images/apply-for-jobs.png" },
-              { title: "I do not hear back from applications", href: "#", img: "/public/images/apply-for-jobs.png" },
+              "/public/images/image-3.png" },
+              { title: "I want to switch subjects", href: "#", img: "/public/images/image-3.png" },
+              { title: "Understand how my course can help with my goal", href: "#", img: "/public/images/image-4.png" },
+              { title: "I’m struggling to pass my course", href: "#", img: "/public/images/image-5.png" },
+              { title: "I want to pass my GCSE maths resit", href: "#", img: "/public/images/image-1.png" },
+              { title: "I want to pass my GCSE English resit", href: "#", img: "/public/images/image-2.png" },
+              { title: "I do not hear back from applications", href: "#", img: "/public/images/image-3.png" },
               { title: "I never get feedback so do not know what to improve", href: "#", img:
-              "/public/images/apply-for-jobs.png" },
-              { title: "I’m trying to get my first job", href: "#", img: "/public/images/apply-for-jobs.png" },
+              "/public/images/image-4.png" },
+              { title: "I’m trying to get my first job", href: "#", img: "/public/images/image-5.png" },
               { title: "I’ve done volunteering but cannot get a paid job", href: "#", img:
-              "/public/images/apply-for-jobs.png"
+              "/public/images/image-1.png"
               },
               { title: "I cannot find an apprenticeship where I live", href: "#", img:
-              "/public/images/apply-for-jobs.png" },
-              { title: "Create a CV or make my CV better", href: "#", img: "/public/images/apply-for-jobs.png" },
-              { title: "I need to get some work experience", href: "#", img: "/public/images/apply-for-jobs.png" }
+              "/public/images/image-2.png" },
+              { title: "Create a CV or make my CV better", href: "#", img: "/public/images/image-3.png" },
+              { title: "I need to get some work experience", href: "#", img: "/public/images/image-4.png" }
               ] %}
 
               {% for card in cards %}
@@ -119,7 +120,7 @@ href: "javascript:window.history.back()"
           </div>
 
           <!-- Mental health support start -->
-          <div class="govuk-grid-column-two-thirds govuk-!-margin-top-4 govuk-!-padding-right-15 mental-health-support">
+          <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5 govuk-!-padding-right-15 mental-health-support">
             <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
             <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
             <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
@@ -134,8 +135,9 @@ href: "javascript:window.history.back()"
         </div>
       </div>
 
-      <!-- FEEDBACK GREY -->
-      <div class="govuk-width-container feedback-container grey govuk-!-margin-bottom-6">
+      <!-- FEEDBACK GREY START -->
+      <div class="govuk-width-container feedback-container grey">
+
         <div class="feedback-left grey">
           <span class="govuk-body" style="font-size: 19px; margin-right: 20px; line-height: 2;"><strong>Is this page
               useful?</strong></span>
@@ -149,6 +151,7 @@ href: "javascript:window.history.back()"
           </a>
         </div>
       </div>
+      <!-- FEEDBACK GREY END -->
 
       {% endblock %}
 
