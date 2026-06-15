@@ -21,43 +21,33 @@ href: "javascript:window.history.back()"
         <fieldset class="govuk-fieldset">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-              Where are you at with eductaion?
+              Where are you at with education?
             </h1>
           </legend>
+
+
+          <p class="govuk-body">You might have already started or be about to start.</p>
+
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="education-status" name="educationStatus" type="radio"
-                value="college">
+                value="I’m not in education">
               <label class="govuk-label govuk-radios__label" for="education-status">
-                In college or about to start
+                I’m not in education
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="education-status-2" name="educationStatus" type="radio"
-                value="sixth form">
+                value="College or sixth form college">
               <label class="govuk-label govuk-radios__label" for="education-status-2">
-                In sixth form or about to start
+                College or sixth form college
               </label>
             </div>
             <div class="govuk-radios__item">
               <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio"
-                value="sixth form college">
+                value="Sixth form">
               <label class="govuk-label govuk-radios__label" for="education-status-3">
-                In sixth form college or about to start
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="education-status-4" name="educationStatus" type="radio"
-                value="homeschooling">
-              <label class="govuk-label govuk-radios__label" for="education-status-4">
-                I’m homeschooled
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="education-status-5" name="educationStatus" type="radio"
-                value="being in a pupil referral unit">
-              <label class="govuk-label govuk-radios__label" for="education-status-5">
-                I’m in a pupil referral unit (PRU)
+                Sixth form
               </label>
             </div>
           </div>
@@ -70,8 +60,8 @@ href: "javascript:window.history.back()"
           </span>
         </summary>
         <div class="govuk-details__text">
-          We're asking this so we can better understand who in college or sixth form can help you. This information does
-          not get collected or reported to anyone.
+          We're asking this so we can better understand where you’re at with your situation and give you better advice.
+          This information does not get collected or reported to anyone.
       </details>
       {{ govukButton({
       text: "Continue"

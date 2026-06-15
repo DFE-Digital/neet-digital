@@ -4,27 +4,25 @@ const router = govukPrototypeKit.requests.setupRouter()
 // ----------------------------
 // Page 1: What do you need help with
 // ----------------------------
-router.post('/needsDifficultyPage', (req, res) => {
+router.post('/what-help', (req, res) => {
   const routes = req.session.data.route || []
 
-  // Always treat as array
   const selected = Array.isArray(routes) ? routes : [routes]
 
-  // Group checks
-  const hasCourse = selected.includes('route1') || selected.includes('route2')
-  const hasJobs = selected.includes('route3') || selected.includes('route4')
+  const hasCourse = selected.includes(' I do not like my course and I’m not sure what to do when I finish') || selected.includes('I need to pass my GCSE maths or English resit')
+  const hasJobs = selected.includes('Applying for jobs or get an apprenticeship') || selected.includes('Help with my CV or get work experience')
 
   // ✅ ALL selected (mix of both groups)
   if (hasCourse && hasJobs) {
     return res.redirect('/round4-mvp/what-help-dynamic3')
   }
 
-  // ✅ Only route1/route2
+  // ✅ Only  I do not like my course and I’m not sure what to do when I finish/I need to pass my GCSE maths or English resit
   if (hasCourse) {
     return res.redirect('/round4-mvp/what-help-dynamic1')
   }
 
-  // ✅ Only route3/route4
+  // ✅ Only route3/route4 Help with my CV or get work experience
   if (hasJobs) {
     return res.redirect('/round4-mvp/what-help-dynamic2')
   }
@@ -35,14 +33,14 @@ router.post('/needsDifficultyPage', (req, res) => {
 
 
 // ----------------------------
-// Page 2a (course / GCSE)
+// Page what-help-dynamic1
 // ----------------------------
 router.post('/what-help-dynamic1', (req, res) => {
   const routes = req.session.data.SelectedRouteIds || []
   const selected = Array.isArray(routes) ? routes : [routes]
 
   if (selected.length > 0) {
-    return res.redirect('/round4-mvp/check-your-answers')
+    return res.redirect('/round4-mvp/where-are-you-at-with-education')
   }
 
   res.redirect('/round4-mvp/what-help-dynamic1')
@@ -50,46 +48,39 @@ router.post('/what-help-dynamic1', (req, res) => {
 
 
 // ----------------------------
-// Page 2b (jobs / CV)
+// Page /what-help-dynamic2
 // ----------------------------
 router.post('/what-help-dynamic2', (req, res) => {
   const routes = req.session.data.SelectedRouteIds || []
   const selected = Array.isArray(routes) ? routes : [routes]
 
   if (selected.length > 0) {
-    return res.redirect('/round4-mvp/check-your-answers')
+    return res.redirect('/round4-mvp/where-are-you-at-with-education')
   }
 
   res.redirect('/round4-mvp/what-help-dynamic2')
 })
 
 
+
 // ----------------------------
-// Page 2c (combined)
+// Dynamic page 1 - what-help-dynamic1
+// ----------------------------
+router.post('/what-help-dynamic1', (req, res) => {
+  return res.redirect('/round4-mvp/where-are-you-at-with-education')
+})
+
+// ----------------------------
+// Dynamic page 2 - what-help-dynamic2
+// ----------------------------
+router.post('/what-help-dynamic2', (req, res) => {
+  return res.redirect('/round4-mvp/where-are-you-at-with-education')
+})
+
+// ----------------------------
+// Dynamic page 3 - what-help-dynamic3
 // ----------------------------
 router.post('/what-help-dynamic3', (req, res) => {
-  const routes = req.session.data.SelectedRouteIds || []
-  const selected = Array.isArray(routes) ? routes : [routes]
-
-  if (selected.length > 0) {
-    return res.redirect('/round4-mvp/check-your-answers')
-  }
-
-  res.redirect('/round4-mvp/what-help-dynamic3')
+  return res.redirect('/round4-mvp/where-are-you-at-with-education')
 })
 
-
-// ----------------------------
-// Check your answers
-// ----------------------------
-router.post('/round4-mvp/check-your-answers', (req, res) => {
-  res.redirect('/round4-mvp/check-your-answers')
-})
-
-
-// ----------------------------
-// Next steps
-// ----------------------------
-router.post('/round4-mvp/what-you-can-do-next', (req, res) => {
-  res.redirect('/round4-mvp/what-you-can-do-next')
-})
