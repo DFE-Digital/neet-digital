@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-What do you need to do – {{ serviceName }} – GOV.UK Prototype Kit
+What are you finding difficult? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
@@ -31,30 +31,30 @@ href: "javascript:window.history.back()"
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <form class="form" action="./where-are-you-at-with-education" method="get">
+    <form class="form" action="/needsDifficultyPage" method="post">
+
 
       <div class="govuk-form-group">
-        <span class="govuk-caption-l">Question 1 of 2</span>
-
-        <fieldset class="govuk-fieldset" aria-describedby="interests-hint">
+        <!--<span class="govuk-caption-l">Question 1 of 2</span>-->
+        <fieldset class="govuk-fieldset" aria-describedby="routes-hint">
           <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
             <h1 class="govuk-fieldset__heading">
-             What are you finding difficult?
+              What are you finding difficult?
             </h1>
           </legend>
-          <p class="govuk-body">We know 3 in 10 young people have avoided going to college to stop feeling anxious. </p>
-          <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+          <p class="govuk-body">We know that 61% or young people aged 15 to 18 <br>are worried about looking for work.</p>
+          <p class="govuk-body">It’s okay to be honest if you’re having a hard time.</p>
 
-          <div id="interests-hint" class="govuk-hint govuk-!-margin-bottom-6">
+          <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
             Select all that apply
           </div>
 
+          <!-- CHECKBOXES START-->
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
-            <!-- Unsure about course -->
-            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-               I’m unsure about my current course or what to do when I finish
+                Applying for jobs or apprenticeships 
               </legend>
 
               <div class="govuk-!-margin-bottom-6">
@@ -62,16 +62,16 @@ href: "javascript:window.history.back()"
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
                   <label class="govuk-label govuk-checkboxes__label" for="route-2">
-                   I’m not sure what to do after college or sixth form
+                   I do not hear back from applications
                   </label>
-                  <div class="govuk-hint govuk-checkboxes__hint">For example, your plans might have changed or you cannot decide.</div>
+                  <!-- <div class="govuk-hint govuk-checkboxes__hint">For example, lorem ipsum</div>-->
                 </div>
 
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
                     value="12">
                   <label class="govuk-label govuk-checkboxes__label" for="route-12">
-                   I want to switch to a different course
+                   I never get feedback so do not know what to improve
                   </label>
                   <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
                 </div>
@@ -80,27 +80,38 @@ href: "javascript:window.history.back()"
                   <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
                     value="12">
                   <label class="govuk-label govuk-checkboxes__label" for="route-12">
-                    I want to know how my course can help me get to my goal
+                    I’m trying to get my first job
                   </label>
                   <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                 </div>
 
-                <div class="govuk-checkboxes__item">
+
+                <div class="govuk-checkboxes__item ">
                   <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
                     value="12">
                   <label class="govuk-label govuk-checkboxes__label" for="route-12">
-                    I’m struggling to pass my course
+                    I’ve done volunteering but cannot seem to get a paid job
                   </label>
-                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+                  <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+                </div>
+
+
+                 <div class="govuk-checkboxes__item ">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    I cannot find an apprenticeship where I live
+                  </label>
+                  <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                 </div>
 
               </div>
             </fieldset>
 
-            <!-- GCSE -->
-            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+            <!-- CV -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                I need to pass my GCSE maths or English resit
+               Help with my CV or get work experience
               </legend>
 
               <div class="govuk-!-margin-bottom-6">
@@ -108,7 +119,7 @@ href: "javascript:window.history.back()"
                 <div class="govuk-checkboxes__item">
                   <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
                   <label class="govuk-label govuk-checkboxes__label" for="route-2">
-                    Maths
+                    Create a CV or make my CV better
                   </label>
                   <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                 </div>
@@ -117,7 +128,7 @@ href: "javascript:window.history.back()"
                   <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
                     value="12">
                   <label class="govuk-label govuk-checkboxes__label" for="route-12">
-                    English
+                   I need to get some work experience
                   </label>
                   <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                 </div>
@@ -125,14 +136,15 @@ href: "javascript:window.history.back()"
               </div>
             </fieldset>
 
-
           </div>
+
+          <div class="govuk-button-group ">
+            {{ govukButton({ text: "Continue" }) }}
+          </div>
+          <!-- CHECKBOXES END-->
         </fieldset>
       </div>
 
-      <div class="govuk-button-group">
-        {{ govukButton({ text: "Continue" }) }}
-      </div>
 
     </form>
 

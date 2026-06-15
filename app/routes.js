@@ -1,80 +1,95 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
-
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
+// ----------------------------
+// Page 1: What do you need help with
+// ----------------------------
+router.post('/needsDifficultyPage', (req, res) => {
+  const routes = req.session.data.route || []
 
-router.post('/current-situation', (req, res) => {
-  res.redirect('/current-situation')
-})
+  // Always treat as array
+  const selected = Array.isArray(routes) ? routes : [routes]
 
-router.post('/what-do-you-need-to-do', (req, res) => {
-  res.redirect('/what-do-you-need-to-do')
-})
+  // Group checks
+  const hasCourse = selected.includes('route1') || selected.includes('route2')
+  const hasJobs = selected.includes('route3') || selected.includes('route4')
 
-router.post('/where-are-you-at-with-education', (req, res) => {
-  const task = req.session.data.task
-  const jobTasks = ['Apply for jobs', 'Get work experience', 'Create a CV or make my CV better']
-  const collegeTasks = [
-    'Switch to a different course',
-    'Understand how my course can help me get to my goal',
-    'Pass my GCSE maths or English resit',
-    'Work out what to do as I want to drop out',
-    'I dropped out but plan to join a course next year'
-  ]
-
-  const hasJobTask = Array.isArray(task)
-    ? task.some(t => jobTasks.includes(t))
-    : jobTasks.includes(task)
-
-  const hasApprenticeship = Array.isArray(task)
-    ? task.includes('Get an apprenticeship')
-    : task === 'Get an apprenticeship'
-
-  const hasCollegeTask = Array.isArray(task)
-    ? task.some(t => collegeTasks.includes(t))
-    : collegeTasks.includes(task)
-
-  if (hasCollegeTask && (hasJobTask || hasApprenticeship)) {
-    res.redirect('/what-are-you-finding-difficult')
-  } else if (hasJobTask && hasApprenticeship) {
-    res.redirect('/check-your-answers')
-  } else if (hasJobTask) {
-    res.redirect('/check-your-answers')
-  } else if (hasApprenticeship) {
-    res.redirect('/check-your-answers')
-  } else {
-    res.redirect('/where-are-you-at-with-education')
+  // ✅ ALL selected (mix of both groups)
+  if (hasCourse && hasJobs) {
+    return res.redirect('/round4-mvp/what-help-dynamic3')
   }
-})
 
-router.post('/which-parts-of-college-do-you-need-help-with', (req, res) => {
-  const educationStatus = req.session.data.educationStatus
-  const collegeStatuses = ['college', 'sixth form', 'sixth form college']
-
-  const hsPruStatuses = ['homeschooling', 'being in a pupil referral unit (PRU)']
-
-  if (collegeStatuses.includes(educationStatus)) {
-    res.redirect('/check-your-answers')
-  } else if (hsPruStatuses.includes(educationStatus)) {
-    res.redirect('/check-your-answers')
-  } else {
-    res.redirect('/check-your-answers')
+  // ✅ Only route1/route2
+  if (hasCourse) {
+    return res.redirect('/round4-mvp/what-help-dynamic1')
   }
+
+  // ✅ Only route3/route4
+  if (hasJobs) {
+    return res.redirect('/round4-mvp/what-help-dynamic2')
+  }
+
+  // fallback
+  res.redirect('/round4-mvp/what-help')
 })
 
-router.post('/check-your-answers', (req, res) => {
-  res.redirect('/check-your-answers')
+
+// ----------------------------
+// Page 2a (course / GCSE)
+// ----------------------------
+router.post('/what-help-dynamic1', (req, res) => {
+  const routes = req.session.data.SelectedRouteIds || []
+  const selected = Array.isArray(routes) ? routes : [routes]
+
+  if (selected.length > 0) {
+    return res.redirect('/round4-mvp/check-your-answers')
+  }
+
+  res.redirect('/round4-mvp/what-help-dynamic1')
 })
 
-router.post('/check-your-answers', (req, res) => {
-  res.redirect('/check-your-answers')
+
+// ----------------------------
+// Page 2b (jobs / CV)
+// ----------------------------
+router.post('/what-help-dynamic2', (req, res) => {
+  const routes = req.session.data.SelectedRouteIds || []
+  const selected = Array.isArray(routes) ? routes : [routes]
+
+  if (selected.length > 0) {
+    return res.redirect('/round4-mvp/check-your-answers')
+  }
+
+  res.redirect('/round4-mvp/what-help-dynamic2')
 })
 
-router.post('/What-you-can-do-next', (req, res) => {
-  res.redirect('/What-you-can-do-next')
+
+// ----------------------------
+// Page 2c (combined)
+// ----------------------------
+router.post('/what-help-dynamic3', (req, res) => {
+  const routes = req.session.data.SelectedRouteIds || []
+  const selected = Array.isArray(routes) ? routes : [routes]
+
+  if (selected.length > 0) {
+    return res.redirect('/round4-mvp/check-your-answers')
+  }
+
+  res.redirect('/round4-mvp/what-help-dynamic3')
+})
+
+
+// ----------------------------
+// Check your answers
+// ----------------------------
+router.post('/round4-mvp/check-your-answers', (req, res) => {
+  res.redirect('/round4-mvp/check-your-answers')
+})
+
+
+// ----------------------------
+// Next steps
+// ----------------------------
+router.post('/round4-mvp/what-you-can-do-next', (req, res) => {
+  res.redirect('/round4-mvp/what-you-can-do-next')
 })
