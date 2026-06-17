@@ -1,7 +1,7 @@
-{% extends "layouts/landing-page.html" %}
+{% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Mental health support page – {{ serviceName }} – GOV.UK Prototype Kit
+I want to switch to a different course – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
@@ -9,12 +9,6 @@ Mental health support page – {{ serviceName }} – GOV.UK Prototype Kit
 text: "Back",
 href: "javascript:window.history.back()"
 }) }}
-{% endblock %}
-
-{% block header %}
-<header>
-  {{ govukHeader() }}
-</header>
 {% endblock %}
 
 {% block content %}
@@ -28,7 +22,7 @@ href: "javascript:window.history.back()"
       <h1 class="govuk-heading-xl">Helplines</h1>
 
       <p class="govuk-body">
-        If you're feeling worried or need support, there are people you can talk to.
+        If you're in crisis, need advice or just someone to talk to, there are people who can help.
       </p>
 
       <p class="govuk-body">
@@ -36,125 +30,675 @@ href: "javascript:window.history.back()"
       </p>
 
       <!-- QUICK LINKS -->
-      <ul class="govuk-list govuk-list--bullet">
-        <li><a href="#mental-health" class="govuk-link">Mental health</a></li>
-        <li><a href="#bereavement" class="govuk-link">Bereavement</a></li>
-        <li><a href="#physical" class="govuk-link">Physical and sexuality</a></li>
-        <li><a href="#self-harm" class="govuk-link">Self-harm</a></li>
-        <li><a href="#drugs" class="govuk-link">Drugs and alcohol</a></li>
+      <div id="up"></div>
+      <ul class="govuk-list">
+        <li> — <a href="#mentalhealth" class="govuk-link">Someone to talk about mental health</a></li>
+        <li> — <a href="#sexualabuse" class="govuk-link">Sexual abuse</a></li>
+        <li> — <a href="#domesticviolence" class="govuk-link">Domestic violence</a></li>
+        <li> — <a href="#selfharm" class="govuk-link">Self-harm</a></li>
+        <li> — <a href="#mentalhealthsupport" class="govuk-link">Mental health support</a></li>
+        <li> — <a href="#healthwellbeing" class="govuk-link">Health and wellbeing</a></li>
+        <li> — <a href="#bullying" class="govuk-link">Bullying and online safety</a></li>
+        <li> — <a href="#housingandmoney" class="govuk-link">Housing and money</a></li>
+        <li> — <a href="#bereavement" class="govuk-link">Bereavement</a></li>
+        <li> — <a href="#familyrelationships" class="govuk-link">Family relationships</a></li>
+        <li> — <a href="#sexuality" class="govuk-link">Sexuality and relationships</a></li>
+        <li> — <a href="#disability" class="govuk-link">Disability</a></li>
+        <li> — <a href="#drugs" class="govuk-link">Substance misuse</a></li>
+        <li> — <a href="#youngcareers" class="govuk-link">Young careers</a></li>
+        <li> — <a href="#healthwellbeing" class="govuk-link">Health and wellbeing</a></li>
+        <li> — <a href="#education" class="govuk-link">Education, training and careers</a></li>
+        <li> — <a href="#asylum" class="govuk-link">Help with asylum</a></li>
       </ul>
-
+    </div>
+    <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5 govuk-!-margin-left-0">
+      <p class="govuk-body-s">
+        <a href="#">Text or email this page</a>
+      </p>
     </div>
   </div>
 
-  <!-- SECTION: MENTAL HEALTH -->
-  <h2 class="govuk-heading-l" id="mental-health">Mental health</h2>
 
-  <!-- CARD -->
+
+  <!-- CARD: MENTAL HEALTH -->
+  <h2 class="govuk-heading-l" id="mentalhealth">Mental health</h2>
+
+  <!-- CARD start -->
   <div class="helpline-card">
-
     <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
-    <h3
-      class="govuk-heading-m">Mind</h3>
+    <h3 class="govuk-heading-m">Mind</h3>
     <p class="govuk-body">
       Provides advice and support to empower anyone experiencing <br>
-      a mental health problem lorem ipsum lorem. 
+      a mental health problem lorem ipsum lorem.
     </p>
 
     <p class="govuk-body">
-     Mind is
+      Mind is
     </p>
-    <p class="govuk-body">You can buy:</p>
-<ul class="govuk-list govuk-list--bullet">
-  <li>free to call</li>
-  <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
-  <li>helplines operate in England and Wales. </li>
-</ul>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
 
-<p class="govuk-body"><strong>Get help now</strong></p>
+    <p class="govuk-body"><strong>Get help now</strong></p>
 
     <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
     <p class="govuk-body"><strong>Online:
-      <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
     </p>
   </div>
+  <!-- CARD end -->
 
-  <!-- CARD -->
+
+
+
+
+  <!-- CARD: SEXUAL ABUSE -->
+  <h2 class="govuk-heading-l" id="sexualabuse">Sexual abuse</h2>
+
+  <!-- CARD start -->
   <div class="helpline-card">
-    <h3 class="govuk-heading-m">SANEline</h3>
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
     <p class="govuk-body">
-      Offers emotional support and information to anyone affected by mental health problems.
+      Provides advice and support to lorem ipsum lorem.
     </p>
-    <p class="govuk-body"><strong>Phone:</strong> 0300 304 7000</p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
   </div>
+  <!-- CARD end -->
 
-
-  <!-- SAMARITANS -->
+  <!-- CARD start -->
   <div class="helpline-card">
-
-    <h3 class="govuk-heading-m">Samaritans</h3>
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
     <p class="govuk-body">
-      Available 24/7 for anyone struggling to cope.
+      Provides advice and support to lorem ipsum lorem.
     </p>
-    <p class="govuk-body"><strong>Phone:</strong> 116 123</p>
-  </div>
 
-  <!-- SECTION: BEREAVEMENT -->
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+  <!-- CARD: DOMESTIC VIOLENCE -->
+  <h2 class="govuk-heading-l" id="domesticviolence">Domestic violence</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+  <!-- CARD: SELF_HARM -->
+  <h2 class="govuk-heading-l" id="selfharm">Self-harm</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: MENTAL HEALTH SUPPORT -->
+  <h2 class="govuk-heading-l" id="mentalhealthsupport">Mental health support</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+
+
+  <!-- CARD: HEALTH AND WELLBEING -->
+  <h2 class="govuk-heading-l" id="healthwellbeing">Health and wellbeing</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: BULLYING -->
+  <h2 class="govuk-heading-l" id="bullying">Bullying and online safety</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: HOUSING AND MONEY -->
+  <h2 class="govuk-heading-l" id="housingandmoney">Housing and money</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: BEREAVEMENT -->
   <h2 class="govuk-heading-l" id="bereavement">Bereavement</h2>
 
+  <!-- CARD start -->
   <div class="helpline-card">
-    <h3 class="govuk-heading-m">Cruse</h3>
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
     <p class="govuk-body">
-      Supports people after the death of someone close.
+      Provides advice and support to lorem ipsum lorem.
     </p>
-    <p class="govuk-body"><strong>Phone:</strong> 0808 808 1677</p>
-  </div>
 
-  <div class="helpline-card">
-    <h3 class="govuk-heading-m">Child Bereavement UK</h3>
     <p class="govuk-body">
-      Supports families and young people coping with bereavement.
+      Organisation is
     </p>
-  </div>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
 
-  <!-- SECTION: PHYSICAL -->
-  <h2 class="govuk-heading-l" id="physical">Physical and sexuality</h2>
+    <p class="govuk-body"><strong>Get help now</strong></p>
 
-  <div class="helpline-card">
-    <h3 class="govuk-heading-m">Brook</h3>
-    <p class="govuk-body">
-      Sexual health advice for under 25s.
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
     </p>
-  </div>
-
-  <div class="helpline-card">
-    <h3 class="govuk-heading-m">FRANK</h3>
-    <p class="govuk-body">
-      Confidential drugs advice and information.
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
     </p>
   </div>
+  <!-- CARD end -->
 
-  <!-- SECTION: SELF HARM -->
-  <h2 class="govuk-heading-l" id="self-harm">Self-harm</h2>
 
+
+
+
+  <!-- CARD: FAMILY AND RELATIONSHIPS -->
+  <h2 class="govuk-heading-l" id="familyrelationships">Family relationships</h2>
+
+  <!-- CARD start -->
   <div class="helpline-card">
-    <h3 class="govuk-heading-m">Self Injury Support</h3>
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
     <p class="govuk-body">
-      Provides support to people affected by self-harm.
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
     </p>
   </div>
+  <!-- CARD end -->
 
-  <!-- SECTION: DRUGS -->
-  <h2 class="govuk-heading-l" id="drugs">Drugs and alcohol support</h2>
 
+
+
+
+
+  <!-- CARD: SEXUALITY AND RELATIONSHIPS -->
+  <h2 class="govuk-heading-l" id="sexuality">Sexuality and relationships</h2>
+
+  <!-- CARD start -->
   <div class="helpline-card">
-    <h3 class="govuk-heading-m">Talk to Frank</h3>
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
     <p class="govuk-body">
-      Honest information about drugs.
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
     </p>
   </div>
+  <!-- CARD end -->
 
-   <!-- FEEDBACK GREY START -->
+
+
+
+
+  <!-- CARD: DISABILITY -->
+  <h2 class="govuk-heading-l" id="disability">Disability</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+
+  <!-- CARD: SUBSTANCE MISUSE -->
+  <h2 class="govuk-heading-l" id="drugs">Substance misuse</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+
+
+  <!-- CARD: YOUNG CAREERS -->
+  <h2 class="govuk-heading-l" id="youngcareers">Young careers</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: HEALTH AND WELLBEING -->
+  <h2 class="govuk-heading-l" id="healthwellbeing">Health and wellbeing</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+
+  <!-- CARD: EDUCATION -->
+  <h2 class="govuk-heading-l" id="education">Education, training and careers</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+
+
+  <!-- CARD: ASYLUM -->
+  <h2 class="govuk-heading-l" id="asylum">Help with asylum</h2>
+
+  <!-- CARD start -->
+  <div class="helpline-card">
+    <img class="logos-thumb" src="/public/images/logos/mind-logo.jpg" alt="Mind mental health charity">
+    <h3 class="govuk-heading-m">Organisation</h3>
+    <p class="govuk-body">
+      Provides advice and support to lorem ipsum lorem.
+    </p>
+
+    <p class="govuk-body">
+      Organisation is
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>free to call</li>
+      <li>open 9am to 6pm, Monday to Friday (except bank holidays) </li>
+      <li>helplines operate in England and Wales. </li>
+    </ul>
+
+    <p class="govuk-body"><strong>Get help now</strong></p>
+
+    <p class="govuk-body"><strong>Call:<a href="#" class="govuk-link"> 0300 102 1234</a></strong></p>
+    <p class="govuk-body"><strong>Online:
+        <a href="#" class="govuk-link">www.mind.org.uk</a></strong>
+    </p>
+
+    <p class="govuk-body govuk-!-margin-top-6">
+      <a href="#up" class="govuk-link">↑ Back to top</a>
+    </p>
+  </div>
+  <!-- CARD end -->
+
+
+  <!-- FEEDBACK GREY START -->
   <div class="govuk-width-container feedback-container grey">
 
     <div class="feedback-left grey">
