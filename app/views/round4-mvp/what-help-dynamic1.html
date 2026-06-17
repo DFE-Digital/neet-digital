@@ -1,0 +1,135 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What are you finding difficult? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}
+{% for item in data.feeling %}
+{% if not loop.first %}
+{% if loop.last %} and {% else %}, {% endif %}
+{% endif %}
+{{ item | lower }}
+{% endfor %}
+{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="/what-help-dynamic1" method="post">
+
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" aria-describedby="routes-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What are you finding difficult?
+            </h1>
+          </legend>
+
+          <p class="govuk-body">We know 3 in 10 young people have avoided going to <br>college to stop feeling anxious.
+          </p>
+          <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+          <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+            Select all that apply
+          </div>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+            <!-- Unsure about course -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                I’m unsure about my current course <br>or what to do when I finish
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="routecollege-sixthform" name="SelectedRouteIds" type="checkbox" value="I’m not sure what to do after college or sixth form">
+                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform">
+                    I’m not sure what to do after college or sixth form
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">
+                    For example, your plans might have changed or you cannot decide.
+                  </div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="routecollege-othercourse" name="SelectedRouteIds" type="checkbox" value="I want to switch to a different course">
+                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-othercourse">
+                    I want to switch to a different course
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="routecollege-mygoal" name="SelectedRouteIds" type="checkbox" value="I want to know how my course can help me get to my goal">
+                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-mygoal">
+                    I want to know how my course can help me get to my goal
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="routecollege-passcourse" name="SelectedRouteIds" type="checkbox" value="I’m struggling to pass my course">
+                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-passcourse">
+                    I’m struggling to pass my course
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- GCSE -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                I need to pass my GCSE maths or English resit
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-maths" name="SelectedRouteIds" type="checkbox" value="Maths">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-maths">
+                    Maths
+                  </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-english" name="SelectedRouteIds" type="checkbox" value="English">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-english">
+                    English
+                  </label>
+                </div>
+
+              </div>
+            </fieldset>
+
+          </div>
+
+          <div class="govuk-button-group">
+            {{ govukButton({ text: "Continue" }) }}
+          </div>
+
+        </fieldset>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -23,62 +23,62 @@
 }
 
 .dfe-grid-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 @media (min-width: 641px) {
-    .dfe-grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 30px;
-    }
+  .dfe-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
 
-    .dfe-card {
-        max-width: 400px;
-    }
+  .dfe-card {
+    max-width: 400px;
+  }
 }
 
 @media (max-width: 640px) {
-    .dfe-card {
-        max-width: 100%;
-    }
+  .dfe-card {
+    max-width: 100%;
+  }
 }
 
 .dfe-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #ffffff;
-    border: 1px solid #b1b4b6;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border: 1px solid #b1b4b6;
 }
 
 .dfe-card>picture,
 .dfe-card>picture>img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .dfe-card-container {
-    padding: 20px;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
+  padding: 20px;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 }
 
 .dfe-card-container :last-child {
-    margin-top: auto;
+  margin-top: auto;
 }
 
 .dfe-card-container h2+p:last-child,
 .dfe-card-container h3+p:last-child {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 .dfe-card:hover,
 .dfe-card:focus-within {
-    background-color: #003a69;
+  background-color: #003a69;
 }
 
 .dfe-card:hover a,
@@ -87,35 +87,35 @@
 .dfe-card:focus-within p,
 .dfe-card:hover .govuk-heading-m,
 .dfe-card:focus-within .govuk-heading-m {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .dfe-card:focus-within {
-    outline: 3px solid #ffdd00;
+  outline: 3px solid #ffdd00;
 }
 
 .dfe-card-container .dfe-card-link--retake:focus,
 .dfe-card-container .dfe-card-link--header:focus {
-    color: #0b0c0c;
+  color: #0b0c0c;
 }
 
 .dfe-card-link--retake {
-    position: relative;
-    z-index: 2;
+  position: relative;
+  z-index: 2;
 }
 
 .dfe-card-link--header {
-    text-decoration: none;
-    color: #347ca9;
+  text-decoration: none;
+  color: #347ca9;
 }
 
 .dfe-card-link--header:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 // Add extra styles here
@@ -188,9 +188,9 @@
 }
 
 .card-icon {
-    margin-top: 20px;
-    width: 6%;
-    height: auto;
+  margin-top: 20px;
+  width: 6%;
+  height: auto;
 }
 
 
@@ -209,7 +209,7 @@
   background-size: contain !important;
   background-position: left center !important;
   display: block !important;
-  width: 276px !important; 
+  width: 276px !important;
   height: 36px !important;
 }
 
@@ -250,7 +250,7 @@
 
 .hero-image {
   width: 80% !important;
-  height: 150px;        
+  height: 150px;
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -266,11 +266,11 @@
 
 
 div.feedback-left {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 div.feedback-right {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 
@@ -285,20 +285,20 @@ div.feedback-right {
 
 
 
-.govuk-button.feedback  {
+.govuk-button.feedback {
   background-color: #F4F8FB !important;
-  padding: 8px 35px; 
+  padding: 8px 35px;
   border: 1px solid #000000 !important;
   box-shadow: 0 2px 0 #000000 !important;
 }
 
 
 
-.govuk-header__link .govuk-header__logotype{
+.govuk-header__link .govuk-header__logotype {
   height: 30px;
 }
 
-.govuk-header__link:focus .govuk-header__logotype{
+.govuk-header__link:focus .govuk-header__logotype {
   content: url(/public/images/department-for-education_black.png);
   height: 30px;
 }
@@ -311,37 +311,87 @@ div.feedback-right {
 
 //Blue quotes
 p.govuk-body.blue-quote {
-    background-color: #d2e2f1;
-    padding: 20px 30px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+  background-color: #d2e2f1;
+  padding: 20px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 
 //white-banner 
 section.neet-course-details-hero {
-    background-color: #ffffff !important;
+  background-color: #ffffff !important;
 }
 
 //mental-health-support
 
 .mental-health-support {
-    background-color: #f4f8fb !important;
-    padding: 30px;
-    margin: 40px 0px 0px 15px;
-    border-radius: 10px;
-    border: 1px solid #8eb8dc;
+  background-color: #f4f8fb !important;
+  padding: 30px;
+  margin: 40px 0px 0px 15px;
+  border-radius: 10px;
+  border: 1px solid #8eb8dc;
 }
 
 .mental-health-support-m {
-    background-color: #f4f8fb !important;
-    padding: 30px;
-    margin: 40px 0px 0px 40px;
-    border-radius: 10px;
-    border: 1px solid #8eb8dc;
+  background-color: #f4f8fb !important;
+  padding: 30px;
+  margin: 40px 0px 0px 40px;
+  border-radius: 10px;
+  border: 1px solid #8eb8dc;
+}
+
+
+.mental-health-support-no-pad {
+  background-color: #f4f8fb !important;
+  padding: 30px;
+  margin: 40px 0px 0px 0px;
+  border-radius: 10px;
+  border: 1px solid #8eb8dc;
 }
 
 
 
+.helpline-card {
+  background: #f3f7fb;
+  border: 1px solid #b1b4b6;
+  border-left: 5px solid #1d70b8;
+  padding: 40px 40px 25px 40px;
+  margin-bottom: 32px;
+}
+
+.helpline-card__logo {
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
 
 
+.samaritans-banner {
+  background: #7fb800;
+  margin: 40px 0 20px 0;
+  padding: 25px 0;
+}
+
+.samaritans-banner span {
+  color: #ffffff;
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+
+.govuk-heading-l {
+  margin-top: 40px;
+}
+
+
+
+img.logos-thumb {
+  width: 20%;
+  height: auto;
+  padding: 20px;
+  background-color: #ffffff;
+  margin: 0px 0px 20px 0px;
+
+}
