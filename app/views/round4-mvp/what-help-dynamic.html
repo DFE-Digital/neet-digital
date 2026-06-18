@@ -45,7 +45,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
         {# ====================== ALL SELECTED ====================== #}
         {% if allSelected %}
 
-        <p class="govuk-body">We know 55% of young people have stopped themselves asking for help. <br>It’s okay to be
+        <p class="govuk-body">We know <strong>55% of young people </strong>have stopped themselves asking for help. <br>It’s okay to be
           honest if you’re having a hard time.</p>
         <p class="govuk-body">If you’re not sure, you can choose what feels closest for now.</p>
 
@@ -210,7 +210,8 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-cv" name="SelectedRouteIds" type="checkbox" value="Create a CV or make my CV better">
+                <input class="govuk-checkboxes__input" id="route-cv" name="SelectedRouteIds" type="checkbox"
+                  value="Create a CV or make my CV better">
                 <label class="govuk-label govuk-checkboxes__label" for="route-cv">
                   Create a CV or make my CV better
                 </label>
@@ -244,7 +245,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
           {# -------- SECTION 1 -------- #}
           {% if routes.indexOf("I do not like my course and I’m not sure what to do when I finish") > -1 %}
 
-          <p class="govuk-body">We know 3 in 10 young people have avoided going to college <br>to stop feeling anxious.
+          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college <br>to stop feeling anxious.
           </p>
           <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
 
@@ -306,11 +307,17 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
           {# -------- SECTION 2 -------- #}
           {% if routes.indexOf("I need to pass my GCSE maths or English resit") > -1 %}
 
+          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college <br>to stop feeling anxious.
+          </p>
+          <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+          <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+            Select all that apply
+          </div>
+
 
           <div class="govuk-checkboxes" data-module="govuk-checkboxes">
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-
-
               <!-- GCSE -->
               <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
@@ -344,6 +351,13 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
             {# -------- SECTION 3 -------- #}
             {% if routes.indexOf("Applying for jobs or get an apprenticeship") > -1 %}
+
+               <p class="govuk-body">We know that <strong>61% or young people</strong> aged 15 to 18 <br>are worried about looking for work.</p>
+          <p class="govuk-body">It’s okay to be honest if you’re having a hard time. </p>
+
+          <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+            Select all that apply
+          </div>
 
 
             <!-- CHECKBOXES START-->
@@ -413,7 +427,13 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             {# -------- SECTION 4 -------- #}
             {% if routes.indexOf("Help with my CV or get work experience") > -1 %}
 
-       
+
+          <p class="govuk-body">We know that <strong>61% of young people </strong>aged 15 to 18 <br>are worried about looking for work. </p>
+          <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+          <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+            Select all that apply
+          </div>
 
             <!-- CHECKBOXES START-->
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
