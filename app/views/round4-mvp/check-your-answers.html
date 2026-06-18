@@ -16,7 +16,7 @@ href: "javascript:window.history.back()"
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-  <pre>{{ data.SelectedRouteIds | dump }}</pre>
+    <pre>{{ data.SelectedRouteIds | dump }}</pre>
 
 
     <h1 class="govuk-heading-l">Check your answers</h1>
@@ -44,20 +44,20 @@ href: "javascript:window.history.back()"
         <dt class="govuk-summary-list__key">How you're finding your current situation</dt>
         <dd class="govuk-summary-list__value">
           {% if data.feeling is string %}
-          {{ data.feeling }}
+          <p class="govuk-body">{{ data.feeling }}</p>
           {% elif data.feeling %}
-          {{ data.feeling | join(', ') }}
+          {% for item in data.feeling %}
+          <p class="govuk-body">{{ item }}</p>
+          {% endfor %}
           {% else %}
           Not provided
           {% endif %}
+
           {% if data.feelingMoreDetail %}
-          <br><br>{{ data.feelingMoreDetail }}
+          <p class="govuk-body">{{ data.feelingMoreDetail }}</p>
           {% endif %}
-
-
-
-          
         </dd>
+
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="/round4-mvp/current-situation">
             Change<span class="govuk-visually-hidden"> situation</span>
