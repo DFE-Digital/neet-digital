@@ -1,47 +1,46 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-  What is your first name– {{ serviceName }} – GOV.UK Prototype Kit
+What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-
-      <h1 class="govuk-heading-l">
-        What's your first name? (optional)
-      </h1>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-top-0">What's your first name? (optional)</h1>
+    <!--<p class="govuk-body govuk-!-margin-bottom-6"></p>-->
     <form class="form" action="/round4-mvp/current-situation" method="post">
       <div class="govuk-form-group">
         <label class="govuk-label" for="event-name">
-           First name
+          First name
         </label>
         <input class="govuk-input" id="first-name" name="firstName" type="text">
       </div>
       <details class="govuk-details">
         <summary class="govuk-details__summary">
-         <span class="govuk-details__summary-text">
-           Why we’re asking this question
+          <span class="govuk-details__summary-text">
+            Why we’re asking this question
           </span>
         </summary>
         <div class="govuk-details__text">
-         We just want to get you know a bit better and be able to personalise what we say to you. We do not collect or report your name to anyone.  </div>
-        </details>
-         <div class="govuk-button-group govuk-!-margin-bottom-7">
-         {{ govukButton({
-           text: "Continue"
-         }) }}
-        </div>
-     </form>
-    </div>
+          We just want to get you know a bit better and be able to personalise what we say to you. We do not collect or
+          report your name to anyone. </div>
+      </details>
+
+      <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({ text: "Continue" }) }}
+      </div>
+    </form>
+
   </div>
+</div>
 
 {% endblock %}

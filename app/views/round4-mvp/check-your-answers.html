@@ -13,19 +13,15 @@ href: "javascript:window.history.back()"
 
 {% block content %}
 
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <pre>{{ data.SelectedRouteIds | dump }}</pre>
-
-
-    <h1 class="govuk-heading-l">Check your answers</h1>
+    <!--<pre>{{ data.SelectedRouteIds | dump }}</pre>-->
+    <h1 class="govuk-heading-xl">Check your answers</h1>
     <p class="govuk-body">
       We want to make sure we've heard what you've said so we can give you the best information we can to help.
     </p>
 
-    <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-
+    <dl class="govuk-summary-list">
       <!-- Name -->
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">Name</dt>
@@ -90,15 +86,23 @@ href: "javascript:window.history.back()"
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">What are you finding difficult?</dt>
         <dd class="govuk-summary-list__value">
+
           {% if data.SelectedRouteIds is string %}
+          {% if "_unchecked" not in data.SelectedRouteIds %}
           <p class="govuk-body">{{ data.SelectedRouteIds }}</p>
+          {% endif %}
+
           {% elif data.SelectedRouteIds %}
           {% for item in data.SelectedRouteIds %}
+          {% if "_unchecked" not in item %}
           <p class="govuk-body">{{ item }}</p>
+          {% endif %}
           {% endfor %}
+
           {% else %}
           Not provided
           {% endif %}
+
         </dd>
         <dd class="govuk-summary-list__actions">
           <a class="govuk-link" href="/round4-mvp/what-help-dynamic">
@@ -123,6 +127,7 @@ href: "javascript:window.history.back()"
       {% endif %}
 
     </dl>
+
 
     <form action="./What-you-can-do-next" method="get">
       <div class="govuk-button-group govuk-!-margin-bottom-7">
