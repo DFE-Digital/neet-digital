@@ -1,0 +1,85 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+  text: "Back",
+  href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set hasError = errors and errors.firstName %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+<!-- {# Error summary #}
+{% if hasError %}
+  {{ govukErrorSummary({
+    titleHtml: 'This question is entirely optional but we would like to personalise the journey for you, <a href="#" class="govuk-link">otherwise bypass by clicking Continue</a> lorem ipsum',
+    errorList: [
+      {
+        text: errors.firstName,
+        href: "#"
+      }
+    ]
+  }) }}
+{% endif %} -->
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-0">
+      What's your first name? (optional)
+    </h1>
+
+
+    
+    <form class="form" action="/round4-mvp-error-messages/current-situation" method="post">
+
+      <div class="govuk-form-group {{ 'govuk-form-group--error' if hasError }}">
+        <label class="govuk-label" for="first-name">
+          First name
+        </label>
+
+        {% if hasError %}
+          <p id="first-name-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>
+            {{ errors.firstName }}
+          </p>
+        {% endif %}
+
+        <input
+          class="govuk-input {{ 'govuk-input--error' if hasError }}"
+          id="first-name"
+          name="firstName"
+          type="text"
+          value="{{ data.firstName or '' }}"
+          {% if hasError %}aria-describedby="first-name-error"{% endif %}
+        >
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We just want to get to know you a bit better and personalise what we say
+          to you. We do not collect or report your name to anyone.
+        </div>
+      </details>
+
+      <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({ text: "Continue" }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

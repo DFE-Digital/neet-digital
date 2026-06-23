@@ -1,0 +1,137 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+How are you finding your current situation – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set hasError = errors and errors.feeling %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% if hasError %}
+    {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: [
+    {
+    text: errors.feeling,
+    href: "#feeling"
+    }
+    ]
+    }) }}
+    {% endif %}
+
+
+    <form class="form" action="/round4-mvp-error-messages/what-help" method="post">
+
+      <div class="govuk-form-group {{ 'govuk-form-group--error' if hasError }}">
+        <h1 class="govuk-heading-l govuk-!-margin-top-0">
+          {% if data.firstName %}
+          Hi, {{ data.firstName }}. How are you finding your current situation?
+          {% else %}
+          How are you finding your current situation?
+          {% endif %}
+        </h1>
+
+        <p class="govuk-body">
+          Think about how you’re finding things like college, sixth form or applying for jobs.
+          This can be positive, negative or both.
+        </p>
+
+        <p class="govuk-body">
+          It’s okay to be honest - we just want to understand a bit more about you.
+        </p>
+        <fieldset class="govuk-fieldset" {% if hasError %}aria-describedby="feeling-error" {% else
+          %}aria-describedby="feelings-hint" {% endif %}>
+
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h1 class="govuk-fieldset__heading">
+              Choose any feelings that reflect how you’re doing.
+            </h1>
+          </legend>
+
+          <div id="feelings-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+
+          {% if hasError %}
+          <p id="feeling-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>
+            {{ errors.feeling }}
+          </p>
+          {% endif %}
+
+          {% set selected = data.feeling or [] %}
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+            {% for item in [
+            "Anxious or stressed",
+            "Confused or stuck",
+            "Exhausted",
+            "Sad",
+            "Losing motivation",
+            "Not confident",
+            "Okay",
+            "Hopeful",
+            "Excited"
+            ] %}
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="feeling-{{ loop.index }}" name="feeling" type="checkbox"
+                value="{{ item }}" {% if item in selected %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="feeling-{{ loop.index }}">
+                {{ item }}
+              </label>
+            </div>
+
+            {% endfor %}
+
+            <div class="govuk-checkboxes__divider">or</div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="feeling-none" name="feeling" type="checkbox"
+                value="I do not want to say how I’m feeling today" data-behaviour="exclusive" {%
+                if "I do not want to say how I’m feeling today" in selected %}checked{% endif %}>
+              <label class="govuk-label govuk-checkboxes__label" for="feeling-none">
+                I do not want to say how I’m feeling today
+              </label>
+            </div>
+
+          </div>
+
+        </fieldset>
+      </div>
+
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We're asking this so you can pause to reflect on how you’re doing.
+          <br>This information does not get collected or reported to anyone.
+        </div>
+      </details>
+
+      <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({ text: "Continue" }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}

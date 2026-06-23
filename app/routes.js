@@ -104,3 +104,111 @@ module.exports = router
 
 
 
+// ERROR MESSAGES
+
+
+//What's your first name? (optional)
+
+
+/* router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
+  const firstName = req.body.firstName;
+
+  let errors = {};
+
+  // Validation
+  if (!firstName || firstName.trim() === '') {
+    errors.firstName = "Enter your first name";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.render('round4-mvp-error-messages/whats-your-first-name', {
+      errors: errors,
+      data: req.body
+    });
+  } else {
+    res.redirect('/round4-mvp-error-messages/current-situation');
+  }
+}) */
+
+
+
+  router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
+
+  const feeling = req.body.feeling;
+  let errors = {};
+
+  // Convert to array (checkboxes can be string or array)
+  const selected = Array.isArray(feeling) ? feeling : (feeling ? [feeling] : []);
+
+  if (selected.length === 0) {
+    errors.feeling = "Select how you are feeling, or choose 'I do not want to say'";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.render('round4-mvp-error-messages/current-situation', {
+      errors: errors,
+      data: req.body
+    });
+  } else {
+    res.redirect('/round4-mvp-error-messages/current-situation');
+  }
+
+})
+
+
+router.get('/round4-mvp-error-messages/what-help-dynamic', function (req, res) {
+
+  const route = req.query.route;
+  let errors = {};
+
+  if (!route) {
+    errors.route = "Select what you need help with";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.render('round4-mvp-error-messages/what-help', {
+      errors: errors,
+      data: req.query
+    });
+  } else {
+    res.redirect('/round4-mvp-error-messages/next-page');
+  }
+
+})
+
+
+
+router.post('/what-help-dynamic3', function (req, res) {
+
+  const selected = req.body.SelectedRouteIds;
+  let errors = {};
+
+  const selectedArray = Array.isArray(selected) ? selected : (selected ? [selected] : []);
+
+  if (selectedArray.length === 0) {
+    errors.SelectedRouteIds = "Select what you are finding difficult";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.render('round4-mvp-error-messages/what-help-dynamic', {
+      errors: errors,
+      data: req.body
+    });
+  } else {
+    res.redirect('/next-page');
+  }
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+

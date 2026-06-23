@@ -1,0 +1,143 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!--<pre>{{ data.SelectedRouteIds | dump }}</pre>-->
+    <h1 class="govuk-heading-xl">Check your answers</h1>
+    <p class="govuk-body">
+      We want to make sure we've heard what you've said so we can give you the best information we can to help.
+    </p>
+
+    <dl class="govuk-summary-list">
+      <!-- Name -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Name</dt>
+        <dd class="govuk-summary-list__value">
+          {{ data.firstName if data.firstName else 'Not provided' }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/round4-mvp/whats-your-first-name">
+            Change<span class="govuk-visually-hidden"> name</span>
+          </a>
+        </dd>
+      </div>
+
+      <!-- Feeling -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">How you're finding your current situation</dt>
+        <dd class="govuk-summary-list__value">
+          {% if data.feeling is string %}
+          <p class="govuk-body">{{ data.feeling }}</p>
+          {% elif data.feeling %}
+          {% for item in data.feeling %}
+          <p class="govuk-body">{{ item }}</p>
+          {% endfor %}
+          {% else %}
+          Not provided
+          {% endif %}
+
+          {% if data.feelingMoreDetail %}
+          <p class="govuk-body">{{ data.feelingMoreDetail }}</p>
+          {% endif %}
+        </dd>
+
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/round4-mvp/current-situation">
+            Change<span class="govuk-visually-hidden"> situation</span>
+          </a>
+        </dd>
+      </div>
+
+      <!-- What help -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">What do you need help with?</dt>
+        <dd class="govuk-summary-list__value">
+          {% if data.route is string %}
+          <p class="govuk-body">{{ data.route }}</p>
+          {% elif data.route %}
+          {% for item in data.route %}
+          <p class="govuk-body">{{ item }}</p>
+          {% endfor %}
+          {% else %}
+          Not provided
+          {% endif %}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/round4-mvp/what-help">
+            Change<span class="govuk-visually-hidden"> help needs</span>
+          </a>
+        </dd>
+      </div>
+
+      <!-- What are you finding difficult -->
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">What are you finding difficult?</dt>
+        <dd class="govuk-summary-list__value">
+
+          {% if data.SelectedRouteIds is string %}
+          {% if "_unchecked" not in data.SelectedRouteIds %}
+          <p class="govuk-body">{{ data.SelectedRouteIds }}</p>
+          {% endif %}
+
+          {% elif data.SelectedRouteIds %}
+          {% for item in data.SelectedRouteIds %}
+          {% if "_unchecked" not in item %}
+          <p class="govuk-body">{{ item }}</p>
+          {% endif %}
+          {% endfor %}
+
+          {% else %}
+          Not provided
+          {% endif %}
+
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/round4-mvp/what-help-dynamic">
+            Change<span class="govuk-visually-hidden"> difficulties</span>
+          </a>
+        </dd>
+      </div>
+
+      <!-- Education -->
+      {% if data.educationStatus %}
+      <div class="govuk-summary-list__row">
+        <dt class="govuk-summary-list__key">Where you're at with education</dt>
+        <dd class="govuk-summary-list__value">
+          {{ data.educationStatus }}
+        </dd>
+        <dd class="govuk-summary-list__actions">
+          <a class="govuk-link" href="/round4-mvp/where-are-you-at-with-education">
+            Change<span class="govuk-visually-hidden"> education</span>
+          </a>
+        </dd>
+      </div>
+      {% endif %}
+
+    </dl>
+
+
+    <form action="./What-you-can-do-next" method="get">
+      <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({ text: "See relevant advice for your situation" }) }}
+      </div>
+    </form>
+
+
+  </div>
+</div>
+
+{% endblock %}

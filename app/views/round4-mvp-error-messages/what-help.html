@@ -1,0 +1,123 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% set hasError = errors and errors.route %}
+
+{% if hasError %}
+  {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: [
+      {
+        text: errors.route,
+        href: "#route-1"
+      }
+    ]
+  }) }}
+{% endif %}
+
+
+
+    <h1 class="govuk-heading-l govuk-!-margin-top-0">
+      What do you need help with?
+    </h1>
+    <p class="govuk-body"> It's okay if you're not sure or feeling stuck with lots of things. <br>Lots of young people feel
+      that way.</p>
+    <p class="govuk-body">You can choose what feels closest for now.</p>
+
+    <form class="form" action="./what-help-dynamic.html" method="get">
+
+      <div class="govuk-form-group {{ 'govuk-form-group--error' if hasError }}">
+    <fieldset class="govuk-fieldset"
+  {% if hasError %}
+    aria-describedby="route-error"
+  {% else %}
+    aria-describedby="routes-hint"
+  {% endif %}>
+
+
+          <div id="routes-hint" class="govuk-hint">
+            Select all that apply
+          </div>
+
+          {% if hasError %}
+  <p id="route-error" class="govuk-error-message">
+    <span class="govuk-visually-hidden">Error:</span>
+    {{ errors.route }}
+  </p>
+{% endif %}
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
+                value="I do not like my course and I’m not sure what to do when I finish">
+                
+              <label class="govuk-label govuk-checkboxes__label" for="route-1">
+                I do not like my course and I’m not sure what to do when I finish
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="route-2" name="route" type="checkbox"
+                value="I need to pass my GCSE maths or English resit">
+              <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                I need to pass my GCSE maths or English resit
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
+                value="Applying for jobs or get an apprenticeship">
+              <label class="govuk-label govuk-checkboxes__label" for="route-3">
+                Applying for jobs or get an apprenticeship
+              </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="route-4" name="route" type="checkbox"
+                value="Help with my CV or get work experience">
+              <label class="govuk-label govuk-checkboxes__label" for="route-4">
+                Help with my CV or get work experience
+              </label>
+            </div>
+
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({
+        text: "Continue"
+        }) }}
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
