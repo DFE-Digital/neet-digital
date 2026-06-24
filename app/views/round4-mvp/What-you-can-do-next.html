@@ -6,26 +6,26 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block pageBefore %}
 {{ govukBackLink({
-  text: "Back",
-  href: "javascript:window.history.back()"
+text: "Back",
+href: "javascript:window.history.back()"
 }) }}
 {% endblock %}
 
 {% block content %}
 
-{# ---------- NORMALISE DATA (FIXED) ---------- #}
+{# ---------- NORMALISE DATA ---------- #}
 {% if data.SelectedRouteIds %}
-  {% if data.SelectedRouteIds[0] %}
-    {% set routes = data.SelectedRouteIds %}
-  {% else %}
-    {% set routes = [data.SelectedRouteIds] %}
-  {% endif %}
+{% if data.SelectedRouteIds[0] %}
+{% set routes = data.SelectedRouteIds %}
 {% else %}
-  {% set routes = [] %}
+{% set routes = [data.SelectedRouteIds] %}
+{% endif %}
+{% else %}
+{% set routes = [] %}
 {% endif %}
 
-{# ---------- FLAGS ---------- #}
 
+{# ---------- FLAGS ---------- #}
 {% set notsurecollegesixthformSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
 {% set switchcourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
 {% set coursegoalSelected = routes.indexOf("I want to know how my course can help me get to my goal") > -1 %}
@@ -40,59 +40,149 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
 {% set createcvSelected = routes.indexOf("Create a CV or make my CV better") > -1 %}
 {% set workexperienceSelected = routes.indexOf("I need to get some work experience") > -1 %}
 
+
 {# ---------- BUILD CARDS ---------- #}
 {% set cards = [] %}
 
 {% if notsurecollegesixthformSelected %}
-  {% set cards = cards.concat([{ title: "I’m not sure what to do after college or sixth form", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{
+title: "I’m not sure what to do after college or sixth form",
+href: "#",
+img: "/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
+
 {% if switchcourseSelected %}
-  {% set cards = cards.concat([{ title: "I want to switch to a different course", href: "#", img: "/public/images/image-boy-thumb.png" }]) %}
+{% set cards = cards.concat([{ title: "I want to switch to a different college course ", href: "#", img:
+"/public/images/switch-course.png",
+text: "Find out who to speak to about changing course, and what you can do if it’s too late to switch."
+}]) %}
 {% endif %}
 
 {% if coursegoalSelected %}
-  {% set cards = cards.concat([{ title: "I want to know how my course can help me get to my goal", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I want to know how my course can help me get to my goal", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if strugglingpasscourseSelected %}
-  {% set cards = cards.concat([{ title: "I’m struggling to pass my course", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I’m struggling to pass my course", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if mathsSelected %}
-  {% set cards = cards.concat([{ title: "Maths", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "Maths", href: "#", img: "/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
-{% if englishSelected %}
-  {% set cards = cards.concat([{ title: "English", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+
+<!-- MATHS AND ENGLISH START-->
+
+{% if mathsSelected and englishSelected %}
+
+  {% set cards = cards.concat([
+    {
+      title: "I want to pass my GCSE maths resit",
+      href: "#",
+      img: "/public/images/GCSE-maths-resit.png",
+      text: "See who can help you with your resits, what you can ask and learn about alternatives."
+    },
+    {
+      title: "I want to pass my GCSE English resit",
+      href: "#",
+      img: "/public/images/pass-GCSE.png",
+      text: "See who can help you with your resit, what you can ask and learn about alternatives."
+    }
+  ]) %}
+
+{% else %}
+
+  {% if mathsSelected %}
+  {% set cards = cards.concat([{
+    title: "I want to pass my GCSE maths resit",
+    href: "#",
+    img: "/public/images/GCSE-maths-resit.png",
+    text: "See who can help you with your resits, what you can ask and learn about alternatives."
+  }]) %}
+  {% endif %}
+
+  {% if englishSelected %}
+  {% set cards = cards.concat([{
+    title: "I want to pass my GCSE English resit",
+    href: "#",
+    img: "/public/images/pass-GCSE.png",
+    text: "See who can help you with your resit, what you can ask and learn about alternatives. "
+  }]) %}
+  {% endif %}
+
 {% endif %}
+
+<!-- MATHS AND ENGLISH END-->
+
 
 {% if hearbackapplicationsSelected %}
-  {% set cards = cards.concat([{ title: "I do not hear back from applications", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I do not hear back from applications", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if nothearSelected %}
-  {% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if firstjobSelected %}
-  {% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if volunteeringSelected %}
-  {% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if apprenticeshipSelected %}
-  {% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 {% if createcvSelected %}
-  {% set cards = cards.concat([{ title: "Create a CV or make my CV better", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "Create a CV or make my CV better", href: "#", img:
+"/public/images/create-better-CV.png",
+text: "Find out who can help you with your CV and get tips if you’re losing motivation. "
+}]) %}
 {% endif %}
 
 {% if workexperienceSelected %}
-  {% set cards = cards.concat([{ title: "I need to get some work experience", href: "#", img: "/public/images/not-done-yet.png" }]) %}
+{% set cards = cards.concat([{ title: "I need to get some work experience", href: "#", img:
+"/public/images/not-done-yet.png",
+text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+lorem ipusm lorem ipsum"
+}]) %}
 {% endif %}
 
 <div class="govuk-width-container">
@@ -106,7 +196,8 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
           <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">What you can do next</h1>
             <p class="govuk-body-l">
-              Thanks for sharing where you’re at. Take a look through who can help and what you might want to do next.
+              Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
+              get suggestions of what to say.
             </p>
           </div>
           <div class="govuk-grid-column-one-third govuk-!-text-align-right">
@@ -115,64 +206,80 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
         </div>
       </div>
 
+
+
+      <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
+        <div class="govuk-grid-column-two-thirds">
+          <h2 class="govuk-heading-m">
+            How to use these guides
+          </h2>
+          <p>If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
+            refer to it.</p>
+          <p>You can screenshot, text or email each guide to yourself.</p>
+        </div>
+      </div>
+
       <!-- CARDS -->
       <div class="dfe-grid-container">
         {% for card in cards %}
-          <div class="dfe-card">
-            <img src="{{ card.img }}" alt="">
-            <div class="dfe-card-container">
-              <h3 class="govuk-heading-m">
-                <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
-                  {{ card.title }}
-                </a>
-              </h3>
-              <p class="govuk-body">
-                Find out how to improve your situation with practical tips and guidance.
-              </p>
-            </div>
+        <div class="dfe-card">
+          <img src="{{ card.img }}" alt="">
+          <div class="dfe-card-container">
+            <h3 class="govuk-heading-m">
+              <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
+                {{ card.title }}
+              </a>
+            </h3>
+
+            <p class="govuk-body">
+              {{ card.text or "More information about this option." }}
+            </p>
+
+
           </div>
+        </div>
         {% endfor %}
       </div>
 
-        <!-- Mental health support start -->
-              <div
-                class="govuk-grid-column-two-thirds govuk-!-margin-top-5  govuk-!-margin-left-0 govuk-!-padding-right-15 mental-health-support">
-                <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
-                <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
-                <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-                <p class="govuk-body">There are people
-                  who can help you.</p>
-                <p class="govuk-body">
-                  <a class="govuk-link" href="#">View helplines</a>
-                </p>
-              </div>
-              <!-- Mental health support end -->
-            </div>
-
-
-          </div>
-        </div>
-
-        <!-- FEEDBACK GREY START -->
-        <div class="govuk-width-container feedback-container grey govuk-!-margin-left-0  govuk-!-padding-left-0">
-
-          <div class="feedback-left grey">
-            <span class="govuk-body" style="font-size: 19px; margin-right: 20px; line-height: 2;"><strong>Is this page
-                useful?</strong></span>
-            <button class="govuk-button feedback grey" style="color: #000000;">Yes</button>
-            <button class="govuk-button feedback grey" style="color: #000000;">No</button>
-          </div>
-
-          <div class="feedback-right grey">
-            <a href="#" class="govuk-button feedback grey" style="font-size: 16px; color: #000000; ">
-              Help us design this page lorem ipsum
-            </a>
-          </div>
-        </div>
-        <!-- FEEDBACK GREY END -->
-
+      <!-- Mental health support start -->
+      <div
+        class="govuk-grid-column-two-thirds govuk-!-margin-top-5  govuk-!-margin-left-0 govuk-!-padding-right-15 mental-health-support">
+        <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
+        <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
+        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+        <p class="govuk-body">There are people
+          who can help you.</p>
+        <p class="govuk-body">
+          <a class="govuk-link" href="#">View helplines</a>
+        </p>
+      </div>
+      <!-- Mental health support end -->
     </div>
+
+
   </div>
+</div>
+
+<!-- FEEDBACK GREY START -->
+<div class="govuk-width-container feedback-container grey govuk-!-margin-left-0  govuk-!-padding-left-0">
+
+  <div class="feedback-left grey">
+    <span class="govuk-body" style="font-size: 19px; margin-right: 20px; line-height: 2;"><strong>Is this page
+        useful?</strong></span>
+    <button class="govuk-button feedback grey" style="color: #000000;">Yes</button>
+    <button class="govuk-button feedback grey" style="color: #000000;">No</button>
+  </div>
+
+  <div class="feedback-right grey">
+    <a href="#" class="govuk-button feedback grey" style="font-size: 16px; color: #000000; ">
+      Help us design this page lorem ipsum
+    </a>
+  </div>
+</div>
+<!-- FEEDBACK GREY END -->
+
+</div>
+</div>
 </div>
 
 {% endblock %}
