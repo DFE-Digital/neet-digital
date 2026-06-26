@@ -8,7 +8,8 @@
     "@govuk-prototype-kit/common-templates": "3.0.0",
     "@govuk-prototype-kit/step-by-step": "^3.0.0",
     "dfe-frontend": "^2.0.1",
-    "govuk-frontend": "6.1.0",
-    "govuk-prototype-kit": "13.20.2"
+    "govuk-frontend": "^6.1.0",
+    "govuk-prototype-kit": "13.20.2",
+    "nhsuk-frontend": "^10.5.2"
   }
 }
