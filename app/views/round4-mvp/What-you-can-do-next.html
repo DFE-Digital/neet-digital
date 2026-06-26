@@ -227,8 +227,10 @@ lorem ipusm lorem ipsum"
   <!-- HERO -->
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-
-      <div class="govuk-!-padding-6 govuk-!-margin-bottom-6" style="background-color:#f3f7fb;">
+ 
+      <div class="govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6" style="background-color:#f3f7fb;">
+   
+          <div class="govuk-grid-column-full govuk-!-padding-0 govuk-!-margin-bottom-6">
         <div class="govuk-grid-row">
           <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-xl">What you can do next</h1>
@@ -238,10 +240,12 @@ lorem ipusm lorem ipsum"
             </p>
           </div>
           <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-            <img src="/public/images/image-example-2.png" alt="" style="max-width:100%;">
+            <img class="image-hero" src="/public/images/image-guide-landing-page.png" alt="What you can do next image of a female and male student working on a computer" style="max-width:100%;">
           </div>
         </div>
-      </div>
+        </div>
+        </div>
+  
 
 
 
@@ -260,7 +264,7 @@ lorem ipusm lorem ipsum"
       <div class="dfe-grid-container">
         {% for card in cards %}
         <div class="dfe-card">
-          <img src="{{ card.img }}" alt="">
+          <img class="image-hero" src="{{ card.img }}" alt="">
           <div class="dfe-card-container">
             <h3 class="govuk-heading-m">
               <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
@@ -278,19 +282,29 @@ lorem ipusm lorem ipsum"
         {% endfor %}
       </div>
 
-      <!-- Mental health support start -->
-      <div
-        class="govuk-grid-column-two-thirds govuk-!-margin-top-5  govuk-!-margin-left-0 govuk-!-padding-right-15 mental-health-support">
-        <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
-        <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
-        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-        <p class="govuk-body">There are people
-          who can help you.</p>
-        <p class="govuk-body">
-          <a class="govuk-link" href="#">View helplines</a>
+
+
+
+   
+      <!-- MENTAL HEALTH SUPPORT START -->
+      <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
+
+        <div class="govuk-inset-text govuk-!-margin-left-0">
+          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
+            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+            <p class="govuk-body">There are people
+              who can help you.</p>
+            <p class="govuk-body">
+              <a class="govuk-link" href="../mental-health-page.html">View helplines</a>
+            </p>
+        </div>
+
+        <p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+          <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this page</a>
         </p>
+
       </div>
-      <!-- Mental health support end -->
+      <!-- MENTAL HEALTH SUPPORT END -->
     </div>
 
 
