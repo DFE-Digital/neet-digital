@@ -5,5 +5,9 @@
     "govuk-frontend": {
       "rebrand": true
     }
-  }
+  },
+  "nunjucksPaths": [
+    "node_modules/govuk-frontend",
+    "node_modules/nhsuk-frontend"
+  ]
 }
