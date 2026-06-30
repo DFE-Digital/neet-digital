@@ -55,8 +55,8 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
         {# ====================== ALL SELECTED ====================== #}
         {% if allSelected %}
 
-        <p class="govuk-body">We know <strong>55% of young people </strong>have stopped themselves asking for help.
-          <br>It’s okay to be honest if you’re having a hard time.
+        <p class="govuk-body">We know <strong>55% of young people </strong>have stopped themselves asking for help.</p>
+         <p class="govuk-body">It’s okay to be honest if you’re having a hard time.
         </p>
         <p class="govuk-body">If you’re not sure, you can choose what feels closest for now.</p>
 
@@ -72,15 +72,15 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
           <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              I’m unsure about my current course <br>or what to do when I finish
+              I’m unsure about my current course or what to do when I finish
             </legend>
 
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="not-sure-what-do-after-college-sixth-form" name="SelectedRouteIds"
                   type="checkbox" value="I’m not sure what to do after college or sixth form">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform">
+                <label class="govuk-label govuk-checkboxes__label" for="not-sure-what-do-after-college-sixth-form">
                   I’m not sure what to do after college or sixth form
                 </label>
                 <div class="govuk-hint govuk-checkboxes__hint">For example, your plans might have changed or you
@@ -88,18 +88,18 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform-differentcourse"
+                <input class="govuk-checkboxes__input" id="switch-different-course"
                   name="SelectedRouteIds" type="checkbox" value="I want to switch to a different course">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform-differentcourse">
+                <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
                   I want to switch to a different course
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform-goal" name="SelectedRouteIds"
-                  type="checkbox" value="I want to know how my course can help me get to my goal">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform-goal">
+                <input class="govuk-checkboxes__input" id="how-course-can-help-goal" name="SelectedRouteIds"
+                  type="checkbox" value=" I want to know how my course can help me get to my goal">
+                <label class="govuk-label govuk-checkboxes__label" for="how-course-can-help-goal">
                   I want to know how my course can help me get to my goal
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -107,9 +107,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
               <div class="govuk-checkboxes__item ">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform-passcourse" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="struggling-pass-course" name="SelectedRouteIds"
                   type="checkbox" value="I’m struggling to pass my course">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform-passcourse">
+                <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                   I’m struggling to pass my course
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -127,16 +127,15 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform-maths" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="Maths" name="SelectedRouteIds"
                   type="checkbox" value="Maths">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform-maths">
+                <label class="govuk-label govuk-checkboxes__label" for="Maths">
                   Maths
                 </label>
-                <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform-english" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="english" name="SelectedRouteIds"
                   type="checkbox" value="English">
                 <label class="govuk-label govuk-checkboxes__label" for="english">
                   English
@@ -158,18 +157,18 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-applications" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="do-hear-applications" name="SelectedRouteIds" type="checkbox"
                   value="I do not hear back from applications">
-                <label class="govuk-label govuk-checkboxes__label" for="route-applications">
+                <label class="govuk-label govuk-checkboxes__label" for="do-hear-applications">
                   I do not hear back from applications
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-otherimprove" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="never-get-feedback" name="SelectedRouteIds" type="checkbox"
                   value="I never get feedback so do not know what to improve">
-                <label class="govuk-label govuk-checkboxes__label" for="route-otherimprove">
+                <label class="govuk-label govuk-checkboxes__label" for="never-get-feedback">
                   I never get feedback so do not know what to improve
                 </label>
                 <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -177,9 +176,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-firstjob" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input"  id="trying-get-first-job" name="SelectedRouteIds" type="checkbox"
                   value="I’m trying to get my first job">
-                <label class="govuk-label govuk-checkboxes__label" for="firstjob">
+                <label class="govuk-label govuk-checkboxes__label" for="trying-get-first-job">
                   I’m trying to get my first job
                 </label>
                 <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -187,20 +186,19 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-paidjob" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="done-volunteering" name="SelectedRouteIds" type="checkbox"
                   value="I’ve done volunteering but cannot seem to get a paid job">
-                <label class="govuk-label govuk-checkboxes__label" for="paidjob">
+                <label class="govuk-label govuk-checkboxes__label" for="done-volunteering">
                   I’ve done volunteering but cannot seem to get a paid job
                 </label>
-                <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
 
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-apprenticeship" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="cannot-find-apprenticeship-where-live" name="SelectedRouteIds" type="checkbox"
                   value="I cannot find an apprenticeship where I live">
-                <label class="govuk-label govuk-checkboxes__label" for="apprenticeship">
+                <label class="govuk-label govuk-checkboxes__label" for="cannot-find-apprenticeship-where-live">
                   I cannot find an apprenticeship where I live
                 </label>
                 <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -222,23 +220,21 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-cv" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="Create-CV-better" name="SelectedRouteIds" type="checkbox"
                   value="Create a CV or make my CV better">
-                <label class="govuk-label govuk-checkboxes__label" for="route-cv">
+                <label class="govuk-label govuk-checkboxes__label" for="Create-CV-better">
                   Create a CV or make my CV better
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-workexperience" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="get-work-experience"name="SelectedRouteIds" type="checkbox"
                   value="I need to get some work experience">
-                <label class="govuk-label govuk-checkboxes__label" for="workexperience">
+                <label class="govuk-label govuk-checkboxes__label" for="get-work-experience">
                   I need to get some work experience
                 </label>
-                <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
-
 
             </div>
           </fieldset>
@@ -270,7 +266,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
         {% if courseGcsePair %}
 
         <p class="govuk-body">
-          We know <strong>3 in 10 young people </strong>have avoided going to college <br>to stop feeling anxious.
+          We know <strong>3 in 10 young people </strong>have avoided going to college to stop feeling anxious.
         </p>
         <p class="govuk-body">
           It's okay to be honest if you're having a hard time.
@@ -283,7 +279,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
         {% elseif jobsCvPair %}
 
         <p class="govuk-body">
-          We know that <strong>61% or young people</strong> aged 15 to 18 <br>are worried about looking for work.
+          We know that <strong>61% or young people</strong> aged 15 to 18 are worried about looking for work.
         </p>
         <p class="govuk-body">
           It’s okay to be honest if you’re having a hard time.
@@ -297,7 +293,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
         <p class="govuk-body">We know <strong>55% of young people </strong>have stopped themselves asking for help.
-          <br>It’s okay to be honest if you’re having a hard time.
+          It’s okay to be honest if you’re having a hard time.
         </p>
         <p class="govuk-body">If you’re not sure, you can choose what feels closest for now.</p>
 
@@ -315,15 +311,15 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
           <!-- Unsure about course -->
           <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-              I’m unsure about my current course or<br>what to do when I finish
+              I’m unsure about my current course or what to do when I finish
             </legend>
 
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-sixthform" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="not-sure-do-after-college-sixth form" name="SelectedRouteIds"
                   type="checkbox" value="I’m not sure what to do after college or sixth form">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform">
+                <label class="govuk-label govuk-checkboxes__label" for="not-sure-do-after-college-sixth form">
                   I’m not sure what to do after college or sixth form
                 </label>
                 <div class="govuk-hint govuk-checkboxes__hint">
@@ -332,25 +328,25 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-othercourse" name="SelectedRouteIds"
-                  type="checkbox" value="I want to switch to a different course">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-othercourse">
+                <input class="govuk-checkboxes__input" id=" I want to switch to a different course" name="SelectedRouteIds"
+                  type="checkbox" value=" I want to switch to a different course">
+                <label class="govuk-label govuk-checkboxes__label" for=" I want to switch to a different course">
                   I want to switch to a different course
                 </label>
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-mygoal" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="how-course-can-help-goal" name="SelectedRouteIds" type="checkbox"
                   value="I want to know how my course can help me get to my goal">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-mygoal">
+                <label class="govuk-label govuk-checkboxes__label" for="how-course-can-help-goal">
                   I want to know how my course can help me get to my goal
                 </label>
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="routecollege-passcourse" name="SelectedRouteIds"
+                <input class="govuk-checkboxes__input" id="struggling-pass-course" name="SelectedRouteIds"
                   type="checkbox" value="I’m struggling to pass my course">
-                <label class="govuk-label govuk-checkboxes__label" for="routecollege-passcourse">
+                <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                   I’m struggling to pass my course
                 </label>
               </div>
@@ -368,17 +364,17 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-maths" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="maths" name="SelectedRouteIds" type="checkbox"
                   value="Maths">
-                <label class="govuk-label govuk-checkboxes__label" for="route-maths">
+                <label class="govuk-label govuk-checkboxes__label" for="maths">
                   Maths
                 </label>
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-english" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="english" name="SelectedRouteIds" type="checkbox"
                   value="English">
-                <label class="govuk-label govuk-checkboxes__label" for="route-english">
+                <label class="govuk-label govuk-checkboxes__label" for="english">
                   English
                 </label>
               </div>
@@ -397,27 +393,27 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="do-hear-applications" name="SelectedRouteIds" type="checkbox"
                   value="I do not hear back from applications">
-                <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                <label class="govuk-label govuk-checkboxes__label" for="do-hear-applications">
                   I do not hear back from applications
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">For example, lorem ipsum</div>-->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="never-get-feedback" name="SelectedRouteIds" type="checkbox"
                   value="I never get feedback so do not know what to improve">
-                <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                <label class="govuk-label govuk-checkboxes__label" for="never-get-feedback">
                   I never get feedback so do not know what to improve
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input"  id="trying-get-first-job" name="SelectedRouteIds" type="checkbox"
                   value="I’m trying to get my first job">
-                <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                <label class="govuk-label govuk-checkboxes__label" for="trying-get-first-job">
                   I’m trying to get my first job
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -425,9 +421,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
               <div class="govuk-checkboxes__item ">
-                <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id=" I’ve done volunteering but cannot seem to get a paid job" name="SelectedRouteIds" type="checkbox"
                   value="I’ve done volunteering but cannot seem to get a paid job">
-                <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                <label class="govuk-label govuk-checkboxes__label" for=" I’ve done volunteering but cannot seem to get a paid job">
                   I’ve done volunteering but cannot seem to get a paid job
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -435,9 +431,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
               <div class="govuk-checkboxes__item ">
-                <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="cannot-find-apprenticeship-where-live" name="SelectedRouteIds" type="checkbox"
                   value="I cannot find an apprenticeship where I live">
-                <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                <label class="govuk-label govuk-checkboxes__label" for="cannot-find-apprenticeship-where-live">
                   I cannot find an apprenticeship where I live
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -457,21 +453,20 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="Create a CV or make my CV better" name="SelectedRouteIds" type="checkbox"
                   value="Create a CV or make my CV better">
-                <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                <label class="govuk-label govuk-checkboxes__label" for="Create a CV or make my CV better">
                   Create a CV or make my CV better
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="get-work-experience" name="SelectedRouteIds" type="checkbox"
                   value="I need to get some work experience">
-                <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                <label class="govuk-label govuk-checkboxes__label"for="get-work-experience">
                   I need to get some work experience
                 </label>
-                <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
               </div>
 
             </div>
@@ -496,7 +491,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
           {# -------- SECTION 1 -------- #}
           {% if routes.indexOf("I do not like my course and I’m not sure what to do when I finish") > -1 %}
 
-          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college <br>to
+          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college to
             stop feeling anxious.
           </p>
           <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
@@ -510,15 +505,15 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <!-- Unsure about course -->
             <fieldset class="govuk-fieldset govuk-!-margin-bottom-0">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                I’m unsure about my current course or<br>what to do when I finish
+                I’m unsure about my current course orwhat to do when I finish
               </legend>
 
               <div class="govuk-!-margin-bottom-6">
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="routecollege-sixthform" name="SelectedRouteIds"
+                  <input class="govuk-checkboxes__input" id="not-sure-do-after-college-sixth form" name="SelectedRouteIds"
                     type="checkbox" value="I’m not sure what to do after college or sixth form">
-                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-sixthform">
+                  <label class="govuk-label govuk-checkboxes__label" for="not-sure-do-after-college-sixth form">
                     I’m not sure what to do after college or sixth form
                   </label>
                   <div class="govuk-hint govuk-checkboxes__hint">
@@ -527,25 +522,25 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="routecollege-othercourse" name="SelectedRouteIds"
+                  <input class="govuk-checkboxes__input" id="switch-different-course" name="SelectedRouteIds"
                     type="checkbox" value="I want to switch to a different course">
-                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-othercourse">
+                  <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
                     I want to switch to a different course
                   </label>
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="routecollege-mygoal" name="SelectedRouteIds"
+                  <input class="govuk-checkboxes__input" id="how-course-can-help-goal" name="SelectedRouteIds"
                     type="checkbox" value="I want to know how my course can help me get to my goal">
-                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-mygoal">
+                  <label class="govuk-label govuk-checkboxes__label" for="how-course-can-help-goal">
                     I want to know how my course can help me get to my goal
                   </label>
                 </div>
 
                 <div class="govuk-checkboxes__item">
-                  <input class="govuk-checkboxes__input" id="routecollege-passcourse" name="SelectedRouteIds"
+                  <input class="govuk-checkboxes__input" id="struggling-pass-course" name="SelectedRouteIds"
                     type="checkbox" value="I’m struggling to pass my course">
-                  <label class="govuk-label govuk-checkboxes__label" for="routecollege-passcourse">
+                  <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                     I’m struggling to pass my course
                   </label>
                 </div>
@@ -559,7 +554,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
           {# -------- SECTION 2 -------- #}
           {% if routes.indexOf("I need to pass my GCSE maths or English resit") > -1 %}
-          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college <br>to
+          <p class="govuk-body">We know <strong>3 in 10 young people </strong>have avoided going to college to
             stop feeling anxious.
           </p>
           <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
@@ -579,17 +574,17 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
                 <div class="govuk-!-margin-bottom-6">
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-maths" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="maths" name="SelectedRouteIds" type="checkbox"
                       value="Maths">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-maths">
+                    <label class="govuk-label govuk-checkboxes__label" for="maths">
                       Maths
                     </label>
                   </div>
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-english" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="english" name="SelectedRouteIds" type="checkbox"
                       value="English">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-english">
+                    <label class="govuk-label govuk-checkboxes__label" for="english">
                       English
                     </label>
                   </div>
@@ -604,7 +599,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             {# -------- SECTION 3 -------- #}
             {% if routes.indexOf("Applying for jobs or get an apprenticeship") > -1 %}
 
-            <p class="govuk-body">We know that <strong>61% or young people</strong> aged 15 to 18 <br>are worried
+            <p class="govuk-body">We know that <strong>61% or young people</strong> aged 15 to 18 are worried
               about looking for work.</p>
             <p class="govuk-body">It’s okay to be honest if you’re having a hard time. </p>
 
@@ -624,27 +619,27 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
                 <div class="govuk-!-margin-bottom-6">
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="do-hear-applications" name="SelectedRouteIds" type="checkbox"
                       value="I do not hear back from applications">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    <label class="govuk-label govuk-checkboxes__label" for="do-hear-applications">
                       I do not hear back from applications
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">For example, lorem ipsum</div>-->
                   </div>
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="never-get-feedback" name="SelectedRouteIds" type="checkbox"
                       value="I never get feedback so do not know what to improve">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    <label class="govuk-label govuk-checkboxes__label" for="never-get-feedback">
                       I never get feedback so do not know what to improve
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
                   </div>
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="trying-get-first-job" name="SelectedRouteIds" type="checkbox"
                       value="I’m trying to get my first job">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    <label class="govuk-label govuk-checkboxes__label" for="trying-get-first-job">
                       I’m trying to get my first job
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -652,9 +647,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
                   <div class="govuk-checkboxes__item ">
-                    <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id=" I’ve done volunteering but cannot seem to get a paid job" name="SelectedRouteIds" type="checkbox"
                       value="I’ve done volunteering but cannot seem to get a paid job">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    <label class="govuk-label govuk-checkboxes__label" for=" I’ve done volunteering but cannot seem to get a paid job">
                       I’ve done volunteering but cannot seem to get a paid job
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -662,9 +657,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 
                   <div class="govuk-checkboxes__item ">
-                    <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="cannot-find-apprenticeship-where-live" name="SelectedRouteIds" type="checkbox"
                       value="I cannot find an apprenticeship where I live">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    <label class="govuk-label govuk-checkboxes__label" for="cannot-find-apprenticeship-where-live">
                       I cannot find an apprenticeship where I live
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -681,7 +676,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             {% if routes.indexOf("Help with my CV or get work experience") > -1 %}
 
 
-            <p class="govuk-body">We know that <strong>61% of young people </strong>aged 15 to 18 <br>are worried
+            <p class="govuk-body">We know that <strong>61% of young people </strong>aged 15 to 18 are worried
               about looking for work. </p>
             <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
 
@@ -701,18 +696,18 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
                 <div class="govuk-!-margin-bottom-6">
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="Create a CV or make my CV better" name="SelectedRouteIds" type="checkbox"
                       value="Create a CV or make my CV better">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    <label class="govuk-label govuk-checkboxes__label" for="Create a CV or make my CV better">
                       Create a CV or make my CV better
                     </label>
                     <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                   </div>
 
                   <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    <input class="govuk-checkboxes__input" id="get-work-experience" name="SelectedRouteIds" type="checkbox"
                       value="I need to get some work experience">
-                    <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    <label class="govuk-label govuk-checkboxes__label" for="get-work-experience">
                       I need to get some work experience
                     </label>
                     <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
