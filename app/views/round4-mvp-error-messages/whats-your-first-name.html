@@ -18,7 +18,7 @@ What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-<!-- {# Error summary #}
+{# Error summary #}
 {% if hasError %}
   {{ govukErrorSummary({
     titleHtml: 'This question is entirely optional but we would like to personalise the journey for you, <a href="#" class="govuk-link">otherwise bypass by clicking Continue</a> lorem ipsum',
@@ -29,14 +29,13 @@ What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
       }
     ]
   }) }}
-{% endif %} -->
+{% endif %}
 
     <h1 class="govuk-heading-l govuk-!-margin-top-0">
       What's your first name? (optional)
     </h1>
 
 
-    
     <form class="form" action="/round4-mvp-error-messages/current-situation" method="post">
 
       <div class="govuk-form-group {{ 'govuk-form-group--error' if hasError }}">
