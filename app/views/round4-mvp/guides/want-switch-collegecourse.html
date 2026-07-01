@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-I want to switch to a different college course – {{ serviceName }} – GOV.UK Prototype Kit
+I want to switch to a different college course  – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
@@ -23,36 +23,30 @@ href: "javascript:window.history.back()"
 {% endif %}
 
 
-{% block pageScripts %}
-<script type="text/javascript">
-  var $element = document.querySelector('#step-by-step-navigation')
-  var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-</script>
-{% endblock %}
-
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
 
       <!-- HERO SECTION START -->
-      <div class="govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6 govuk-!-margin-top-0"
-        style="background-color:#f3f7fb;">
+      <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6 govuk-!-margin-top-0">
         <div class="govuk-width-container">
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
               <h1 class="govuk-heading-xl">
-                I want to switch to a different college course </h1>
+                TO BE DONE - IN PROGRESS - I want to switch to a different college course </h1>
               <p class="govuk-body-l govuk-!-margin-bottom-6">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rutrum quis enim in pellentesque.
-                Aenean arcu est, eleifend id gravida at, pharetra nec libero. Vivamus a lacinia justo. Donec imperdiet
-                egestas dolor eget sagittis.
+                It can be tough having to keep resitting your English GCSE. You’re not the only one. Over
+                <strong>175,000 young
+                  people in England </strong>sat their English GCSE again in 2025.
               </p>
-              <p class="govuk-body-s">
-                <a href="#" style="margin-bottom: 20px">Share or email page </a>
+              <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
               </p>
             </div>
             <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-              <img src="/public/images/not-done-yet.png" alt="" style="max-width:100%;">
+              <img class="image-hero-landingpage" src="/public/images/not-done-yet.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
             </div>
           </div>
         </div>
@@ -61,63 +55,70 @@ href: "javascript:window.history.back()"
 
       <!-- FULL ACCORDION START -->
       <div class="govuk-grid-column-two-thirds">
-        <div class="govuk-accordion govuk-!-margin-left-6" data-module="govuk-accordion" id="accordion-default">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
 
+          
           <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                  Who to speak to and when
+                  Understand what you’re struggling with
                 </span>
               </h2>
             </div>
             <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-              <p class="govuk-body"><strong>Your GCSE maths teacher</strong><br>
-                You should let your maths teacher know as soon as possible that you want help. They can help create a
-                plan of what to focus on for your next resit.<br><br>
+              <p class="govuk-body">Have a think about what part of the resit is stressing you out. You might
+                find it easier to ask for help about something specific. </p>
 
-                <strong>Any teacher</strong>
-                If you don’t feel you can speak to your maths teacher, it’s okay to speak to any teacher you feel
-                comfortable with. They should listen and help create a plan.<br><br>
-
-                <strong>Student support services</strong>
-
-                Your college or sixth form will likely have some form of pastoral officer or careers adviser you can
-                speak to for help with your resit. <br><br>
-
-                <strong>Maths tutor</strong>
-
-                You could get tutoring from someone that’s familiar with your exam paper. Your teacher might know older
-                students that have recently passed who can help. Or, if you’re able to pay, they should be able to
-                recommend a local tutor.
-              </p>
+              <p class="govuk-body">Think about:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  whether you're missing out on passing by only a few marks </li>
+                <li>if your nerves are taking over on exam day </li>
+                <li>if you're finding one of the papers more difficult </li>
+              </ul>
+              <p class="govuk-body">You can also review your last exam paper with your English teacher. They can
+                help you see what your strengths are and where to improve. </p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
+
 
           <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
-                  Understand what you’re struggling with
+                  Who to speak to and when
                 </span>
               </h2>
             </div>
             <div id="accordion-default-content-2" class="govuk-accordion__section-content">
-              <p class="govuk-body">It can be tough to resit GCSE maths and feel like you’re not getting anywhere. If
-                that feels familiar, you’re not alone.</p>
-              <p class="govuk-body">Have a think about what part of the resit is stressing you out. You might find it
-                easier to ask for help about something specific. For example:</p>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>
-                  Are you missing out on passing by only a few marks?</li>
-                <li>Are your nerves taking over on exam day?</li>
-                <li>Are there specific topics you’re struggling to answer questions for?</li>
-              </ul>
-              <p class="govuk-body">You can also review your last exam paper with your maths teacher. They can help you
-                see what your strengths are and where things went wrong.</p>
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Your GCSE English teacher</strong></p>
+              <p class="govuk-body">You should let your English teacher know as soon as possible that you want help.
+                They can create a plan
+                with you about what to focus on for your resit.</p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Any teacher or member of staff</strong></p>
+              <p class="govuk-body"> If you prefer, it’s okay to speak to any teacher or member of staff you feel
+                comfortable with. They can
+                listen and help you to create a plan.</p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Student support services</strong></p>
+              <p class="govuk-body">
+                Your college or sixth form will likely have a pastoral officer or careers adviser you can speak to for
+                help with your resit.</p>
+
+
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong>English tutor </strong>
+              </p>
+              <p class="govuk-body">
+                You could get tutoring from someone that’s familiar with your exam paper. Your teacher might know older
+                students who have recently passed who can help. Or, if you’re able to pay, they might be able to
+                recommend a local or online tutor.
+              </p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
@@ -127,22 +128,23 @@ href: "javascript:window.history.back()"
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-                  Alternative to GCSE maths
+                  Alternative to GCSE English
                 </span>
               </h2>
             </div>
             <div id="accordion-default-content-3" class="govuk-accordion__section-content">
-              <p class="govuk-body">If you’re struggling to pass after multiple tries, you might be able to do a
-                Functional Skills level 2 qualification instead. This is equivalent to a grade 4 and is widely accepted
-                as an alternative to a GCSE.
+              <p class="govuk-body">If you’re struggling to pass after several resits, you might be able to do a
+                <strong>Functional Skills level 2 </strong>qualification instead. This is <strong>equivalent to a GCSE
+                  grade 4 pass</strong> and is widely
+                accepted as an alternative to a GCSE.
               </p>
-              <p class="govuk-body">
-                Your maths teacher or student support services can help see if you’re eligible. You can also<a
-                  href="https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels"
-                  class="govuk-link">see what different qualification levels mean on GOV.UK.</a>
-              </p>
-              <p class="govuk-body">You might want to ask to speak to a careers adviser. They can help you see if your
-                next step after college accepts a functional skills qualification. </p>
+
+              <p class="govuk-body">Your English teacher or student support services can help see if you’re eligible to
+                do a functional skills course. You can <a
+                  href="https://www.prospects.ac.uk/further-education/functional-skills-qualifications/"
+                  class="govuk-link">find out more functional skills qualifications from Prospects</a>. </p>
+              <p class="govuk-body">You might plan to start another course after college or sixth form. If so, a careers
+                adviser can help you find out if your course accepts functional skills qualifications.</p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
@@ -157,32 +159,20 @@ href: "javascript:window.history.back()"
               </h2>
             </div>
             <div id="accordion-default-content-4" class="govuk-accordion__section-content">
-              <p class="govuk-body">Your maths teacher or student support services should help you understand what your
-                options are if you do or do not pass maths.</p>
+              <p class="govuk-body">Your English teacher or student support services can help you understand what your
+                options are if you do or do not pass English.
+
+              </p>
               <p class="govuk-body">It’s normal to be worried and want a plan. There are options if you need to do your
-                maths resit after college. GCSE maths courses are often available in libraries, adult education centres
-                or other local venues. </p>
-              <p class="govuk-body">You might want to speak to a careers adviser so you can chat about your goals. They
-                can help you create a plan to get there.</p>
+                English resit after college. GCSE English courses are often available in libraries, adult education
+                centres or other local venues. </p>
+              <p class="govuk-body">You might want to speak to a careers adviser so you can chat about what you want to
+                do. They can help you create a plan to get there. </p>
               <p class="govuk-body">You can also see advice if <a href="#" class="govuk-link">your plan has changed and
                   you’re unsure what to do after college or sixth form</a>. </p>
-
-              <p class="govuk-body">You can also see advice for <br><br><a href="#"
-                  class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">your
-                  plan has changed</a> <a href="#" class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">College</a><br><br>
-                <a href="#" class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">Write
-                  a CV</a> <a href="#" class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">Other</a>
-                <br><br><a href="#" class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">Write
-                  a CV</a> <a href="#" class="govuk-link govuk-link--no-underline"
-                  style="background-color: #ffffff; padding: 10px; border: 1px solid #1a65a6; border-radius: 20px;">Other</a>
-              </p>
             </div>
           </div>
+
           <!-- ACCORDION SECTION END -->
 
           <!-- ACCORDION SECTION START -->
@@ -195,12 +185,12 @@ href: "javascript:window.history.back()"
               </h2>
             </div>
             <div id="accordion-default-content-5" class="govuk-accordion__section-content">
-              <p class="govuk-body">Here are a few prompts of what to say to get help with your maths resit: </p>
+              <p class="govuk-body">Here are a few prompts of what to say to get help with your English resit: </p>
               <p class="govuk-body blue-quote"> “Are there any resources I can use that are different from what I’ve
                 already tried?”
               </p>
-              <p class="govuk-body blue-quote">“Can I get any further help or tutoring to help me pass?” </p>
-              <p class="govuk-body blue-quote">“Can you show me why my answer to this question didn’t work?”</p>
+              <p class="govuk-body blue-quote">“Can I get any further help or tutoring to help me pass?”</p>
+              <p class="govuk-body blue-quote">“Can you show me why my answer to this question did not work?”</p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
@@ -209,49 +199,139 @@ href: "javascript:window.history.back()"
       </div>
       <!-- FULL ACCORDION END -->
 
-
-      <!-- MENTAL HEALTH SUPPORT START -->
-      <div class="govuk-grid-column-two-thirds mental-health-support-m">
-        <img style="width: 8%; height: auto; padding-bottom: 20px;" src="/public/images/helper.svg" alt="">
-        <h3 class="govuk-heading-m">Talk to someone about your mental health</h3>
-        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-        <p class="govuk-body">There are people
-          who can help you.</p>
-        <p class="govuk-body">
-          <a class="govuk-link" href="../mental-health-page.html">View helplines</a>
+        <!-- MENTAL HEALTH SUPPORT START -->
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-inset-text govuk-!-margin-left-0">
+          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
+            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+            <p class="govuk-body">
+              <a class="govuk-link" href="https://www.mind.org.uk.html">Talk to Mind helpline</a>
+            </p>
+        </div>
+        <p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+          <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this page</a>
         </p>
       </div>
       <!-- MENTAL HEALTH SUPPORT END -->
 
-      <div class="govuk-grid-column-two-thirds govuk-!-margin-top-5 govuk-!-margin-left-5">
-        <p class="govuk-body-s">
-          <a href="#">View a printable version of the whole guide</a>
-        </p>
+    </div>
+  </div>
+<!-- FEEDBACK GREY START -->
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <!-- CLOSED STATE -->
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
       </div>
 
     </div>
-  </div>
 
-  <!-- FEEDBACK GREY START -->
-  <div class="govuk-width-container feedback-container grey">
+    <!-- EXPANDED STATE -->
+    <div id="feedback-panel" class="feedback-panel">
 
-    <div class="feedback-left grey">
-      <span class="govuk-body" style="font-size: 19px; line-height: 2;"><strong>Is this page
-          useful?</strong></span>
-      <button class="govuk-button feedback grey" style="color: #000000;">Yes</button>
-      <button class="govuk-button feedback grey" style="color: #000000;">No</button>
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
     </div>
 
-    <div class="feedback-right grey">
-      <a href="#" class="govuk-button feedback grey" style="font-size: 16px; color: #000000; ">
-        Help us design this page lorem ipsum
-      </a>
+    <!-- SUCCESS MESSAGE -->
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
     </div>
+
   </div>
-  <!-- FEEDBACK GREY END -->
+
+</div>
+<!-- FEEDBACK GREY END -->
 
 </div>
 </div>
 </div>
 
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %}
 {% endblock %}

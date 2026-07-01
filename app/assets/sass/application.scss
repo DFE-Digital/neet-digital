@@ -293,11 +293,13 @@ div#feedback-question {
 
 
 
-.hero-image {
-  width: 80% !important;
-  height: 150px;
-  overflow: hidden;
-  margin-bottom: 20px;
+//IMAGES START
+
+.image-hero-landingpage {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
 .hero-image img {
@@ -308,6 +310,7 @@ div#feedback-question {
   display: block;
 }
 
+//IMAGES END
 
 
 div.feedback-left {
@@ -448,15 +451,6 @@ img.logos-thumb {
   border-radius: 5px;
 }
 
-//IMAGES
-
-
-.image-hero {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-}
 
 
 

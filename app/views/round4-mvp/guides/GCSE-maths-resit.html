@@ -23,13 +23,6 @@ href: "javascript:window.history.back()"
 {% endif %}
 
 
-{% block pageScripts %}
-<script type="text/javascript">
-  var $element = document.querySelector('#step-by-step-navigation')
-  var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-</script>
-{% endblock %}
-
 <div class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
@@ -53,7 +46,7 @@ href: "javascript:window.history.back()"
               </p>
             </div>
             <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-              <img class="image-hero" src="/public/images/GCSE-maths-resit-landing page.jpg"
+              <img class="image-hero-landingpage" src="/public/images/GCSE-maths-resit-landing page.jpg"
                 alt="Student studying maths revision to prepare for GCSE resit">
             </div>
           </div>
