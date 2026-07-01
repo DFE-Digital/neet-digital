@@ -19,6 +19,11 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
+{% block scripts %}
+  {{ super() }}
+  <script src="/public/javascripts/analytics.js" defer></script>
+{% endblock %}
+
 {% block beforeContent %}
   {{ govukPhaseBanner({
     tag: {
