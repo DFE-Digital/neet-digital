@@ -104,33 +104,6 @@ module.exports = router
 
 
 
-// ERROR MESSAGES
-
-
-//What's your first name? (optional)
-
-
-/* router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
-  const firstName = req.body.firstName;
-
-  let errors = {};
-
-  // Validation
-  if (!firstName || firstName.trim() === '') {
-    errors.firstName = "Enter your first name";
-  }
-
-  if (Object.keys(errors).length > 0) {
-    res.render('round4-mvp-error-messages/whats-your-first-name', {
-      errors: errors,
-      data: req.body
-    });
-  } else {
-    res.redirect('/round4-mvp-error-messages/current-situation');
-  }
-}) */
-
-
 
   router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
 
@@ -201,6 +174,33 @@ router.post('/what-help-dynamic3', function (req, res) {
 })
 
 
+
+
+// ERROR MESSAGES
+
+
+//What's your first name? (optional)
+
+
+/* router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
+  const firstName = req.body.firstName;
+
+  let errors = {};
+
+  // Validation
+  if (!firstName || firstName.trim() === '') {
+    errors.firstName = "Enter your first name";
+  }
+
+  if (Object.keys(errors).length > 0) {
+    res.render('round4-mvp-error-messages/whats-your-first-name', {
+      errors: errors,
+      data: req.body
+    });
+  } else {
+    res.redirect('/round4-mvp-error-messages/current-situation');
+  }
+}) */
 
 
 
