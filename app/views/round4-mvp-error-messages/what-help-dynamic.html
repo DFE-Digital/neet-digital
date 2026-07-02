@@ -44,7 +44,7 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/what-help-dynamic3" method="get">
+    <form action="/what-help-dynamic3" method="post">
       <fieldset class="govuk-fieldset">
         <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
           <h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">
@@ -453,9 +453,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
             <div class="govuk-!-margin-bottom-6">
 
               <div class="govuk-checkboxes__item">
-                <input class="govuk-checkboxes__input" id="Create a CV or make my CV better" name="SelectedRouteIds" type="checkbox"
+                <input class="govuk-checkboxes__input" id="create-cv-btter" name="SelectedRouteIds" type="checkbox"
                   value="Create a CV or make my CV better">
-                <label class="govuk-label govuk-checkboxes__label" for="Create a CV or make my CV better">
+                <label class="govuk-label govuk-checkboxes__label" id="create-cv-btter">
                   Create a CV or make my CV better
                 </label>
                 <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
@@ -698,10 +698,9 @@ and (routes.indexOf("Help with my CV or get work experience") > -1)
                   <div class="govuk-checkboxes__item">
                     <input class="govuk-checkboxes__input" id="Create a CV or make my CV better" name="SelectedRouteIds" type="checkbox"
                       value="Create a CV or make my CV better">
-                    <label class="govuk-label govuk-checkboxes__label" for="Create a CV or make my CV better">
+                    <label class="govuk-label govuk-checkboxes__label" id="create-cv-btter">
                       Create a CV or make my CV better
                     </label>
-                    <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
                   </div>
 
                   <div class="govuk-checkboxes__item">
