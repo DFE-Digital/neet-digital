@@ -35,7 +35,7 @@ or (selectedRoutes.indexOf("I’ve done volunteering but cannot seem to get a pa
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-  <form class="form" action="./check-your-answers.html" method="get">
+    <form class="form" action="./check-your-answers.html" method="get">
 
       <div class="govuk-form-group">
 
@@ -151,27 +151,33 @@ or (selectedRoutes.indexOf("I’ve done volunteering but cannot seem to get a pa
               Why we’re asking this question
             </span>
           </summary>
+          <div class="govuk-grid-column-two-thirds">
 
-          <div class="govuk-details__text">
+            <div class="govuk-details__text">
 
-            {% if jobsCvSelected %}
+              {% if jobsCvSelected %}
 
-            <p class="govuk-body">
-              We're asking this so we can better understand where you're at with your situation and give you better
-              advice. This information does not get collected or reported to anyone.
-            </p>
+              <p class="govuk-body">
+                We're asking this so we can better understand where you're at with your situation and give you better
+                advice.
+              </p>
 
-            {% else %}
+               <p class="govuk-body">This information does not get collected or reported to anyone.</p>
 
-            <p class="govuk-body">
-              We want to get to know your situation so we can give you better advice. This information does not get
-              collected or reported to anyone.
-            </p>
+              {% else %}
 
-            {% endif %}
+              <p class="govuk-body">
+                We want to get to know your situation so we can give you better advice.
+              </p>
 
+              <p class="govuk-body">
+                This information does not get collected or reported to anyone.
+              </p>
+
+              {% endif %}
+
+            </div>
           </div>
-
         </details>
 
       </div>
