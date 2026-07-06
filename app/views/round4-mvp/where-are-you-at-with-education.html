@@ -30,58 +30,73 @@ href: "javascript:window.history.back()"
             You might have already started or be about to start.
           </p>
 
-
-
-
+          <!-- RADIO BUTTONS START -->
           <div class="govuk-radios" data-module="govuk-radios">
             <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="education-status" name="educationStatus" type="radio"
+              <input class="govuk-radios__input" id="college-status" name="ducationStatus" type="radio" value="College">
+              <label class="govuk-label govuk-radios__label" for="college-status">
+                College
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sixth-form-college" name="educationStatus" type="radio"
+                value="Sixth form college ">
+              <label class="govuk-label govuk-radios__label" for="sixth-form-college">
+                Sixth form college
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="sixth-form-attached" name="educationStatus" type="radio"
+                value="Sixth form (attached to a secondary school)">
+              <label class="govuk-label govuk-radios__label" for="sixth-form-attached">
+                Sixth form (attached to a secondary school)
+              </label>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="apprenticeship" name="educationStatus" type="radio"
+                value="Apprenticeship">
+              <label class="govuk-label govuk-radios__label" for="apprenticeship">
+                Apprenticeship
+              </label>
+            </div>
+            <div class="govuk-radios__divider">or</div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="not-education" name="educationStatus" type="radio"
                 value="I’m not in education">
-              <label class="govuk-label govuk-radios__label" for="education-status">
+              <label class="govuk-label govuk-radios__label" for="not-education">
                 I’m not in education
               </label>
             </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="education-status-2" name="educationStatus" type="radio"
-                value="College or sixth form college">
-              <label class="govuk-label govuk-radios__label" for="education-status-2">
-                College or sixth form college
-              </label>
-            </div>
-            <div class="govuk-radios__item">
-              <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio"
-                value="Sixth form">
-              <label class="govuk-label govuk-radios__label" for="education-status-3">
-                Sixth form
-              </label>
+          </div>
+          <!-- RADIO BUTTONS END -->
+
+        </fieldset>
+
+        <!-- DETAILS START -->
+        <details class="govuk-details govuk-!-margin-top-5">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+              Why we’re asking this question
+            </span>
+          </summary>
+          <div class="govuk-grid-column-two-thirds">
+            <div class="govuk-details__text">
+              <p class="govuk-body">We want to get to know your situation so we can give you better advice. This
+                information does not get collected or reported to anyone.</p>
             </div>
           </div>
-        </fieldset>
+        </details>
+        <!-- DETAILS END -->
       </div>
 
-      <!-- DETAILS START -->
-      <details class="govuk-details">
-        <summary class="govuk-details__summary">
-          <span class="govuk-details__summary-text">
-            Why we’re asking this question
-          </span>
-        </summary>
-        <div class="govuk-grid-column-two-thirds">
-          <div class="govuk-details__text">
-            <p class="govuk-body"> We're asking this so we can better understand where you’re at with your situation and
-              give you better advice.
-              This information does not get collected or reported to anyone.</p>
-          </div>
-        </div>
-      </details>
-      <!-- DETAILS END -->
+
 
 
       <div class="govuk-button-group govuk-!-margin-bottom-7">
         {{ govukButton({ text: "Continue" }) }}
       </div>
-    </form>
 
+    </form>
   </div>
 </div>
 
