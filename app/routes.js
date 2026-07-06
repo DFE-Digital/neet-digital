@@ -108,6 +108,7 @@ module.exports = router
 // ----------------------------
 
 
+
   router.post('/round4-mvp-error-messages/current-situation', function (req, res) {
 
   const feeling = req.body.feeling;
@@ -174,6 +175,23 @@ router.post('/what-help-dynamic3', function (req, res) {
     res.redirect('/next-page');
   }
 
+})
+
+
+//where-are-you-at-with-education
+router.post('/round4-mvp/education-status', function (req, res) {
+
+  const educationStatus = req.body.educationStatus
+
+  if (!educationStatus) {
+    return res.render('round4-mvp/education-status', {
+      errorMessage: true
+    })
+  }
+
+  req.session.data.educationStatus = educationStatus
+
+  res.redirect('/round4-mvp/check-your-answers')
 })
 
 
