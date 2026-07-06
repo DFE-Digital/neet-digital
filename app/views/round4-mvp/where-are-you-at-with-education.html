@@ -47,9 +47,14 @@ or (selectedRoutes.indexOf("I’ve done volunteering but cannot seem to get a pa
             </h1>
           </legend>
 
+
           <p class="govuk-body govuk-!-margin-bottom-6">
             You might have already started or be about to start.
           </p>
+
+          <div id="contact-hint" class="govuk-hint">
+            Select one option
+          </div>
 
           <div class="govuk-radios" data-module="govuk-radios">
 
@@ -88,9 +93,6 @@ or (selectedRoutes.indexOf("I’ve done volunteering but cannot seem to get a pa
                 Sixth form college
               </label>
             </div>
-
-
-
 
             {% else %}
 
@@ -162,7 +164,7 @@ or (selectedRoutes.indexOf("I’ve done volunteering but cannot seem to get a pa
                 advice.
               </p>
 
-               <p class="govuk-body">This information does not get collected or reported to anyone.</p>
+              <p class="govuk-body">This information does not get collected or reported to anyone.</p>
 
               {% else %}
 
