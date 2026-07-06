@@ -1,5 +1,5 @@
 {
-  "serviceName": "Not in Education, Employment, or Training",
+  "serviceName": "Find out who can help you as a young person",
   "useServiceNavigation": true,
   "plugins": {
     "govuk-frontend": {
