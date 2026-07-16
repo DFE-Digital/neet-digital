@@ -26,20 +26,36 @@ href: "\landing-page"
                value="{{data.firstName}}"
                autocomplete="given-name">
       </div>
+
+
+      <!-- DETAILS START -->
       <details class="govuk-details">
         <summary class="govuk-details__summary">
           <span class="govuk-details__summary-text">
             Why we’re asking this question
           </span>
         </summary>
-        <div class="govuk-details__text">
-          We just want to get you know a bit better and be able to personalise what we say to you. We do not collect or
-          report your name to anyone. </div>
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-details__text">
+            <p class="govuk-body">We're asking this so you can pause to reflect on how you’re doing.</p>
+            <p class="govuk-body">This information
+              does not get collected or reported to anyone.</p>
+          </div>
+        </div>
       </details>
+      <!-- DETAILS END -->
 
-      <div class="govuk-button-group govuk-!-margin-bottom-7">
-        {{ govukButton({ text: "Continue" }) }}
+      <!-- CONTINUE BUTTON START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0 govuk-!-margin-top-5">
+        <div class="govuk-button-group govuk-!-margin-bottom-7">
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </div>
       </div>
+      <!-- CONTINUE BUTTON END -->
+
+
     </form>
 
   </div>
