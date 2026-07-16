@@ -119,11 +119,11 @@ router.post('/round4-mvp/what-help-dynamic', (req, res) => {
     errors.HasErrors = false;
 
      const anySelected =
-	   (
-            ((req.session.data.courseOptionsIncluded ?? false) && (req.session.data["course-checkbox"] ?? false)) ||
-            ((req.session.data.gcseOptionsIncluded ?? false) && (req.session.data["gcse-checkbox"] ?? false)) ||
-            ((req.session.data.jobsOptionsIncluded ?? false) && (req.session.data["jobs-checkbox"] ?? false)) ||
-            ((req.session.data.cvOptionsIncluded ?? false) && (req.session.data["cv-checkbox"] ?? false))
+       (
+            ((req.session.data.courseOptionsIncluded ?? false) && (req.session.data["course-checkbox"]?.length > 0 ?? false)) ||
+            ((req.session.data.gcseOptionsIncluded ?? false) && (req.session.data["gcse-checkbox"]?.length > 0 ?? false)) ||
+            ((req.session.data.jobsOptionsIncluded ?? false) && (req.session.data["jobs-checkbox"]?.length > 0 ?? false)) ||
+            ((req.session.data.cvOptionsIncluded ?? false) && (req.session.data["cv-checkbox"]?.length > 0 ?? false))
         );
 
      if (anySelected)
