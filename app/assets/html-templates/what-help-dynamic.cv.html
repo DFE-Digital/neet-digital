@@ -1,0 +1,40 @@
+<input name="cvOptionsIncluded" type="hidden" value="true">
+
+{% set valueCvBetter       = "Create a CV or make my CV better" %}
+{% set valueWorkExperience = "I need to get some work experience" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and values.includes(option) %}checked{% endif %}
+{% endmacro %}
+
+<fieldset id="cvOptions" class="govuk-fieldset govuk-!-margin-bottom-0">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Help with my CV or get work experience
+    </legend>
+
+    {% if errors['cv'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.cv.text}}
+    </p>
+    {% endif %}
+
+    <div class="govuk-!-margin-bottom-6">
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="Create-CV-better" name="cv-checkbox" type="checkbox"
+                   value="{{valueCvBetter}}" {{ checkedIfSelected(data["cv-checkbox"], valueCvBetter) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="Create-CV-better">
+                Create a CV or make my CV better
+            </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="get-work-experience" name="cv-checkbox" type="checkbox"
+                   value="{{valueWorkExperience}}" {{ checkedIfSelected(data["cv-checkbox"], valueWorkExperience) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="get-work-experience">
+                I need to get some work experience
+            </label>
+        </div>
+
+    </div>
+</fieldset>

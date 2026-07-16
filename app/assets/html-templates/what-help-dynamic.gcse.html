@@ -1,0 +1,40 @@
+<input name="gcseOptionsIncluded" type="hidden" value="true">
+
+{% set valueMaths    = "Maths" %}
+{% set valueEnglish = "English" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and option in values %}checked{% endif %}
+{% endmacro %}
+
+<fieldset id="gcseOptions" class="govuk-fieldset govuk-!-margin-bottom-0">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        I need to pass my GCSE maths or English resit
+    </legend>
+
+    {% if errors['gcse'] %}
+    <p id="course-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.gcse.text}}
+    </p>
+    {% endif %}
+
+    <div class="govuk-!-margin-bottom-6">
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="maths" name="gcse-checkbox" type="checkbox"
+                   value="{{valueMaths}}" {{ checkedIfSelected(data["gcse-checkbox"], valueMaths) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="maths">
+                Maths
+            </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="english" name="gcse-checkbox" type="checkbox"
+                   value="{{valueEnglish}}" {{ checkedIfSelected(data["gcse-checkbox"], valueEnglish) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="english">
+                English
+            </label>
+        </div>
+
+    </div>
+</fieldset>

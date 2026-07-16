@@ -4,9 +4,14 @@ node_modules/
 # Prototype ignores - per-user
 .tmp/
 .env
+.vs/
 migrate.log
 usage-data-config.json
 
 # General ignores
 .DS_Store
 .idea
+/neet-digital.esproj.user
+/obj/Debug
+/neet-digital.esproj
+/.vscode/launch.json

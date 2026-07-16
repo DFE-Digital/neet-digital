@@ -1,0 +1,72 @@
+<input name="jobsOptionsIncluded" type="hidden" value="true">
+
+{% set valueHearBackApplications = "I do not hear back from applications" %}
+{% set valueNeverGetFeedback     = "I never get feedback so do not know what to improve" %}
+{% set valueGettingFirstJob      = "I’m trying to get my first job" %}
+{% set valueDoneVolunteering     = "I’ve done volunteering but cannot seem to get a paid job" %}
+{% set valueFindApprenticeship   = "I cannot find an apprenticeship where I live" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and values.includes(option) %}checked{% endif %}
+{% endmacro %}
+
+<fieldset id="jobsOptions" class="govuk-fieldset govuk-!-margin-bottom-0">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        Applying for jobs or apprenticeships
+    </legend>
+
+    {% if errors['jobs'] %}
+    <p id="jobs-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.jobs.text}}
+    </p>
+    {% endif %}
+
+    <div class="govuk-!-margin-bottom-6">
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="do-hear-applications" name="jobs-checkbox" type="checkbox"
+                   value="{{valueHearBackApplications}}" {{ checkedIfSelected(data["jobs-checkbox"], valueHearBackApplications) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="do-hear-applications">
+                I do not hear back from applications
+            </label>
+            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="never-get-feedback" name="jobs-checkbox" type="checkbox"
+                   value="{{valueNeverGetFeedback}}" {{ checkedIfSelected(data["jobs-checkbox"], valueNeverGetFeedback) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="never-get-feedback">
+                I never get feedback so do not know what to improve
+            </label>
+            <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="trying-get-first-job" name="jobs-checkbox" type="checkbox"
+                   value="{{valueGettingFirstJob}}" {{ checkedIfSelected(data["jobs-checkbox"], valueGettingFirstJob) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="trying-get-first-job">
+                I’m trying to get my first job
+            </label>
+            <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="done-volunteering" name="jobs-checkbox" type="checkbox"
+                   value="{{valueDoneVolunteering}}" {{ checkedIfSelected(data["jobs-checkbox"], valueDoneVolunteering) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="done-volunteering">
+                I’ve done volunteering but cannot seem to get a paid job
+            </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="cannot-find-apprenticeship-where-live" name="jobs-checkbox" type="checkbox"
+                   value="{{valueFindApprenticeship}}" {{ checkedIfSelected(data["jobs-checkbox"], valueFindApprenticeship) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="cannot-find-apprenticeship-where-live">
+                I cannot find an apprenticeship where I live
+            </label>
+            <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+    </div>
+</fieldset>
+
