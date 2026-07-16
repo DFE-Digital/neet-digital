@@ -1,0 +1,66 @@
+<input name="courseOptionsIncluded" type="hidden" value="true">
+
+{% set valueAfterCollegeSixForm  = "I’m not sure what to do after college or sixth form" %}
+{% set valueSwitchCourse         = "I want to switch to a different course" %}
+{% set valueCourseToGoal         = "I want to know how my course can help me get to my goal" %}
+{% set valueStrugglingPassCourse = "I’m struggling to pass my course" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and values.includes(option) %}checked{% endif %}
+{% endmacro %}
+
+<fieldset id="courseOptions" class="govuk-fieldset govuk-!-margin-bottom-0">
+
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+        I’m unsure about my current course or what to do when I finish
+    </legend>
+
+    {% if errors['course'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.course.text}}
+    </p>
+    {% endif %}
+
+    <div class="govuk-!-margin-bottom-6">
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="not-sure-what-do-after-college-sixth-form" name="course-checkbox" type="checkbox"
+                   value="{{valueAfterCollegeSixForm}}" {{ checkedIfSelected(data["course-checkbox"], valueAfterCollegeSixForm) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="not-sure-what-do-after-college-sixth-form">
+                I’m not sure what to do after college or sixth form
+            </label>
+            <div class="govuk-hint govuk-checkboxes__hint">
+                For example, your plans might have changed or you
+                cannot decide.
+            </div>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="switch-different-course" name="course-checkbox" type="checkbox"
+                   value="{{valueSwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
+                I want to switch to a different course
+            </label>
+            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
+        </div>
+
+        <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="how-course-can-help-goal" name="course-checkbox" type="checkbox"
+                   value="{{valueCourseToGoal}}" {{ checkedIfSelected(data["course-checkbox"], valueCourseToGoal ) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="how-course-can-help-goal">
+                I want to know how my course can help me get to my goal
+            </label>
+            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+        <div class="govuk-checkboxes__item ">
+            <input class="govuk-checkboxes__input" id="struggling-pass-course" name="course-checkbox" type="checkbox"
+                   value="{{valueStrugglingPassCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueStrugglingPassCourse ) }}>
+            <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
+                I’m struggling to pass my course
+            </label>
+            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+        </div>
+
+    </div>
+</fieldset>

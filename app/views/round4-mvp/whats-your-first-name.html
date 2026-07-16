@@ -7,7 +7,7 @@ What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
 {% block pageBefore %}
 {{ govukBackLink({
 text: "Back",
-href: "javascript:window.history.back()"
+href: "\landing-page"
 }) }}
 {% endblock %}
 
@@ -17,12 +17,14 @@ href: "javascript:window.history.back()"
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l govuk-!-margin-top-0">What's your first name? (optional)</h1>
     <!--<p class="govuk-body govuk-!-margin-bottom-6"></p>-->
-    <form class="form" action="/round4-mvp/current-situation" method="post">
+    <form class="form" method="post">
       <div class="govuk-form-group">
         <label class="govuk-label" for="first-name">
           First name
         </label>
-        <input class="govuk-input" id="first-name" name="firstName" type="text" autocomplete="given-name">
+        <input class="govuk-input" id="first-name" name="firstName" type="text" 
+               value="{{data.firstName}}"
+               autocomplete="given-name">
       </div>
 
 
