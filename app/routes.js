@@ -118,18 +118,26 @@ router.post('/round4-mvp/what-help-dynamic', (req, res) => {
     const errors = {};
     errors.HasErrors = false;
 
-     const anySelected =
-       (
-            ((req.session.data.courseOptionsIncluded ?? false) && (req.session.data["course-checkbox"]?.length > 0 ?? false)) ||
-            ((req.session.data.gcseOptionsIncluded ?? false) && (req.session.data["gcse-checkbox"]?.length > 0 ?? false)) ||
-            ((req.session.data.jobsOptionsIncluded ?? false) && (req.session.data["jobs-checkbox"]?.length > 0 ?? false)) ||
-            ((req.session.data.cvOptionsIncluded ?? false) && (req.session.data["cv-checkbox"]?.length > 0 ?? false))
-        );
+     // const anySelected =
+     //   (
+     //        ((req.session.data.courseOptionsIncluded ?? false) && (req.session.data["course-checkbox"]?.length > 0 ?? false)) ||
+     //        ((req.session.data.gcseOptionsIncluded ?? false) && (req.session.data["gcse-checkbox"]?.length > 0 ?? false)) ||
+     //        ((req.session.data.jobsOptionsIncluded ?? false) && (req.session.data["jobs-checkbox"]?.length > 0 ?? false)) ||
+     //        ((req.session.data.cvOptionsIncluded ?? false) && (req.session.data["cv-checkbox"]?.length > 0 ?? false))
+    //    );
 
-     if (anySelected)
-     {
+
+    let d = req.session.data;
+    const routes = [].concat(d["course-checkbox"]).concat(d["gcse-checkbox"])
+                     .concat(d["jobs-checkbox"]).concat(d["cv-checkbox"])
+                     .filter(item => typeof item !== 'undefined');
+    req.session.data.SelectedRouteIds = routes;
+
+    const anySelected = routes.length > 0;
+ 
+    if (anySelected){
         return res.redirect('/round4-mvp/where-are-you-at-with-education');
-     }
+    }
 
     if (!errors.HasErrors && req.session.data.courseOptionsIncluded ) {
         errors['page'] = {
