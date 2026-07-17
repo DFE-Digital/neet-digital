@@ -1,0 +1,118 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  How are you finding your current situation – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        {% if data.firstName %}Hi, {{ data.firstName }}. How are you finding your current situation?{% else %}How are you finding your current situation?{% endif %}
+      </h1>
+       <p>Think about how you’re finding things like college, sixth form or applying for jobs. This can be positive, negative or both. </p>
+       <p>It’s okay to be honest - we just want to understand a bit more about you.</p>
+       <form class="form" action="what-do-you-need-to-do" method="post">
+         
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="feelings-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+      <h1 class="govuk-fieldset__heading">
+       Choose any feelings that reflect how you’re doing. (optional)
+      </h1>
+    </legend>
+    <div id="feelings-hint" class="govuk-hint">
+      Select all that apply
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling" name="feeling" type="checkbox" value="Anxious">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling">Anxious</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-2" name="feeling" type="checkbox" value="Confused">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-2">Confused</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-3" name="feeling" type="checkbox" value="Depressed">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-3">Depressed</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-4" name="feeling" type="checkbox" value="Excited">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-4">Excited</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-5" name="feeling" type="checkbox" value="Exhausted">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-5">Exhausted</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-6" name="feeling" type="checkbox" value="Hopeful, but unsure">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-6">Hopeful, but unsure</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-7" name="feeling" type="checkbox" value="Losing motivation">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-7">Losing motivation</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-8" name="feeling" type="checkbox" value="Okay">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-8">Okay</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-9" name="feeling" type="checkbox" value="Stressed">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-9">Stressed</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-10" name="feeling" type="checkbox" value="Stuck">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-10">Stuck</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="feeling-11" name="feeling" type="checkbox" value="Unconfident">
+        <label class="govuk-label govuk-checkboxes__label" for="feeling-11">Unconfident</label>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+        <!-- Older content 
+  
+  <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="more-detail">
+      Do you want to give us more context? (optional)
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    Let us know in your own words how you’re doing - write as much or as little as you like
+  </div>
+  <textarea class="govuk-textarea" id="more-detail" name="feelingMoreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+        <details class="govuk-details">
+        <summary class="govuk-details__summary">
+         <span class="govuk-details__summary-text">
+           Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          We're asking this so we can better understand where you’re at with your situation and give you better advice. This information does not get collected or reported to anyone.
+        </details>
+
+        -->
+  <div class="govuk-button-group">
+         {{ govukButton({
+           text: "Continue"
+         }) }}
+         <a class="govuk-link" href="what-do-you-need-to-do">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
