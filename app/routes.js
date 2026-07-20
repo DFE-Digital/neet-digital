@@ -2,55 +2,87 @@ const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
 
 // ----------------------------------------------------------------------------------------------------------------
-// Cookie management
+// Step Validation
 // ----------------------------------------------------------------------------------------------------------------
-function requireCookieConsent(req, res, next) {
 
-    const analyticsConsent = req.session && req.session.data && req.session.data.analyticsConsent;
+const steps = Object.freeze({
+    whats_your_first_name: 1,
+    current_situation: 2,
+    what_help: 3,
+    what_help_dynamic: 4,
+    where_are_you_at_with_education: 5,
+    check_your_answers: 6,
+    what_you_can_do_next: 7
+});
 
-    // If consent given, proceed
-    if (analyticsConsent === 'yes') {
-       next();
-       return;
+function updateStepReached(req, step) {
+    if (!req.session.data.stepReached) {
+        req.session.data.stepReached = 0;
+    }
+    req.session.data.stepReached = Math.max(req.session.data.stepReached, step);
+}
+
+function canProceedToStep(req, step) {
+    if (!req.session.data.stepReached) {
+        req.session.data.stepReached = 0;
     }
 
-    return res.redirect('/round4-mvp/landing-page');
+    return (step <= (req.session.data.stepReached + 1));
+}
+
+// ----------------------------------------------------------------------------------------------------------------
+// Cookie management cookieConsentGiven
+// ----------------------------------------------------------------------------------------------------------------
+
+function cookieConsentGiven(req) {
+    const analyticsConsent = req.session && req.session.data && req.session.data.analyticsConsent;
+    return (analyticsConsent === 'yes');
 }
 
 router.get('/round4-mvp/accept-cookies', function (req, res) {
-
-    req.session.data.analyticsConsent = 'yes'
-
-    res.redirect('back')
-
+    req.session.data.analyticsConsent = 'yes';
+    res.redirect('back');
 });
 
 router.get('/round4-mvp/reject-cookies', function (req, res) {
-
    // req.session.data.analyticsConsent = 'no'
-
-    res.redirect('/round4-mvp/landing-page')
-
+    res.redirect('/round4-mvp/landing-page');
 });
 
 router.post('/round4-mvp/cookies', function (req, res) {
-
     if (req.body.analyticsConsent === 'yes') {
-        req.session.data.analyticsConsent = req.body.analyticsConsent
+        req.session.data.analyticsConsent = req.body.analyticsConsent;
     }
 
-    res.redirect('/round4-mvp/landing-page')
+    res.redirect('/round4-mvp/landing-page');
 });
+
+// ----------------------------------------------------------------------------------------------------------------
+// NavigationValidation
+// ----------------------------------------------------------------------------------------------------------------
+
+function navigationValidation(step) {
+    return function (req, res, next) {
+        // allow only if cookie consent given and the step is not beyond the next allowed step
+        if (cookieConsentGiven(req) && canProceedToStep(req, step)) {
+            next();
+            return;
+        }
+
+        return res.redirect('/round4-mvp/landing-page');
+    };
+}
 
 // ----------------------------------------------------------------------------------------------------------------
 // Whats your first name
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/whats-your-first-name', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/whats-your-first-name', navigationValidation(steps.whats_your_first_name), (req, res) => {
     return res.render('/round4-mvp/whats-your-first-name');
 });
 
-router.post('/round4-mvp/whats-your-first-name', requireCookieConsent, (req, res) => {
+router.post('/round4-mvp/whats-your-first-name', navigationValidation(steps.whats_your_first_name), (req, res) => {
+    updateStepReached(req, steps.whats_your_first_name);
     return res.redirect('/round4-mvp/current-situation');
 });
 
@@ -58,11 +90,11 @@ router.post('/round4-mvp/whats-your-first-name', requireCookieConsent, (req, res
 // Current situation 
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/current-situation', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/current-situation', navigationValidation(steps.current_situation), (req, res) => {
     return res.render('/round4-mvp/current-situation');
 });
 
-router.post('/round4-mvp/current-situation', requireCookieConsent, (req, res) => {
+router.post('/round4-mvp/current-situation', navigationValidation(steps.current_situation), (req, res) => {
 
     const errors = {};
 
@@ -78,6 +110,8 @@ router.post('/round4-mvp/current-situation', requireCookieConsent, (req, res) =>
     if (errors.HasErrors) {
         return res.render('/round4-mvp/current-situation', { errors: errors });
     }
+
+    updateStepReached(req, steps.current_situation);
     return res.redirect('/round4-mvp/what-help');
 });
 
@@ -85,11 +119,11 @@ router.post('/round4-mvp/current-situation', requireCookieConsent, (req, res) =>
 // What help 
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/what-help', navigationValidation(steps.what_help), (req, res) => {
     return res.render('/round4-mvp/what-help');
 });
 
-router.post('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
+router.post('/round4-mvp/what-help', navigationValidation(steps.what_help), (req, res) => {
 
     const errors = {};
 
@@ -127,6 +161,7 @@ router.post('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
         req.session.data['cv-checkbox'] =  [];
     }
 
+    updateStepReached(req, steps.what_help);
     return res.redirect('/round4-mvp/what-help-dynamic');
 });
 
@@ -134,11 +169,11 @@ router.post('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
 // What help dynamic
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/what-help-dynamic', navigationValidation(steps.what_help_dynamic), (req, res) => {
     return res.render('/round4-mvp/what-help-dynamic');
 });
 
-router.post('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) => { 
+router.post('/round4-mvp/what-help-dynamic', navigationValidation(steps.what_help_dynamic), (req, res) => { 
 
 /*
 // Code for individual checkbox group errors.
@@ -192,6 +227,7 @@ router.post('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) =>
     const anySelected = routes.length > 0;
  
     if (anySelected){
+        updateStepReached(req, steps.what_help_dynamic);
         return res.redirect('/round4-mvp/where-are-you-at-with-education');
     }
 
@@ -234,11 +270,13 @@ router.post('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) =>
 // where-are-you-at-with-education
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/where-are-you-at-with-education', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/where-are-you-at-with-education', navigationValidation(steps.where_are_you_at_with_education), (req, res) => {
+
+
     return res.render('/round4-mvp/where-are-you-at-with-education');
 });
 
-router.post('/round4-mvp/where-are-you-at-with-education', requireCookieConsent, (req, res) => {
+router.post('/round4-mvp/where-are-you-at-with-education', navigationValidation(steps.where_are_you_at_with_education), (req, res) => {
   
     const errors = {};
     
@@ -254,13 +292,25 @@ router.post('/round4-mvp/where-are-you-at-with-education', requireCookieConsent,
     if (errors.HasErrors) {
         return res.render('/round4-mvp/where-are-you-at-with-education', { errors: errors });
     }
+
+    updateStepReached(req, steps.where_are_you_at_with_education);
     return res.redirect('/round4-mvp/check-your-answers');
+});
+
+// ----------------------------------------------------------------------------------------------------------------
+// check-your-answers
+// ----------------------------------------------------------------------------------------------------------------
+
+router.get('/round4-mvp/check-your-answers', navigationValidation(steps.check_your_answers), (req, res) => {
+    updateStepReached(req, steps.check_your_answers);
+    return res.render('/round4-mvp/check-your-answers');
 });
 
 // ----------------------------------------------------------------------------------------------------------------
 // What-you-can-do-next?
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/what-you-can-do-next', requireCookieConsent, (req, res) => {
+router.get('/round4-mvp/what-you-can-do-next', navigationValidation(steps.what_you_can_do_next), (req, res) => {
+    updateStepReached(req, steps.what_you_can_do_next);
     return res.render('/round4-mvp/what-you-can-do-next');
 });
