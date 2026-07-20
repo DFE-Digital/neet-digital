@@ -18,16 +18,67 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
+
+{% from "govuk/components/cookie-banner/macro.njk" import govukCookieBanner %}
+
+{% block bodyStart %}
+
+{% if not (data.analyticsConsent == 'yes') %}
+
+{{
+ govukCookieBanner({
+  ariaLabel: "Cookies on {Name} Service",
+  messages: [
+    {
+      headingText: "Cookies on {Name} Service",
+      html: '
+        <p class="govuk-body">
+          We use some essential cookies to make this service work.
+        </p>
+        <p class="govuk-body">
+          We would also like to use analytics cookies to understand how you use the service and help us improve it.
+        </p>
+      ',
+      actions: [
+        {
+          text: "Accept analytics cookies",
+          href: "\accept-cookies"
+        },
+        {
+          text: "Reject analytics cookies",
+          href: '\ reject-cookies'
+        },
+        {
+          text: "View cookies",
+          href: "\cookies"
+        }
+      ]
+    }
+  ]
+})
+}}
+
+{% endif %}
+
+
+{{ super() }}
+{% endblock %}
+
+
+
 {% block beforeContent %}
-  {{ govukPhaseBanner({
+{{
+ govukPhaseBanner({
     tag: {
       text: "beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+  })
+}}
   {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
-{{ govukBreadcrumbs({
+{{
+ govukBreadcrumbs({
   items: [
     {
       text: "Home",
@@ -42,13 +93,15 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
       href: "#"
     }
   ]
-}) }}
+})
+}}
   {% block pageBefore %}{% endblock %}
 {% endblock %}
 
 
 {% block govukServiceNavigation %}
-  {{ govukServiceNavigation({
+{{
+ govukServiceNavigation({
     serviceName: serviceName,
     navigation: [
       {
@@ -65,7 +118,8 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         text: "Navigation item 3"
       }
     ]
-  }) }}
+  })
+}}
 {% endblock %}
 
 
