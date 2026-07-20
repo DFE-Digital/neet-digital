@@ -310,7 +310,7 @@ router.get('/round4-mvp/check-your-answers', navigationValidation(steps.check_yo
 // What-you-can-do-next?
 // ----------------------------------------------------------------------------------------------------------------
 
-router.get('/round4-mvp/what-you-can-do-next', navigationValidation(steps.what_you_can_do_next), (req, res) => {
+router.get('/round4-mvp/What-you-can-do-next', navigationValidation(steps.what_you_can_do_next), (req, res) => {
     updateStepReached(req, steps.what_you_can_do_next);
-    return res.render('/round4-mvp/what-you-can-do-next');
+    return res.render('round4-mvp/What-you-can-do-next');
 });
