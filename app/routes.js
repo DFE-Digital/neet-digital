@@ -2,11 +2,55 @@ const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
 
 // ----------------------------------------------------------------------------------------------------------------
+// Cookie management
+// ----------------------------------------------------------------------------------------------------------------
+function requireCookieConsent(req, res, next) {
+
+    const analyticsConsent = req.session && req.session.data && req.session.data.analyticsConsent;
+
+    // If consent given, proceed
+    if (analyticsConsent === 'yes') {
+       next();
+       return;
+    }
+
+    return res.redirect('/round4-mvp/landing-page');
+}
+
+router.get('/round4-mvp/accept-cookies', function (req, res) {
+
+    req.session.data.analyticsConsent = 'yes'
+
+    res.redirect('back')
+
+});
+
+router.get('/round4-mvp/reject-cookies', function (req, res) {
+
+   // req.session.data.analyticsConsent = 'no'
+
+    res.redirect('/round4-mvp/landing-page')
+
+});
+
+router.post('/round4-mvp/cookies', function (req, res) {
+
+    if (req.body.analyticsConsent === 'yes') {
+        req.session.data.analyticsConsent = req.body.analyticsConsent
+    }
+
+    res.redirect('/round4-mvp/landing-page')
+});
+
+// ----------------------------------------------------------------------------------------------------------------
 // Whats your first name
 // ----------------------------------------------------------------------------------------------------------------
 
-// POST
-router.post('/round4-mvp/whats-your-first-name', (req, res) => {
+router.get('/round4-mvp/whats-your-first-name', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/whats-your-first-name');
+});
+
+router.post('/round4-mvp/whats-your-first-name', requireCookieConsent, (req, res) => {
     return res.redirect('/round4-mvp/current-situation');
 });
 
@@ -14,7 +58,11 @@ router.post('/round4-mvp/whats-your-first-name', (req, res) => {
 // Current situation 
 // ----------------------------------------------------------------------------------------------------------------
 
-router.post('/round4-mvp/current-situation', (req, res) => {
+router.get('/round4-mvp/current-situation', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/current-situation');
+});
+
+router.post('/round4-mvp/current-situation', requireCookieConsent, (req, res) => {
 
     const errors = {};
 
@@ -37,7 +85,11 @@ router.post('/round4-mvp/current-situation', (req, res) => {
 // What help 
 // ----------------------------------------------------------------------------------------------------------------
 
-router.post('/round4-mvp/what-help', (req, res) => {
+router.get('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/what-help');
+});
+
+router.post('/round4-mvp/what-help', requireCookieConsent, (req, res) => {
 
     const errors = {};
 
@@ -82,7 +134,11 @@ router.post('/round4-mvp/what-help', (req, res) => {
 // What help dynamic
 // ----------------------------------------------------------------------------------------------------------------
 
-router.post('/round4-mvp/what-help-dynamic', (req, res) => { 
+router.get('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/what-help-dynamic');
+});
+
+router.post('/round4-mvp/what-help-dynamic', requireCookieConsent, (req, res) => { 
 
 /*
 // Code for individual checkbox group errors.
@@ -178,7 +234,11 @@ router.post('/round4-mvp/what-help-dynamic', (req, res) => {
 // where-are-you-at-with-education
 // ----------------------------------------------------------------------------------------------------------------
 
-router.post('/round4-mvp/where-are-you-at-with-education', (req, res) => {
+router.get('/round4-mvp/where-are-you-at-with-education', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/where-are-you-at-with-education');
+});
+
+router.post('/round4-mvp/where-are-you-at-with-education', requireCookieConsent, (req, res) => {
   
     const errors = {};
     
@@ -195,4 +255,12 @@ router.post('/round4-mvp/where-are-you-at-with-education', (req, res) => {
         return res.render('/round4-mvp/where-are-you-at-with-education', { errors: errors });
     }
     return res.redirect('/round4-mvp/check-your-answers');
+});
+
+// ----------------------------------------------------------------------------------------------------------------
+// What-you-can-do-next?
+// ----------------------------------------------------------------------------------------------------------------
+
+router.get('/round4-mvp/what-you-can-do-next', requireCookieConsent, (req, res) => {
+    return res.render('/round4-mvp/what-you-can-do-next');
 });
