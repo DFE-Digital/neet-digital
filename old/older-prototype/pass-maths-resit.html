@@ -5,13 +5,6 @@
 {% endblock %}
 
 
-{% block pageScripts %}
-  <script type="text/javascript">
-    var $element = document.querySelector('#step-by-step-navigation')
-    var stepByStepNavigation = new GOVUK.Modules.AppStepNav($element).init()
-  </script>
-{% endblock %}
-
 {% block beforeContent %}
 {{ govukBackLink({
       text: "Back",
@@ -19,9 +12,10 @@
     }) }}
 {% endblock %}
 {% block content %}
-<section class="neet-advice-hero">
-  <img src="/public/images/pass-gcse-maths-advice-hero.jpg" alt="" class="neet-advice-hero__image">
-</section>
+
+  <img src="/public/images/GCSE-maths-English-resit-guide-landing-page.jpg" alt="">
+
+
 
 <div class="govuk-width-container">
   <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-left-4">
