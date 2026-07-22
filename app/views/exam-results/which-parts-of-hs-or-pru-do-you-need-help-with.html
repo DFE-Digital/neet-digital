@@ -1,0 +1,80 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  which parts of {{ data.educationStatus | lower }} do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Which parts of {{ data.educationStatus | lower }} do you need help with?
+      </h1>
+       <p>[STAT]</p>
+       <p>Content</p>
+      <form class="form" action="/check-your-answers" method="post">
+         
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="{{ data.educationStatus | lower }}-help-hint">
+    <div id="HS-or-PRU-help-hint" class="govuk-hint">
+      Select all that apply
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help" name="HS-or-PRU-help" type="checkbox" value="I’ve been put on a course I did not want to do">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help">Option 1</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help-2" name="HS-or-PRU-help" type="checkbox" value="I thought I’d like my course but I do not">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help-2">Option 2</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help-3" name="HS-or-PRU-help" type="checkbox" value="I want to work out what to do as I want to drop out of college">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help-3">Option 3</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help-4" name="HS-or-PRU-help" type="checkbox" value="I do not think I’ll use what I’m learning right now">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help-4">Option 4</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help-5" name="HS-or-PRU-help" type="checkbox" value="My attendance is not great but I feel too behind now to fix it">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help-5">Option 5</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="HS-or-PRU-help-6" name="HS-or-PRU-help" type="checkbox" value="GCSE maths resit">
+        <label class="govuk-label govuk-checkboxes__label" for="HS-or-PRU-help-6">Option 6</label>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+         <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="more-detail">
+      None of these sound right? (optional)
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    Let us know in your own words what you need help with.
+  </div>
+  <textarea class="govuk-textarea" id="HS-or-PRU-more-detail" name="HSorPRUHelpMoreDetail" rows="5" aria-describedby="{{ data.educationStatus | lower }}more-detail-hint"></textarea>
+  <div class="govuk-button-group">
+         {{ govukButton({
+           text: "Continue"
+         }) }}
+         <a class="govuk-link" href="#">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
