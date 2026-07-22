@@ -1,0 +1,233 @@
+{% extends "layouts/landing-page.html" %}
+
+{% block pageTitle %}
+Find out who can help you as a young person – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+<header>
+  {{ govukHeader() }}
+</header>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6 govuk-!-margin-top-0">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                Change name (coming soon)
+              </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                See who can help with things like applying for jobs, changing your college course or resitting GCSE maths or English. 
+
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/neet-home-image-landing-page.png" alt="" style="max-width:100%;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+
+      <!-- MAIN CONTENT -->
+      <div class="govuk-width-container govuk-!-padding-top-6 govuk-!-margin-bottom-6">
+
+        <div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+
+            <h2 class="govuk-heading-m">
+              How this tool can help you
+            </h2>
+
+            <p class="govuk-body">55% of young people have said something would stop them asking for help.</p>
+            <p class="govuk-body">Taking that step can be hard, especially if you're not sure who the right person to speak to is.</p>
+            <p class="govuk-body">We can help you understand who to speak to.</p>
+
+            <h2 class="govuk-heading-m">
+              Who would find this useful
+            </h2>
+
+            <p class="govuk-body">This tool is for young people aged 16 to 24 who are having a hard time in college, sixth form, or with job applications.</p>
+            <p class="govuk-body">You might find this useful if you’re:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+              <li>stuck resitting GCSE maths or English over and over again</li>
+              <li>on a course you’re not enjoying or did not choose</li>
+              <li>trying to find your first job and do not know where to start</li>
+              <li>applying for jobs but never get feedback</li>
+            </ul>
+
+            <p class="govuk-body">If any of this feels familiar, you’re not on your own. Lots of young people are in a similar situation.</p>
+
+            <h2 class="govuk-heading-m">
+              What to expect
+            </h2>
+
+            <p class="govuk-body">You'll answer a few questions. Some questions are optional, such as your name. You can choose what you feel comfortable sharing.</p>
+            <p class="govuk-body">It will take less than 5 minutes to complete.</p>
+             <p class="govuk-body">At the end, you’ll get:</p>
+
+            <ul class="govuk-list govuk-list--bullet">
+
+              <li>advice about what you can do</li>
+              <li>advice on who to speak to</li>
+              <li>suggestions of what to say or how to ask for help</li>
+            </ul>
+
+             <div class="govuk-button-group govuk-!-margin-top-6">
+            {{ govukButton({
+            text: "Start now",
+            href: "whats-your-first-name",
+            isStartButton: true
+            }) }}
+            </div>
+
+          </div>
+        </div>
+
+<!-- FEEDBACK GREY START -->
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <!-- CLOSED STATE -->
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- EXPANDED STATE -->
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <!-- SUCCESS MESSAGE -->
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+<!-- FEEDBACK GREY END -->
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

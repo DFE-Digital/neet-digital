@@ -1,0 +1,270 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What are you finding difficult? – {{ serviceName }}
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "\what-help"
+})
+}}
+{% endblock %}
+
+{% block content %}
+
+{# ---------- NORMALISE DATA ---------- #}
+
+{% if data.route %}
+{% if data.route[0] %}
+{% set routes = data.route %}
+{% else %}
+{% set routes = [data.route] %}
+{% endif %}
+{% else %}
+{% set routes = [] %}
+{% endif %}
+
+{# ---------- MIXED SELECTION DETECTION ---------- #}
+
+{% set courseSelected = routes.indexOf("I do not like my course and I’m not sure what to do when I finish") > -1 %}
+{% set gcseSelected = routes.indexOf("I need to pass my GCSE maths or English resit") > -1 %}
+{% set jobsSelected = routes.indexOf("I'm stuck applying for jobs or apprenticeships") > -1 %}
+{% set cvSelected = routes.indexOf("I need help with my CV or getting work experience") > -1 %}
+
+{% set count = 0 %}
+
+{% if courseSelected %}{% set count = count + 1 %}{% endif %}
+{% if gcseSelected %}{% set count = count + 1 %}{% endif %}
+{% if jobsSelected %}{% set count = count + 1 %}{% endif %}
+{% if cvSelected %}{% set count = count + 1 %}{% endif %}
+
+{% set totalSections = 4 %}
+{% set allSelected = (count == totalSections) %}
+{% set mixedSelected = (count > 1) and not allSelected %}
+
+{% set courseGcsePair = courseSelected and gcseSelected and (count == 2) %}
+{% set jobsCvPair = jobsSelected and cvSelected and (count == 2) %}
+
+{% include "../../assets/html-templates/error-summary.html" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form method="post">
+            <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-heading-l govuk-!-margin-top-0 govuk-!-margin-bottom-4">
+                            What are you finding difficult?
+                        </h1>
+                    </legend>
+
+                    {# ====================== ALL SELECTED ====================== #}
+                    {% if allSelected %}
+                    <p class="govuk-body">We know <strong>55% of young people </strong>have stopped themselves asking for help.</p>
+                    <p class="govuk-body">
+                        It’s okay to be honest if you’re having a hard time.
+                    </p>
+                    <p class="govuk-body">If you’re not sure, you can choose what feels closest for now.</p>
+
+                    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                        Select all that apply
+                    </div>
+
+                    {% if errors['page'] %}
+                    <p id="cv-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
+                        {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
+                        {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
+                        {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
+                    </div>
+                    {% else %}
+
+                    {# ====================== MIXED SELECTED START ====================== #}
+                    {% if mixedSelected %}
+                    {% if courseGcsePair %}
+                    <p class="govuk-body">
+                        We know <strong>3 in 10 young people </strong>have avoided going to college to stop feeling anxious.
+                    </p>
+                    <p class="govuk-body">
+                        It's okay to be honest if you're having a hard time.
+                    </p>
+
+                    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                        Select all that apply
+                    </div>
+
+                    {% if errors['page'] %}
+                    <p id="cv-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <!-- 3 in 10 avoided going to college Text -->
+                    {% elseif jobsCvPair %}
+                    <p class="govuk-body">
+                        We know that <strong>61% or young people</strong> aged 15 to 18 are worried about looking for work.
+                    </p>
+                    <p class="govuk-body">
+                        It’s okay to be honest if you’re having a hard time.
+                    </p>
+
+                    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                        Select all that apply
+                    </div>
+
+                    {% if errors['page'] %}
+                    <p id="cv-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <!--  15 to 18 worried about looking for work Text -->
+                    {% else %}
+                    <!--  young people stopped themselves asking for help Text -->
+                    <p class="govuk-body">
+                        We know <strong>55% of young people </strong>have stopped themselves asking for help.
+                        It’s okay to be honest if you're having a hard time.
+                    </p>
+                    <p class="govuk-body">If you’re not sure, you can choose what feels closest for now.</p>
+
+                    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                        Select all that apply
+                    </div>
+
+                    {% if errors['page'] %}
+                    <p id="cv-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    {% endif %}
+
+                    {# <div class="govuk-checkboxes">
+    #}
+    {% if courseSelected %}
+    {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
+    {% endif %}
+
+    {% if gcseSelected %}
+    {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
+    {% endif %}
+
+    {% if jobsSelected %}
+    <!--  Applying for jobs or apprenticeships Options -->
+    {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
+    {% endif %}
+
+    {% if cvSelected %}
+    <!-- CV or get work experience-->
+    {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
+    {% endif %}
+
+    {% else %}
+
+    <!-- INDIVIDUAL SECTIONS -->
+    {# -------- SECTION 1 -------- #}
+    {% if courseSelected %}
+    <p class="govuk-body">
+        We know <strong>3 in 10 young people </strong>have avoided going to college to
+        stop feeling anxious.
+    </p>
+    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+        Select all that apply
+    </div>
+
+    {% if errors['page'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+    </p>
+    {% endif %}
+
+    {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
+    {% endif %}
+
+    {# -------- SECTION 2 -------- #}
+    {% if gcseSelected %}
+    <p class="govuk-body">
+        We know <strong>3 in 10 young people </strong>have avoided going to college to
+        stop feeling anxious.
+    </p>
+    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+        Select all that apply
+    </div>
+
+    {% if errors['page'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+    </p>
+    {% endif %}
+
+    {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
+    {# <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+    #}
+    {% endif %}
+
+    {# -------- SECTION 3 -------- #}
+    {% if jobsSelected %}
+    <p class="govuk-body">
+        We know that <strong>61% or young people</strong> aged 15 to 18 are worried
+        about looking for work.
+    </p>
+    <p class="govuk-body">It’s okay to be honest if you’re having a hard time. </p>
+
+    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+        Select all that apply
+    </div>
+
+    {% if errors['page'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+    </p>
+    {% endif %}
+
+    {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
+    {% endif %}
+
+    {# -------- SECTION 4 -------- #}
+    {% if cvSelected %}
+    <p class="govuk-body">
+        We know that <strong>61% of young people </strong>aged 15 to 18 are worried
+        about looking for work.
+    </p>
+    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+
+    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+        Select all that apply
+    </div>
+
+    {% if errors['page'] %}
+    <p id="cv-error" class="govuk-error-message">
+        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+    </p>
+    {% endif %}
+
+    {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
+    {% endif %}
+    {#
+</div> #}
+    {% endif %}
+    {% endif %}
+    <div class="govuk-button-group govuk-!-margin-bottom-7">
+        {{ govukButton({ text: "Continue" }) }}
+    </div>
+
+</fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
