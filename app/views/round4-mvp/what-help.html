@@ -32,8 +32,8 @@ href: "\current-situation"
 
 {% set valueDislikeCourse        = "I do not like my course and I’m not sure what to do when I finish" %}
 {% set valuePassingResit         = "I need to pass my GCSE maths or English resit" %}
-{% set valueJobsOrApprenticeship = "Applying for jobs or get an apprenticeship" %}
-{% set valueCVorWork             = "Help with my CV or get work experience" %}
+{% set valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships" %}
+{% set valueCVorWork             = "I need help with my CV or getting work experience" %}
 
 {% macro checkedIfSelected(values, option) %}
   {% if values and values.includes(option) %}checked{% endif %}
@@ -96,14 +96,14 @@ href: "\current-situation"
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
                                        value="{{valueJobsOrApprenticeship}}" {{ checkedIfSelected(data["route"], valueJobsOrApprenticeship)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
-                                    Applying for jobs or get an apprenticeship
+                                     I'm stuck applying for jobs or apprenticeships
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-4" name="route" type="checkbox"
                                        value="{{valueCVorWork}}" {{ checkedIfSelected(data["route"], valueCVorWork)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-4">
-                                    Help with my CV or get work experience
+                                     I need help with my CV or getting work experience
                                 </label>
                             </div>
                         </div>

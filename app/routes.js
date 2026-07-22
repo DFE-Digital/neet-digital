@@ -142,8 +142,8 @@ router.post('/round4-mvp/what-help', navigationValidation(steps.what_help), (req
 
     const valueDislikeCourse        = "I do not like my course and I’m not sure what to do when I finish" ;
     const valuePassingResit         = "I need to pass my GCSE maths or English resit" ;
-    const valueJobsOrApprenticeship = "Applying for jobs or get an apprenticeship" ;
-    const valueCVorWork             = "Help with my CV or get work experience" ;
+    const valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships" ; // previous Applying for jobs or get an apprenticeship
+    const valueCVorWork             = " I need help with my CV or getting work experience" ; // previous Help with my CV or get work experience
 
     if (!req.session.data.route.includes(valueDislikeCourse)) {
         req.session.data['course-checkbox'] =  [];
