@@ -1,32 +1,34 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Where are you at with education – {{ serviceName }}
+ Where are you at with education? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
 {{ govukBackLink({
 text: "Back",
-href: "\what-help"
-})
-}}
+href: "../check-your-answers.html"
+}) }}
 {% endblock %}
 
 {% block content %}
 
-{% set valueNotInEducation = "I’m not in education" %}
-{% set valueCollege = "College or sixth form college" %}
-{% set valueSixthForm = "Sixth form" %}
+{% set valueNotInEducation = "College" %}
+{% set valueCollege = "Sixth form college" %}
+{% set valueSixthForm = "Sixth form (attached to a secondary school)" %}
 
-{% macro checkedIfSelected(values, option) %}
-{% if values and values.includes(option) %}checked{% endif %}
+{% macro checkedIfSelected(value, option) %}
+    {% if value == option %}
+        checked
+    {% endif %}
 {% endmacro %}
 
-{% include "../../assets/html-templates/error-summary.html" %}
+
+
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form class="form" method="post">
+        <form action="../check-your-answers.html" method="get">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset">
 
