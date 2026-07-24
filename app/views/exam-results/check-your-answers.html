@@ -31,7 +31,7 @@ href: "\where-are-you-at-with-education"
                     {{ data.firstName if data.firstName else 'Not provided' }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/round4-mvp/whats-your-first-name">
+                    <a class="govuk-link" href="/exam-results/check-answers/whats-your-first-name">
                         Change<span class="govuk-visually-hidden"> name</span>
                     </a>
                 </dd>
@@ -57,7 +57,7 @@ href: "\where-are-you-at-with-education"
                 </dd>
 
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/round4-mvp/current-situation">
+                    <a class="govuk-link" href="/exam-results/check-answers/current-situation">
                         Change<span class="govuk-visually-hidden"> situation</span>
                     </a>
                 </dd>
@@ -67,47 +67,23 @@ href: "\where-are-you-at-with-education"
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">What do you need help with?</dt>
                 <dd class="govuk-summary-list__value">
-                    {% if data.route is string %}
-                    <p class="govuk-body">{{ data.route }}</p>
-                    {% elif data.route %}
+
+
                     {% for item in data.route %}
-                    <p class="govuk-body">{{ item }}</p>
-                    {% endfor %}
-                    {% else %}
-                    Not provided
-                    {% endif %}
-                </dd>
-                <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/round4-mvp/what-help">
-                        Change<span class="govuk-visually-hidden"> help needs</span>
-                    </a>
-                </dd>
-            </div>
-
-            <!-- What are you finding difficult -->
-            <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">What are you finding difficult?</dt>
-                <dd class="govuk-summary-list__value">
-
-                    {% if data.SelectedRouteIds is string %}
-                    {% if "_unchecked" not in data.SelectedRouteIds %}
-                    <p class="govuk-body">{{ data.SelectedRouteIds }}</p>
-                    {% endif %}
-
-                    {% elif data.SelectedRouteIds %}
-                    {% for item in data.SelectedRouteIds %}
-                    {% if "_unchecked" not in item %}
-                    <p class="govuk-body">{{ item }}</p>
-                    {% endif %}
+                    <p>{{ item }}</p>
                     {% endfor %}
 
-                    {% else %}
-                    Not provided
-                    {% endif %}
+                    {% for item in data["course-checkbox"] %}
+                    <p>{{ item }}</p>
+                    {% endfor %}
+
+                    {% for item in data["gcse-checkbox"] %}
+                    <p>{{ item }}</p>
+                    {% endfor %}
 
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/round4-mvp/what-help-dynamic">
+                    <a class="govuk-link" href="/exam-results/check-answers/what-help">
                         Change<span class="govuk-visually-hidden"> difficulties</span>
                     </a>
                 </dd>
@@ -121,7 +97,7 @@ href: "\where-are-you-at-with-education"
                     {{ data.educationStatus }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
-                    <a class="govuk-link" href="/round4-mvp/where-are-you-at-with-education">
+                    <a class="govuk-link" href="/exam-results/check-answers/where-are-you-at-with-education">
                         Change<span class="govuk-visually-hidden"> education</span>
                     </a>
                 </dd>
