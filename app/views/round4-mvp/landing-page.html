@@ -23,15 +23,17 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
               <h1 class="govuk-heading-xl">
-                Find out who can help you as a young person 
+                Find out who can help you as a young person
               </h1>
               <p class="govuk-body-l govuk-!-margin-bottom-6">
-                See who can help with things like applying for jobs, changing your college course or resitting GCSE maths or English. 
+                See who can help with things like applying for jobs, changing your college course or resitting GCSE
+                maths or English.
 
               </p>
             </div>
             <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-              <img class="image-hero-landingpage" src="/public/images/neet-home-image-landing-page.png" alt="" style="max-width:100%;">
+              <img class="image-hero-landingpage" src="/public/images/neet-home-image-landing-page.png" alt=""
+                style="max-width:100%;">
             </div>
           </div>
         </div>
@@ -50,14 +52,16 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
             </h2>
 
             <p class="govuk-body">55% of young people have said something would stop them asking for help.</p>
-            <p class="govuk-body">Taking that step can be hard, especially if you're not sure who the right person to speak to is.</p>
+            <p class="govuk-body">Taking that step can be hard, especially if you're not sure who the right person to
+              speak to is.</p>
             <p class="govuk-body">We can help you understand who to speak to.</p>
 
             <h2 class="govuk-heading-m">
               Who would find this useful
             </h2>
 
-            <p class="govuk-body">This tool is for young people aged 16 to 24 who are having a hard time in college, sixth form, or with job applications.</p>
+            <p class="govuk-body">This tool is for young people aged 16 to 24 who are having a hard time in college,
+              sixth form, or with job applications.</p>
             <p class="govuk-body">You might find this useful if you’re:</p>
 
             <ul class="govuk-list govuk-list--bullet">
@@ -67,15 +71,17 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
               <li>applying for jobs but never get feedback</li>
             </ul>
 
-            <p class="govuk-body">If any of this feels familiar, you’re not on your own. Lots of young people are in a similar situation.</p>
+            <p class="govuk-body">If any of this feels familiar, you’re not on your own. Lots of young people are in a
+              similar situation.</p>
 
             <h2 class="govuk-heading-m">
               What to expect
             </h2>
 
-            <p class="govuk-body">You'll answer a few questions. Some questions are optional, such as your name. You can choose what you feel comfortable sharing.</p>
+            <p class="govuk-body">You'll answer a few questions. Some questions are optional, such as your name. You can
+              choose what you feel comfortable sharing.</p>
             <p class="govuk-body">It will take less than 5 minutes to complete.</p>
-             <p class="govuk-body">At the end, you’ll get:</p>
+            <p class="govuk-body">At the end, you’ll get:</p>
 
             <ul class="govuk-list govuk-list--bullet">
 
@@ -84,23 +90,24 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
               <li>suggestions of what to say or how to ask for help</li>
             </ul>
 
-             <div class="govuk-button-group govuk-!-margin-top-6">
-            {{ govukButton({
-            text: "Start now",
-            href: "whats-your-first-name",
-            isStartButton: true
-            }) }}
+            <div class="govuk-button-group govuk-!-margin-top-6">
+              {{ govukButton({
+              text: "Start now",
+              href: "whats-your-first-name",
+              isStartButton: true
+              }) }}
             </div>
 
           </div>
         </div>
 
-<!-- FEEDBACK GREY START -->
-<div class="feedback-wrapper">
+
+        <!-- FEEDBACK GREY START -->
+        <!-- <div class="feedback-wrapper">
 
   <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
 
-    <!-- CLOSED STATE -->
+
     <div id="feedback-question" class="feedback-bar">
 
       <div class="feedback-bar__left">
@@ -138,7 +145,6 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
 
     </div>
 
-    <!-- EXPANDED STATE -->
     <div id="feedback-panel" class="feedback-panel">
 
       <h2 class="govuk-heading-l">
@@ -171,7 +177,6 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
 
     </div>
 
-    <!-- SUCCESS MESSAGE -->
     <div
       id="feedback-success"
       class="govuk-notification-banner"
@@ -185,15 +190,15 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
 
   </div>
 
-</div>
-<!-- FEEDBACK GREY END -->
+</div>  -->
 
       </div>
     </div>
   </div>
 </div>
 
-{% block pageScripts %}
+
+<!--{% block pageScripts %}
 
 <script>
 function showFeedback() {
@@ -212,22 +217,68 @@ function submitFeedback() {
 }
 
 </script>
+{% endblock %} -->
+
+
+<!-- DFE FEEDBACK COMPONENT START -->
+<section class="dfe-feedback">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="dfe-feedback-banner">
+          <div class="dfe-feedback-banner--content">
+            <div class="dfe-feedback-banner--flex">
+              <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
+              <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
+                data-govuk-button-init="">
+                Give feedback
+              </button>
+            </div>
+
+            <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
+              Thank you for your feedback
+            </div>
+
+            <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
+              <form id="feedback-form">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
+                  data-govuk-character-count-init="">
+                  <div class="govuk-form-group govuk-!-margin-top-5">
+                    <h3 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--m" for="feedback_form_input">
+                        What do you want to tell us?
+                      </label>
+                    </h3>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
+                      name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
+                    <div id="feedback_form_input-info"
+                      class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+                      You can enter up to 400 characters
+                    </div>
+                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
+                      aria-hidden="true">
+                      You have 400 characters remaining
+                    </div>
+                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
+                      You have 400 characters remaining
+                    </div>
+                  </div>
+                </div>
+
+                <div class="govuk-button-group">
+                  <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
+                    Submit
+                  </button>
+                  <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
+                    id="cancelButton" data-govuk-button-init="">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
 {% endblock %}
-{% endblock %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
