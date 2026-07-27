@@ -1,7 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-I want to switch to a different college course – {{ serviceName }} – GOV.UK Prototype Kit
+I’ve done volunteering but cannot seem to get a paid job – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
@@ -28,15 +28,16 @@ href: "javascript:window.history.back()"
     <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
 
       <!-- HERO SECTION START -->
-      <div class="hero-blue govuk-grid-column-full govuk-!-margin-top-0 govuk-!-margin-bottom-6 govuk-!-padding-6">
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-6">
         <div class="govuk-width-container">
           <div class="govuk-grid-row">
             <div class="govuk-grid-column-two-thirds">
               <h1 class="govuk-heading-xl">
-                I want to switch to a different course at college</h1>
+                TO BE DONE - IN PROGRESS - I’ve done volunteering but cannot seem to get a paid job</h1>
               <p class="govuk-body-l govuk-!-margin-bottom-6">
-                It takes a lot to realise you need to change direction. Whether you’ve been put on a course you did not
-                want to do, or have changed your mind, it’s okay to talk about it.
+                It can be tough having to keep resitting your English GCSE. You’re not the only one. Over
+                <strong>175,000 young
+                  people in England </strong>sat their English GCSE again in 2025.
               </p>
               <p class="govuk-body-s govuk-!-margin-bottom-0">
                 <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
@@ -44,7 +45,7 @@ href: "javascript:window.history.back()"
               </p>
             </div>
             <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-              <img class="image-hero-landingpage" src="/public/images/switch-course-landing page.png"
+              <img class="image-hero-landingpage" src="/public/images/not-done-yet.png"
                 alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
             </div>
           </div>
@@ -53,11 +54,38 @@ href: "javascript:window.history.back()"
       <!-- HERO SECTION END -->
 
       <!-- FULL ACCORDION START -->
-      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0 ">
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
         <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
 
+          
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Understand what you’re struggling with
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">Have a think about what part of the resit is stressing you out. You might
+                find it easier to ask for help about something specific. </p>
 
-          <!-- ACCORDION SECTION - Who to speak to and when - START -->
+              <p class="govuk-body">Think about:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  whether you're missing out on passing by only a few marks </li>
+                <li>if your nerves are taking over on exam day </li>
+                <li>if you're finding one of the papers more difficult </li>
+              </ul>
+              <p class="govuk-body">You can also review your last exam paper with your English teacher. They can
+                help you see what your strengths are and where to improve. </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
@@ -67,117 +95,85 @@ href: "javascript:window.history.back()"
               </h2>
             </div>
             <div id="accordion-default-content-2" class="govuk-accordion__section-content">
-              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Course teacher</strong></p>
-              <p class="govuk-body">You should speak to your course teacher as soon as possible. They will tell you how
-                to switch course and how the process works in your college. </p>
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Your GCSE English teacher</strong></p>
+              <p class="govuk-body">You should let your English teacher know as soon as possible that you want help.
+                They can create a plan
+                with you about what to focus on for your resit.</p>
 
               <p class="govuk-body govuk-!-margin-bottom-0"><strong>Any teacher or member of staff</strong></p>
-              <p class="govuk-body">If you prefer, it’s okay to speak to any teacher or member of staff you feel
-                comfortable with. For example, you might prefer to speak to your personal tutor first. </p>
+              <p class="govuk-body"> If you prefer, it’s okay to speak to any teacher or member of staff you feel
+                comfortable with. They can
+                listen and help you to create a plan.</p>
 
               <p class="govuk-body govuk-!-margin-bottom-0"><strong>Student support services</strong></p>
-              <p class="govuk-body">Your college will likely have a pastoral officer as part of their student support
-                services if you’d rather talk to them about how you’re feeling. </p>
-            </div>
-          </div>
-          <!-- ACCORDION SECTION - Who to speak to and whenE - ND -->
+              <p class="govuk-body">
+                Your college or sixth form will likely have a pastoral officer or careers adviser you can speak to for
+                help with your resit.</p>
 
 
-          <!-- ACCORDION SECTION - Think about why you want to change course - START -->
-          <div class="govuk-accordion__section">
-            <div class="govuk-accordion__section-header">
-              <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                  Think about why you want to change course
-                </span>
-              </h2>
-            </div>
-            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-              <p class="govuk-body">Your teacher will want to understand why you want to change course. They’ll need to
-                know if there are any specific issues you’re facing. </p>
-
-              <p class="govuk-body">Think about if:</p>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>the subject is not what you thought</li>
-                <li>it's a bigger step up in difficulty than you expected </li>
-                <li>you're struggling with essays or exams </li>
-                <li>you're not enjoying the class or teaching </li>
-                <li>something’s happening at home or in your personal life </li>
-              </ul>
-              <p class="govuk-body">This can help you see if there’s anything you could try before making a final
-                decision. There might not be and that’s okay, but it’s worth considering. </p>
-              <p class="govuk-body">For example, you could find out what topics are coming up soon to see if they
-                interest you. You might also be able to get extra study skills support to help with things like essays.
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong>English tutor </strong>
+              </p>
+              <p class="govuk-body">
+                You could get tutoring from someone that’s familiar with your exam paper. Your teacher might know older
+                students who have recently passed who can help. Or, if you’re able to pay, they might be able to
+                recommend a local or online tutor.
               </p>
             </div>
           </div>
-          <!-- ACCORDION SECTION - Think about why you want to change course - END -->
+          <!-- ACCORDION SECTION END -->
 
-
-
-          <!-- ACCORDION SECTION - How switching course works in college  - START -->
+          <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                  How switching course works in college
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Alternative to GCSE English
                 </span>
               </h2>
             </div>
-            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-              <p class="govuk-body">If you know you want to switch, your teacher might need you to put your request in
-                writing.</p>
-              <p class="govuk-body">You may be able to switch course up to October half term, depending on the subject
-                and qualification. After this, it might be difficult to catch up on missed work. </p>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">If you’re struggling to pass after several resits, you might be able to do a
+                <strong>Functional Skills level 2 </strong>qualification instead. This is <strong>equivalent to a GCSE
+                  grade 4 pass</strong> and is widely
+                accepted as an alternative to a GCSE.
+              </p>
 
-              <p class="govuk-body">Your teacher will check if: </p>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>you can switch or if it’s too late in the year </li>
-                <li>you meet the entry requirements of the course  </li>
-                <li>the course you want to do has space or if you can be added to a waiting list  </li>
-                <li>switching would cause any clashes with your other lessons </li>
-                <li>there's space on a course at a different college </li>
-              </ul>
-
-              <p class="govuk-body">If you’re doing A levels, you might be able to switch to another subject. Or, you
-                might be able to drop a subject if that’s right for you. Your teacher will help see if this will impact
-                your next step after college. </p>
-
+              <p class="govuk-body">Your English teacher or student support services can help see if you’re eligible to
+                do a functional skills course. You can <a
+                  href="https://www.prospects.ac.uk/further-education/functional-skills-qualifications/"
+                  class="govuk-link">find out more functional skills qualifications from Prospects</a>. </p>
+              <p class="govuk-body">You might plan to start another course after college or sixth form. If so, a careers
+                adviser can help you find out if your course accepts functional skills qualifications.</p>
             </div>
           </div>
-          <!-- ACCORDION SECTION - How switching course works in college  - END -->
+          <!-- ACCORDION SECTION END -->
 
-
-
-
-          <!-- ACCORDION SECTION - What to do if it’s too late in the year to switch   - START -->
+          <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
-                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
-                  What to do if it’s too late in the year to switch
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Understand your options after college or sixth form
                 </span>
               </h2>
             </div>
-            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
-              <p class="govuk-body">It’s okay to be disappointed if it’s too late in the year to switch. Your teacher
-                will explain your options so you can create a plan. </p>
-              <p class="govuk-body">You can ask if you can enrol onto a new course next September. </p>
-              <p class="govuk-body">In the meantime, you might want to speak to your college careers adviser. </p>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">Your English teacher or student support services can help you understand what your
+                options are if you do or do not pass English.
 
-              <p class="govuk-body">They can help you:  </p>
-              <ul class="govuk-list govuk-list--bullet">
-                <li>find work experience or volunteering in the subject you’re interested in </li>
-                <li>see how <a class="govuk-link" href="#">what you're learning on your course might still be useful</a>
-                </li>
-                <li>think about goals and what you need to get there</li>
-
-              </ul>
-
-
+              </p>
+              <p class="govuk-body">It’s normal to be worried and want a plan. There are options if you need to do your
+                English resit after college. GCSE English courses are often available in libraries, adult education
+                centres or other local venues. </p>
+              <p class="govuk-body">You might want to speak to a careers adviser so you can chat about what you want to
+                do. They can help you create a plan to get there. </p>
+              <p class="govuk-body">You can also see advice if <a href="#" class="govuk-link">your plan has changed and
+                  you’re unsure what to do after college or sixth form</a>. </p>
             </div>
           </div>
-          <!-- ACCORDION SECTION - What to do if it’s too late in the year to switch   - END -->
+
+          <!-- ACCORDION SECTION END -->
 
           <!-- ACCORDION SECTION START -->
           <div class="govuk-accordion__section">
@@ -189,15 +185,12 @@ href: "javascript:window.history.back()"
               </h2>
             </div>
             <div id="accordion-default-content-5" class="govuk-accordion__section-content">
-              <p class="govuk-body">Here are a few prompts of what to say to a teacher about wanting to change course:
+              <p class="govuk-body">Here are a few prompts of what to say to get help with your English resit: </p>
+              <p class="govuk-body blue-quote"> “Are there any resources I can use that are different from what I’ve
+                already tried?”
               </p>
-              <p class="govuk-body blue-quote">“Can you explain to me how switching courses works?”
-              </p>
-              <p class="govuk-body blue-quote">“I want to change course. Are you the best person to speak to about that,
-                or is there someone else I should speak to in college?”</p>
-              <p class="govuk-body blue-quote">“Can you help me work out what to do if I want to enrol on a new course
-                next September?” </p>
-              <p class="govuk-body blue-quote">“How do I make an appointment with a careers adviser?”</p>
+              <p class="govuk-body blue-quote">“Can I get any further help or tutoring to help me pass?”</p>
+              <p class="govuk-body blue-quote">“Can you show me why my answer to this question did not work?”</p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
@@ -206,7 +199,7 @@ href: "javascript:window.history.back()"
       </div>
       <!-- FULL ACCORDION END -->
 
-    <!-- MENTAL HEALTH SUPPORT START -->
+  <!-- MENTAL HEALTH SUPPORT START -->
       <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
 
         <div class="govuk-inset-text govuk-!-margin-left-0">
@@ -219,17 +212,15 @@ href: "javascript:window.history.back()"
             </p>
         </div>
 
-         <!-- <p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+           <!-- <p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
           <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of
             the whole guide</a>
         </p> -->
-
       </div>
       <!-- MENTAL HEALTH SUPPORT END -->
 
     </div>
   </div>
-  
   
 <!-- FEEDBACK GREY START
 <div class="feedback-wrapper">

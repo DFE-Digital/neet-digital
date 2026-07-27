@@ -14,22 +14,6 @@ href: "\current-situation"
 
 {% block content %}
 
-{% if data.feeling is string %}
-{% set feelingText = data.feeling | lower %}
-{% elif data.feeling %}
-{% set feelingText %}
-{% for item in data.feeling %}
-{% if not loop.first %}
-{% if loop.last %} and {% else %}, {% endif %}
-{% endif %}
-{{ item | lower }}
-{% endfor %}
-{% endset %}
-{% else %}
-{% set feelingText = "stuck and anxious" %}
-{% endif %}
-
-
 {% set valueNotsureWhatdo = " I’m not sure what to do after college or sixth form" %}
 {% set valueSwitchCourse = "I want to switch to a different course" %}
 {% set valuestuckCourse = "I’m stuck on a course I do not like" %}
