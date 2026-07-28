@@ -1,8 +1,14 @@
 const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
 
-const version = 'exam-results'
-const base = `/${version}`
+const version = 'exam-results';
+const base = `/${version}`;
+
+router.use((req, res, next) => {
+    res.locals.req = req;
+    res.locals.baseUrl = base;
+    next();
+});
 
 // ----------------------------------------------------------------------------------------------------------------
 // Step Validation
@@ -50,10 +56,10 @@ function canProceedToStep(req, step) {
 // Cookie management cookieConsentGiven
 // ----------------------------------------------------------------------------------------------------------------
 
-function cookieConsentGiven(req) {
-    const analyticsConsent = req.session && req.session.data && req.session.data.analyticsConsent;
-    return (analyticsConsent === 'yes');
-}
+// function cookieConsentGiven(req) {
+//     const analyticsConsent = req.session && req.session.data && req.session.data.analyticsConsent;
+//     return (analyticsConsent === 'yes');
+// }
 
 router.get(`${base}/accept-cookies`, function (req, res) {
     req.session.data.analyticsConsent = 'yes';
@@ -61,14 +67,11 @@ router.get(`${base}/accept-cookies`, function (req, res) {
 });
 
 router.get(`${base}/reject-cookies`, function (req, res) {
-    res.redirect(`${base}/landing-page`);
+    res.redirect(`back`);
 });
 
-router.get(`${base}/cookies`, function (req, res) {
-    if (req.body.analyticsConsent === 'yes') {
-        req.session.data.analyticsConsent = req.body.analyticsConsent;
-    }
-
+router.post(`${base}/cookies`, function (req, res) {
+    req.session.data.analyticsConsent = req.body.analyticsConsent;
     res.redirect(`${base}/landing-page`);
 });
 
@@ -79,7 +82,7 @@ router.get(`${base}/cookies`, function (req, res) {
 function navigationValidation(step) {
     return function (req, res, next) {
         // allow only if cookie consent given and the step is not beyond the next allowed step
-        if (cookieConsentGiven(req) && canProceedToStep(req, step)) {
+        if (canProceedToStep(req, step)) {
             next();
             return;
         }
