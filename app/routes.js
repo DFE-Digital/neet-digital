@@ -68,12 +68,17 @@ router.get(`${base}/accept-cookies`, function (req, res) {
 
 router.get(`${base}/reject-cookies`, function (req, res) {
     req.session.data.analyticsConsent = 'no';
-    res.redirect(`back`);
+    res.redirect('back');
+});
+
+router.get(`${base}/cookies`, function (req, res) {
+    req.session.data.CookieParentUrl = req.get('Referer');
+    res.render(`${base}/cookies`);
 });
 
 router.post(`${base}/cookies`, function (req, res) {
     req.session.data.analyticsConsent = req.body.analyticsConsent;
-    res.redirect(`${base}/landing-page`);
+    res.redirect(req.session.data.CookieParentUrl || `${base}/landing-page`);
 });
 
 // ----------------------------------------------------------------------------------------------------------------
