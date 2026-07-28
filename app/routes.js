@@ -67,6 +67,7 @@ router.get(`${base}/accept-cookies`, function (req, res) {
 });
 
 router.get(`${base}/reject-cookies`, function (req, res) {
+    req.session.data.analyticsConsent = 'no';
     res.redirect(`back`);
 });
 
