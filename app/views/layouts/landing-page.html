@@ -19,15 +19,16 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% from "govuk/components/footer/macro.njk" import govukFooter %}
 
 {% block beforeContent %}
-{{
- govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  })
-}}
-  {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{{ govukPhaseBanner({
+tag: {
+text: "Beta"
+},
+html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new
+  tab)</a>.'
+}) }}
+
+
+<!-- {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
 
 {{
  govukBreadcrumbs({
@@ -46,30 +47,61 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     }
   ]
 })
-}}
-  {% block pageBefore %}{% endblock %}
+}} -->
+{% block pageBefore %}
+{% endblock %}
 {% endblock %}
 
 
 {% block govukServiceNavigation %}
 {{
- govukServiceNavigation({
-    serviceName: serviceName,
-    navigation: [
-      {
-        href: "#",
-        text: "Navigation item 1"
-      },
-      {
-        href: "#",
-        text: "Navigation item 2",
-        active: true
-      },
-      {
-        href: "#",
-        text: "Navigation item 3"
-      }
-    ]
-  })
+govukServiceNavigation({
+serviceName: serviceName,
+navigation: [
+{
+href: "#",
+text: "Navigation item 1"
+},
+{
+href: "#",
+text: "Navigation item 2",
+active: true
+},
+{
+href: "#",
+text: "Navigation item 3"
+}
+]
+})
 }}
 {% endblock %}
+
+
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{{ govukFooter({
+  meta: {
+    items: [
+      {
+        href: "/manage-prototype",
+        text: "Manage your prototype"
+      },
+      {
+        href: "/manage-prototype/clear-data",
+        text: "Clear data"
+      },
+      {
+        href: "https://accessibility-statements.education.gov.uk/s/1",
+        text: "Accessibility"
+      },
+      {
+        href: "https://design.education.gov.uk/cookies",
+        text: "Cookies"
+      },
+      {
+        href: "https://design.education.gov.uk/sitemap",
+        text: "Sitemap"
+      }
+    ]
+  }
+}) }}
