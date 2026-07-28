@@ -31,10 +31,10 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {{
  govukCookieBanner({
-  ariaLabel: "Cookies on [name of service]",
+  ariaLabel: "Cookies on " ~ serviceName,
   messages: [
     {
-      headingText: "Cookies on [name of service]",
+      headingText: "Cookies on " ~ serviceName,
       html: html,
       actions: [
         {
@@ -69,7 +69,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 <!-- ANALYTICS -->
     {% if data.analyticsConsent == 'yes' %}
-               ANALYTICS = YES
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
@@ -88,10 +87,6 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
     gtag('config', 'G-QCWWDZFQXG');
 </script>
-  {% elif  data.analyticsConsent == 'no' %}
-        ANALYTICS = NO
- {% else %}
-        ANALYTICS = UNDEFINED
    {% endif %}
 
 {% endblock %}
