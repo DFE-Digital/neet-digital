@@ -7,6 +7,13 @@ const base = `/${version}`;
 router.use((req, res, next) => {
     res.locals.req = req;
     res.locals.baseUrl = base;
+    delete(res.locals.backlinkUrl);
+
+    const referer = req.get('Referer') || "";
+    if (referer && referer.endsWith('/check-your-answers')) {
+        res.locals.backlinkUrl = `${base}/check-your-answers`;
+    };
+    
     next();
 });
 
@@ -101,6 +108,26 @@ function navigationValidation(step) {
 }
 
 // ----------------------------------------------------------------------------------------------------------------
+// Helper to resolve redirect from the POST action query string (?redirect=...)
+function resolvePostRedirect(req, defaultRedirect) {
+    const redirectParam = req.query && req.query.redirectUrl ? String(req.query.redirectUrl).trim() : '';
+    if (!redirectParam) return defaultRedirect;
+
+    // Block external schemes (http:, https:, data:, etc.) and scheme-relative URLs
+    if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(redirectParam) || redirectParam.startsWith('//')) {
+        return defaultRedirect;
+    }
+
+    // If absolute path provided, use it
+    if (redirectParam.startsWith('/')) {
+        return redirectParam;
+    }
+
+    // Otherwise treat as a slug and normalize underscores to hyphens
+    return `${base}/${redirectParam.replace(/_/g, '-')}`;
+};
+
+// ----------------------------------------------------------------------------------------------------------------
 // Whats your first name
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -110,7 +137,9 @@ router.get(`${base}/whats-your-first-name`, navigationValidation(steps.whats_you
 
 router.post(`${base}/whats-your-first-name`, navigationValidation(steps.whats_your_first_name), (req, res) => {
     updateStepReached(req, steps.whats_your_first_name);
-    return res.redirect(`${base}/current-situation`);
+
+    const redirectTo = resolvePostRedirect(req, `${base}/current-situation`);
+    return res.redirect(redirectTo);
 });
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -140,7 +169,9 @@ router.post(`${base}/current-situation`, navigationValidation(steps.current_situ
     }
 
     updateStepReached(req, steps.current_situation);
-    return res.redirect(`${base}/what-help`);
+
+    const redirectTo = resolvePostRedirect(req, `${base}/what-help`);
+    return res.redirect(redirectTo);
 });
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -167,12 +198,13 @@ router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, re
  
     if (anySelected){
         updateStepReached(req, steps.what_help);
-        return res.redirect(`${base}/where-are-you-at-with-education`);
+        const redirectTo = resolvePostRedirect(req, `${base}/where-are-you-at-with-education`);
+        return res.redirect(redirectTo);
     }
 
     errors['page'] = {
-            "text": "Select at least one option that reflects what you are finding difficult",
-             "href": "#route-1"
+        "text": "Select at least one option that reflects what you are finding difficult",
+         "href": "#route-1"
     };
     errors.HasErrors = true;
 
