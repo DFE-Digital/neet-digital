@@ -5,7 +5,7 @@ How are you finding your current situation – {{ serviceName }} – GOV.UK Prot
 {% endblock %}
 
 {% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
-{% set backlinkUrl = backlinkUrl | default('/landing-page') %}
+{% set backlinkUrl = backlinkUrl | default('\whats-your-first-name') %}
 
 {% block pageBefore %}
 
