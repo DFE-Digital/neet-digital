@@ -5,7 +5,7 @@ What's your first name – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
-{% set backlinkUrl = backlinkUrl | default('/landing-page') %}
+{% set backlinkUrl = backlinkUrl | default('\landing-page') %}
 
 {% block pageBefore %}
 
