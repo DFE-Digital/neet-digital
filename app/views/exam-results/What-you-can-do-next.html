@@ -28,16 +28,16 @@ href: "\check-your-answers"
 {% set notsureWhatdoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
 {% set notsureWhatdoCollegeSelected = routes.indexOf("I’m not sure what to do after college") > -1 %}
 {% set switchCourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
-
-
+{% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
+{% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
 
 {% set sixthFormCollegeSelected = data.educationStatus == "Sixth form college" %}
 {% set valueSixthFormSecSchoolSelected = data.educationStatus == "Sixth form (attached to a secondary school)" %}
 
 
 
-{% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
-{% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
+
+
 {% set mathsSelected = routes.indexOf("Maths") > -1 %}
 {% set englishSelected = routes.indexOf("English") > -1 %}
 {% set hearbackapplicationsSelected = routes.indexOf("I do not hear back from applications") > -1 %}
@@ -131,7 +131,87 @@ text: "Find out who to speak to about changing subjects and what you can do if i
 
 
 
+{% if  stuckCourseSelected %}
+{% set cards = cards.concat([{
+title: "I’m stuck on a course I do not like",
+href: "./guides/stuck-course.html",
+img: "/public/images/stuck-course-not-like.png",
+text: "Find out how your course can help you in the future, even if it is not what you want to do now."
+}]) %}
+{% endif %}
 
+
+
+{# Struggling to pass #}
+{% if strugglingPassCourseSelected and (
+data.educationStatus == "College"
+) %}
+{% set cards = cards.concat([{
+title: "I’m struggling to pass my college course",
+href: "./guides/college-struggling-pass-college-course.html",
+img: "/public/images/struggling-pass-college-course.png",
+text: "Find out who to speak to and what your options are if you’re worried about passing."
+}]) %}
+{% endif %}
+
+
+
+{# Struggling to pass #}
+{% if strugglingPassCourseSelected and (
+data.educationStatus == "Sixth form college"
+) %}
+{% set cards = cards.concat([{
+title: "I’m struggling to pass a subject in sixth form",
+href: "./guides/sixth-form-struggling-pass-subject.html",
+img: "/public/images/struggling-pass-sixth-form.png",
+text: "Find out who to speak to and what your options are if you’re worried about passing."
+}]) %}
+{% endif %}
+
+
+{# Struggling to pass #}
+{% if strugglingPassCourseSelected and (
+data.educationStatus == "Sixth form (attached to a secondary school)"
+) %}
+{% set cards = cards.concat([{
+title: "I’m struggling to pass a subject in sixth form",
+href: "./guides/sixth-form-struggling-pass-subject.html",
+img: "/public/images/struggling-pass-sixth-form.png",
+text: "Find out who to speak to and what your options are if you’re worried about passing."
+}]) %}
+{% endif %}
+
+
+
+{# Combined guide #}
+{% if mathsSelected and englishSelected %}
+  {% set cards = cards.concat([{
+    title: "I need help with both GCSE Maths and English resits",
+    href: "./guides/GCSE-maths-and-english-resit.html",
+    img: "/public/images/not-done-yet.png",
+    text: "Get support and advice to help you prepare for both your GCSE Maths and English resits."
+  }]) %}
+{% endif %}
+
+{# Maths only #}
+{% if mathsSelected and not englishSelected %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE maths resit",
+    href: "./guides/GCSE-maths-resit.html",
+    img: "/public/images/not-done-yet.png",
+    text: "Find support and advice to help you prepare for your GCSE maths resit."
+  }]) %}
+{% endif %}
+
+{# English only #}
+{% if englishSelected and not mathsSelected %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE English resit",
+    href: "./guides/GCSE-english-resit.html",
+    img: "/public/images/not-done-yet.png",
+    text: "Find support and advice to help you prepare for your GCSE English resit."
+  }]) %}
+{% endif %}
 
 
 
@@ -145,60 +225,13 @@ text: "Find out who to speak to about changing subjects and what you can do if i
 
 
 
-{# Stuck on course #}
-{% if stuckCourseSelected %}
-  {% set cards = cards.concat([{
-    title: "I’m stuck on a course I do not like",
-    href: "#",
-    img: "/public/images/not-done-yet.png",
-    text: "Find out about your options and who to speak to if you are unhappy on your course."
-  }]) %}
-{% endif %}
-
-{# Struggling to pass #}
-{% if strugglingPassCourseSelected %}
-  {% set cards = cards.concat([{
-    title: "I’m struggling to pass my course",
-    href: "#",
-    img: "/public/images/not-done-yet.png",
-    text: "Learn about the support available and who can help you succeed on your course."
-  }]) %}
-{% endif %}
-
-{# Maths #}
-{% if mathsSelected %}
-  {% set cards = cards.concat([{
-    title: "I need to pass my GCSE maths resit",
-    href: "./guides/GCSE-maths-resit.html",
-    img: "/public/images/not-done-yet.png",
-    text: "Find support and advice to help you prepare for your GCSE maths resit."
-  }]) %}
-{% endif %}
-
-{# English #}
-{% if englishSelected %}
-  {% set cards = cards.concat([{
-    title: "I need to pass my GCSE English resit",
-    href: "./guides/GCSE-english-resit.html",
-    img: "/public/images/not-done-yet.png",
-    text: "Find support and advice to help you prepare for your GCSE English resit."
-  }]) %}
-{% endif %}
 
 
 
 
 
 
-<!-- WANT TO SWITCH COLLEGE COURSE - I want to switch to a different college course - START-->
-{% if valueSwitchCourse %}
-{% set cards = cards.concat([{ title: "I want to switch to a different college course", href:
-"./guides/want-switch-collegecourse.html", img:
-"/public/images/switch-course.png",
-text: "Find out who to speak to about changing course, and what you can do if it’s too late to switch."
-}]) %}
-{% endif %}
-<!-- WANT TO SWITCH COLLEGE COURSE - I want to switch to a different college course - END-->
+
 
 
 
