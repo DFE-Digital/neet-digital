@@ -91,18 +91,18 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% endblock %}
 
+
+
+
 {% block beforeContent %}
 {{ govukPhaseBanner({
-  tag: {
-    text: "Beta"
-  },
-  html: 'This is a new service. Help us improve it and <a class="govuk-link" href="#">give your feedback (opens in new tab)</a>.'
+tag: {
+text: "Beta"
+},
+html: 'This is a new service. Help us improve it.'
 }) }}
-
-  <!-- Breadcrumbs off {% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
-
 {% block pageBefore %}
-{% endblock %}-->
+{% endblock %}
 {% endblock %}
 
 
