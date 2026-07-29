@@ -1,29 +1,12 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-I’m not sure what to do when I leave college – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block pageBefore %}
-{{ govukBackLink({
-text: "Back",
-href: "javascript:window.history.back()"
-}) }}
-{% endblock %}
-
-{% block content %}
-
-{% if data.feeling is string %}
-{% set feelingText = data.feeling | lower %}
-{% elif data.feeling %}
-{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
-%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
-{% else %}
-{% set feelingText = "stuck and anxious" %}
-{% endif %}
-
-
-<div class="govuk-width-container">
+I want to switch subjects at sixth form< – {{ serviceName }} – GOV.UK Prototype Kit {% endblock %} {% block pageBefore
+  %} {{ govukBackLink({ text: "Back" , href: "javascript:window.history.back()" }) }} {% endblock %} {% block content %}
+  {% if data.feeling is string %} {% set feelingText=data.feeling | lower %} {% elif data.feeling %} {% set feelingText
+  %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif %}{% endif %}{{
+  item | lower }}{% endfor %}{% endset %} {% else %} {% set feelingText="stuck and anxious" %} {% endif %} <div
+  class="govuk-width-container">
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
 
@@ -35,12 +18,13 @@ href: "javascript:window.history.back()"
               <h1 class="govuk-heading-xl">
                 I want to switch subjects at sixth form</h1>
               <p class="govuk-body-l govuk-!-margin-bottom-6">It takes a lot to realise you need to change direction.
-             It takes a lot to realise one of your subjects is not right for you. If you need to make a change, it’s okay to talk about it. 
+                It takes a lot to realise one of your subjects is not right for you. If you need to make a
+                change, it’s okay to talk about it. 
               </p>
             </div>
             <div class="govuk-grid-column-one-third govuk-!-text-align-right">
               <img class="image-hero-landingpage" src="/public/images/switch-subject-sixth-form.png"
-                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+                alt="">
             </div>
           </div>
         </div>
@@ -69,21 +53,23 @@ href: "javascript:window.history.back()"
             </div>
             <div id="accordion-default-content-2" class="govuk-accordion__section-content">
 
-              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Course teacher</strong></p>
-              <p class="govuk-body">You should speak to your course teacher as soon as possible. They will tell you how
-                to switch course and how the process works in your college. </p>
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Subject teacher</strong></p>
+              <p class="govuk-body">You should speak to your subject teacher as soon as possible. They'll tell you how
+                to switch subjects and how the process works in your sixth form. </p>
 
               <p class="govuk-body govuk-!-margin-bottom-0"><strong>Any teacher or member of staff</strong></p>
-              <p class="govuk-body">If you prefer, it’s okay to speak to any teacher or member of staff you feel
-                comfortable with. For example, you might prefer to speak to your personal tutor first. </p>
+              <p class="govuk-body">If you prefer, it’s okay to speak to any teacher or member of staff you feel
+                comfortable with. For example, you might prefer to speak to your personal tutor first. They’ll listen
+                and can help you find out who the right person to speak to is.  </p>
 
 
               <p class="govuk-body govuk-!-margin-bottom-0">
-                <strong>Student support services</strong>
+                <strong>Pastoral team </strong>
               </p>
               <p class="govuk-body">
-                Your college will likely have a pastoral officer as part of their student support services if you’d
-                rather talk to them about how you’re feeling.
+                You’ll have a pastoral team at your school you could talk to about how you’re feeling. The team
+                may include learning mentors, pastoral officers or wellbeing staff. They might be called something
+                different at your sixth form. If you’re not sure, you can ask a teacher.
               </p>
             </div>
           </div>
@@ -94,7 +80,7 @@ href: "javascript:window.history.back()"
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
-                  Think about why you want to change course
+                  Think about why you want to change subject
                 </span>
               </h2>
               <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
@@ -103,34 +89,39 @@ href: "javascript:window.history.back()"
               </div>
             </div>
             <div id="accordion-default-content-3" class="govuk-accordion__section-content">
-              <p class="govuk-body">Your teacher will want to understand why you want to change course. They’ll need to
-                know if there are any specific issues you’re facing.
+              <p class="govuk-body">Your teacher will want to understand why you want to switch subjects. They’ll need
+                to know if you’re facing any particular issues.
+
               </p>
 
               <p class="govuk-body">Think about if:</p>
 
               <ul class="govuk-list govuk-list--bullet">
                 <li>
-                  the subject is not what you thought 
+                  the subject is different from what you thought it would be
+
                 </li>
                 <li>
-                  it's a bigger step up in difficulty than you expected 
+                  it's a bigger step up in difficulty than you expected
+
                 </li>
                 <li>
-                  you're struggling with essays or exams 
+                  you're struggling with essays or exams
+
                 </li>
                 <li>
                   you're not enjoying the class or teaching 
                 </li>
                 <li>
-                  something’s happening at home or in your personal life 
+                  something in your personal life is affecting how you feel
                 </li>
               </ul>
 
               <p class="govuk-body">This can help you see if there’s anything you could try before making a final
-                decision. There might not be and that’s okay, but it’s worth considering. </p>
-              <p class="govuk-body">For example, you could find out what topics are coming up soon to see if they
-                interest you. You might also be able to get extra study skills support to help with things like essays.
+                decision. There might not be and that’s okay, but it’s worth thinking about. </p>
+              <p class="govuk-body">For example, you could find out what topics are coming up later in the course to see
+                if they interest you. You might also be able to get extra study skills support to help with things like
+                essays.
               </p>
 
 
@@ -143,7 +134,7 @@ href: "javascript:window.history.back()"
             <div class="govuk-accordion__section-header">
               <h2 class="govuk-accordion__section-heading">
                 <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
-                  How switching course works in college
+                  How switching subject works in sixth form
                 </span>
               </h2>
               <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
@@ -156,8 +147,8 @@ href: "javascript:window.history.back()"
                 writing.
               </p>
 
-              <p class="govuk-body">You may be able to switch course up to October half term, depending on the subject
-                and qualification. After this, it might be difficult to catch up on missed work. </p>
+              <p class="govuk-body">You may be able to switch up to October half term, depending on the subject and
+                qualification. After this, it might be difficult to catch up on missed work. </p>
 
               <p class="govuk-body">Your teacher will check if: </p>
 
@@ -166,22 +157,24 @@ href: "javascript:window.history.back()"
                   you can switch or if it’s too late in the year 
                 </li>
                 <li>
-                  you meet the entry requirements of the course 
+                  you meet the entry requirements for the subject
+
                 </li>
                 <li>
-                  the course you want to do has space or if you can be added to a waiting list  
+                  the subject class you want to do has space
+
                 </li>
                 <li>
-                  switching would cause any clashes with your other lessons 
-                </li>
-                <li>
-                  there's space on a course at a different college 
+                  switching would cause any clashes with your other lessons
+
                 </li>
               </ul>
 
-              <p class="govuk-body">If you’re doing A levels, you might be able to switch to another subject. Or, you
-                might be able to drop a subject if that’s right for you. Your teacher will help see if this will impact
-                your next step after college. </p>
+              <p class="govuk-body">You might be able to drop an A Level subject if that’s right for you. Your teacher
+                will help see if this will impact your next steps after sixth form.
+              </p>
+              <p class="govuk-body">If you do switch subjects, you might have a meeting about it. A parent, carer or
+                family member can come with you if you’d find that helpful – you get to decide. </p>
 
             </div>
           </div>
@@ -208,23 +201,28 @@ href: "javascript:window.history.back()"
             <div id="accordion-default-content-4" class="govuk-accordion__section-content">
               <p class="govuk-body">It’s okay to be disappointed if it’s too late in the year to switch. Your teacher
                 will explain your options so you can create a plan.
+
               </p>
 
-              <p class="govuk-body">You can ask if you can enrol onto a new course next September.</p>
-
-              <p class="govuk-body">In the meantime, you might want to speak to your college careers adviser. They can
-                help you: </p>
+              <p class="govuk-body">You might be able to change subjects in September. This might mean staying on an
+                extra year. Your teacher can explain if this is an option in your sixth form.</p>
+              <p class="govuk-body">It can be hard to stay motivated if you’re not enjoying one of your subjects.
+                Something that might help is speaking to a careers adviser at your sixth form. Ask a teacher to see when
+                you can speak to them if you’re not sure.
+              </p>
+              <p class="govuk-body">A careers adviser can help you:
+              </p>
 
               <ul class="govuk-list govuk-list--bullet">
                 <li>
-                  find work experience or volunteering in the subject you’re interested in
+                  find work experience or volunteering in the subject or career you’re interested in
                 </li>
                 <li>
                   see how <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">what you're learning on
                     your course might still be useful</a>
                 </li>
                 <li>
-                  think about goals and what you need to get there
+                  think about your next steps and what you need to get there
                 </li>
 
               </ul>
@@ -250,16 +248,17 @@ href: "javascript:window.history.back()"
               </div>
             </div>
             <div id="accordion-default-content-5" class="govuk-accordion__section-content">
-              <p class="govuk-body">Here are a few prompts of what to say to a teacher about wanting to change course:
+              <p class="govuk-body">It can be hard to know how to take the first step of asking for help. 
+                Here are a few prompts of what to say to a teacher about wanting to change subjects: 
               </p>
 
-              <p class="govuk-body blue-quote">“Can you explain to me how switching courses works?”
+              <p class="govuk-body blue-quote">“Can you explain to me how switching subjects works?” 
               </p>
-              <p class="govuk-body blue-quote">“I want to change course. Are you the best person to speak to about that,
-                or is there someone else I should speak to in college?”</p>
-              <p class="govuk-body blue-quote">“Can you help me work out what to do if I want to enrol on a new course
-                next September?”</p>
-              <p class="govuk-body blue-quote">“How do I make an appointment with a careers adviser?”</p>
+              <p class="govuk-body blue-quote">“I want to change subjects. Are you the best person to speak to about
+                that, or is there someone else I should speak to in sixth form?” </p>
+              <p class="govuk-body blue-quote">“I'm not enjoying this subject but it’s too late to switch. What can I
+                do?” </p>
+              <p class="govuk-body blue-quote">““How do I make an appointment with a careers adviser?” </p>
             </div>
           </div>
           <!-- ACCORDION SECTION END -->
@@ -286,91 +285,91 @@ href: "javascript:window.history.back()"
     </div>
   </div>
 
-</div>
-</div>
-</div>
+  </div>
+  </div>
+  </div>
 
 
-<!-- DFE FEEDBACK COMPONENT START -->
-<section class="dfe-feedback">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <div class="dfe-feedback-banner">
-        <div class="dfe-feedback-banner--content">
-          <div class="dfe-feedback-banner--flex">
-            <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
-            <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
-              data-govuk-button-init="">
-              Give feedback
-            </button>
-          </div>
+  <!-- DFE FEEDBACK COMPONENT START -->
+  <section class="dfe-feedback">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="dfe-feedback-banner">
+          <div class="dfe-feedback-banner--content">
+            <div class="dfe-feedback-banner--flex">
+              <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
+              <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
+                data-govuk-button-init="">
+                Give feedback
+              </button>
+            </div>
 
-          <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
-            Thank you for your feedback
-          </div>
+            <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
+              Thank you for your feedback
+            </div>
 
-          <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
-            <form id="feedback-form">
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
-                data-govuk-character-count-init="">
-                <div class="govuk-form-group govuk-!-margin-top-5">
-                  <h3 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--m" for="feedback_form_input">
-                      What do you want to tell us?
-                    </label>
-                  </h3>
-                  <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
-                    name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
-                  <div id="feedback_form_input-info"
-                    class="govuk-hint govuk-character-count__message govuk-visually-hidden">
-                    You can enter up to 400 characters
-                  </div>
-                  <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
-                    aria-hidden="true">
-                    You have 400 characters remaining
-                  </div>
-                  <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
-                    You have 400 characters remaining
+            <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
+              <form id="feedback-form">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
+                  data-govuk-character-count-init="">
+                  <div class="govuk-form-group govuk-!-margin-top-5">
+                    <h3 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--m" for="feedback_form_input">
+                        What do you want to tell us?
+                      </label>
+                    </h3>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
+                      name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
+                    <div id="feedback_form_input-info"
+                      class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+                      You can enter up to 400 characters
+                    </div>
+                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
+                      aria-hidden="true">
+                      You have 400 characters remaining
+                    </div>
+                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
+                      You have 400 characters remaining
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <div class="govuk-button-group">
-                <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
-                  Submit
-                </button>
-                <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
-                  id="cancelButton" data-govuk-button-init="">
-                  Cancel
-                </button>
-              </div>
-            </form>
+                <div class="govuk-button-group">
+                  <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
+                    Submit
+                  </button>
+                  <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
+                    id="cancelButton" data-govuk-button-init="">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- DFE FEEDBACK COMPONENT END -->
-{% block pageScripts %}
+  </section>
+  <!-- DFE FEEDBACK COMPONENT END -->
+  {% block pageScripts %}
 
-<script>
-  function showFeedback() {
-    document.getElementById('feedback-question').classList.add('hidden');
-    document.getElementById('feedback-panel').classList.add('active');
-  }
+  <script>
+    function showFeedback() {
+      document.getElementById('feedback-question').classList.add('hidden');
+      document.getElementById('feedback-panel').classList.add('active');
+    }
 
-  function hideFeedback() {
-    document.getElementById('feedback-question').classList.remove('hidden');
-    document.getElementById('feedback-panel').classList.remove('active');
-  }
+    function hideFeedback() {
+      document.getElementById('feedback-question').classList.remove('hidden');
+      document.getElementById('feedback-panel').classList.remove('active');
+    }
 
-  function submitFeedback() {
-    document.getElementById('feedback-panel').classList.remove('active');
-    document.getElementById('feedback-success').style.display = 'block';
-  }
+    function submitFeedback() {
+      document.getElementById('feedback-panel').classList.remove('active');
+      document.getElementById('feedback-success').style.display = 'block';
+    }
 
-</script>
-{% endblock %}
+  </script>
+  {% endblock %}
 
-{% endblock %}
+  {% endblock %}

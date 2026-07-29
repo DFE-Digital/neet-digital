@@ -23,7 +23,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% set valueNotsureWhatdo = "I’m not sure what to do after college or sixth form" %}
 {% set valueSwitchCourse = "I want to switch to a different course" %}
-{% set valuestuckCourse = "I’m stuck on a course I do not like" %}
+{% set valueStuckCourse = "I’m stuck on a course I do not like" %}
 {% set valueStrugglingPassCourse = "I’m struggling to pass my course" %}
 {% set valueMaths = "Maths" %}
 {% set valueEnglish = "English" %}
@@ -92,7 +92,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
-                                       value="{{valuestuckCourse}}" {{ checkedIfSelected(data["route"], valuestuckCourse)}}>
+                                       value="{{valueStuckCourse}}" {{ checkedIfSelected(data["route"], valueStuckCourse)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
                                     I’m stuck on a course I do not like
                                 </label>
