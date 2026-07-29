@@ -14,6 +14,7 @@ router.use((req, res, next) => {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
     
+    req.session.cookie.maxAge = 2592000000; // 30 days
     next();
 });
 
