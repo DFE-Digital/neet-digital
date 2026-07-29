@@ -27,13 +27,15 @@ href: "\check-your-answers"
 
 {% set notsureWhatdoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
 {% set notsureWhatdoCollegeSelected = routes.indexOf("I’m not sure what to do after college") > -1 %}
+{% set switchCourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
+
+
 
 {% set sixthFormCollegeSelected = data.educationStatus == "Sixth form college" %}
-
 {% set valueSixthFormSecSchoolSelected = data.educationStatus == "Sixth form (attached to a secondary school)" %}
 
 
-{% set switchCourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
+
 {% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
 {% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
 {% set mathsSelected = routes.indexOf("Maths") > -1 %}
@@ -87,6 +89,52 @@ img: "/public/images/what-do-leave-sixth-form.png",
 text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
 }]) %}
 {% endif %}
+
+
+
+{% if switchCourseSelected and (
+data.educationStatus == "College"
+) %}
+{% set cards = cards.concat([{
+title: "I want to switch to a different course at college",
+href: "./guides/college-switch-different-course.html",
+img: "/public/images/switch-different-course.png",
+text: "Find out who to speak to about changing course and what you can do if it’s too late to switch."
+}]) %}
+{% endif %}
+
+
+
+{% if switchCourseSelected and (
+data.educationStatus == "Sixth form college"
+) %}
+{% set cards = cards.concat([{
+title: "I want to switch subjects at sixth form",
+href: "./guides/sixth-form-switch-different-subject.html",
+img: "/public/images/switch-subject-sixth-form.png",
+text: "Find out who to speak to about changing subjects and what you can do if it’s too late to switch."
+}]) %}
+{% endif %}
+
+
+
+{% if switchCourseSelected and (
+data.educationStatus == "Sixth form (attached to a secondary school)"
+) %}
+{% set cards = cards.concat([{
+title: "I want to switch subjects at sixth form",
+href: "./guides/sixth-form-switch-different-subject.html",
+img: "/public/images/switch-subject-sixth-form.png",
+text: "Find out who to speak to about changing subjects and what you can do if it’s too late to switch."
+}]) %}
+{% endif %}
+
+
+
+
+
+
+
 
 
 <!-- Done so far working end -->
