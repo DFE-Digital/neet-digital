@@ -4,13 +4,18 @@
 How are you finding your current situation – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('/landing-page') %}
+
 {% block pageBefore %}
 
-{{ govukBackLink({
-text: "Back",
-href: "\whats-your-first-name"
+{{
+ govukBackLink({
+ text: "Back",
+ href: "" ~backlinkUrl
 })
 }}
+
 {% endblock %}
 
 {% block content %}
@@ -49,7 +54,7 @@ href: "\whats-your-first-name"
         <p class="govuk-body">It’s okay to be honest - we just want to understand a bit more about you.</p>
         <!-- INTRO TEXT END -->
         <!-- FORM START -->
-        <form class="form" method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <!--<form class="form" method="post">-->
             <!-- FORM CONTENT DIV START -->
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">

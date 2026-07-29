@@ -4,13 +4,20 @@
 What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('/landing-page') %}
+
 {% block pageBefore %}
-{{ govukBackLink({
-text: "Back",
-href: "\current-situation"
+
+{{
+ govukBackLink({
+ text: "Back",
+ href: "" ~backlinkUrl
 })
 }}
+
 {% endblock %}
+
 
 {% block content %}
 
@@ -30,7 +37,7 @@ href: "\current-situation"
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset" aria-describedby="routes-hint routes-error">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -52,8 +59,10 @@ href: "\current-situation"
 
 
                     <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">I’m unsure about my current
-                            course or what to do when I finish</legend>
+                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                            I’m unsure about my current
+                            course or what to do when I finish
+                        </legend>
                         <div id="routes-hint" class="govuk-hint">
                             Select all that apply
                         </div>
@@ -67,18 +76,15 @@ href: "\current-situation"
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
-                                    value="{{valueNotsureWhatdo}}" {{ checkedIfSelected(data["route"],
-                                    valueNotsureWhatdo )}}>
-                                <label
-                                    class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
-                                    for="route-1">
+                                       value="{{valueNotsureWhatdo}}" {{ checkedIfSelected(data["route"], valueNotsureWhatdo )}}>
+                                <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
+                                       for="route-1">
                                     I’m not sure what to do after college or sixth form
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="switch-different-course"
-                                    name="course-checkbox" type="checkbox" value="{{valueSwitchCourse}}" {{
-                                    checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
+                                       name="course-checkbox" type="checkbox" value="{{valueSwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
                                     I want to switch to a different course
                                 </label>
@@ -86,16 +92,14 @@ href: "\current-situation"
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
-                                    value="{{valuestuckCourse}}" {{ checkedIfSelected(data["route"],
-                                    valuestuckCourse)}}>
+                                       value="{{valuestuckCourse}}" {{ checkedIfSelected(data["route"], valuestuckCourse)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
                                     I’m stuck on a course I do not like
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item ">
                                 <input class="govuk-checkboxes__input" id="struggling-pass-course"
-                                    name="course-checkbox" type="checkbox" value="{{valueStrugglingPassCourse}}" {{
-                                    checkedIfSelected(data["course-checkbox"], valueStrugglingPassCourse ) }}>
+                                       name="course-checkbox" type="checkbox" value="{{valueStrugglingPassCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueStrugglingPassCourse ) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                                     I’m struggling to pass my course
                                 </label>
@@ -124,7 +128,7 @@ href: "\current-situation"
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="maths" name="gcse-checkbox" type="checkbox"
-                                value="{{valueMaths}}" {{ checkedIfSelected(data["gcse-checkbox"], valueMaths) }}>
+                                   value="{{valueMaths}}" {{ checkedIfSelected(data["gcse-checkbox"], valueMaths) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="maths">
                                 Maths
                             </label>
@@ -132,7 +136,7 @@ href: "\current-situation"
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="english" name="gcse-checkbox" type="checkbox"
-                                value="{{valueEnglish}}" {{ checkedIfSelected(data["gcse-checkbox"], valueEnglish) }}>
+                                   value="{{valueEnglish}}" {{ checkedIfSelected(data["gcse-checkbox"], valueEnglish) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="english">
                                 English
                             </label>
