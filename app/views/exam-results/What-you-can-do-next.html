@@ -25,10 +25,13 @@ href: "\check-your-answers"
 {% endif %}
 
 
-{# ---------- FLAGS ---------- #}
-
-
 {% set notsureWhatdoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
+{% set notsureWhatdoCollegeSelected = routes.indexOf("I’m not sure what to do after college") > -1 %}
+
+{% set sixthFormCollegeSelected = data.educationStatus == "Sixth form college" %}
+
+{% set valueSixthFormSecSchoolSelected = data.educationStatus == "Sixth form (attached to a secondary school)" %}
+
 
 {% set switchCourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
 {% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
@@ -48,14 +51,49 @@ href: "\check-your-answers"
 {% set cards = [] %}
 
 
-{% if notsureWhatdoSelected %}
-  {% set cards = cards.concat([{
-    title: "I’m not sure what to do when I leave college",
-    href: "./guides/college-not-sure-what-to-do.html",
-    img: "/public/images/what-do-leave-college.png",
-    text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
-  }]) %}
+<!-- Done so far working start -->
+
+{% if notsureWhatdoSelected and (
+data.educationStatus == "College"
+) %}
+{% set cards = cards.concat([{
+title: "I’m not sure what to do when I leave college",
+href: "./guides/college-not-sure-what-to-do.html",
+img: "/public/images/what-do-leave-college.png",
+text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
+}]) %}
 {% endif %}
+
+
+{% if notsureWhatdoSelected and (
+data.educationStatus == "Sixth form college"
+) %}
+{% set cards = cards.concat([{
+title: "I’m not sure what to do when I leave sixth form",
+href: "./guides/sixth-form-not-sure-what-to-do.html",
+img: "/public/images/what-do-leave-sixth-form.png",
+text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
+}]) %}
+{% endif %}
+
+
+{% if notsureWhatdoSelected and (
+data.educationStatus == "Sixth form (attached to a secondary school)"
+) %}
+{% set cards = cards.concat([{
+title: "I’m not sure what to do when I leave sixth form",
+href: "./guides/sixth-form-not-sure-what-to-do.html",
+img: "/public/images/what-do-leave-sixth-form.png",
+text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
+}]) %}
+{% endif %}
+
+
+<!-- Done so far working end -->
+
+
+
+<!-- Others-->
 
 
 
