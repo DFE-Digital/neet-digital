@@ -18,9 +18,9 @@ href: "\what-help"
 
 {# ---------- FLAGS ---------- #}
 
-{% set valueNotInEducation = "I’m not in education" %}
-{% set valueCollege = "College or sixth form college" %}
-{% set valueSixthForm = "Sixth form" %}
+{% set valueCollege = "College" %}
+{% set valueSixthForm = "Sixth form college" %}
+{% set valueSixthFormSecSchool = "Sixth form (attached to a secondary school)" %}
 
 {% macro checkedIfSelected(values, option) %}
 {% if values and values.includes(option) %}checked{% endif %}
@@ -53,24 +53,24 @@ href: "\what-help"
                     <div class="govuk-radios" data-module="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-1" name="educationStatus"
-                                type="radio" value="{{valueNotInEducation}}" {{
-                                checkedIfSelected(data["educationStatus"], valueNotInEducation) }}>
+                                type="radio" value="{{valueCollege}}" {{ checkedIfSelected(data["educationStatus"],
+                                valueCollege) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status">
                                 College
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-2" name="educationStatus"
-                                type="radio" value="{{valueCollege}}" {{ checkedIfSelected(data["educationStatus"],
-                                valueCollege) }}>
+                                type="radio" value="{{valueSixthForm}}" {{ checkedIfSelected(data["educationStatus"],
+                                valueSixthForm) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-2">
                                 Sixth form college
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-3" name="educationStatus"
-                                type="radio" value="{{valueSixthForm}}" {{ checkedIfSelected(data["educationStatus"],
-                                valueSixthForm) }}>
+                                type="radio" value="{{valueSixthFormSecSchool}}" {{
+                                checkedIfSelected(data["educationStatus"], valueSixthFormSecSchool) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-3">
                                 Sixth form (attached to a secondary school)
                             </label>
