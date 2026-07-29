@@ -76,7 +76,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
-                                       value="{{values.UnsureAfterCollegeOr6Form}}" {{ checkedIfSelected(data["route"], values.UnsureAfterCollegeOr6Form )}}>
+                                       value="{{valueNotsureWhatdo}}" {{ checkedIfSelected(data["route"], valueNotsureWhatdo )}}>
                                 <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
                                        for="route-1">
                                     I’m not sure what to do after college or sixth form
@@ -84,7 +84,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="switch-different-course"
-                                       name="course-checkbox" type="checkbox" value="{{values.SwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], values.SwitchCourse ) }}>
+                                       name="course-checkbox" type="checkbox" value="{{valueSwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
                                     I want to switch to a different course
                                 </label>
@@ -92,14 +92,14 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
-                                       value="{{values.xxxx}}" {{ checkedIfSelected(data["route"], values.xxxx)}}>
+                                       value="{{valuestuckCourse}}" {{ checkedIfSelected(data["route"], valuestuckCourse)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
                                     I’m stuck on a course I do not like
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item ">
                                 <input class="govuk-checkboxes__input" id="struggling-pass-course"
-                                       name="course-checkbox" type="checkbox" value="{{values.xxxx}}" {{ checkedIfSelected(data["course-checkbox"], values.xxxx ) }}>
+                                       name="course-checkbox" type="checkbox" value="{{valueStrugglingPassCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueStrugglingPassCourse ) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                                     I’m struggling to pass my course
                                 </label>
@@ -128,7 +128,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="maths" name="gcse-checkbox" type="checkbox"
-                                   value="{{values.xxxx}}" {{ checkedIfSelected(data["gcse-checkbox"], values.xxxx) }}>
+                                   value="{{valueMaths}}" {{ checkedIfSelected(data["gcse-checkbox"], valueMaths) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="maths">
                                 Maths
                             </label>
@@ -136,7 +136,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="english" name="gcse-checkbox" type="checkbox"
-                                   value="{{values.xxxx}}" {{ checkedIfSelected(data["gcse-checkbox"], values.xxxx) }}>
+                                   value="{{valueEnglish}}" {{ checkedIfSelected(data["gcse-checkbox"], valueEnglish) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="english">
                                 English
                             </label>
