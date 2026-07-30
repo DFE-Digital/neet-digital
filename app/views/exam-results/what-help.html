@@ -21,13 +21,6 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% block content %}
 
-{% set valueNotsureWhatdo = "I’m not sure what to do after college or sixth form" %}
-{% set valueSwitchCourse = "I want to switch to a different course" %}
-{% set valueStuckCourse = "I’m stuck on a course I do not like" %}
-{% set valueStrugglingPassCourse = "I’m struggling to pass my course" %}
-{% set valueMaths = "Maths" %}
-{% set valueEnglish = "English" %}
-
 
 {% macro checkedIfSelected(values, option) %}
 {% if values and values.includes(option) %}checked{% endif %}
@@ -76,7 +69,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
-                                       value="{{valueNotsureWhatdo}}" {{ checkedIfSelected(data["route"], valueNotsureWhatdo )}}>
+                                       value="{{ values.Im_not_sure_what_to_do_after_college_or_sixth_form}}" {{ checkedIfSelected(data["route"], values.Im_not_sure_what_to_do_after_college_or_sixth_form )}}>
                                 <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
                                        for="route-1">
                                     I’m not sure what to do after college or sixth form
@@ -84,7 +77,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="switch-different-course"
-                                       name="course-checkbox" type="checkbox" value="{{valueSwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
+                                       name="course-checkbox" type="checkbox" value="{{ values.I_want_to_switch_to_a_different_course}}" {{ checkedIfSelected(data["course-checkbox"], values.I_want_to_switch_to_a_different_course) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
                                     I want to switch to a different course
                                 </label>
@@ -92,14 +85,14 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
-                                       value="{{valueStuckCourse}}" {{ checkedIfSelected(data["route"], valueStuckCourse)}}>
+                                       value="{{ values.Im_stuck_on_a_course_I_do_not_like}}" {{ checkedIfSelected(data["route"], values.Im_stuck_on_a_course_I_do_not_like)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
                                     I’m stuck on a course I do not like
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item ">
                                 <input class="govuk-checkboxes__input" id="struggling-pass-course"
-                                       name="course-checkbox" type="checkbox" value="{{valueStrugglingPassCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueStrugglingPassCourse ) }}>
+                                       name="course-checkbox" type="checkbox" value="{{ values.Im_struggling_to_pass_my_course}}" {{ checkedIfSelected(data["course-checkbox"], values.Im_struggling_to_pass_my_course ) }}>
                                 <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
                                     I’m struggling to pass my course
                                 </label>
@@ -128,7 +121,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="maths" name="gcse-checkbox" type="checkbox"
-                                   value="{{valueMaths}}" {{ checkedIfSelected(data["gcse-checkbox"], valueMaths) }}>
+                                   value="{{ values.Maths}}" {{ checkedIfSelected(data["gcse-checkbox"], values.Maths) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="maths">
                                 Maths
                             </label>
@@ -136,7 +129,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="english" name="gcse-checkbox" type="checkbox"
-                                   value="{{valueEnglish}}" {{ checkedIfSelected(data["gcse-checkbox"], valueEnglish) }}>
+                                   value="{{ values.English}}" {{ checkedIfSelected(data["gcse-checkbox"], values.English) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="english">
                                 English
                             </label>

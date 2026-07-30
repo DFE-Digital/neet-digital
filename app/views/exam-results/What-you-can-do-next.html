@@ -5,10 +5,12 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
 href: "\check-your-answers"
-}) }}
+})
+}}
 {% endblock %}
 
 {% block content %}
@@ -24,22 +26,20 @@ href: "\check-your-answers"
 {% set routes = [] %}
 {% endif %}
 
+{# ---------- FLAGS ---------- #}
 
-{% set notsureWhatdoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
+{% set notsureWhatdoSelected = routes.indexOf(values.Im_not_sure_what_to_do_after_college_or_sixth_form) > -1 %}
 {% set notsureWhatdoCollegeSelected = routes.indexOf("I’m not sure what to do after college") > -1 %}
-{% set switchCourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
-{% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
-{% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
+{% set switchCourseSelected = routes.indexOf(values.I_want_to_switch_to_a_different_course) > -1 %}
+{% set stuckCourseSelected = routes.indexOf(values.Im_stuck_on_a_course_I_do_not_like) > -1 %}
+{% set strugglingPassCourseSelected = routes.indexOf(values.Im_struggling_to_pass_my_course) > -1 %}
 
-{% set sixthFormCollegeSelected = data.educationStatus == "Sixth form college" %}
-{% set valueSixthFormSecSchoolSelected = data.educationStatus == "Sixth form (attached to a secondary school)" %}
+{% set sixthFormCollegeSelected = (data.educationStatus == values.At6FormCollege) %}
+{% set sixthFormSecSchoolSelected = (data.educationStatus == values.At6FormSchool) %}
 
+{% set mathsSelected = routes.indexOf(values.Maths) > -1 %}
+{% set englishSelected = routes.indexOf(values.English) > -1 %}
 
-
-
-
-{% set mathsSelected = routes.indexOf("Maths") > -1 %}
-{% set englishSelected = routes.indexOf("English") > -1 %}
 {% set hearbackapplicationsSelected = routes.indexOf("I do not hear back from applications") > -1 %}
 {% set nothearSelected = routes.indexOf("I never get feedback so do not know what to improve") > -1 %}
 {% set firstjobSelected = routes.indexOf("I’m trying to get my first job") > -1 %}
@@ -48,13 +48,33 @@ href: "\check-your-answers"
 {% set createcvSelected = routes.indexOf("Create a CV or make my CV better") > -1 %}
 {% set workexperienceSelected = routes.indexOf("I need to get some work experience") > -1 %}
 
+{% if DEBUG %}
+
+<br />
+=== DEBUGGING ====================
+
+<br />notsureWhatdoSelected        : {{ notsureWhatdoSelected          }}
+<br />notsureWhatdoCollegeSelected : {{ notsureWhatdoCollegeSelected   }}
+<br />switchCourseSelected         : {{ switchCourseSelected           }}
+<br />stuckCourseSelected          : {{ stuckCourseSelected            }}
+<br />strugglingPassCourseSelected : {{ strugglingPassCourseSelected   }}
+
+<br />mathsSelected                : {{ mathsSelected                  }}
+<br />englishSelected              : {{ englishSelected                }}
+
+<br />sixthFormCollegeSelected     : {{ sixthFormCollegeSelected       }}
+<br />SixthFormSecSchoolSelected   : {{ SixthFormSecSchoolSelected     }}
+
+<br />
+=================================
+<br />
+{% endif %}
 
 {# ---------- BUILD CARDS ---------- #}
 {% set cards = [] %}
 
 
 <!-- Done so far working start -->
-
 {% if notsureWhatdoSelected and (
 data.educationStatus == "College"
 ) %}
@@ -218,9 +238,6 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 
 <!-- Done so far working end -->
-
-
-
 <!-- Others-->
 
 
@@ -240,92 +257,95 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 <div class="govuk-width-container">
 
-  <!-- HERO -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
- 
-      <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6">
-   
-          <div class="govuk-grid-column-full govuk-!-padding-0 govuk-!-margin-bottom-6">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">What you can do next</h1>
-            <p class="govuk-body-l">
-              Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
-              get suggestions of what to say.
-            </p>
-          </div>
-          <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-            <img class="image-hero-landingpage" src="/public/images/image-guide-landing-page.png" alt="What you can do next page has a female and male student working on a computer" style="max-width:100%;">
-          </div>
+    <!-- HERO -->
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-full">
+
+            <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6">
+
+                <div class="govuk-grid-column-full govuk-!-padding-0 govuk-!-margin-bottom-6">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <h1 class="govuk-heading-xl">What you can do next</h1>
+                            <p class="govuk-body-l">
+                                Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
+                                get suggestions of what to say.
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+                            <img class="image-hero-landingpage" src="/public/images/image-guide-landing-page.png" alt="What you can do next page has a female and male student working on a computer" style="max-width:100%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-m">
+                        How to use these guides
+                    </h2>
+                    <p>
+                        If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
+                        refer to it.
+                    </p>
+                    <p>You can screenshot each guide.</p>
+                </div>
+            </div>
+
+            <!-- CARDS -->
+            <div class="dfe-grid-container">
+                {% for card in cards %}
+                <div class="dfe-card">
+                    <img src="{{ card.img }}" alt="">
+                    <div class="dfe-card-container">
+                        <h3 class="govuk-heading-m">
+                            <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
+                                {{ card.title }}
+                            </a>
+                        </h3>
+
+                        <p class="govuk-body">
+                            {{ card.text or "More information about this option." }}
+                        </p>
+
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+
+
+            <!-- MENTAL HEALTH SUPPORT START -->
+            <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
+
+                <div class="govuk-inset-text govuk-!-margin-left-0">
+                    <h2 class="govuk-heading-m">
+                        Talk to someone about your mental health</h3>
+                        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+                        <p class="govuk-body">There are people who can help you.</p>
+                        <p class="govuk-body">
+                            <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from Mind</a>
+                        </p>
+                </div>
+
+                <!--<p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+                  <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of the whole guide</a>
+                </p>-->
+
+            </div>
+            <!-- MENTAL HEALTH SUPPORT END -->
         </div>
-        </div>
-        </div>
-  
-
-
-
-      <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">
-            How to use these guides
-          </h2>
-          <p>If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
-            refer to it.</p>
-          <p>You can screenshot each guide.</p>
-        </div>
-      </div>
-
-      <!-- CARDS -->
-      <div class="dfe-grid-container">
-        {% for card in cards %}
-        <div class="dfe-card">
-          <img src="{{ card.img }}" alt="">
-          <div class="dfe-card-container">
-            <h3 class="govuk-heading-m">
-              <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
-                {{ card.title }}
-              </a>
-            </h3>
-
-            <p class="govuk-body">
-              {{ card.text or "More information about this option." }}
-            </p>
-
-
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-
-
-
-
-   
-      <!-- MENTAL HEALTH SUPPORT START -->
-      <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
-
-        <div class="govuk-inset-text govuk-!-margin-left-0">
-          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
-            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-            <p class="govuk-body">There are people who can help you.</p>
-            <p class="govuk-body">
-              <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from Mind</a>
-            </p>
-        </div>
-
-        <!--<p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
-          <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of the whole guide</a>
-        </p>-->
-
-      </div>
-      <!-- MENTAL HEALTH SUPPORT END -->
     </div>
-  </div>
 </div>
 
 
-<!-- FEEDBACK GREY START 
+<!-- FEEDBACK GREY START
 <div class="feedback-wrapper">
 
   <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
@@ -416,8 +436,6 @@ text: "Find out who to speak to and what your options are if you’re worried ab
   </div>
 
 </div> -->
-
-
 </div>
 </div>
 </div>
@@ -442,71 +460,67 @@ function submitFeedback() {
 
 </script>
 {% endblock %} -->
-
-
-
 <!-- DFE FEEDBACK COMPONENT START -->
 <section class="dfe-feedback">
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <div class="dfe-feedback-banner">
-          <div class="dfe-feedback-banner--content">
-            <div class="dfe-feedback-banner--flex">
-              <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
-              <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
-                data-govuk-button-init="">
-                Give feedback
-              </button>
-            </div>
+        <div class="govuk-grid-column-full">
+            <div class="dfe-feedback-banner">
+                <div class="dfe-feedback-banner--content">
+                    <div class="dfe-feedback-banner--flex">
+                        <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
+                        <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
+                                data-govuk-button-init="">
+                            Give feedback
+                        </button>
+                    </div>
 
-            <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
-              Thank you for your feedback
-            </div>
+                    <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
+                        Thank you for your feedback
+                    </div>
 
-            <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
-              <form id="feedback-form">
-                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
-                  data-govuk-character-count-init="">
-                  <div class="govuk-form-group govuk-!-margin-top-5">
-                    <h3 class="govuk-label-wrapper">
-                      <label class="govuk-label govuk-label--m" for="feedback_form_input">
-                        What do you want to tell us?
-                      </label>
-                    </h3>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
-                      name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
-                    <div id="feedback_form_input-info"
-                      class="govuk-hint govuk-character-count__message govuk-visually-hidden">
-                      You can enter up to 400 characters
+                    <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
+                        <form id="feedback-form">
+                            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
+                                 data-govuk-character-count-init="">
+                                <div class="govuk-form-group govuk-!-margin-top-5">
+                                    <h3 class="govuk-label-wrapper">
+                                        <label class="govuk-label govuk-label--m" for="feedback_form_input">
+                                            What do you want to tell us?
+                                        </label>
+                                    </h3>
+                                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
+                                              name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
+                                    <div id="feedback_form_input-info"
+                                         class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+                                        You can enter up to 400 characters
+                                    </div>
+                                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
+                                         aria-hidden="true">
+                                        You have 400 characters remaining
+                                    </div>
+                                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
+                                        You have 400 characters remaining
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="govuk-button-group">
+                                <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
+                                    Submit
+                                </button>
+                                <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
+                                        id="cancelButton" data-govuk-button-init="">
+                                    Cancel
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
-                      aria-hidden="true">
-                      You have 400 characters remaining
-                    </div>
-                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
-                      You have 400 characters remaining
-                    </div>
-                  </div>
                 </div>
-
-                <div class="govuk-button-group">
-                  <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
-                    Submit
-                  </button>
-                  <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
-                    id="cancelButton" data-govuk-button-init="">
-                    Cancel
-                  </button>
-                </div>
-              </form>
             </div>
-          </div>
         </div>
-      </div>
     </div>
 </section>
 <!-- DFE FEEDBACK COMPONENT END -->
-
 {% endblock %}
 
 
@@ -524,4 +538,4 @@ function submitFeedback() {
 
 
 
- 
+

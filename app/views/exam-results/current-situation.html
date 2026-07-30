@@ -20,17 +20,6 @@ How are you finding your current situation – {{ serviceName }} – GOV.UK Prot
 
 {% block content %}
 
-{% set valueAnxious          = "Anxious" %}
-{% set valueConfused         = "Confused" %}
-{% set valueDepressed        = "Depressed" %}
-{% set valueExcited          = "Excited" %}
-{% set valueExhausted        = "Exhausted" %}
-{% set valueHopeful          = "Hopeful, but unsure" %}
-{% set valueLosingMotivation = "Losing motivation" %}
-{% set valueOkay             = "Okay" %}
-{% set valueStressed         = "Stressed" %}
-{% set valueNotWantToSay     = "I do not want to say how I’m feeling today" %}
-
 {% macro checkedIfSelected(values, option) %}
   {% if values and values.includes(option) %}checked{% endif %}
 {% endmacro %}
@@ -82,47 +71,47 @@ How are you finding your current situation – {{ serviceName }} – GOV.UK Prot
 
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling" name="feeling" type="checkbox"
-                                   value="{{valueAnxious}}" {{ checkedIfSelected(data["feeling"], valueAnxious) }}>
+                                   value="{{values.Anxious_or_stressed}}" {{ checkedIfSelected(data["feeling"], values.Anxious_or_stressed) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling">Anxious or stressed</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-2" name="feeling" type="checkbox"
-                                   value="{{valueConfused}}" {{ checkedIfSelected(data["feeling"], valueConfused) }}>
+                                   value="{{values.Confused_or_stuck}}" {{ checkedIfSelected(data["feeling"], values.Confused_or_stuck) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-2">Confused or stuck</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-3" name="feeling" type="checkbox"
-                                   value="{{valueDepressed}}" {{ checkedIfSelected(data["feeling"], valueDepressed) }}>
+                                   value="{{values.Exhausted}}" {{ checkedIfSelected(data["feeling"], values.Exhausted) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-3">Exhausted</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-4" name="feeling" type="checkbox"
-                                   value="{{valueExcited}}" {{ checkedIfSelected(data["feeling"], valueExcited) }}>
+                                   value="{{values.Sad}}" {{ checkedIfSelected(data["feeling"], values.Sad) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-4">Sad</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-5" name="feeling" type="checkbox"
-                                   value="{{valueExhausted}}" {{ checkedIfSelected(data["feeling"], valueExhausted) }}>
+                                   value="{{values.Losing_motivation}}" {{ checkedIfSelected(data["feeling"], values.Losing_motivation) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-5">Losing motivation</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-6" name="feeling" type="checkbox"
-                                   value="{{valueHopeful}}" {{ checkedIfSelected(data["feeling"], valueHopeful) }}>
+                                   value="{{values.Not_confident}}" {{ checkedIfSelected(data["feeling"], values.Not_confident) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-6">Not confident</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-7" name="feeling" type="checkbox"
-                                   value="{{valueLosingMotivation}}" {{ checkedIfSelected(data["feeling"], valueLosingMotivation) }}>
+                                   value="{{values.Okay}}" {{ checkedIfSelected(data["feeling"], values.Okay) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-7">Okay</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-8" name="feeling" type="checkbox"
-                                   value="{{valueOkay            }}" {{ checkedIfSelected(data["feeling"], valueOkay) }}>
+                                   value="{{values.Hopeful}}" {{ checkedIfSelected(data["feeling"], values.Hopeful) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-8">Hopeful</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-9" name="feeling" type="checkbox"
-                                   value="{{valueStressed}}" {{ checkedIfSelected(data["feeling"], valueStressed) }}>
+                                   value="{{values.Excited}}" {{ checkedIfSelected(data["feeling"], values.Excited) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-9">Excited</label>
                         </div>
 
@@ -130,7 +119,7 @@ How are you finding your current situation – {{ serviceName }} – GOV.UK Prot
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-10" name="feeling" type="checkbox"
                                    data-behaviour="exclusive"
-                                   value="{{valueNotWantToSay}}" {{ checkedIfSelected(data["feeling"], valueNotWantToSay) }}>
+                                   value="{{values.I_do_not_want_to_say_how_Im_feeling_today}}" {{ checkedIfSelected(data["feeling"], values.I_do_not_want_to_say_how_Im_feeling_today) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-10">
                                 I do not want to say how I’m feeling today
                             </label>

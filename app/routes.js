@@ -4,12 +4,25 @@ const router = govukPrototypeKit.requests.setupRouter();
 const version = 'exam-results';
 const base = `/${version}`;
 
+const codes = require('./codes.js');
+
+const values = Object.fromEntries(
+    Object.entries(codes).map(([key, value]) => [key, value.value])
+);
+
+const strings = Object.fromEntries(
+    Object.entries(codes).map(([key, value]) => [value.value, value.text])
+);
+
 router.use((req, res, next) => {
     res.locals.req = req;
     res.locals.baseUrl = base;
-    delete(res.locals.backlinkUrl);
+    res.locals.values = values;
+    res.locals.strings = strings;
+    res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
 
     const referer = req.get('Referer') || "";
+    delete (res.locals.backlinkUrl);
     if (referer && referer.endsWith('/check-your-answers')) {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
@@ -157,7 +170,7 @@ router.post(`${base}/current-situation`, navigationValidation(steps.current_situ
 
     if (!(req.session?.data?.feeling) || req.session.data.feeling.length == 0) {
         errors['page'] = {
-            "text": "Select at least one option that reflects how you’re doing, or select 'I do not want to say how I’m feeling today",
+            "text": "Select at least one option that reflects how you’re doing, or select '{{ strings.I_do_not_want_to_say_how_Im_feeling_today }}",
             "href": "#feeling"
         };
     }
