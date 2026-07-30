@@ -45,7 +45,7 @@ href: "\where-are-you-at-with-education"
                     <p class="govuk-body">{{ data.feeling }}</p>
                     {% elif data.feeling %}
                     {% for item in data.feeling %}
-                    <p class="govuk-body">{{ item }}</p>
+                    <p class="govuk-body">{{ strings[item] }}</p>
                     {% endfor %}
                     {% else %}
                     Not provided
@@ -68,17 +68,22 @@ href: "\where-are-you-at-with-education"
                 <dt class="govuk-summary-list__key">What do you need help with?</dt>
                 <dd class="govuk-summary-list__value">
 
-
                     {% for item in data.route %}
-                    <p>{{ item }}</p>
+                    {% if strings[item] %}
+                    <p>{{ strings[item] }}</p>
+                    {% endif %}
                     {% endfor %}
 
                     {% for item in data["course-checkbox"] %}
-                    <p>{{ item }}</p>
+                    {% if strings[item] %}
+                    <p>{{ strings[item] }}</p>
+                    {% endif %}
                     {% endfor %}
 
                     {% for item in data["gcse-checkbox"] %}
-                    <p>{{ item }}</p>
+                    {% if strings[item] %}
+                    <p>{{ strings[item] }}</p>
+                    {% endif %}
                     {% endfor %}
 
                 </dd>
@@ -94,7 +99,7 @@ href: "\where-are-you-at-with-education"
             <div class="govuk-summary-list__row">
                 <dt class="govuk-summary-list__key">Where you're at with education</dt>
                 <dd class="govuk-summary-list__value">
-                    {{ data.educationStatus }}
+                    {{ strings[data.educationStatus] }}
                 </dd>
                 <dd class="govuk-summary-list__actions">
                     <a class="govuk-link" href="/exam-results/where-are-you-at-with-education">
