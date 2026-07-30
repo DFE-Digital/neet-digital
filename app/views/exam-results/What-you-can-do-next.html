@@ -34,8 +34,10 @@ href: "\check-your-answers"
 {% set stuckCourseSelected = routes.indexOf(values.Im_stuck_on_a_course_I_do_not_like) > -1 %}
 {% set strugglingPassCourseSelected = routes.indexOf(values.Im_struggling_to_pass_my_course) > -1 %}
 
-{% set sixthFormCollegeSelected = (data.educationStatus == values.At6FormCollege) %}
-{% set sixthFormSecSchoolSelected = (data.educationStatus == values.At6FormSchool) %}
+
+{% set collegeSelected            = (data.educationStatus == values.College) %}
+{% set sixthFormCollegeSelected   = (data.educationStatus == values.Sixth_form_college) %}
+{% set sixthFormSecSchoolSelected = (data.educationStatus == values.Sixth_form_attached_to_a_secondary_school) %}
 
 {% set mathsSelected = routes.indexOf(values.Maths) > -1 %}
 {% set englishSelected = routes.indexOf(values.English) > -1 %}
@@ -62,8 +64,9 @@ href: "\check-your-answers"
 <br />mathsSelected                : {{ mathsSelected                  }}
 <br />englishSelected              : {{ englishSelected                }}
 
+<br />collegeSelected              : {{ collegeSelected                }}
 <br />sixthFormCollegeSelected     : {{ sixthFormCollegeSelected       }}
-<br />SixthFormSecSchoolSelected   : {{ SixthFormSecSchoolSelected     }}
+<br />sixthFormSecSchoolSelected   : {{ sixthFormSecSchoolSelected     }}
 
 <br />
 =================================
@@ -75,9 +78,7 @@ href: "\check-your-answers"
 
 
 <!-- Done so far working start -->
-{% if notsureWhatdoSelected and (
-data.educationStatus == "College"
-) %}
+{% if notsureWhatdoSelected and collegeSelected %}
 {% set cards = cards.concat([{
 title: "I’m not sure what to do when I leave college",
 href: "./guides/college-not-sure-what-to-do.html",
@@ -87,9 +88,7 @@ text: "Learn who to talk to if you’re feeling unsure about your future and wha
 {% endif %}
 
 
-{% if notsureWhatdoSelected and (
-data.educationStatus == "Sixth form college"
-) %}
+{% if notsureWhatdoSelected and sixthFormCollegeSelected %}
 {% set cards = cards.concat([{
 title: "I’m not sure what to do when I leave sixth form",
 href: "./guides/sixth-form-not-sure-what-to-do.html",
@@ -99,9 +98,7 @@ text: "Learn who to talk to if you’re feeling unsure about your future and wha
 {% endif %}
 
 
-{% if notsureWhatdoSelected and (
-data.educationStatus == "Sixth form (attached to a secondary school)"
-) %}
+{% if notsureWhatdoSelected and SixthFormSecSchoolSelected %}
 {% set cards = cards.concat([{
 title: "I’m not sure what to do when I leave sixth form",
 href: "./guides/sixth-form-not-sure-what-to-do.html",
@@ -112,9 +109,7 @@ text: "Learn who to talk to if you’re feeling unsure about your future and wha
 
 
 
-{% if switchCourseSelected and (
-data.educationStatus == "College"
-) %}
+{% if switchCourseSelected and collegeSelected %}
 {% set cards = cards.concat([{
 title: "I want to switch to a different course at college",
 href: "./guides/college-switch-different-course.html",
@@ -125,9 +120,7 @@ text: "Find out who to speak to about changing course and what you can do if it�
 
 
 
-{% if switchCourseSelected and (
-data.educationStatus == "Sixth form college"
-) %}
+{% if switchCourseSelected and sixthFormCollegeSelected %}
 {% set cards = cards.concat([{
 title: "I want to switch subjects at sixth form",
 href: "./guides/sixth-form-switch-different-subject.html",
@@ -138,9 +131,7 @@ text: "Find out who to speak to about changing subjects and what you can do if i
 
 
 
-{% if switchCourseSelected and (
-data.educationStatus == "Sixth form (attached to a secondary school)"
-) %}
+{% if switchCourseSelected and sixthFormSecSchoolSelected %}
 {% set cards = cards.concat([{
 title: "I want to switch subjects at sixth form",
 href: "./guides/sixth-form-switch-different-subject.html",
@@ -163,9 +154,7 @@ text: "Find out how your course can help you in the future, even if it is not wh
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and (
-data.educationStatus == "College"
-) %}
+{% if strugglingPassCourseSelected and collegeSelected %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass my college course",
 href: "./guides/college-struggling-pass-college-course.html",
@@ -177,9 +166,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and (
-data.educationStatus == "Sixth form college"
-) %}
+{% if strugglingPassCourseSelected and sixthFormCollegeSelected %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass a subject in sixth form",
 href: "./guides/sixth-form-struggling-pass-subject.html",
@@ -190,9 +177,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and (
-data.educationStatus == "Sixth form (attached to a secondary school)"
-) %}
+{% if strugglingPassCourseSelected and sixthFormSecSchoolSelected %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass a subject in sixth form",
 href: "./guides/sixth-form-struggling-pass-subject.html",
