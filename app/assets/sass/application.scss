@@ -221,6 +221,18 @@
 // FEEDBACK CONTAINER START
 
 
+form#feedback-form {
+    max-width: 990px;
+    min-height: 130px;
+    margin: 0 auto;
+}
+
+
+
+
+
+
+
 button.govuk-button.govuk-button--secondary.feedback-btn {
   background-color: #ffffff;
 }
@@ -478,6 +490,15 @@ img.logos-thumb {
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 15px;
+}
+
+div#thanksMessage {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
 .dfe-feedback-banner--flex .govuk-heading-s {
