@@ -186,30 +186,30 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {# Combined guide #}
 {% if mathsSelected and englishSelected %}
   {% set cards = cards.concat([{
-    title: "I need help with both GCSE Maths and English resits",
-    href: "./guides/GCSE-maths-and-english-resit.html",
-    img: "/public/images/not-done-yet.png",
-    text: "Get support and advice to help you prepare for both your GCSE Maths and English resits."
+    title: "I want to pass my GCSE maths and English resit",
+    href: "./guides/GCSE-maths-and-English.html",
+    img: "/public/images/GCSE-Maths-English-resit.png",
+    text: "See who can help you with your resits, what you can ask and learn about other options."
   }]) %}
 {% endif %}
 
 {# Maths only #}
 {% if mathsSelected and not englishSelected %}
   {% set cards = cards.concat([{
-    title: "I need to pass my GCSE maths resit",
+    title: "I want to pass my GCSE maths resit",
     href: "./guides/GCSE-maths-resit.html",
-    img: "/public/images/not-done-yet.png",
-    text: "Find support and advice to help you prepare for your GCSE maths resit."
+    img: "/public/images/GCSE-maths-resit.png",
+    text: "See who can help you with your resit, what you can ask and learn about other options."
   }]) %}
 {% endif %}
 
 {# English only #}
 {% if englishSelected and not mathsSelected %}
   {% set cards = cards.concat([{
-    title: "I need to pass my GCSE English resit",
+    title: "I want to pass my GCSE English resit",
     href: "./guides/GCSE-english-resit.html",
-    img: "/public/images/not-done-yet.png",
-    text: "Find support and advice to help you prepare for your GCSE English resit."
+    img: "/public/images/GCSE-English-resit.png",
+    text: "See who can help you with your resit, what you can ask and learn about other options."
   }]) %}
 {% endif %}
 
