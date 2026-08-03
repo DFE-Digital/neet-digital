@@ -170,7 +170,7 @@ router.post(`${base}/current-situation`, navigationValidation(steps.current_situ
 
     if (!(req.session?.data?.feeling) || req.session.data.feeling.length == 0) {
         errors['page'] = {
-            "text": "Select at least one option that reflects how you’re doing, or select '{{ strings.I_do_not_want_to_say_how_Im_feeling_today }}",
+            "text": "Select at least one option that reflects how you’re doing, or select 'I do not want to say how I’m feeling today'",
             "href": "#feeling"
         };
     }
@@ -198,7 +198,7 @@ router.get(`${base}/what-help`, navigationValidation(steps.what_help), (req, res
 
 router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, res) => { 
 
-    const errors = {};
+    const errors = Object.create(null);
     errors.HasErrors = false;
 
     let d = req.session.data;
