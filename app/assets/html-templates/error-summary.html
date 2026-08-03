@@ -9,9 +9,11 @@
         <div class="govuk-error-summary__body">
             <ul class="govuk-list govuk-error-summary__list">
                 {% for key, error in errors %}
-                <li>
-                    <a href="{{error.href}}">{{error.text}}</a>
-                </li>
+                     {% if error.href and error.text %}
+                    <li>
+                        <a href="{{error.href}}">{{error.text}}</a>
+                    </li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>
