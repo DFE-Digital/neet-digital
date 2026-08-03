@@ -60,10 +60,6 @@ href: "javascript:window.history.back()"
                   Understand what you’re struggling with
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-1">
-                <p class="govuk-body govuk-!-margin-bottom-0">We need a summary here</p>
-                <p class="govuk-body">We need a summary here</p>
-              </div>
             </div>
             <div id="accordion-default-content-1" class="govuk-accordion__section-content">
               <p class="govuk-body">Have a think about what part of the resits are stressing you out. You might find it
@@ -92,10 +88,6 @@ href: "javascript:window.history.back()"
                   Who to speak to and when
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-2">
-                <p class="govuk-body govuk-!-margin-bottom-0">We need a summary here</p>
-                <p class="govuk-body">We need a summary here</p>
-              </div>
             </div>
             <div id="accordion-default-content-2" class="govuk-accordion__section-content">
               <p class="govuk-body govuk-!-margin-bottom-0"><strong>Your GCSE maths or English teachers</strong></p>
@@ -133,10 +125,6 @@ href: "javascript:window.history.back()"
                   Alternative to GCSE English or maths
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-3">
-                <p class="govuk-body govuk-!-margin-bottom-0">We need a summary here</p>
-                <p class="govuk-body">We need a summary here</p>
-              </div>
             </div>
             <div id="accordion-default-content-3" class="govuk-accordion__section-content">
               <p class="govuk-body">It can be quite daunting to think about what to do next where there are so many
@@ -165,10 +153,6 @@ href: "javascript:window.history.back()"
                   Understand your options after college or sixth form
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-4">
-                <p class="govuk-body govuk-!-margin-bottom-0">We need a summary here</p>
-                <p class="govuk-body">We need a summary here</p>
-              </div>
             </div>
             <div id="accordion-default-content-4" class="govuk-accordion__section-content">
               <p class="govuk-body">Your subject teacher or student support services can help you understand what your
@@ -196,10 +180,6 @@ href: "javascript:window.history.back()"
                   What you can ask
                 </span>
               </h2>
-              <div class="govuk-accordion__section-summary govuk-body" id="accordion-with-summary-sections-summary-5">
-                <p class="govuk-body govuk-!-margin-bottom-0">We need a summary here</p>
-                <p class="govuk-body">We need a summary here</p>
-              </div>
             </div>
             <div id="accordion-default-content-5" class="govuk-accordion__section-content">
               <p class="govuk-body">Here are a few prompts of what to say to get help with your resits:</p>
@@ -243,65 +223,4 @@ href: "javascript:window.history.back()"
 </div>
 
 
-<!-- DFE FEEDBACK COMPONENT START -->
-<section class="dfe-feedback">
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
-      <div class="dfe-feedback-banner">
-        <div class="dfe-feedback-banner--content">
-          <div class="dfe-feedback-banner--flex">
-            <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
-            <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
-              data-govuk-button-init="">
-              Give feedback
-            </button>
-          </div>
-
-          <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
-            Thank you for your feedback
-          </div>
-
-          <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
-            <form id="feedback-form">
-              <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
-                data-govuk-character-count-init="">
-                <div class="govuk-form-group govuk-!-margin-top-5">
-                  <h3 class="govuk-label-wrapper">
-                    <label class="govuk-label govuk-label--m" for="feedback_form_input">
-                      What do you want to tell us?
-                    </label>
-                  </h3>
-                  <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
-                    name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
-                  <div id="feedback_form_input-info"
-                    class="govuk-hint govuk-character-count__message govuk-visually-hidden">
-                    You can enter up to 400 characters
-                  </div>
-                  <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
-                    aria-hidden="true">
-                    You have 400 characters remaining
-                  </div>
-                  <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
-                    You have 400 characters remaining
-                  </div>
-                </div>
-              </div>
-
-              <div class="govuk-button-group">
-                <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
-                  Submit
-                </button>
-                <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
-                  id="cancelButton" data-govuk-button-init="">
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- DFE FEEDBACK COMPONENT END -->
 {% endblock %}
