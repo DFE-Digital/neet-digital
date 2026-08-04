@@ -6,15 +6,6 @@ Accessibility statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% set backlinkUrl = backlinkUrl | default('/') %}
 
-{% block pageBefore %}
-{{
-govukBackLink({
-text: "Back",
-href: backlinkUrl
-})
-}}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-width-container">
