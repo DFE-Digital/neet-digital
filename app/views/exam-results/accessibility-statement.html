@@ -6,15 +6,6 @@ Accessibility statement – {{ serviceName }} – GOV.UK Prototype Kit
 
 {% set backlinkUrl = backlinkUrl | default('/') %}
 
-{% block pageBefore %}
-{{
-govukBackLink({
-text: "Back",
-href: backlinkUrl
-})
-}}
-{% endblock %}
-
 {% block content %}
 
 <div class="govuk-width-container">
@@ -27,7 +18,7 @@ href: backlinkUrl
             </h1>
 
             <p class="govuk-body">
-                This accessibility statement applies to the <a href="#" class="govuk-link">Find out who can help you as a young person prototype</a>.
+                This accessibility statement applies to the <a href="https://www.pp.skillsforcareers.education.gov.uk/pages/get-help-if-you-re-finding-college-or-sixth-form-hard" class="govuk-link">Find out who can help you as a young person prototype</a>.
             </p>
 
             <div class="govuk-grid-row call-to-action">
