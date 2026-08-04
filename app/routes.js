@@ -255,7 +255,8 @@ router.post(`${base}/where-are-you-at-with-education`, navigationValidation(step
     }
 
     updateStepReached(req, steps.where_are_you_at_with_education);
-    return res.redirect(`${base}/check-your-answers`);
+    const redirectTo = resolvePostRedirect(req, `${base}/check-your-answers`);
+    return res.redirect(redirectTo);
 });
 
 // ----------------------------------------------------------------------------------------------------------------

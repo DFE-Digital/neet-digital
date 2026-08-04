@@ -5,16 +5,19 @@ Where are you at with education – {{ serviceName }}
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
-text: "Back",
-href: "\what-help"
+{{
+ govukBackLink({
+ text: "Back",
+ href: "" ~backlinkUrl
 })
 }}
+
 {% endblock %}
 
 {% block content %}
 
 {% macro checkedIfSelected(values, option) %}
+
 {% if values and values.includes(option) %}checked{% endif %}
 {% endmacro %}
 
@@ -45,21 +48,21 @@ href: "\what-help"
                     <div class="govuk-radios" data-module="govuk-radios">
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-1" name="educationStatus"
-                                type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"], values.College) }}>
+                                   type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"], values.College) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-1">
                                 College
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-2" name="educationStatus"
-                                type="radio" value="{{ values.Sixth_form_college }}" {{ checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
+                                   type="radio" value="{{ values.Sixth_form_college }}" {{ checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-2">
                                 Sixth form college
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-3" name="educationStatus"
-                                type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{ checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school) }}>
+                                   type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{ checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-3">
                                 Sixth form (attached to a secondary school)
                             </label>
@@ -77,9 +80,12 @@ href: "\what-help"
                     <div class="govuk-details__text">
                         <p class="govuk-body govuk-!-margin-bottom-5">
                             We want to be able to tell you which member of staff you can speak to. Sometimes this is
-                            different in college or sixth form. </p>
-                        <p class="govuk-body govuk-!-margin-bottom-0">This information does not get collected or
-                            reported to anyone</p>
+                            different in college or sixth form.
+                        </p>
+                        <p class="govuk-body govuk-!-margin-bottom-0">
+                            This information does not get collected or
+                            reported to anyone
+                        </p>
                     </div>
                 </details>
             </div>
