@@ -5,7 +5,7 @@ Where are you at with education – {{ serviceName }}
 {% endblock %}
 
 {% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
-{% set backlinkUrl = backlinkUrl | default('\current-situation') %}
+{% set backlinkUrl = backlinkUrl | default('\what-help') %}
 
 {% block pageBefore %}
 {{
