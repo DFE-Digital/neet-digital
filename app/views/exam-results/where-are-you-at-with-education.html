@@ -4,6 +4,9 @@
 Where are you at with education – {{ serviceName }}
 {% endblock %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\current-situation') %}
+
 {% block pageBefore %}
 {{
  govukBackLink({
