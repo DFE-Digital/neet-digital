@@ -67,6 +67,22 @@
 {# Override only the GOV.UK Footer component for GOV.UK Frontend >=6.0.0 #}
 {% block govukFooter %}
 
+<div class="govuk-width-container">
+<div class="govuk-!-margin-left-0 govuk-!-margin-bottom-9">
+<h3 class="govuk-heading-s">
+We're testing this website.
+</h3>
+<h3 class="govuk-heading-s">
+Help improve it by
+<a href="https://dferesearch.fra1.qualtrics.com/jfe/form/SV_e8ui8jFzOcUXsgK"
+class="govuk-link"
+target="_blank"
+rel="noopener noreferrer"> completing a short feedback form
+</a>.
+</h3>
+</div>
+</div>
+
 {{ govukFooter({
   meta: {
     items: [
