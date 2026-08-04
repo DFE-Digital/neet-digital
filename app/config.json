@@ -1,5 +1,5 @@
 {
-  "serviceName": "Find out who can help you as a young person",
+  "serviceName": "Get help if you're finding college or sixth form hard",
   "useServiceNavigation": true,
   "plugins": {
     "govuk-frontend": {
