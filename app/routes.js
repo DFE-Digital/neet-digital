@@ -1,5 +1,6 @@
 const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
+const config = require('./config.json');
 
 const version = 'exam-results';
 const base = `/${version}`;
@@ -14,12 +15,15 @@ const strings = Object.fromEntries(
     Object.entries(codes).map(([key, value]) => [value.value, value.text])
 );
 
+googleAnalyticsApiSecret = process.env.GOOGLE_ANALYTICS_API_SECRET;
+
 router.use((req, res, next) => {
     res.locals.req = req;
     res.locals.baseUrl = base;
     res.locals.values = values;
     res.locals.strings = strings;
     res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
+    res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
 
     const referer = req.get('Referer') || "";
     delete (res.locals.backlinkUrl);
@@ -84,6 +88,12 @@ function canProceedToStep(req, step) {
 
 router.get(`${base}/accept-cookies`, function (req, res) {
     req.session.data.analyticsConsent = 'yes';
+
+    if (!req.session.data.externalReferrer) {
+        req.session.data.externalReferrer =
+            req.get('Referer') || 'direct';
+    }
+
     res.redirect('back');
 });
 
@@ -100,6 +110,79 @@ router.get(`${base}/cookies`, function (req, res) {
 router.post(`${base}/cookies`, function (req, res) {
     req.session.data.analyticsConsent = req.body.analyticsConsent;
     res.redirect(req.session.data.CookieParentUrl || `${base}/landing-page`);
+});
+
+router.post(`${base}/store-client-id`, function (req, res) {
+
+    req.session.data.gaClientId = req.body.clientId;
+   // console.log('Stored Client ID:', req.body.clientId);
+    res.sendStatus(200);
+});
+
+router.post(`${base}/send-referrer-event`, async function (req, res) {
+
+    if (req.session.data.externalReferrer && googleAnalyticsApiSecret) {
+
+        const measurementId = googleAnalyticsId;
+
+        const payload = {
+            client_id: req.session.data.gaClientId,
+            events: [{
+                name: 'password_access_granted',
+                params: {
+                    external_referrer:
+                        req.session.data.externalReferrer,
+                    // debug_mode: 1,
+                    session_id: Date.now().toString(),
+                    engagement_time_msec: 100
+                }
+            }]
+        };
+
+        // console.log('Payload:');
+        // console.log(JSON.stringify(payload, null, 2));
+
+        try {
+
+            const response = await fetch(
+                `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${googleAnalyticsApiSecret}`,
+                {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                }
+            );
+
+            // console.log('Response status:', response.status);
+            // console.log('Response ok:', response.o);
+            const result = await response.text();
+            // console.log(JSON.stringify(result, null, 2));
+
+            delete (req.session.data.externalReferrer);
+            res.sendStatus(200);
+        } catch (error) {
+
+            // console.error('GA4 Event Error');
+            // console.error('Name:', error.name);
+            // console.error('Message:', error.message);
+            // console.error('Cause:', error.cause);
+
+            // if (error.cause) {
+            //     console.error('Cause Code:', error.cause.code);
+            //     console.error('Cause Errno:', error.cause.errno);
+            //     console.error('Cause Syscall:', error.cause.syscall);
+            //     console.error('Cause Host:', error.cause.hostname);
+            // }
+
+            res.sendStatus(500);
+        }
+    }
+    else {
+        res.sendStatus(500);
+    }
+
 });
 
 // ----------------------------------------------------------------------------------------------------------------
