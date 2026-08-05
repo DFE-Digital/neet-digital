@@ -1,7 +1,7 @@
 const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
 const config = require('./config.json');
-
+const cookiePreferences = require('./cookieFunctions.js');
 const version = 'exam-results';
 const base = `/${version}`;
 
@@ -17,6 +17,9 @@ const strings = Object.fromEntries(
 
 googleAnalyticsApiSecret = process.env.GOOGLE_ANALYTICS_API_SECRET;
 
+var cookieParser = require('cookie-parser');
+router.use(cookieParser());
+
 router.use((req, res, next) => {
     res.locals.req = req;
     res.locals.baseUrl = base;
@@ -26,11 +29,17 @@ router.use((req, res, next) => {
     res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
 
     const referer = req.get('Referer') || "";
+
     delete (res.locals.backlinkUrl);
     if (referer && referer.endsWith('/check-your-answers')) {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
-    
+
+    if (!req.cookies['cookies_policy']) {
+        cookiePreferences.defaultCookieTypes(req, res);
+    }
+
+    req.session.data.analyticsConsent = (req.cookies['cookies_policy'] && req.cookies['cookies_policy'].includes('"usage":true')) ? 'yes' : 'no';
     req.session.cookie.maxAge = 2592000000; // 30 days
     next();
 });
@@ -88,6 +97,7 @@ function canProceedToStep(req, step) {
 
 router.get(`${base}/accept-cookies`, function (req, res) {
     req.session.data.analyticsConsent = 'yes';
+    cookiePreferences.approveAllCookieTypes(req, res);
 
     if (!req.session.data.externalReferrer) {
         req.session.data.externalReferrer =
@@ -99,6 +109,8 @@ router.get(`${base}/accept-cookies`, function (req, res) {
 
 router.get(`${base}/reject-cookies`, function (req, res) {
     req.session.data.analyticsConsent = 'no';
+    cookiePreferences.rejectAllCookieTypes(req, res);
+
     res.redirect('back');
 });
 
@@ -108,7 +120,18 @@ router.get(`${base}/cookies`, function (req, res) {
 });
 
 router.post(`${base}/cookies`, function (req, res) {
-    req.session.data.analyticsConsent = req.body.analyticsConsent;
+    consent = req.body.analyticsConsent;
+
+    if (consent == 'yes') {
+        cookiePreferences.approveAllCookieTypes(req, res);
+    }
+
+    if (consent == 'no') {
+        cookiePreferences.rejectAllCookieTypes(req, res);
+    }
+
+    req.session.data.analyticsConsent = consent;
+
     res.redirect(req.session.data.CookieParentUrl || `${base}/landing-page`);
 });
 
