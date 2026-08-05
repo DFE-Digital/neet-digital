@@ -123,7 +123,7 @@ router.post(`${base}/send-referrer-event`, async function (req, res) {
 
     if (req.session.data.externalReferrer && googleAnalyticsApiSecret) {
 
-        const measurementId = googleAnalyticsId;
+        const measurementId = res.locals.googleAnalyticsId;
 
         const payload = {
             client_id: req.session.data.gaClientId,
