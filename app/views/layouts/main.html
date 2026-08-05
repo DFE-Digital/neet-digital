@@ -79,13 +79,39 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 </script>
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QCWWDZFQXG"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsId }}"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
 
-    gtag('config', 'G-QCWWDZFQXG');
+    gtag('config', '{{ googleAnalyticsId }}');
+
+    gtag('get', '{{ googleAnalyticsId }}', 'client_id', function (clientId) {
+
+        fetch('/exam-results/store-client-id', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                clientId: clientId
+            })
+        })
+            .then(() => {
+                return fetch(
+                    '/exam-results/send-referrer-event',
+                    {
+                        method: 'POST'
+                    }
+                );
+            });
+    });
+
 </script>
    {% endif %}
 
@@ -96,12 +122,14 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 
 {% block beforeContent %}
-{{ govukPhaseBanner({
+{{
+ govukPhaseBanner({
 tag: {
 text: "Alpha"
 },
 html: 'This is a new service – your <a href="https://dferesearch.fra1.qualtrics.com/jfe/form/SV_e8ui8jFzOcUXsgK" class="govuk-link" rel="noreferrer noopener" target="_blank">feedback</a> will help us to improve it.'
-}) }}
+})
+}}
 {% block pageBefore %}
 {% endblock %}
 {% endblock %}
