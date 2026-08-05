@@ -9,9 +9,9 @@ Where are you at with education – {{ serviceName }}
 
 {% block pageBefore %}
 {{
- govukBackLink({
- text: "Back",
- href: "" ~backlinkUrl
+govukBackLink({
+text: "Back",
+href: "" ~backlinkUrl
 })
 }}
 
@@ -42,30 +42,42 @@ Where are you at with education – {{ serviceName }}
                         You might have already started or be about to start.
                     </p>
 
+                    <div id="education-status-hint" class="govuk-hint">
+                        Select one option.
+
+                    </div>
+
                     {% if errors.HasErrors %}
                     <p id="education-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
                     </p>
                     {% endif %}
 
+
+
                     <div class="govuk-radios" data-module="govuk-radios">
+
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-1" name="educationStatus"
-                                   type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"], values.College) }}>
+                                type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"],
+                                values.College) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-1">
                                 College
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-2" name="educationStatus"
-                                   type="radio" value="{{ values.Sixth_form_college }}" {{ checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
+                                type="radio" value="{{ values.Sixth_form_college }}" {{
+                                checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-2">
                                 Sixth form college
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-3" name="educationStatus"
-                                   type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{ checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school) }}>
+                                type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{
+                                checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school)
+                                }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-3">
                                 Sixth form (attached to a secondary school)
                             </label>
