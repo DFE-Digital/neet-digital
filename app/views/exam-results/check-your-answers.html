@@ -68,6 +68,7 @@ href: "\where-are-you-at-with-education"
                 <dt class="govuk-summary-list__key">What you need help with</dt>
                 <dd class="govuk-summary-list__value">
 
+
                     {% for item in data.route %}
                     {% if strings[item] %}
                     <p>{{ strings[item] }}</p>
@@ -80,11 +81,14 @@ href: "\where-are-you-at-with-education"
                     {% endif %}
                     {% endfor %}
 
-                    {% for item in data["gcse-checkbox"] %}
-                    {% if strings[item] %}
-                    <p>{{ strings[item] }}</p>
+                    {% if data["gcse-checkbox"] and data["gcse-checkbox"].length == 2 %}
+                        {% set item = "MathsOrEnglish" %}
+                        <p>{{ strings[item]}}</p>
+                    {% else %}
+                        {% for item in data["gcse-checkbox"] %}
+                        <p>{{ strings[item] }}</p>
+                        {% endfor %}
                     {% endif %}
-                    {% endfor %}
 
                 </dd>
                 <dd class="govuk-summary-list__actions">
