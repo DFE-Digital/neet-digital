@@ -20,13 +20,13 @@ href: "\where-are-you-at-with-education"
         <!--<pre>{{ data.SelectedRouteIds | dump }}</pre>-->
         <h1 class="govuk-heading-xl">Check your answers</h1>
         <p class="govuk-body">
-            We want to make sure we've heard what you've said so we can give you the best information we can to help.
+         We want to make sure we’ve heard what you’ve said so we can give you the best information we can to help.
         </p>
 
         <dl class="govuk-summary-list">
             <!-- Name -->
             <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">Name</dt>
+                <dt class="govuk-summary-list__key">First name</dt>
                 <dd class="govuk-summary-list__value">
                     {{ data.firstName if data.firstName else 'Not provided' }}
                 </dd>
@@ -39,7 +39,7 @@ href: "\where-are-you-at-with-education"
 
             <!-- Feeling -->
             <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">How you're finding your current situation</dt>
+                <dt class="govuk-summary-list__key">How you’re feeling</dt>
                 <dd class="govuk-summary-list__value">
                     {% if data.feeling is string %}
                     <p class="govuk-body">{{ data.feeling }}</p>
@@ -65,7 +65,7 @@ href: "\where-are-you-at-with-education"
 
             <!-- What help -->
             <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">What do you need help with?</dt>
+                <dt class="govuk-summary-list__key">What you need help with</dt>
                 <dd class="govuk-summary-list__value">
 
                     {% for item in data.route %}
@@ -114,7 +114,7 @@ href: "\where-are-you-at-with-education"
 
         <form action="./What-you-can-do-next" method="get">
             <div class="govuk-button-group govuk-!-margin-bottom-7">
-                {{ govukButton({ text: "See relevant advice for your situation" }) }}
+                {{ govukButton({ text: "See advice" }) }}
             </div>
         </form>
 
