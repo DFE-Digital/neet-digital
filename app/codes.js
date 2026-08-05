@@ -18,11 +18,16 @@ const codes = {
 
     Maths: {
         value: "Maths",
-        text: "Maths"
+        text: "I need to pass my GCSE Maths resit"
     },
     English: {
         value: "English",
-        text: "English"
+        text: "I need to pass my GCSE English resit"
+    },
+
+    MathsOrEnglish: {
+        value: "MathsOrEnglish",
+        text: "I need to pass my GCSE Maths or English resit"
     },
 
     Anxious_or_stressed: {
