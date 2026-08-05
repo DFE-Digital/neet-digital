@@ -147,7 +147,7 @@ text: "Find out who to speak to about changing subjects and what you can do if i
 title: "I’m stuck on a course I do not like",
 href: "./guides/stuck-course.html",
 img: "/public/images/stuck-course-not-like.png",
-text: "Find out how your course can help you in the future, even if it is not what you want to do now."
+text: "See how your course can help you in the future, even if it is not what you want to do now."
 }]) %}
 {% endif %}
 
@@ -191,7 +191,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {# Combined guide #}
 {% if mathsSelected and englishSelected %}
   {% set cards = cards.concat([{
-    title: "I want to pass my GCSE maths and English resit",
+    title: "I need to pass my GCSE maths and English resits",
     href: "./guides/GCSE-maths-and-English.html",
     img: "/public/images/GCSE-Maths-English-resit.png",
     text: "See who can help you with your resits, what you can ask and learn about other options."
@@ -201,7 +201,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {# Maths only #}
 {% if mathsSelected and not englishSelected %}
   {% set cards = cards.concat([{
-    title: "I want to pass my GCSE maths resit",
+    title: "I need to pass my GCSE maths resit",
     href: "./guides/GCSE-maths-resit.html",
     img: "/public/images/GCSE-maths-resit.png",
     text: "See who can help you with your resit, what you can ask and learn about other options."
@@ -211,7 +211,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {# English only #}
 {% if englishSelected and not mathsSelected %}
   {% set cards = cards.concat([{
-    title: "I want to pass my GCSE English resit",
+    title: "I need to pass my GCSE English resit",
     href: "./guides/GCSE-english-resit.html",
     img: "/public/images/GCSE-English-resit.png",
     text: "See who can help you with your resit, what you can ask and learn about other options."
@@ -276,7 +276,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
                         If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
                         refer to it.
                     </p>
-                    <p>You can screenshot each guide.</p>
+                    <p>You can screenshot any sections you find useful.</p>
                 </div>
             </div>
 
