@@ -75,7 +75,7 @@ const cookiePreferences = (function () {
                 }
             }
             if (!allowed) {
-                res.clearCookie(cookie)
+                res.clearCookie(cookie, { path: '/' });
             }
         }
     }
