@@ -38,26 +38,21 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             What do you need help with?
                         </h1>
                     </legend>
-
-                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
-                        <p class="govuk-body">
+                    <p class="govuk-body">
                             We know <strong>3 in 10 young people </strong>have avoided going to college to stop feeling
                             anxious.
                         </p>
                         <p class="govuk-body">
                             It's okay to be honest if you're stuck with lots of things or having a hard time. Choose
                             what feels closest for now.
-                        </p>
-                    </div>
-
-
-                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
-                        <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                         I’m unsure about my current course or what to do when I finish
-                        </legend>
+                        </p> 
                         <div id="routes-hint" class="govuk-hint">
                             Select all that apply
                         </div>
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                         I’m unsure about my current course or what to do when I finish
+                        </legend>
+                        
 
                         {% if errors.HasErrors %}
                         <p id="feeling-error" class="govuk-error-message">
@@ -99,9 +94,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                             </div>
 
                         </div>
-                    </div>
-
-
+                  
                 </fieldset>
 
 
