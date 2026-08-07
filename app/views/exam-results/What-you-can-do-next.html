@@ -78,7 +78,7 @@ href: "\check-your-answers"
 
 
 <!-- Done so far working start -->
-{% if notsureWhatdoSelected and collegeSelected %}
+{% if notsureWhatdoSelected and (collegeSelected or sixthFormCollegeSelected) %}
 {% set cards = cards.concat([{
 title: "I’m not sure what to do when I leave college",
 href: "./guides/college-not-sure-what-to-do.html",
@@ -88,17 +88,7 @@ text: "Learn who to talk to if you’re feeling unsure about your future and wha
 {% endif %}
 
 
-{% if notsureWhatdoSelected and sixthFormCollegeSelected %}
-{% set cards = cards.concat([{
-title: "I’m not sure what to do when I leave sixth form",
-href: "./guides/sixth-form-not-sure-what-to-do.html",
-img: "/public/images/what-do-leave-sixth-form.png",
-text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
-}]) %}
-{% endif %}
-
-
-{% if notsureWhatdoSelected and SixthFormSecSchoolSelected %}
+{% if notsureWhatdoSelected and sixthFormSecSchoolSelected %}
 {% set cards = cards.concat([{
 title: "I’m not sure what to do when I leave sixth form",
 href: "./guides/sixth-form-not-sure-what-to-do.html",
@@ -109,23 +99,12 @@ text: "Learn who to talk to if you’re feeling unsure about your future and wha
 
 
 
-{% if switchCourseSelected and collegeSelected %}
+{% if switchCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
 {% set cards = cards.concat([{
 title: "I want to switch to a different course at college",
 href: "./guides/college-switch-different-course.html",
 img: "/public/images/switch-different-course.png",
 text: "Find out who to speak to about changing course and what you can do if it’s too late to switch."
-}]) %}
-{% endif %}
-
-
-
-{% if switchCourseSelected and sixthFormCollegeSelected %}
-{% set cards = cards.concat([{
-title: "I want to switch subjects at sixth form",
-href: "./guides/sixth-form-switch-different-subject.html",
-img: "/public/images/switch-subject-sixth-form.png",
-text: "Find out who to speak to about changing subjects and what you can do if it’s too late to switch."
 }]) %}
 {% endif %}
 
@@ -154,23 +133,11 @@ text: "See how your course can help you in the future, even if it is not what yo
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and collegeSelected %}
+{% if strugglingPassCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass my college course",
 href: "./guides/college-struggling-pass-college-course.html",
 img: "/public/images/struggling-pass-college-course.png",
-text: "Find out who to speak to and what your options are if you’re worried about passing."
-}]) %}
-{% endif %}
-
-
-
-{# Struggling to pass #}
-{% if strugglingPassCourseSelected and sixthFormCollegeSelected %}
-{% set cards = cards.concat([{
-title: "I’m struggling to pass a subject in sixth form",
-href: "./guides/sixth-form-struggling-pass-subject.html",
-img: "/public/images/struggling-pass-sixth-form.png",
 text: "Find out who to speak to and what your options are if you’re worried about passing."
 }]) %}
 {% endif %}
