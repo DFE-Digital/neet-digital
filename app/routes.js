@@ -281,7 +281,7 @@ router.post(`${base}/current-situation`, navigationValidation(steps.current_situ
 
     if (!(req.session?.data?.feeling) || req.session.data.feeling.length == 0) {
         errors['page'] = {
-            "text": "Select at least one option that reflects how you’re doing, or select 'I do not want to say how I’m feeling today'",
+            "text": "Select at least one option for how you’re feeling, or select you do not want to say",
             "href": "#feeling"
         };
     }
@@ -328,7 +328,7 @@ router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, re
     }
 
     errors['page'] = {
-        "text": "Select at least one option that reflects what you are finding difficult",
+        "text": "Select at least one option for what you need help with",
          "href": "#route-1"
     };
     errors.HasErrors = true;
@@ -353,7 +353,7 @@ router.post(`${base}/where-are-you-at-with-education`, navigationValidation(step
     
     if (!(req.session?.data?.educationStatus) || req.session.data.educationStatus.length == 0) {
         errors['page'] = {
-            "text": "Select at least one option that reflects where are you at with education",
+            "text": "Select where you are at with education",
             "href": "#education-status-1"
         };
     }
