@@ -150,8 +150,8 @@ router.post(`${base}/store-client-id`, function (req, res) {
 router.post(`${base}/send-referrer-event`, async function (req, res) {
 
     if (req.session.data.externalReferrer && googleAnalyticsApiSecret) {
-
-        const measurementId = googleAnalyticsId;
+        
+        const measurementId = config.GoogleAnalytics.measurementId;
 
         const payload = {
             client_id: req.session.data.gaClientId,
