@@ -98,6 +98,10 @@
   outline: 3px solid #ffdd00;
 }
 
+.dfe-card:focus-within a:focus {
+  color: #0b0c0c;
+}
+
 .dfe-card-container .dfe-card-link--retake:focus,
 .dfe-card-container .dfe-card-link--header:focus {
   color: #0b0c0c;
@@ -3185,6 +3189,10 @@ p,
 
 .dfe-card:focus-within {
   outline: 3px solid #ffdd00;
+}
+
+.dfe-card:focus-within a:focus {
+  color: #0b0c0c;
 }
 
 .dfe-card-container {
