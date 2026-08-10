@@ -35,11 +35,19 @@ router.use((req, res, next) => {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
 
-    if (!req.cookies['cookies_policy']) {
-        cookiePreferences.defaultCookieTypes(req, res);
+   
+    if (req.cookies['cookies_policy']) {
+        if (req.cookies['cookies_policy'].includes('"usage":true')) {
+            req.session.data.analyticsConsent = 'yes'
+        }
+        else if (req.cookies['cookies_policy'].includes('"usage":false')) {
+            req.session.data.analyticsConsent = 'no'
+        }
+        else {
+            delete (req.session.data.analyticsConsent);
+        }
     }
 
-    req.session.data.analyticsConsent = (req.cookies['cookies_policy'] && req.cookies['cookies_policy'].includes('"usage":true')) ? 'yes' : 'no';
     req.session.cookie.maxAge = 2592000000; // 30 days
     next();
 });
