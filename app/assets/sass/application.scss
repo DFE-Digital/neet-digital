@@ -2,7 +2,7 @@
 // For guidance on how to add CSS and SCSS see:
 // https://prototype-kit.service.gov.uk/docs/adding-css-javascript-and-images
 //
-
+@charset "UTF-8";
 @import '../../../node_modules/dfe-frontend/packages/dfefrontend.scss';
 
 
@@ -517,7 +517,7 @@ div#thanksMessage {
 
 
 
-@charset "UTF-8";
+
 
 /* stylelint-disable color-no-hex */
 /* stylelint-enable color-no-hex */
@@ -2398,11 +2398,7 @@ p,
   }
 }
 
-.dfe-search__input {
-  -webkit-appearance: listbox;
-  /* [5] */
-  padding: 0 16px;
-}
+
 
 .dfe-search__input:focus {
   border: 4px solid #0b0c0c;
