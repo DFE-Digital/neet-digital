@@ -35,7 +35,6 @@ router.use((req, res, next) => {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
 
-   
     if (req.cookies['cookies_preferences_set'] && req.cookies['cookies_policy']) {
         if (req.cookies['cookies_policy'].includes('"usage":true')) {
             req.session.data.analyticsConsent = 'yes'

@@ -11,7 +11,7 @@ Where are you at with education – {{ serviceName }}
 {{
 govukBackLink({
 text: "Back",
-href: "" ~backlinkUrl
+href: "\what-help"
 })
 }}
 
@@ -59,25 +59,21 @@ href: "" ~backlinkUrl
 
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-1" name="educationStatus"
-                                type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"],
-                                values.College) }}>
+                                   type="radio" value="{{ values.College }}" {{checkedIfSelected(data["educationStatus"], values.College) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-1">
                                 College
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-2" name="educationStatus"
-                                type="radio" value="{{ values.Sixth_form_college }}" {{
-                                checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
+                                   type="radio" value="{{ values.Sixth_form_college }}" {{ checkedIfSelected(data["educationStatus"], values.Sixth_form_college) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-2">
                                 Sixth form college
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-3" name="educationStatus"
-                                type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{
-                                checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school)
-                                }}>
+                                   type="radio" value="{{ values.Sixth_form_attached_to_a_secondary_school }}" {{ checkedIfSelected(data["educationStatus"],values.Sixth_form_attached_to_a_secondary_school) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-3">
                                 Sixth form (attached to a secondary school)
                             </label>
