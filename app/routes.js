@@ -261,6 +261,21 @@ function resolvePostRedirect(req, defaultRedirect) {
 };
 
 // ----------------------------------------------------------------------------------------------------------------
+// Landing page
+// ----------------------------------------------------------------------------------------------------------------
+
+router.post(`${base}/landing-page`, (req, res) => {
+    resetJourneyData(req);  
+    return res.redirect(`${base}/whats-your-first-name`);
+});
+
+resetJourneyData = function (req) {
+    const externalReferrer = req.session.data.externalReferrer;
+    req.session.data = {};
+    req.session.data.externalReferrer = externalReferrer;
+}
+
+// ----------------------------------------------------------------------------------------------------------------
 // Whats your first name
 // ----------------------------------------------------------------------------------------------------------------
 
