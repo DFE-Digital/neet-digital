@@ -36,16 +36,16 @@ router.use((req, res, next) => {
     };
 
    
-    if (req.cookies['cookies_policy']) {
+    if (req.cookies['cookies_preferences_set'] && req.cookies['cookies_policy']) {
         if (req.cookies['cookies_policy'].includes('"usage":true')) {
             req.session.data.analyticsConsent = 'yes'
         }
         else if (req.cookies['cookies_policy'].includes('"usage":false')) {
             req.session.data.analyticsConsent = 'no'
         }
-        else {
-            delete (req.session.data.analyticsConsent);
-        }
+    }
+    else {
+        delete (req.session.data.analyticsConsent);
     }
 
     req.session.cookie.maxAge = 2592000000; // 30 days
