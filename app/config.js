@@ -10,6 +10,7 @@ const config = {
     "MicrosoftClarity": {
         "ProjectId": process.env.MICROSOFT_CLARITY_PROJECT_ID || ""
     },
+    "RouteVersion": process.env.ROUTE_VERSION || ""
 };
 
 module.exports = config;
