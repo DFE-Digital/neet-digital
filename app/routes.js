@@ -47,7 +47,6 @@ router.use((req, res, next) => {
         delete (req.session.data.analyticsConsent);
     }
 
-    req.session.cookie.maxAge = 2592000000; // 30 days
     next();
 });
 
