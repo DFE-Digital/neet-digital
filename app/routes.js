@@ -270,8 +270,12 @@ router.post(`${base}/landing-page`, (req, res) => {
 
 resetJourneyData = function (req) {
     const externalReferrer = req.session.data.externalReferrer;
+    const analyticsConsent = req.session.data.analyticsConsent;
+
     req.session.data = {};
+
     req.session.data.externalReferrer = externalReferrer;
+    req.session.data.analyticsConsent = analyticsConsent;
 }
 
 // ----------------------------------------------------------------------------------------------------------------
