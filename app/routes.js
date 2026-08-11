@@ -35,17 +35,16 @@ router.use((req, res, next) => {
         res.locals.backlinkUrl = `${base}/check-your-answers`;
     };
 
-   
-    if (req.cookies['cookies_policy']) {
+    if (req.cookies['cookies_preferences_set'] && req.cookies['cookies_policy']) {
         if (req.cookies['cookies_policy'].includes('"usage":true')) {
             req.session.data.analyticsConsent = 'yes'
         }
         else if (req.cookies['cookies_policy'].includes('"usage":false')) {
             req.session.data.analyticsConsent = 'no'
         }
-        else {
-            delete (req.session.data.analyticsConsent);
-        }
+    }
+    else {
+        delete (req.session.data.analyticsConsent);
     }
 
     req.session.cookie.maxAge = 2592000000; // 30 days
@@ -259,6 +258,21 @@ function resolvePostRedirect(req, defaultRedirect) {
     // Otherwise treat as a slug and normalize underscores to hyphens
     return `${base}/${redirectParam.replace(/_/g, '-')}`;
 };
+
+// ----------------------------------------------------------------------------------------------------------------
+// Landing page
+// ----------------------------------------------------------------------------------------------------------------
+
+router.post(`${base}/landing-page`, (req, res) => {
+    resetJourneyData(req);  
+    return res.redirect(`${base}/whats-your-first-name`);
+});
+
+resetJourneyData = function (req) {
+    const externalReferrer = req.session.data.externalReferrer;
+    req.session.data = {};
+    req.session.data.externalReferrer = externalReferrer;
+}
 
 // ----------------------------------------------------------------------------------------------------------------
 // Whats your first name

@@ -48,8 +48,8 @@ const cookiePreferences = (function () {
 
     rejectAllCookieTypes = function (req, res) {
         defaultCookieTypes(req, res);
+        deleteUnconsentedCookies(req, res, 'essential');
         res.cookie('cookies_preferences_set', true, { maxAge: cookieExpiry, httpOnly: true });
-        deleteUnconsentedCookies(req, res);
     };
 
     approveAllCookieTypes = function (req, res) {
@@ -70,7 +70,7 @@ const cookiePreferences = (function () {
             var types = COOKIE_CATEGORIES[cookie];
             var allowed = false;
             for (var i = 0; i < types.length; i++) {
-                if (consentState && consentState[types[i]]) {
+                if (consentState && types[i] == consentState) {
                     allowed = true;
                 }
             }

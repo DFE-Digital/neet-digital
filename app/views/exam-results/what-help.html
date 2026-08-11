@@ -12,7 +12,7 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 {{
  govukBackLink({
  text: "Back",
- href: "" ~backlinkUrl
+ href: "\current-situation"
 })
 }}
 
@@ -39,62 +39,62 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
                         </h1>
                     </legend>
                     <p class="govuk-body">
-                            We know <strong>3 in 10 young people </strong>have avoided going to college to stop feeling
-                            anxious.
-                        </p>
-                        <p class="govuk-body">
-                            It's okay to be honest if you're stuck with lots of things or having a hard time. Choose
-                            what feels closest for now.
-                        </p> 
-                        <div id="routes-hint" class="govuk-hint">
-                            Select all that apply
-                        </div>
+                        We know <strong>3 in 10 young people </strong>have avoided going to college to stop feeling
+                        anxious.
+                    </p>
+                    <p class="govuk-body">
+                        It's okay to be honest if you're stuck with lots of things or having a hard time. Choose
+                        what feels closest for now.
+                    </p>
+                    <div id="routes-hint" class="govuk-hint">
+                        Select all that apply
+                    </div>
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                         I’m unsure about my current course or what to do when I finish
-                        </legend>
-                        
+                        I’m unsure about my current course or what to do when I finish
+                    </legend>
 
-                        {% if errors.HasErrors %}
-                        <p id="feeling-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
-                        </p>
-                        {% endif %}
 
-                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
-                                       value="{{ values.Im_not_sure_what_to_do_after_college_or_sixth_form}}" {{ checkedIfSelected(data["route"], values.Im_not_sure_what_to_do_after_college_or_sixth_form )}}>
-                                <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
-                                       for="route-1">
-                                    I’m not sure what to do after college or sixth form
-                                </label>
-                            </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="switch-different-course"
-                                       name="course-checkbox" type="checkbox" value="{{ values.I_want_to_switch_to_a_different_course}}" {{ checkedIfSelected(data["course-checkbox"], values.I_want_to_switch_to_a_different_course) }}>
-                                <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
-                              I want to switch to a different course or subject
-                                </label>
-                                <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
-                            </div>
-                            <div class="govuk-checkboxes__item">
-                                <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
-                                       value="{{ values.Im_stuck_on_a_course_I_do_not_like}}" {{ checkedIfSelected(data["route"], values.Im_stuck_on_a_course_I_do_not_like)}}>
-                                <label class="govuk-label govuk-checkboxes__label" for="route-3">
-                                    I’m stuck on a course I do not like
-                                </label>
-                            </div>
-                            <div class="govuk-checkboxes__item ">
-                                <input class="govuk-checkboxes__input" id="struggling-pass-course"
-                                       name="course-checkbox" type="checkbox" value="{{ values.Im_struggling_to_pass_my_course}}" {{ checkedIfSelected(data["course-checkbox"], values.Im_struggling_to_pass_my_course ) }}>
-                                <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
-                                    I’m struggling to pass my course
-                                </label>
-                                <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
-                            </div>
+                    {% if errors.HasErrors %}
+                    <p id="feeling-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
 
+                    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
+                                   value="{{ values.Im_not_sure_what_to_do_after_college_or_sixth_form}}" {{ checkedIfSelected(data["route"], values.Im_not_sure_what_to_do_after_college_or_sixth_form )}}>
+                            <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0"
+                                   for="route-1">
+                                I’m not sure what to do after college or sixth form
+                            </label>
                         </div>
-                  
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="switch-different-course"
+                                   name="course-checkbox" type="checkbox" value="{{ values.I_want_to_switch_to_a_different_course}}" {{ checkedIfSelected(data["course-checkbox"], values.I_want_to_switch_to_a_different_course) }}>
+                            <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
+                                I want to switch to a different course or subject
+                            </label>
+                            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
+                        </div>
+                        <div class="govuk-checkboxes__item">
+                            <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
+                                   value="{{ values.Im_stuck_on_a_course_I_do_not_like}}" {{ checkedIfSelected(data["route"], values.Im_stuck_on_a_course_I_do_not_like)}}>
+                            <label class="govuk-label govuk-checkboxes__label" for="route-3">
+                                I’m stuck on a course I do not like
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__item ">
+                            <input class="govuk-checkboxes__input" id="struggling-pass-course"
+                                   name="course-checkbox" type="checkbox" value="{{ values.Im_struggling_to_pass_my_course}}" {{ checkedIfSelected(data["course-checkbox"], values.Im_struggling_to_pass_my_course ) }}>
+                            <label class="govuk-label govuk-checkboxes__label" for="struggling-pass-course">
+                                I’m struggling to pass my course
+                            </label>
+                            <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
+                        </div>
+
+                    </div>
+
                 </fieldset>
 
 
