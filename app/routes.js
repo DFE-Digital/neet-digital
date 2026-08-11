@@ -3,8 +3,9 @@ const router = govukPrototypeKit.requests.setupRouter();
 const config = require('./config.js');
 const cookiePreferences = require('./cookieFunctions.js');
 
-googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
-googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
+const googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
+const googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
+const microsoftClarityId = config.MicrosoftClarity.ProjectId;
 
 const codes = require('./codes.js');
 
@@ -28,8 +29,8 @@ router.use((req, res, next) => {
     res.locals.values = values;
     res.locals.strings = strings;
     res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
-    res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
-    res.locals.microsoftClarityId = config.MicrosoftClarity.ProjectId;
+    res.locals.googleAnalyticsId = googleAnalyticsMeasurementId;
+    res.locals.microsoftClarityId = microsoftClarityId;
 
     const referer = req.get('Referer') || "";
 
