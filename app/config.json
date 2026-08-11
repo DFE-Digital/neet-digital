@@ -1,9 +1,6 @@
 {
   "serviceName": "Get help if you're finding college or sixth form hard",
   "useServiceNavigation": true,
-  "GoogleAnalytics": {
-    "measurementId": "G-QCWWDZFQXG"
-  },
   "plugins": {
     "govuk-frontend": {
       "rebrand": true

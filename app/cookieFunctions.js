@@ -1,6 +1,6 @@
 const cookiePreferences = (function () {
     const cookieExpiry = 2592000000; // 30 days
-    const config = require('./config.json');
+    const config = require('./config.js');
 
     /*
     | ----------- | ------------------------------ |
@@ -24,8 +24,10 @@ const cookiePreferences = (function () {
         '_ga': ['usage'],
         '_gid': ['usage'],
         '_gat': ['usage'],
-        ["_ga_" + config.GoogleAnalytics.measurementId.substr(2)]: ['usage'],
-        ["_gat_" + config.GoogleAnalytics.measurementId.substr(2)]: ['usage'],
+        ...(config.GoogleAnalytics.MeasurementId && {
+        ["_ga_" + config.GoogleAnalytics.MeasurementId.substr(2)]: ['usage'],
+            ["_gat_" + config.GoogleAnalytics.MeasurementId.substr(2)]: ['usage'],
+        }),
         '_clck': ['usage'],
         '_clsk': ['usage'],
         'CLID': ['usage'],
