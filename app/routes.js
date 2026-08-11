@@ -3,8 +3,12 @@ const router = govukPrototypeKit.requests.setupRouter();
 const config = require('./config.js');
 const cookiePreferences = require('./cookieFunctions.js');
 
-googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
-googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
+
+const routeVersion = config.RouteVersion;
+
+const googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
+const googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
+const microsoftClarityId = config.MicrosoftClarity.ProjectId;
 
 const codes = require('./codes.js');
 
@@ -16,8 +20,7 @@ const strings = Object.fromEntries(
     Object.entries(codes).map(([key, value]) => [value.value, value.text])
 );
 
-const version = 'exam-results';
-const base = `/${version}`;
+const base = `/${routeVersion}`;
 
 var cookieParser = require('cookie-parser');
 router.use(cookieParser());
@@ -28,8 +31,8 @@ router.use((req, res, next) => {
     res.locals.values = values;
     res.locals.strings = strings;
     res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
-    res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
-    res.locals.microsoftClarityId = config.MicrosoftClarity.ProjectId;
+    res.locals.googleAnalyticsId = googleAnalyticsMeasurementId;
+    res.locals.microsoftClarityId = microsoftClarityId;
 
     const referer = req.get('Referer') || "";
 
@@ -56,6 +59,17 @@ router.use((req, res, next) => {
 // Home page route
 router.get('/', (req, res) => {
     res.redirect(`${base}/landing-page`);
+});
+
+router.get('/index', (req, res) => {
+    res.redirect(`${base}/landing-page`);
+});
+
+router.get('/layouts/*', (req, res) => {
+    const path = req.path
+    res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+        path
+    })
 });
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -152,7 +166,7 @@ router.post(`${base}/cookies`, function (req, res) {
 router.post(`${base}/store-client-id`, function (req, res) {
 
     req.session.data.gaClientId = req.body.clientId;
-   // console.log('Stored Client ID:', req.body.clientId);
+    // console.log('Stored Client ID:', req.body.clientId);
     res.sendStatus(200);
 });
 
@@ -231,7 +245,7 @@ function navigationValidation(step) {
             next();
             return;
         }
-        
+
         let stepName = getStepNameByValue(req.session.data.stepReached + 1);
         const redirectUrl = stepName ? `${base}/${stepName.replace(/_/g, '-')}` : `${base}/landing-page`;
 
@@ -264,7 +278,7 @@ function resolvePostRedirect(req, defaultRedirect) {
 // ----------------------------------------------------------------------------------------------------------------
 
 router.post(`${base}/landing-page`, (req, res) => {
-    resetJourneyData(req);  
+    resetJourneyData(req);
     return res.redirect(`${base}/whats-your-first-name`);
 });
 
@@ -283,7 +297,7 @@ resetJourneyData = function (req) {
 // ----------------------------------------------------------------------------------------------------------------
 
 router.get(`${base}/whats-your-first-name`, navigationValidation(steps.whats_your_first_name), (req, res) => {
-     return res.render(`${base}/whats-your-first-name`);
+    return res.render(`${base}/whats-your-first-name`);
 });
 
 router.post(`${base}/whats-your-first-name`, navigationValidation(steps.whats_your_first_name), (req, res) => {
@@ -333,21 +347,21 @@ router.get(`${base}/what-help`, navigationValidation(steps.what_help), (req, res
     return res.render(`${base}/what-help`);
 });
 
-router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, res) => { 
+router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, res) => {
 
     const errors = Object.create(null);
     errors.HasErrors = false;
 
     let d = req.session.data;
     const routes = [].concat(d["course-checkbox"]).concat(d["gcse-checkbox"])
-                     .concat(d["jobs-checkbox"]).concat(d["cv-checkbox"])
-                     .concat(d["route"])
-                     .filter(item => typeof item !== 'undefined');
+        .concat(d["jobs-checkbox"]).concat(d["cv-checkbox"])
+        .concat(d["route"])
+        .filter(item => typeof item !== 'undefined');
     req.session.data.SelectedRouteIds = routes;
 
     const anySelected = routes.length > 0;
- 
-    if (anySelected){
+
+    if (anySelected) {
         updateStepReached(req, steps.what_help);
         const redirectTo = resolvePostRedirect(req, `${base}/where-are-you-at-with-education`);
         return res.redirect(redirectTo);
@@ -355,12 +369,12 @@ router.post(`${base}/what-help`, navigationValidation(steps.what_help), (req, re
 
     errors['page'] = {
         "text": "Select at least one option for what you need help with",
-         "href": "#route-1"
+        "href": "#route-1"
     };
     errors.HasErrors = true;
 
-   resetStepReached(req, steps.what_help - 1); 
-   return res.render(`${base}/what-help`, { errors: errors });
+    resetStepReached(req, steps.what_help - 1);
+    return res.render(`${base}/what-help`, { errors: errors });
 });
 
 // ----------------------------------------------------------------------------------------------------------------
@@ -374,9 +388,9 @@ router.get(`${base}/where-are-you-at-with-education`, navigationValidation(steps
 });
 
 router.post(`${base}/where-are-you-at-with-education`, navigationValidation(steps.where_are_you_at_with_education), (req, res) => {
-  
+
     const errors = {};
-    
+
     if (!(req.session?.data?.educationStatus) || req.session.data.educationStatus.length == 0) {
         errors['page'] = {
             "text": "Select where you are at with education",
@@ -387,7 +401,7 @@ router.post(`${base}/where-are-you-at-with-education`, navigationValidation(step
     errors.HasErrors = Object.keys(errors).length > 0;
 
     if (errors.HasErrors) {
-        resetStepReached(req, steps.where_are_you_at_with_education - 1); 
+        resetStepReached(req, steps.where_are_you_at_with_education - 1);
         return res.render(`${base}/where-are-you-at-with-education`, { errors: errors });
     }
 
@@ -505,7 +519,7 @@ router.get(`${base}/what-help`, navigationValidation(steps.what_help), (req, res
 //     req.session.data.SelectedRouteIds = routes;
 
 //     const anySelected = routes.length > 0;
- 
+
 //     if (anySelected){
 //         updateStepReached(req, steps.what_help_dynamic);
 //         return res.redirect('/round4-mvp/where-are-you-at-with-education');
@@ -557,9 +571,9 @@ router.get(`${base}/what-help`, navigationValidation(steps.what_help), (req, res
 // });
 
 // router.post('/round4-mvp/where-are-you-at-with-education', navigationValidation(steps.where_are_you_at_with_education), (req, res) => {
-  
+
 //     const errors = {};
-    
+
 //     if (!(req.session?.data?.educationStatus) || req.session.data.educationStatus.length == 0) {
 //         errors['page'] = {
 //             "text": "Select at least one option that reflects where are you at with education",
@@ -613,25 +627,25 @@ router.post('/exam-results/what-help', navigationValidation(steps.what_help), (r
         return res.render('/exam-results/what-help', { errors: errors });
     }
 
-    const valueDislikeCourse        = "I do not like my course and I’m not sure what to do when I finish" ;
-    const valuePassingResit         = "I need to pass my GCSE maths or English resit" ;
-    const valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships" ; // previous Applying for jobs or get an apprenticeship
-    const valueCVorWork             = "I need help with my CV or getting work experience" ; // previous Help with my CV or get work experience
+    const valueDislikeCourse = "I do not like my course and I’m not sure what to do when I finish";
+    const valuePassingResit = "I need to pass my GCSE maths or English resit";
+    const valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships"; // previous Applying for jobs or get an apprenticeship
+    const valueCVorWork = "I need help with my CV or getting work experience"; // previous Help with my CV or get work experience
 
     if (!req.session.data.route.includes(valueDislikeCourse)) {
-        req.session.data['course-checkbox'] =  [];
+        req.session.data['course-checkbox'] = [];
     }
 
     if (!req.session.data.route.includes(valuePassingResit)) {
-        req.session.data['gcse-checkbox'] =  [];
+        req.session.data['gcse-checkbox'] = [];
     }
 
     if (!req.session.data.route.includes(valueJobsOrApprenticeship)) {
-        req.session.data['jobs-checkbox'] =  [];
+        req.session.data['jobs-checkbox'] = [];
     }
 
     if (!req.session.data.route.includes(valueCVorWork)) {
-        req.session.data['cv-checkbox'] =  [];
+        req.session.data['cv-checkbox'] = [];
     }
 
     updateStepReached(req, steps.what_help);
@@ -669,7 +683,7 @@ router.post('/exam-results/what-help', navigationValidation(steps.what_help), (r
 //     req.session.data.SelectedRouteIds = routes;
 
 //     const anySelected = routes.length > 0;
- 
+
 //     if (anySelected){
 //         updateStepReached(req, steps.what_help_dynamic);
 //         return res.redirect('/exam-results/where-are-you-at-with-education');
@@ -721,9 +735,9 @@ router.get('/exam-results/where-are-you-at-with-education', navigationValidation
 });
 
 router.post('/exam-results/where-are-you-at-with-education', navigationValidation(steps.where_are_you_at_with_education), (req, res) => {
-  
+
     const errors = {};
-    
+
     if (!(req.session?.data?.educationStatus) || req.session.data.educationStatus.length == 0) {
         errors['page'] = {
             "text": "Select at least one option that reflects where are you at with education",
@@ -748,6 +762,3 @@ router.post('/exam-results/where-are-you-at-with-education', navigationValidatio
 /////////////////////////////////------------------- EXAM RESULTS END -------------------/////////////////////////////////
 /////////////////////////////////--------------------------------------------------------/////////////////////////////////
 /////////////////////////////////--------------------------------------------------------/////////////////////////////////
-
-
-
