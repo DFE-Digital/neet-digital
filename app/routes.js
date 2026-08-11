@@ -61,6 +61,17 @@ router.get('/', (req, res) => {
     res.redirect(`${base}/landing-page`);
 });
 
+router.get('/index', (req, res) => {
+    res.redirect(`${base}/landing-page`);
+});
+
+router.get('/layouts/*', (req, res) => {
+    const path = req.path
+    res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+        path
+    })
+});
+
 // ----------------------------------------------------------------------------------------------------------------
 // Step Validation
 // ----------------------------------------------------------------------------------------------------------------
