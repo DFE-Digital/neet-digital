@@ -68,7 +68,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {{ super() }}
 
 <!-- ANALYTICS -->
-    {% if data.analyticsConsent == 'yes' %}
+ {% if data.analyticsConsent == 'yes' %}
+
+  {% if microsoftClarityId %}
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
     (function (c, l, a, r, i, t, y) {
@@ -77,7 +79,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
         y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, "clarity", "script", "{{ microsoftClarityId }}");
 </script>
+ {% endif %}
 
+ {% if googleAnalyticsId %}
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={{ googleAnalyticsId }}"></script>
 <script>
@@ -113,6 +117,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     });
 
 </script>
+   {% endif %}
    {% endif %}
 
 {% endblock %}
