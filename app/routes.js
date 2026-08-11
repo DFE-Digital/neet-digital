@@ -1,10 +1,14 @@
 const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
+
 const config = require('./config.js');
 const cookiePreferences = require('./cookieFunctions.js');
 
-googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
-googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
+
+const routeVersion = config.RouteVersion;
+
+const googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
+const googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
 
 const codes = require('./codes.js');
 
@@ -16,8 +20,7 @@ const strings = Object.fromEntries(
     Object.entries(codes).map(([key, value]) => [value.value, value.text])
 );
 
-const version = 'exam-results';
-const base = `/${version}`;
+const base = `/${routeVersion}`;
 
 var cookieParser = require('cookie-parser');
 router.use(cookieParser());
@@ -28,7 +31,7 @@ router.use((req, res, next) => {
     res.locals.values = values;
     res.locals.strings = strings;
     res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
-    res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
+    res.locals.googleAnalyticsId = config.GoogleAnalytics.MeasurementId;
     res.locals.microsoftClarityId = config.MicrosoftClarity.ProjectId;
 
     const referer = req.get('Referer') || "";
