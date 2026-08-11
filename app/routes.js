@@ -1,9 +1,10 @@
 const govukPrototypeKit = require('govuk-prototype-kit');
 const router = govukPrototypeKit.requests.setupRouter();
-const config = require('./config.json');
+const config = require('./config.js');
 const cookiePreferences = require('./cookieFunctions.js');
-const version = 'exam-results';
-const base = `/${version}`;
+
+googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
+googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
 
 const codes = require('./codes.js');
 
@@ -15,7 +16,8 @@ const strings = Object.fromEntries(
     Object.entries(codes).map(([key, value]) => [value.value, value.text])
 );
 
-googleAnalyticsApiSecret = process.env.GOOGLE_ANALYTICS_API_SECRET;
+const version = 'exam-results';
+const base = `/${version}`;
 
 var cookieParser = require('cookie-parser');
 router.use(cookieParser());
@@ -27,6 +29,7 @@ router.use((req, res, next) => {
     res.locals.strings = strings;
     res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
     res.locals.googleAnalyticsId = config.GoogleAnalytics.measurementId;
+    res.locals.microsoftClarityId = config.MicrosoftClarity.ProjectId;
 
     const referer = req.get('Referer') || "";
 
@@ -157,8 +160,6 @@ router.post(`${base}/send-referrer-event`, async function (req, res) {
 
     if (req.session.data.externalReferrer && googleAnalyticsApiSecret) {
 
-        const measurementId = res.locals.googleAnalyticsId;
-
         const payload = {
             client_id: req.session.data.gaClientId,
             events: [{
@@ -179,7 +180,7 @@ router.post(`${base}/send-referrer-event`, async function (req, res) {
         try {
 
             const response = await fetch(
-                `https://www.google-analytics.com/mp/collect?measurement_id=${measurementId}&api_secret=${googleAnalyticsApiSecret}`,
+                `https://www.google-analytics.com/mp/collect?measurement_id=${googleAnalyticsMeasurementId}&api_secret=${googleAnalyticsApiSecret}`,
                 {
                     method: 'POST',
                     headers: {
