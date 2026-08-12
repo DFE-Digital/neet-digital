@@ -228,10 +228,6 @@ router.post(`${base}/send-referrer-event`, async function (req, res) {
             res.sendStatus(500);
         }
     }
-    else {
-        res.sendStatus(500);
-    }
-
 });
 
 // ----------------------------------------------------------------------------------------------------------------
