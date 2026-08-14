@@ -1,0 +1,414 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+I want to switch to a different college course – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-top-0 govuk-!-margin-bottom-6 govuk-!-padding-6">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                I want to switch to a different course at college</h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                It takes a lot to realise you need to change direction. Whether you’ve been put on a course you did not
+                want to do, or have changed your mind, it’s okay to talk about it.
+              </p>
+              <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/switch-course-landing page.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+      <!-- FULL ACCORDION START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0 ">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
+
+
+          <!-- ACCORDION SECTION - Who to speak to and when - START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Who to speak to and when
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Course teacher</strong></p>
+              <p class="govuk-body">You should speak to your course teacher as soon as possible. They will tell you how
+                to switch course and how the process works in your college. </p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Any teacher or member of staff</strong></p>
+              <p class="govuk-body">If you prefer, it’s okay to speak to any teacher or member of staff you feel
+                comfortable with. For example, you might prefer to speak to your personal tutor first. </p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Student support services</strong></p>
+              <p class="govuk-body">Your college will likely have a pastoral officer as part of their student support
+                services if you’d rather talk to them about how you’re feeling. </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION - Who to speak to and whenE - ND -->
+
+
+          <!-- ACCORDION SECTION - Think about why you want to change course - START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Think about why you want to change course
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">Your teacher will want to understand why you want to change course. They’ll need to
+                know if there are any specific issues you’re facing. </p>
+
+              <p class="govuk-body">Think about if:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>the subject is not what you thought</li>
+                <li>it's a bigger step up in difficulty than you expected </li>
+                <li>you're struggling with essays or exams </li>
+                <li>you're not enjoying the class or teaching </li>
+                <li>something’s happening at home or in your personal life </li>
+              </ul>
+              <p class="govuk-body">This can help you see if there’s anything you could try before making a final
+                decision. There might not be and that’s okay, but it’s worth considering. </p>
+              <p class="govuk-body">For example, you could find out what topics are coming up soon to see if they
+                interest you. You might also be able to get extra study skills support to help with things like essays.
+              </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION - Think about why you want to change course - END -->
+
+
+
+          <!-- ACCORDION SECTION - How switching course works in college  - START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  How switching course works in college
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">If you know you want to switch, your teacher might need you to put your request in
+                writing.</p>
+              <p class="govuk-body">You may be able to switch course up to October half term, depending on the subject
+                and qualification. After this, it might be difficult to catch up on missed work. </p>
+
+              <p class="govuk-body">Your teacher will check if: </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>you can switch or if it’s too late in the year </li>
+                <li>you meet the entry requirements of the course  </li>
+                <li>the course you want to do has space or if you can be added to a waiting list  </li>
+                <li>switching would cause any clashes with your other lessons </li>
+                <li>there's space on a course at a different college </li>
+              </ul>
+
+              <p class="govuk-body">If you’re doing A levels, you might be able to switch to another subject. Or, you
+                might be able to drop a subject if that’s right for you. Your teacher will help see if this will impact
+                your next step after college. </p>
+
+            </div>
+          </div>
+          <!-- ACCORDION SECTION - How switching course works in college  - END -->
+
+
+
+
+          <!-- ACCORDION SECTION - What to do if it’s too late in the year to switch   - START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  What to do if it’s too late in the year to switch
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">It’s okay to be disappointed if it’s too late in the year to switch. Your teacher
+                will explain your options so you can create a plan. </p>
+              <p class="govuk-body">You can ask if you can enrol onto a new course next September. </p>
+              <p class="govuk-body">In the meantime, you might want to speak to your college careers adviser. </p>
+
+              <p class="govuk-body">They can help you:  </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>find work experience or volunteering in the subject you’re interested in </li>
+                <li>see how <a class="govuk-link" href="#">what you're learning on your course might still be useful</a>
+                </li>
+                <li>think about goals and what you need to get there</li>
+
+              </ul>
+
+
+            </div>
+          </div>
+          <!-- ACCORDION SECTION - What to do if it’s too late in the year to switch   - END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+                  What you can ask
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-5" class="govuk-accordion__section-content">
+              <p class="govuk-body">Here are a few prompts of what to say to a teacher about wanting to change course:
+              </p>
+              <p class="govuk-body blue-quote">“Can you explain to me how switching courses works?”
+              </p>
+              <p class="govuk-body blue-quote">“I want to change course. Are you the best person to speak to about that,
+                or is there someone else I should speak to in college?”</p>
+              <p class="govuk-body blue-quote">“Can you help me work out what to do if I want to enrol on a new course
+                next September?” </p>
+              <p class="govuk-body blue-quote">“How do I make an appointment with a careers adviser?”</p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+        </div>
+      </div>
+      <!-- FULL ACCORDION END -->
+
+    <!-- MENTAL HEALTH SUPPORT START -->
+      <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
+
+        <div class="govuk-inset-text govuk-!-margin-left-0">
+          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
+            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+            <p class="govuk-body">There are people who can help you.</p>
+            <p class="govuk-body">
+              <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from
+                Mind</a>
+            </p>
+        </div>
+
+         <!-- <p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+          <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of
+            the whole guide</a>
+        </p> -->
+
+      </div>
+      <!-- MENTAL HEALTH SUPPORT END -->
+
+    </div>
+  </div>
+  
+  
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+</div>
+</div>
+
+<!--
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} -->
+
+
+
+<!-- DFE FEEDBACK COMPONENT START -->
+<section class="dfe-feedback">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
+        <div class="dfe-feedback-banner">
+          <div class="dfe-feedback-banner--content">
+            <div class="dfe-feedback-banner--flex">
+              <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
+              <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
+                data-govuk-button-init="">
+                Give feedback
+              </button>
+            </div>
+
+            <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
+              Thank you for your feedback
+            </div>
+
+            <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
+              <form id="feedback-form">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
+                  data-govuk-character-count-init="">
+                  <div class="govuk-form-group govuk-!-margin-top-5">
+                    <h3 class="govuk-label-wrapper">
+                      <label class="govuk-label govuk-label--m" for="feedback_form_input">
+                        What do you want to tell us?
+                      </label>
+                    </h3>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
+                      name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
+                    <div id="feedback_form_input-info"
+                      class="govuk-hint govuk-character-count__message govuk-visually-hidden">
+                      You can enter up to 400 characters
+                    </div>
+                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
+                      aria-hidden="true">
+                      You have 400 characters remaining
+                    </div>
+                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
+                      You have 400 characters remaining
+                    </div>
+                  </div>
+                </div>
+
+                <div class="govuk-button-group">
+                  <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
+                    Submit
+                  </button>
+                  <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
+                    id="cancelButton" data-govuk-button-init="">
+                    Cancel
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<!-- DFE FEEDBACK COMPONENT END -->
+{% endblock %}

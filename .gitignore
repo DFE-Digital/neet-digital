@@ -15,3 +15,4 @@ usage-data-config.json
 /obj/Debug
 /neet-digital.esproj
 /.vscode/launch.json
+/.vscode/launch.exam-results.json

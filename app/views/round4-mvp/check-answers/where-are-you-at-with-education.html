@@ -1,0 +1,105 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+ Where are you at with education? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "../check-your-answers.html"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set valueNotInEducation = "College" %}
+{% set valueCollege = "Sixth form college" %}
+{% set valueSixthForm = "Sixth form (attached to a secondary school)" %}
+
+{% macro checkedIfSelected(value, option) %}
+    {% if value == option %}
+        checked
+    {% endif %}
+{% endmacro %}
+
+
+
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form action="../check-your-answers.html" method="get">
+            <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset">
+
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Where are you at with education?
+                        </h1>
+                    </legend>
+
+                    <p class="govuk-body govuk-!-margin-bottom-6">
+                        You might have already started or be about to start.
+                    </p>
+
+                    {% if errors.HasErrors %}
+                    <p id="education-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-1" name="educationStatus"
+                                type="radio" value="{{valueNotInEducation}}" {{
+                                checkedIfSelected(data["educationStatus"], valueNotInEducation) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status">
+                                College
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-2" name="educationStatus"
+                                type="radio" value="{{valueCollege}}" {{ checkedIfSelected(data["educationStatus"],
+                                valueCollege) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-2">
+                                Sixth form college
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-3" name="educationStatus"
+                                type="radio" value="{{valueSixthForm}}" {{ checkedIfSelected(data["educationStatus"],
+                                valueSixthForm) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-3">
+                                Sixth form (attached to a secondary school)
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+                <details class="govuk-details">
+                    <summary class="govuk-details__summary">
+                        <span class="govuk-details__summary-text">
+                            Why we’re asking this question
+                        </span>
+                    </summary>
+                    <div class="govuk-details__text">
+                        <p class="govuk-body govuk-!-margin-bottom-5">
+                            We want to be able to tell you which member of staff you can speak to. Sometimes this is
+                            different in college or sixth form. </p>
+                        <p class="govuk-body govuk-!-margin-bottom-0">This information does not get collected or
+                            reported to anyone</p>
+                    </div>
+                </details>
+            </div>
+            <div class="govuk-grid-column-two-thirds">
+                <div class="govuk-button-group govuk-!-margin-bottom-7">
+                    {{ govukButton({ text: "Continue" }) }}
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
