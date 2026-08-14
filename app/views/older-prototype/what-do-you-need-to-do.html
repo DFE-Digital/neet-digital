@@ -1,0 +1,246 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What do you need to do – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}
+{% for item in data.feeling %}
+{% if not loop.first %}
+{% if loop.last %} and {% else %}, {% endif %}
+{% endif %}
+{{ item | lower }}
+{% endfor %}
+{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="./where-are-you-at-with-education.html" method="get">
+
+      <div class="govuk-form-group">
+        <span class="govuk-caption-l">Question 1 of 2</span>
+
+        <fieldset class="govuk-fieldset" aria-describedby="interests-hint">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            <h1 class="govuk-fieldset__heading">
+              What do you need help with that's making you feel that way?
+            </h1>
+          </legend>
+
+          <div id="interests-hint" class="govuk-hint govuk-!-margin-bottom-6">
+            Select all that apply
+          </div>
+
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+            <!-- Unsure about course -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                I'm unsure about my current course or what to do when I finish
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    I'm not sure what to do after college or sixth form
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    I want to switch course
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    I want to understand how my current course can help me
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    I'm struggling to pass my course
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+              </div>
+            </fieldset>
+
+            <!-- GCSE -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                I need to pass my GCSE maths or English resit
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    GCSE maths
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    GCSE English
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+
+            <!-- Apprenticeship -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Get an apprenticeship
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    Stuck applying with no feedback
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    Can't find an apprenticeship where they live
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    Not hearing anything back from applications
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+              </div>
+            </fieldset>
+
+
+
+            <!-- CV -->
+            <fieldset class="govuk-fieldset govuk-!-margin-bottom-4">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Create a CV, apply for jobs or get work experience
+              </legend>
+
+              <div class="govuk-!-margin-bottom-6">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-2" name="SelectedRouteIds" type="checkbox" value="2">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                    Stuck applying with no feedback
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    Trying to get first job
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    How to move from volunteering to paid job
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    Not hearing anything back from applications
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    How can I get work experience
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="route-12" name="SelectedRouteIds" type="checkbox"
+                    value="12">
+                  <label class="govuk-label govuk-checkboxes__label" for="route-12">
+                    Create a CV or make my CV better
+                  </label>
+                  <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>
+                </div>
+
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="govuk-button-group">
+        {{ govukButton({ text: "Continue" }) }}
+        <a class="govuk-link" href="#">Cancel</a>
+      </div>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

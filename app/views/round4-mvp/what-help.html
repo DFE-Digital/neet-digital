@@ -1,0 +1,125 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "\current-situation"
+})
+}}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}
+{% for item in data.feeling %}
+{% if not loop.first %}
+{% if loop.last %} and {% else %}, {% endif %}
+{% endif %}
+{{ item | lower }}
+{% endfor %}
+{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+{% set valueDislikeCourse        = "I do not like my course and I’m not sure what to do when I finish" %}
+{% set valuePassingResit         = "I need to pass my GCSE maths or English resit" %}
+{% set valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships" %}
+{% set valueCVorWork             = "I need help with my CV or getting work experience" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and values.includes(option) %}checked{% endif %}
+{% endmacro %}
+
+{% include "../../assets/html-templates/error-summary.html" %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post">
+            <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset" aria-describedby="routes-hint routes-error">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            What do you need help with?
+                        </h1>
+                    </legend>
+
+                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
+                        <p class="govuk-body">
+                            It's okay if you're not sure or feeling stuck with lots of things. Lots of young people feel that way.
+                        </p>
+                        <p class="govuk-body">
+                            You can choose what feels closest for now.
+                        </p>
+                    </div>
+
+
+                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
+
+                        <div id="routes-hint" class="govuk-hint">
+                            Select all that apply
+                        </div>
+
+                        {% if errors.HasErrors %}
+                        <p id="feeling-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                        </p>
+                        {% endif %}
+                        <!--<p id="what-help-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span> Select at least one option that reflects what you need help with
+                        </p>-->
+
+                        <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="route-1" name="route" type="checkbox"
+                                       value="{{valueDislikeCourse}}" {{ checkedIfSelected(data["route"], valueDislikeCourse )}}>
+                                <label class="govuk-label govuk-checkboxes__label govuk-!-padding-top-0 govuk-!-padding-bottom-0" for="route-1">
+                                    I do not like my course and I’m not sure what to do when I finish
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="route-2" name="route" type="checkbox"
+                                       value="{{valuePassingResit}}" {{ checkedIfSelected(data["route"], valuePassingResit)}}>
+                                <label class="govuk-label govuk-checkboxes__label" for="route-2">
+                                    I need to pass my GCSE maths or English resit
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
+                                       value="{{valueJobsOrApprenticeship}}" {{ checkedIfSelected(data["route"], valueJobsOrApprenticeship)}}>
+                                <label class="govuk-label govuk-checkboxes__label" for="route-3">
+                                     I'm stuck applying for jobs or apprenticeships
+                                </label>
+                            </div>
+                            <div class="govuk-checkboxes__item">
+                                <input class="govuk-checkboxes__input" id="route-4" name="route" type="checkbox"
+                                       value="{{valueCVorWork}}" {{ checkedIfSelected(data["route"], valueCVorWork)}}>
+                                <label class="govuk-label govuk-checkboxes__label" for="route-4">
+                                     I need help with my CV or getting work experience
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </fieldset>
+            </div>
+            <div class="govuk-button-group govuk-!-margin-bottom-7">
+                {{
+ govukButton({
+        text: "Continue"
+        })
+                }}
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
