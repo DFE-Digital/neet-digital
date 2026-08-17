@@ -5,7 +5,6 @@ module.exports = () => {
     const config = require('../../config.js');
     const cookiePreferences = require('../../cookieFunctions.js');
 
-
     const googleAnalyticsMeasurementId = config.GoogleAnalytics.MeasurementId;
     const googleAnalyticsApiSecret = config.GoogleAnalytics.ApiSecret;
     const microsoftClarityId = config.MicrosoftClarity.ProjectId;
@@ -22,7 +21,6 @@ module.exports = () => {
 
     const routeVersion = "exam-results";
     const base = `/${routeVersion}`;
-    const soleVersion = config.RouteVersion && config.RouteVersion == routeVersion;
 
     var cookieParser = require('cookie-parser');
     router.use(cookieParser());
@@ -59,6 +57,8 @@ module.exports = () => {
     });
 
     // Home page route
+    const soleVersion = config.RouteVersion && config.RouteVersion == routeVersion;
+
     if (soleVersion) {
 
         router.get('/', (req, res) => {
@@ -68,14 +68,29 @@ module.exports = () => {
         router.get('/index', (req, res) => {
             res.redirect(`${base}/landing-page`);
         });
-    }
 
-    router.get('/layouts/*', (req, res) => {
-        const path = req.path
-        res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
-            path
-        })
-    });
+
+        router.get('/layouts/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
+
+        router.get('/older-prototype/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
+
+        router.get('/round4-mvp/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
+    }
 
     // ----------------------------------------------------------------------------------------------------------------
     // Step Validation
