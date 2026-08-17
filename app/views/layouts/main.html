@@ -22,7 +22,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% block bodyStart %}
 
-{% if (not (data.analyticsConsent) and not req.originalUrl.endsWith("/cookies")) %}
+{% if (not (data.analyticsConsent) and not (req.originalUrl and req.originalUrl.endsWith("/cookies"))) %}
 
 {% set html %}
 <p class="govuk-body">We use some essential cookies to make this service work.</p>
