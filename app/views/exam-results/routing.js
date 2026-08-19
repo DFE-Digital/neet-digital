@@ -38,6 +38,7 @@ module.exports = () => {
         res.locals.DEBUG = (process.env.npm_lifecycle_event == "dev")
         res.locals.googleAnalyticsId = googleAnalyticsMeasurementId;
         res.locals.microsoftClarityId = microsoftClarityId;
+        res.locals.routeVersion = routeVersion;  
 
         const referer = req.get('Referer') || "";
 

@@ -12,6 +12,7 @@ module.exports = () => {
             next();
             return;
         }
+        res.locals.routeVersion = routeVersion;  
 
         delete (res.locals.backlinkUrl);
         const referer = req.get('Referer') || "";
