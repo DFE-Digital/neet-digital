@@ -1,8 +1,8 @@
 <input name="courseOptionsIncluded" type="hidden" value="true">
 
 {% set valueAfterCollegeSixForm  = "I’m not sure what to do after college or sixth form" %}
-{% set valueSwitchCourse         = "I want to switch to a different course" %}
-{% set valueCourseToGoal         = "I want to know how my course can help me get to my goal" %}
+{% set valueSwitchCourse         = "I want to switch to a different course or subject" %}
+{% set valueCourseToGoal         = "I’m stuck on a course I do not like" %}
 {% set valueStrugglingPassCourse = "I’m struggling to pass my course" %}
 
 {% macro checkedIfSelected(values, option) %}
@@ -29,17 +29,13 @@
             <label class="govuk-label govuk-checkboxes__label" for="not-sure-what-do-after-college-sixth-form">
                 I’m not sure what to do after college or sixth form
             </label>
-            <div class="govuk-hint govuk-checkboxes__hint">
-                For example, your plans might have changed or you
-                cannot decide.
-            </div>
         </div>
 
         <div class="govuk-checkboxes__item">
             <input class="govuk-checkboxes__input" id="switch-different-course" name="course-checkbox" type="checkbox"
                    value="{{valueSwitchCourse}}" {{ checkedIfSelected(data["course-checkbox"], valueSwitchCourse) }}>
             <label class="govuk-label govuk-checkboxes__label" for="switch-different-course">
-                I want to switch to a different course
+                I want to switch to a different course or subject
             </label>
             <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div>-->
         </div>
@@ -48,7 +44,7 @@
             <input class="govuk-checkboxes__input" id="how-course-can-help-goal" name="course-checkbox" type="checkbox"
                    value="{{valueCourseToGoal}}" {{ checkedIfSelected(data["course-checkbox"], valueCourseToGoal ) }}>
             <label class="govuk-label govuk-checkboxes__label" for="how-course-can-help-goal">
-                I want to know how my course can help me get to my goal
+                I’m stuck on a course I do not like
             </label>
             <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
         </div>

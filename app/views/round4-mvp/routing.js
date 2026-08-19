@@ -268,7 +268,7 @@ module.exports = () => {
             return res.render('/round4-mvp/what-help', { errors: errors });
         }
 
-        const valueDislikeCourse = "I do not like my course and I’m not sure what to do when I finish";
+        const valueDislikeCourse = "I’m unsure about my current course or what to do when I finish";
         const valuePassingResit = "I need to pass my GCSE maths or English resit";
         const valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships";
         const valueCVorWork = "I need help with my CV or getting work experience";
