@@ -5,7 +5,8 @@ Where are you at with education – {{ serviceName }}
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
 href: "\what-help-dynamic"
 })
@@ -14,9 +15,11 @@ href: "\what-help-dynamic"
 
 {% block content %}
 
-{% set valueNotInEducation  = "I’m not in education" %}
-{% set valueCollege         = "College or sixth form college" %}
-{% set valueSixthForm       = "Sixth form" %}
+{% set valueCollege           = "College or sixth form college" %}
+{% set valueSixthFormCollege  = "Sixth form college" %}
+{% set valueSixthForm         = "Sixth form" %}
+{% set valueApprenticeship    = "Apprenticeship" %}
+{% set valueNotInEducation    = "I’m not in education" %}
 
 {% macro checkedIfSelected(values, option) %}
   {% if values and values.includes(option) %}checked{% endif %}
@@ -24,9 +27,12 @@ href: "\what-help-dynamic"
 
 {% include "../../assets/html-templates/error-summary.html" %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\landing-page') %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form class="form" method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset">
 
@@ -47,25 +53,41 @@ href: "\what-help-dynamic"
                     {% endif %}
 
                     <div class="govuk-radios" data-module="govuk-radios">
-                        <div class="govuk-radios__item">
-                            <input class="govuk-radios__input" id="education-status-1" name="educationStatus" type="radio"
-                                   value="{{valueNotInEducation}}" {{ checkedIfSelected(data["educationStatus"], valueNotInEducation) }}>
-                            <label class="govuk-label govuk-radios__label" for="education-status">
-                                I’m not in education
-                            </label>
-                        </div>
+
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-2" name="educationStatus" type="radio"
                                    value="{{valueCollege}}" {{ checkedIfSelected(data["educationStatus"], valueCollege) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-2">
-                                College or sixth form college
+                                College
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio"
+                                   value="{{valueSixthFormCollege}}" {{ checkedIfSelected(data["educationStatus"], valueSixthFormCollege) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-3">
+                                Sixth form college
                             </label>
                         </div>
                         <div class="govuk-radios__item">
                             <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio"
                                    value="{{valueSixthForm}}" {{ checkedIfSelected(data["educationStatus"], valueSixthForm) }}>
                             <label class="govuk-label govuk-radios__label" for="education-status-3">
-                                Sixth form
+                                Sixth form (attached to a secondary school)
+                            </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-4" name="educationStatus" type="radio"
+                                   value="{{valueApprenticeship}}" {{ checkedIfSelected(data["educationStatus"], valueApprenticeship) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-4">
+                                Apprenticeship
+                            </label>
+                        </div>
+                        <div class="govuk-checkboxes__divider">or</div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-1" name="educationStatus" type="radio"
+                                   value="{{valueNotInEducation}}" {{ checkedIfSelected(data["educationStatus"], valueNotInEducation) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status">
+                                I’m not in education
                             </label>
                         </div>
                     </div>
@@ -78,8 +100,13 @@ href: "\what-help-dynamic"
                     </span>
                 </summary>
                 <div class="govuk-details__text">
-                    We're asking this so we can better understand where you’re at with your situation and give you better advice.
-                    This information does not get collected or reported to anyone.
+                    <p class="govuk-body">
+                        We want to get to know your situation so we can give you better advice about who to speak to.
+                    </p>
+
+                    <p class="govuk-body">
+                        This information does not get reported to anyone.
+                    </p>
                 </div>
             </details>
             <div class="govuk-button-group govuk-!-margin-bottom-7">
