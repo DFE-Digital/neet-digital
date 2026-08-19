@@ -6,7 +6,8 @@ How are you finding your current situation – {{ serviceName }} – GOV.UK Prot
 
 {% block pageBefore %}
 
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
 href: "\whats-your-first-name"
 })
@@ -15,15 +16,15 @@ href: "\whats-your-first-name"
 
 {% block content %}
 
-{% set valueAnxious          = "Anxious" %}
-{% set valueConfused         = "Confused" %}
-{% set valueDepressed        = "Depressed" %}
-{% set valueExcited          = "Excited" %}
+{% set valueAnxious          = "Anxious or stressed" %}
+{% set valueConfused         = "Confused or stuck" %}
 {% set valueExhausted        = "Exhausted" %}
-{% set valueHopeful          = "Hopeful, but unsure" %}
+{% set valueSad              = "Sad" %}
 {% set valueLosingMotivation = "Losing motivation" %}
+{% set valueNotConfident     = "Not confident" %}
 {% set valueOkay             = "Okay" %}
-{% set valueStressed         = "Stressed" %}
+{% set valueHopeful          = "Hopeful" %}
+{% set valueExcited          = "Excited" %}
 {% set valueNotWantToSay     = "I do not want to say how I’m feeling today" %}
 
 {% macro checkedIfSelected(values, option) %}
@@ -31,6 +32,9 @@ href: "\whats-your-first-name"
 {% endmacro %}
 
 {% include "../../assets/html-templates/error-summary.html" %}
+
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\whats-your-first-name') %}
 
 <!-- MAIN TWO PAGE CONTAINERS START -->
 <div class="govuk-grid-row">
@@ -49,7 +53,7 @@ href: "\whats-your-first-name"
         <p class="govuk-body">It’s okay to be honest - we just want to understand a bit more about you.</p>
         <!-- INTRO TEXT END -->
         <!-- FORM START -->
-        <form class="form" method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <!--<form class="form" method="post">-->
             <!-- FORM CONTENT DIV START -->
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
@@ -87,37 +91,37 @@ href: "\whats-your-first-name"
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-3" name="feeling" type="checkbox"
-                                   value="{{valueDepressed}}" {{ checkedIfSelected(data["feeling"], valueDepressed) }}>
+                                   value="{{valueExhausted}}" {{ checkedIfSelected(data["feeling"], valueExhausted) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-3">Exhausted</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-4" name="feeling" type="checkbox"
-                                   value="{{valueExcited}}" {{ checkedIfSelected(data["feeling"], valueExcited) }}>
+                                   value="{{valueSad}}" {{ checkedIfSelected(data["feeling"], valueSad) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-4">Sad</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-5" name="feeling" type="checkbox"
-                                   value="{{valueExhausted}}" {{ checkedIfSelected(data["feeling"], valueExhausted) }}>
+                                   value="{{valueLosingMotivation}}" {{ checkedIfSelected(data["feeling"], valueLosingMotivation) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-5">Losing motivation</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-6" name="feeling" type="checkbox"
-                                   value="{{valueHopeful}}" {{ checkedIfSelected(data["feeling"], valueHopeful) }}>
+                                   value="{{valueNotConfident}}" {{ checkedIfSelected(data["feeling"], valueNotConfident) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-6">Not confident</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-7" name="feeling" type="checkbox"
-                                   value="{{valueLosingMotivation}}" {{ checkedIfSelected(data["feeling"], valueLosingMotivation) }}>
+                                   value="{{valueOkay}}" {{ checkedIfSelected(data["feeling"], valueOkay) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-7">Okay</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-8" name="feeling" type="checkbox"
-                                   value="{{valueOkay            }}" {{ checkedIfSelected(data["feeling"], valueOkay) }}>
+                                   value="{{valueHopeful}}" {{ checkedIfSelected(data["feeling"], valueHopeful) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-8">Hopeful</label>
                         </div>
                         <div class="govuk-checkboxes__item">
                             <input class="govuk-checkboxes__input" id="feeling-9" name="feeling" type="checkbox"
-                                   value="{{valueStressed}}" {{ checkedIfSelected(data["feeling"], valueStressed) }}>
+                                   value="{{valueExcited}}" {{ checkedIfSelected(data["feeling"], valueExcited) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-9">Excited</label>
                         </div>
 

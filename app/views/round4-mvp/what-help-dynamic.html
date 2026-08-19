@@ -5,7 +5,8 @@ What are you finding difficult? – {{ serviceName }}
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
 href: "\what-help"
 })
@@ -49,9 +50,12 @@ href: "\what-help"
 
 {% include "../../assets/html-templates/error-summary.html" %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\what-help') %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -147,122 +151,122 @@ href: "\what-help"
                     {% endif %}
 
                     {# <div class="govuk-checkboxes">
-    #}
-    {% if courseSelected %}
-    {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
-    {% endif %}
+                        #}
+                        {% if courseSelected %}
+                        {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
+                        {% endif %}
 
-    {% if gcseSelected %}
-    {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
-    {% endif %}
+                        {% if gcseSelected %}
+                        {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
+                        {% endif %}
 
-    {% if jobsSelected %}
-    <!--  Applying for jobs or apprenticeships Options -->
-    {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
-    {% endif %}
+                        {% if jobsSelected %}
+                        <!--  Applying for jobs or apprenticeships Options -->
+                        {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
+                        {% endif %}
 
-    {% if cvSelected %}
-    <!-- CV or get work experience-->
-    {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
-    {% endif %}
+                        {% if cvSelected %}
+                        <!-- CV or get work experience-->
+                        {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
+                        {% endif %}
 
-    {% else %}
+                        {% else %}
 
-    <!-- INDIVIDUAL SECTIONS -->
-    {# -------- SECTION 1 -------- #}
-    {% if courseSelected %}
-    <p class="govuk-body">
-        We know <strong>3 in 10 young people </strong>have avoided going to college to
-        stop feeling anxious.
-    </p>
-    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+                        <!-- INDIVIDUAL SECTIONS -->
+                        {# -------- SECTION 1 -------- #}
+                        {% if courseSelected %}
+                        <p class="govuk-body">
+                            We know <strong>3 in 10 young people </strong>have avoided going to college to
+                            stop feeling anxious.
+                        </p>
+                        <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
 
-    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
-        Select all that apply
-    </div>
+                        <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                            Select all that apply
+                        </div>
 
-    {% if errors['page'] %}
-    <p id="cv-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
-    </p>
-    {% endif %}
+                        {% if errors['page'] %}
+                        <p id="cv-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                        </p>
+                        {% endif %}
 
-    {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
-    {% endif %}
+                        {% include "../../assets/html-templates/what-help-dynamic.course.html" %}
+                        {% endif %}
 
-    {# -------- SECTION 2 -------- #}
-    {% if gcseSelected %}
-    <p class="govuk-body">
-        We know <strong>3 in 10 young people </strong>have avoided going to college to
-        stop feeling anxious.
-    </p>
-    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+                        {# -------- SECTION 2 -------- #}
+                        {% if gcseSelected %}
+                        <p class="govuk-body">
+                            We know <strong>3 in 10 young people </strong>have avoided going to college to
+                            stop feeling anxious.
+                        </p>
+                        <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
 
-    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
-        Select all that apply
-    </div>
+                        <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                            Select all that apply
+                        </div>
 
-    {% if errors['page'] %}
-    <p id="cv-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
-    </p>
-    {% endif %}
+                        {% if errors['page'] %}
+                        <p id="cv-error" class="govuk-error-message">
+                            <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                        </p>
+                        {% endif %}
 
-    {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
-    {# <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-    #}
-    {% endif %}
+                        {% include "../../assets/html-templates/what-help-dynamic.gcse.html" %}
+                        {# <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+                            #}
+                            {% endif %}
 
-    {# -------- SECTION 3 -------- #}
-    {% if jobsSelected %}
-    <p class="govuk-body">
-        We know that <strong>61% or young people</strong> aged 15 to 18 are worried
-        about looking for work.
-    </p>
-    <p class="govuk-body">It’s okay to be honest if you’re having a hard time. </p>
+                            {# -------- SECTION 3 -------- #}
+                            {% if jobsSelected %}
+                            <p class="govuk-body">
+                                We know that <strong>61% or young people</strong> aged 15 to 18 are worried
+                                about looking for work.
+                            </p>
+                            <p class="govuk-body">It’s okay to be honest if you’re having a hard time. </p>
 
-    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
-        Select all that apply
-    </div>
+                            <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                                Select all that apply
+                            </div>
 
-    {% if errors['page'] %}
-    <p id="cv-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
-    </p>
-    {% endif %}
+                            {% if errors['page'] %}
+                            <p id="cv-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                            </p>
+                            {% endif %}
 
-    {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
-    {% endif %}
+                            {% include "../../assets/html-templates/what-help-dynamic.jobs.html" %}
+                            {% endif %}
 
-    {# -------- SECTION 4 -------- #}
-    {% if cvSelected %}
-    <p class="govuk-body">
-        We know that <strong>61% of young people </strong>aged 15 to 18 are worried
-        about looking for work.
-    </p>
-    <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
+                            {# -------- SECTION 4 -------- #}
+                            {% if cvSelected %}
+                            <p class="govuk-body">
+                                We know that <strong>61% of young people </strong>aged 15 to 18 are worried
+                                about looking for work.
+                            </p>
+                            <p class="govuk-body">It's okay to be honest if you're having a hard time.</p>
 
-    <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
-        Select all that apply
-    </div>
+                            <div id="routes-hint" class="govuk-hint govuk-!-margin-bottom-6">
+                                Select all that apply
+                            </div>
 
-    {% if errors['page'] %}
-    <p id="cv-error" class="govuk-error-message">
-        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
-    </p>
-    {% endif %}
+                            {% if errors['page'] %}
+                            <p id="cv-error" class="govuk-error-message">
+                                <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                            </p>
+                            {% endif %}
 
-    {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
-    {% endif %}
-    {#
-</div> #}
-    {% endif %}
-    {% endif %}
-    <div class="govuk-button-group govuk-!-margin-bottom-7">
-        {{ govukButton({ text: "Continue" }) }}
-    </div>
+                            {% include "../../assets/html-templates/what-help-dynamic.cv.html" %}
+                            {% endif %}
+                            {#
+                        </div> #}
+                        {% endif %}
+                        {% endif %}
+                        <div class="govuk-button-group govuk-!-margin-bottom-7">
+                            {{ govukButton({ text: "Continue" }) }}
+                        </div>
 
-</fieldset>
+                </fieldset>
             </div>
         </form>
     </div>
