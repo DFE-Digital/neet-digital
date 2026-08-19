@@ -27,8 +27,8 @@ href: "javascript:window.history.back()"
 
 {# ---------- FLAGS ---------- #}
 {% set notsurecollegesixthformSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
-{% set switchcourseSelected = routes.indexOf("I want to switch to a different course") > -1 %}
-{% set coursegoalSelected = routes.indexOf("I want to know how my course can help me get to my goal") > -1 %}
+{% set switchcourseSelected = routes.indexOf("I want to switch to a different course or subject") > -1 %}
+{% set coursegoalSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
 {% set strugglingpasscourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
 {% set mathsSelected = routes.indexOf("Maths") > -1 %}
 {% set englishSelected = routes.indexOf("English") > -1 %}
@@ -68,16 +68,16 @@ text: "Find out who to speak to about changing course, and what you can do if it
 <!-- WANT TO SWITCH COLLEGE COURSE - I want to switch to a different college course - END-->
 
 
-<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I want to know how my course can help me get to my goal - START-->
+<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I’m stuck on a course I do not like - START-->
 {% if coursegoalSelected %}
-{% set cards = cards.concat([{ title: "I want to know how my course can help me get to my goal", href:
+{% set cards = cards.concat([{ title: "I’m stuck on a course I do not like", href:
 "./guides/want-know-how-course-get-goal.html", img:
 "/public/images/not-done-yet.png",
 text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
 lorem ipusm lorem ipsum"
 }]) %}
 {% endif %}
-<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I want to know how my course can help me get to my goal - END-->
+<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I’m stuck on a course I do not like - END-->
 
 
 <!-- STRUGGLING TO PASS COURSE - I’m struggling to pass my course - START-->
