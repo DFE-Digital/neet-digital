@@ -5,6 +5,29 @@ module.exports = () => {
     const config = require('../../config.js');
     const routeVersion = "round4-mvp";
 
+    const base = `/${routeVersion}`;
+
+    router.use((req, res, next) => {
+        if (!req.originalUrl.startsWith(base)) {
+            next();
+            return;
+        }
+
+        delete (res.locals.backlinkUrl);
+        const referer = req.get('Referer') || "";
+
+        req.session.data.analyticsConsent = 'no';
+        req.session.data.history = req.session.data.history || [];
+
+        if (req.method == 'GET' && referer && req.session.data.history[1] != referer) {
+            if (req.session.data.history.push(referer) > 2) {
+                req.session.data.history.shift();
+            }
+        }
+
+        next();
+    });
+
     // ----------------------------------------------------------------------------------------------------------------
     // Step Validation
     // ----------------------------------------------------------------------------------------------------------------
@@ -32,43 +55,43 @@ module.exports = () => {
         }
 
         return (step <= (req.session.data.stepReached + 1));
-        }
+    }
 
-        // Home page route
+    // Home page route
 
-        const soleVersion = config.RouteVersion && config.RouteVersion == routeVersion;
+    const soleVersion = config.RouteVersion && config.RouteVersion == routeVersion;
 
-        if (soleVersion) {
+    if (soleVersion) {
 
-            router.get('/', (req, res) => {
-                res.redirect(`/round4-mvp/landing-page`);
-            });
+        router.get('/', (req, res) => {
+            res.redirect(`/round4-mvp/landing-page`);
+        });
 
-            router.get('/index', (req, res) => {
-                res.redirect(`/round4-mvp/landing-page`);
-            });
+        router.get('/index', (req, res) => {
+            res.redirect(`/round4-mvp/landing-page`);
+        });
 
-            router.get('/layouts/*', (req, res) => {
-                const path = req.path
-                res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
-                    path
-                })
-            });
+        router.get('/layouts/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
 
-            router.get('/older-prototype/*', (req, res) => {
-                const path = req.path
-                res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
-                    path
-                })
-            });
+        router.get('/older-prototype/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
 
-            router.get('/exam-results/*', (req, res) => {
-                const path = req.path
-                res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
-                    path
-                })
-            });
-        }
+        router.get('/exam-results/*', (req, res) => {
+            const path = req.path
+            res.render('custom_node_modules/govuk-prototype-kit/lib/nunjucks/views/error-handling/page-not-found.njk', {
+                path
+            })
+        });
+    }
 
     // ----------------------------------------------------------------------------------------------------------------
     // Cookie management cookieConsentGiven
@@ -85,7 +108,7 @@ module.exports = () => {
     });
 
     router.get('/round4-mvp/reject-cookies', function (req, res) {
-        // req.session.data.analyticsConsent = 'no'
+        req.session.data.analyticsConsent = 'no'
         res.redirect('/round4-mvp/landing-page');
     });
 
@@ -111,38 +134,81 @@ module.exports = () => {
 
             return res.redirect('/round4-mvp/landing-page');
         };
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
+    // Helper to resolve redirect from the POST action query string (?redirect=...)
+    function resolvePostRedirect(req, defaultRedirect) {
+        const redirectParam = req.query && req.query.redirectUrl ? String(req.query.redirectUrl).trim() : '';
+        if (!redirectParam) return defaultRedirect;
+
+        // Block external schemes (http:, https:, data:, etc.) and scheme-relative URLs
+        if (/^[a-zA-Z][a-zA-Z0-9+.-]*:/.test(redirectParam) || redirectParam.startsWith('//')) {
+            return defaultRedirect;
         }
 
-        // ----------------------------------------------------------------------------------------------------------------
-        // Landing page
-        // ----------------------------------------------------------------------------------------------------------------
+        // If absolute path provided, use it
+        if (redirectParam.startsWith('/')) {
+            return redirectParam;
+        }
 
-        // router.post(`/round4-mvp/landing-page`, (req, res) => {
-        //     resetJourneyData(req);
-        //     return res.redirect(`/round4-mvp/whats-your-first-name`);
-        // });
+        // Otherwise treat as a slug and normalize underscores to hyphens
+        return `${base}/${redirectParam.replace(/_/g, '-')}`;
+    };
 
-        // resetJourneyData = function (req) {
-        //     const externalReferrer = req.session.data.externalReferrer;
-        //     const analyticsConsent = req.session.data.analyticsConsent;
+    function resolveSubmitRedirect(req, res, historySignature) {
+        historySignature = Array.isArray(historySignature) ? historySignature : [historySignature];
+        // Check if trailing items in history match the historySignature (loop prevention)
+        const historyLength = req.session.data.history.length;
+        const signatureLength = historySignature.length;
 
-        //     req.session.data = {};
+        if (historyLength >= signatureLength) {
+            let matches = true;
+            for (let i = 0; i < signatureLength; i++) {
+                const historyIndex = historyLength - signatureLength + i;
+                if (!req.session.data.history[historyIndex].endsWith(historySignature[i])) {
+                    matches = false;
+                    break;
+                }
+            }
+            if (matches) {
+                return `${base}/check-your-answers`;
+            }
+        }
+    }
+    // ----------------------------------------------------------------------------------------------------------------
+    // Landing page
+    // ----------------------------------------------------------------------------------------------------------------
 
-        //     req.session.data.externalReferrer = externalReferrer;
-        //     req.session.data.analyticsConsent = analyticsConsent;
-        // }
+    // router.post(`/round4-mvp/landing-page`, (req, res) => {
+    //     resetJourneyData(req);
+    //     return res.redirect(`/round4-mvp/whats-your-first-name`);
+    // });
+
+    // resetJourneyData = function (req) {
+    //     const externalReferrer = req.session.data.externalReferrer;
+    //     const analyticsConsent = req.session.data.analyticsConsent;
+
+    //     req.session.data = {};
+
+    //     req.session.data.externalReferrer = externalReferrer;
+    //     req.session.data.analyticsConsent = analyticsConsent;
+    // }
 
     // ----------------------------------------------------------------------------------------------------------------
     // Whats your first name
     // ----------------------------------------------------------------------------------------------------------------
 
     router.get('/round4-mvp/whats-your-first-name', navigationValidation(steps.whats_your_first_name), (req, res) => {
+        res.locals.backlinkUrl = resolveSubmitRedirect(req, res, `${base}/check-your-answers`);
         return res.render('/round4-mvp/whats-your-first-name');
     });
 
     router.post('/round4-mvp/whats-your-first-name', navigationValidation(steps.whats_your_first_name), (req, res) => {
         updateStepReached(req, steps.whats_your_first_name);
-        return res.redirect('/round4-mvp/current-situation');
+
+        const redirectTo = resolvePostRedirect(req, '/round4-mvp/current-situation',);
+        return res.redirect(redirectTo);
     });
 
     // ----------------------------------------------------------------------------------------------------------------
@@ -150,6 +216,7 @@ module.exports = () => {
     // ----------------------------------------------------------------------------------------------------------------
 
     router.get('/round4-mvp/current-situation', navigationValidation(steps.current_situation), (req, res) => {
+        res.locals.backlinkUrl = resolveSubmitRedirect(req, res, `${base}/check-your-answers`);
         return res.render('/round4-mvp/current-situation');
     });
 
@@ -171,7 +238,9 @@ module.exports = () => {
         }
 
         updateStepReached(req, steps.current_situation);
-        return res.redirect('/round4-mvp/what-help');
+
+        const redirectTo = resolvePostRedirect(req, `${base}/what-help`);
+        return res.redirect(redirectTo);
     });
 
     // ----------------------------------------------------------------------------------------------------------------
@@ -201,8 +270,8 @@ module.exports = () => {
 
         const valueDislikeCourse = "I do not like my course and I’m not sure what to do when I finish";
         const valuePassingResit = "I need to pass my GCSE maths or English resit";
-        const valueJobsOrApprenticeship = "Applying for jobs or get an apprenticeship";
-        const valueCVorWork = "Help with my CV or get work experience";
+        const valueJobsOrApprenticeship = "I'm stuck applying for jobs or apprenticeships";
+        const valueCVorWork = "I need help with my CV or getting work experience";
 
         if (!req.session.data.route.includes(valueDislikeCourse)) {
             req.session.data['course-checkbox'] = [];
@@ -221,14 +290,20 @@ module.exports = () => {
         }
 
         updateStepReached(req, steps.what_help);
+
+        //const redirectTo = resolvePostRedirect(req, '/round4-mvp/what-help-dynamic
+        res.locals.backlinkUrl = "xxxx";
         return res.redirect('/round4-mvp/what-help-dynamic');
     });
 
     // ----------------------------------------------------------------------------------------------------------------
-    // What help dynamic
+    // What help dynamic (What are you finding difficult?)
     // ----------------------------------------------------------------------------------------------------------------
 
     router.get('/round4-mvp/what-help-dynamic', navigationValidation(steps.what_help_dynamic), (req, res) => {
+        res.locals.backlinkUrl = resolveSubmitRedirect(req, res, [`${base}/check-your-answers`]) ||
+            resolveSubmitRedirect(req, res, [`${base}/check-your-answers`, `${base}/what-help`]);
+
         return res.render('/round4-mvp/what-help-dynamic');
     });
 
@@ -287,7 +362,9 @@ module.exports = () => {
 
         if (anySelected) {
             updateStepReached(req, steps.what_help_dynamic);
-            return res.redirect('/round4-mvp/where-are-you-at-with-education');
+
+            const redirectTo = resolvePostRedirect(req, '/round4-mvp/where-are-you-at-with-education');
+            return res.redirect(redirectTo);
         }
 
         if (!errors.HasErrors && req.session.data.courseOptionsIncluded) {
@@ -322,7 +399,7 @@ module.exports = () => {
             errors.HasErrors = true;
         }
 
-        return res.render('/round4-mvp/what-help-dynamic', { errors: errors });
+        return res.redirect('/round4-mvp/what-help-dynamic');
     });
 
     // ----------------------------------------------------------------------------------------------------------------

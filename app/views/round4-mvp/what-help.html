@@ -5,7 +5,8 @@ What do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
 href: "\current-situation"
 })
@@ -41,9 +42,12 @@ href: "\current-situation"
 
 {% include "../../assets/html-templates/error-summary.html" %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\current-situation') %}
+
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <form class="form" method="post">
+        <form class="form" method="post" action="{{actionUrl}}">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset" aria-describedby="routes-hint routes-error">
                     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -74,8 +78,8 @@ href: "\current-situation"
                         </p>
                         {% endif %}
                         <!--<p id="what-help-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> Select at least one option that reflects what you need help with
-                        </p>-->
+                        <span class="govuk-visually-hidden">Error:</span> Select at least one option that reflects what you need help with
+                    </p>-->
 
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
@@ -96,14 +100,14 @@ href: "\current-situation"
                                 <input class="govuk-checkboxes__input" id="route-3" name="route" type="checkbox"
                                        value="{{valueJobsOrApprenticeship}}" {{ checkedIfSelected(data["route"], valueJobsOrApprenticeship)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-3">
-                                     I'm stuck applying for jobs or apprenticeships
+                                    I'm stuck applying for jobs or apprenticeships
                                 </label>
                             </div>
                             <div class="govuk-checkboxes__item">
                                 <input class="govuk-checkboxes__input" id="route-4" name="route" type="checkbox"
                                        value="{{valueCVorWork}}" {{ checkedIfSelected(data["route"], valueCVorWork)}}>
                                 <label class="govuk-label govuk-checkboxes__label" for="route-4">
-                                     I need help with my CV or getting work experience
+                                    I need help with my CV or getting work experience
                                 </label>
                             </div>
                         </div>

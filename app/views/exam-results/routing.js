@@ -26,6 +26,11 @@ module.exports = () => {
     router.use(cookieParser());
 
     router.use((req, res, next) => {
+        if (!req.originalUrl.startsWith(base)) {
+            next();
+            return;
+        }
+
         res.locals.req = req;
         res.locals.baseUrl = base;
         res.locals.values = values;

@@ -13,11 +13,14 @@ href: "\landing-page"
 
 {% block content %}
 
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\landing-page') %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l govuk-!-margin-top-0">What's your first name? (optional)</h1>
     <!--<p class="govuk-body govuk-!-margin-bottom-6"></p>-->
-    <form class="form" method="post">
+     <form class="form" method="post" action="{{actionUrl}}">
       <div class="govuk-form-group">
         <label class="govuk-label" for="first-name">
           First name
