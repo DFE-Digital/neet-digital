@@ -181,24 +181,6 @@ module.exports = () => {
             }
         }
     }
-    // ----------------------------------------------------------------------------------------------------------------
-    // Landing page
-    // ----------------------------------------------------------------------------------------------------------------
-
-    // router.post(`/round4-mvp/landing-page`, (req, res) => {
-    //     resetJourneyData(req);
-    //     return res.redirect(`/round4-mvp/whats-your-first-name`);
-    // });
-
-    // resetJourneyData = function (req) {
-    //     const externalReferrer = req.session.data.externalReferrer;
-    //     const analyticsConsent = req.session.data.analyticsConsent;
-
-    //     req.session.data = {};
-
-    //     req.session.data.externalReferrer = externalReferrer;
-    //     req.session.data.analyticsConsent = analyticsConsent;
-    // }
 
     // ----------------------------------------------------------------------------------------------------------------
     // Whats your first name
@@ -309,53 +291,17 @@ module.exports = () => {
         res.locals.backlinkUrl = resolveSubmitRedirect(req, res, [`${base}/check-your-answers`]) ||
             resolveSubmitRedirect(req, res, [`${base}/check-your-answers`, `${base}/what-help`]);
 
+        delete (req.session.data.courseOptionsIncluded);
+        delete (req.session.data.gcseOptionsIncluded);
+        delete (req.session.data.jobsOptionsIncluded);
+        delete (req.session.data.cvOptionsIncluded);
+
         return res.render('/round4-mvp/what-help-dynamic');
     });
 
     router.post('/round4-mvp/what-help-dynamic', navigationValidation(steps.what_help_dynamic), (req, res) => {
-
-        /*
-        // Code for individual checkbox group errors.
-    
-            if (Object.keys(errors).length == 0 && req.session.data.courseOptionsIncluded && !req.session.data["course-checkbox"]) {
-                errors['course'] = {
-                    "text": "Select at least one option that reflects what you are finding difficult",
-                    "href": "#not-sure-what-do-after-college-sixth-form"
-                };
-            }
-    
-            if (Object.keys(errors).length == 0 && req.session.data.gcseOptionsIncluded && !req.session.data["gcse-checkbox"]) {
-                errors['gcse'] = {
-                    "text": "Select at least one option of Maths and English",
-                    "href": "#maths"
-                };
-            }
-    
-            if (Object.keys(errors).length == 0 && req.session.data.jobsOptionsIncluded && !req.session.data["jobs-checkbox"]) {
-                errors['jobs'] = {
-                    "text": "Select at least one job or apprenticeship option",
-                    "href": "#do-hear-applications"
-                };
-            }
-    
-            if (Object.keys(errors).length == 0 && req.session.data.cvOptionsIncluded && !req.session.data["cv-checkbox"]) {
-                errors['cv'] = {
-                    "text": "Select at least one option of help with my CV or get work experience",
-                    "href": "#Create-CV-better"
-                };
-            }
-        */
         const errors = {};
         errors.HasErrors = false;
-
-        // const anySelected =
-        //   (
-        //        ((req.session.data.courseOptionsIncluded ?? false) && (req.session.data["course-checkbox"]?.length > 0 ?? false)) ||
-        //        ((req.session.data.gcseOptionsIncluded ?? false) && (req.session.data["gcse-checkbox"]?.length > 0 ?? false)) ||
-        //        ((req.session.data.jobsOptionsIncluded ?? false) && (req.session.data["jobs-checkbox"]?.length > 0 ?? false)) ||
-        //        ((req.session.data.cvOptionsIncluded ?? false) && (req.session.data["cv-checkbox"]?.length > 0 ?? false))
-        //    );
-
 
         let d = req.session.data;
         const routes = [].concat(d["course-checkbox"]).concat(d["gcse-checkbox"])
@@ -365,46 +311,47 @@ module.exports = () => {
 
         const anySelected = routes.length > 0;
 
-        if (anySelected) {
-            updateStepReached(req, steps.what_help_dynamic);
+        if (!anySelected) {
 
-            const redirectTo = resolvePostRedirect(req, '/round4-mvp/where-are-you-at-with-education');
-            return res.redirect(redirectTo);
+            if (!errors.HasErrors && req.session.data.courseOptionsIncluded) {
+                errors['page'] = {
+                    "text": "Select at least one option that reflects what you are finding difficult",
+                    "href": "#not-sure-what-do-after-college-sixth-form"
+                };
+                errors.HasErrors = true;
+            }
+
+            if (!errors.HasErrors && req.session.data.gcseOptionsIncluded) {
+                errors['page'] = {
+                    "text": "Select at least one option that reflects what you are finding difficult",
+                    "href": "#maths"
+                };
+                errors.HasErrors = true;
+            }
+
+            if (!errors.HasErrors && req.session.data.jobsOptionsIncluded) {
+                errors['page'] = {
+                    "text": "Select at least one option that reflects what you are finding difficult",
+                    "href": "#do-hear-applications"
+                };
+                errors.HasErrors = true;
+            }
+
+            if (!errors.HasErrors && req.session.data.cvOptionsIncluded) {
+                errors['page'] = {
+                    "text": "Select at least one option that reflects what you are finding difficult",
+                    "href": "#Create-CV-better"
+                };
+                errors.HasErrors = true;
+            }
+
+            return res.render('/round4-mvp/what-help-dynamic', { errors: errors });
         }
 
-        if (!errors.HasErrors && req.session.data.courseOptionsIncluded) {
-            errors['page'] = {
-                "text": "Select at least one option that reflects what you are finding difficult",
-                "href": "#not-sure-what-do-after-college-sixth-form"
-            };
-            errors.HasErrors = true;
-        }
+        updateStepReached(req, steps.what_help_dynamic);
 
-        if (!errors.HasErrors && req.session.data.gcseOptionsIncluded) {
-            errors['page'] = {
-                "text": "Select at least one option that reflects what you are finding difficult",
-                "href": "#maths"
-            };
-            errors.HasErrors = true;
-        }
-
-        if (!errors.HasErrors && req.session.data.jobsOptionsIncluded) {
-            errors['page'] = {
-                "text": "Select at least one option that reflects what you are finding difficult",
-                "href": "#do-hear-applications"
-            };
-            errors.HasErrors = true;
-        }
-
-        if (!errors.HasErrors && req.session.data.cvOptionsIncluded) {
-            errors['page'] = {
-                "text": "Select at least one option that reflects what you are finding difficult",
-                "href": "#Create-CV-better"
-            };
-            errors.HasErrors = true;
-        }
-
-        return res.redirect('/round4-mvp/what-help-dynamic');
+        const redirectTo = resolvePostRedirect(req, '/round4-mvp/where-are-you-at-with-education');
+        return res.redirect(redirectTo);
     });
 
     // ----------------------------------------------------------------------------------------------------------------
