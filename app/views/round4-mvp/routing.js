@@ -2,6 +2,8 @@ module.exports = () => {
 
     const govukPrototypeKit = require('govuk-prototype-kit');
     const router = govukPrototypeKit.requests.setupRouter();
+    const DEBUG = (process.env.npm_lifecycle_event == "dev");
+
     const config = require('../../config.js');
     const routeVersion = "round4-mvp";
 
@@ -11,7 +13,9 @@ module.exports = () => {
         if (!req.originalUrl.startsWith(base)) {
             next();
             return;
-        }
+        };
+
+        res.locals.DEBUG = DEBUG;
         res.locals.routeVersion = routeVersion;  
 
         delete (res.locals.backlinkUrl);

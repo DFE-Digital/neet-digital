@@ -5,10 +5,12 @@ What you can do next – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block pageBefore %}
-{{ govukBackLink({
+{{
+ govukBackLink({
 text: "Back",
-href: "javascript:window.history.back()"
-}) }}
+href: "\check-your-answers"
+})
+}}
 {% endblock %}
 
 {% block content %}
@@ -24,472 +26,332 @@ href: "javascript:window.history.back()"
 {% set routes = [] %}
 {% endif %}
 
-
 {# ---------- FLAGS ---------- #}
-{% set notsurecollegesixthformSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
-{% set switchcourseSelected = routes.indexOf("I want to switch to a different course or subject") > -1 %}
-{% set coursegoalSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
-{% set strugglingpasscourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
+{# ===  what-help-dynamic ==================== #}
+
+{% set notSureWhatToDoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
+{% set switchCourseSelected = routes.indexOf("I want to switch to a different course or subject") > -1 %}
+{% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
+{% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
+
 {% set mathsSelected = routes.indexOf("Maths") > -1 %}
 {% set englishSelected = routes.indexOf("English") > -1 %}
-{% set hearbackapplicationsSelected = routes.indexOf("I do not hear back from applications") > -1 %}
-{% set nothearSelected = routes.indexOf("I never get feedback so do not know what to improve") > -1 %}
-{% set firstjobSelected = routes.indexOf("I’m trying to get my first job") > -1 %}
+
+{% set hearBackapplicationsSelected = routes.indexOf("I do not hear back from applications") > -1 %}
+{% set notHearSelected = routes.indexOf("I never get feedback so do not know what to improve") > -1 %}
+{% set firstJobSelected = routes.indexOf("I’m trying to get my first job") > -1 %}
 {% set volunteeringSelected = routes.indexOf("I’ve done volunteering but cannot seem to get a paid job") > -1 %}
 {% set apprenticeshipSelected = routes.indexOf("I cannot find an apprenticeship where I live") > -1 %}
-{% set createcvSelected = routes.indexOf("Create a CV or make my CV better") > -1 %}
-{% set workexperienceSelected = routes.indexOf("I need to get some work experience") > -1 %}
+
+{% set createCvSelected = routes.indexOf("Create a CV or make my CV better") > -1 %}
+{% set workExperienceSelected = routes.indexOf("I need to get some work experience") > -1 %}
+
+{# ===  education ==================== #}
+
+{% set collegeSelected            = (data.educationStatus == "College") %}
+{% set sixthFormCollegeSelected   = (data.educationStatus == "Sixth form college") %}
+{% set sixthFormSecSchoolSelected = (data.educationStatus == "Sixth form (attached to a secondary school)") %}
+{% set apprenticeshipSelected     = (data.educationStatus == "Apprenticeship") %}  {# ---------- NEW ---------- #}
+
+{% if DEBUG %}
+
+=== DEBUGGING ====================
+<br />notSureWhatToDoSelected      : {{ notSureWhatToDoSelected      }}
+<br />switchCourseSelected         : {{ switchCourseSelected         }}
+<br />stuckCourseSelected          : {{ stuckCourseSelected          }}
+<br />strugglingPassCourseSelected : {{ strugglingPassCourseSelected }}
+<br />
+<br />mathsSelected                : {{ mathsSelected                }}
+<br />englishSelected              : {{ englishSelected              }}
+<br />
+<br />hearBackapplicationsSelected : {{ hearBackapplicationsSelected }}
+<br />notHearSelected              : {{ notHearSelected              }}
+<br />firstJobSelected             : {{ firstJobSelected             }}
+<br />volunteeringSelected         : {{ volunteeringSelected         }}
+<br />apprenticeshipSelected       : {{ apprenticeshipSelected       }}
+<br />
+<br />createCvSelected             : {{ createCvSelected             }}
+<br />workExperienceSelected       : {{ workExperienceSelected       }}
+<br />
+<br />collegeSelected              : {{ collegeSelected              }}
+<br />sixthFormCollegeSelected     : {{ sixthFormCollegeSelected     }}
+<br />sixthFormSecSchoolSelected   : {{ sixthFormSecSchoolSelected   }}
+<br />apprenticeshipSelected       : {{ apprenticeshipSelected       }}
+<br />
+=================================
+<br />
+{% endif %}
 
 {# ---------- BUILD CARDS ---------- #}
 {% set cards = [] %}
 
 
-<!-- NOT SURE WHAT TO DO AFTER COLLEGE OR SIXTH FORM - I’m not sure what to do after college or sixth form - START-->
-{% if notsurecollegesixthformSelected %}
+<!-- Done so far working start -->
+{% if notSureWhatToDoSelected and (collegeSelected or sixthFormCollegeSelected) %}
 {% set cards = cards.concat([{
-title: "I’m not sure what to do after college or sixth form",
-href: "./guides/not-sure-what-to-do-after.html",
-img: "/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
+title: "I’m not sure what to do when I leave college",
+href: "./guides/college-not-sure-what-to-do.html",
+img: "/public/images/what-do-leave-college.png",
+text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
 }]) %}
 {% endif %}
-<!-- NOT SURE WHAT TO DO AFTER COLLEGE OR SIXTH FORM - I’m not sure what to do after college or sixth form - END-->
 
 
-<!-- WANT TO SWITCH COLLEGE COURSE - I want to switch to a different college course - START-->
-{% if switchcourseSelected %}
-{% set cards = cards.concat([{ title: "I want to switch to a different college course", href:
-"./guides/want-switch-collegecourse.html", img:
-"/public/images/switch-course.png",
-text: "Find out who to speak to about changing course, and what you can do if it’s too late to switch."
+{% if notSureWhatToDoSelected and sixthFormSecSchoolSelected %}
+{% set cards = cards.concat([{
+title: "I’m not sure what to do when I leave sixth form",
+href: "./guides/sixth-form-not-sure-what-to-do.html",
+img: "/public/images/what-do-leave-sixth-form.png",
+text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
 }]) %}
 {% endif %}
-<!-- WANT TO SWITCH COLLEGE COURSE - I want to switch to a different college course - END-->
 
 
-<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I’m stuck on a course I do not like - START-->
-{% if coursegoalSelected %}
-{% set cards = cards.concat([{ title: "I’m stuck on a course I do not like", href:
-"./guides/want-know-how-course-get-goal.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
+
+{% if switchCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
+{% set cards = cards.concat([{
+title: "I want to switch to a different course at college",
+href: "./guides/college-switch-different-course.html",
+img: "/public/images/switch-different-course.png",
+text: "Find out who to speak to about changing course and what you can do if it’s too late to switch."
 }]) %}
 {% endif %}
-<!-- WANT TO KNOW MY COURSE CAN HELP GET GOAL - I’m stuck on a course I do not like - END-->
 
 
-<!-- STRUGGLING TO PASS COURSE - I’m struggling to pass my course - START-->
-{% if strugglingpasscourseSelected %}
-{% set cards = cards.concat([{ title: "I’m struggling to pass my course", href: "./guides/struggling-pass-course.html",
-img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
+
+{% if switchCourseSelected and sixthFormSecSchoolSelected %}
+{% set cards = cards.concat([{
+title: "I want to switch subjects at sixth form",
+href: "./guides/sixth-form-switch-different-subject.html",
+img: "/public/images/switch-subject-sixth-form.png",
+text: "Find out who to speak to about changing subjects and what you can do if it’s too late to switch."
 }]) %}
 {% endif %}
-<!-- STRUGGLING TO PASS COURSE - I’m struggling to pass my course - END-->
 
 
+
+{% if  stuckCourseSelected %}
+{% set cards = cards.concat([{
+title: "I’m stuck on a course I do not like",
+href: "./guides/stuck-course.html",
+img: "/public/images/stuck-course-not-like.png",
+text: "See how your course can help you in the future, even if it is not what you want to do now."
+}]) %}
+{% endif %}
+
+
+
+{# Struggling to pass #}
+{% if strugglingPassCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
+{% set cards = cards.concat([{
+title: "I’m struggling to pass my college course",
+href: "./guides/college-struggling-pass-college-course.html",
+img: "/public/images/struggling-pass-college-course.png",
+text: "Find out who to speak to and what your options are if you’re worried about passing."
+}]) %}
+{% endif %}
+
+
+{# Struggling to pass #}
+{% if strugglingPassCourseSelected and sixthFormSecSchoolSelected %}
+{% set cards = cards.concat([{
+title: "I’m struggling to pass a subject in sixth form",
+href: "./guides/sixth-form-struggling-pass-subject.html",
+img: "/public/images/struggling-pass-sixth-form.png",
+text: "Find out who to speak to and what your options are if you’re worried about passing."
+}]) %}
+{% endif %}
 
 <!-- MATHS AND ENGLISH START-->
-{% if mathsSelected %}
-{% set cards = cards.concat([{ title: "I want to pass my GCSE maths and English resit", href:
-"./guides/GCSE-maths-and-English.html", img: "/public/images/GCSE-maths-English-resit.jpg",
-text: "See who can help you with your resit, what you can ask and learn about alternatives. "
-}]) %}
-{% endif %}
-
+{# Combined guide #}
 {% if mathsSelected and englishSelected %}
-
-{% set cards = cards.concat([
-{
-title: "I want to pass my GCSE maths resit",
-href: "./guides/GCSE-maths-resit.html",
-img: "/public/images/GCSE-maths-resit.png",
-text: "See who can help you with your resits, what you can ask and learn about alternatives."
-},
-{
-title: "I want to pass my GCSE English resit",
-href: "./guides/GCSE-english-resit.html",
-img: "/public/images/pass-GCSE.png",
-text: "See who can help you with your resit, what you can ask and learn about alternatives."
-}
-]) %}
-
-{% else %}
-
-{% if mathsSelected %}
-{% set cards = cards.concat([{
-title: "I want to pass my GCSE maths resit",
-href: "./guides/GCSE-maths-resit.html",
-img: "/public/images/GCSE-maths-resit.png",
-text: "See who can help you with your resits, what you can ask and learn about alternatives."
-}]) %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE maths and English resits",
+    href: "./guides/GCSE-maths-and-English.html",
+    img: "/public/images/GCSE-Maths-English-resit.png",
+    text: "See who can help you with your resits, what you can ask and learn about other options."
+  }]) %}
 {% endif %}
 
-{% if englishSelected %}
-{% set cards = cards.concat([{
-title: "I want to pass my GCSE English resit",
-href: "./guides/GCSE-english-resit.html",
-img: "/public/images/pass-GCSE.png",
-text: "See who can help you with your resit, what you can ask and learn about alternatives. "
-}]) %}
+{# Maths only #}
+{% if mathsSelected and not englishSelected %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE maths resit",
+    href: "./guides/GCSE-maths-resit.html",
+    img: "/public/images/GCSE-maths-resit.png",
+    text: "See who can help you with your resit, what you can ask and learn about other options."
+  }]) %}
 {% endif %}
 
+{# English only #}
+{% if englishSelected and not mathsSelected %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE English resit",
+    href: "./guides/GCSE-english-resit.html",
+    img: "/public/images/GCSE-English-resit.png",
+    text: "See who can help you with your resit, what you can ask and learn about other options."
+  }]) %}
 {% endif %}
+
 <!-- MATHS AND ENGLISH END-->
-
-
 <!-- DO NOT HEAR APPLICATIONS - I do not hear back from applications - START-->
-{% if hearbackapplicationsSelected %}
-{% set cards = cards.concat([{ title: "I do not hear back from applications", href:
-"./guides/do-not-hear-back-applications.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if hearBackapplicationsSelected %}
+            {% set cards = cards.concat([{ title: "I do not hear back from applications", href:
+            "./guides/do-not-hear-back-applications.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- DO NOT HEAR APPLICATIONS - I do not hear back from applications - END-->
-
-
 <!-- FEEDBACK AND IMPROVE - I never get feedback so do not know what to improve - START-->
-{% if nothearSelected %}
-{% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href:
-"./guides/never-get-feedback.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if notHearSelected %}
+            {% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href:
+            "./guides/never-get-feedback.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- FEEDBACK AND IMPROVE - I never get feedback so do not know what to improve - END-->
-
-
 <!-- START FIRST JOB - I’m trying to get my first job - START-->
-{% if firstjobSelected %}
-{% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "./guides/trying-get-first-job.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if firstJobSelected %}
+            {% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "./guides/trying-get-first-job.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- START FIRST JOB - I’m trying to get my first job - END-->
-
-
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - START-->
-{% if volunteeringSelected %}
-{% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href:
-"./guides/done-volunteering.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if volunteeringSelected %}
+            {% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href:
+            "./guides/done-volunteering.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - END-->
-
-
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - START-->
-{% if apprenticeshipSelected %}
-{% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href:
-"./guides/cannot-find-apprenticeship.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if apprenticeshipSelected %}
+            {% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href:
+            "./guides/cannot-find-apprenticeship.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - END-->
-
-
 <!-- CV - Create a CV or make my CV better - START-->
-{% if createcvSelected %}
-{% set cards = cards.concat([{ title: "Create a CV or make my CV better", href: "./guides/create-CV.html", img:
-"/public/images/create-better-CV.png",
-text: "Find out who can help you with your CV and get tips if you’re losing motivation. "
-}]) %}
-{% endif %}
+            {% if createCvSelected %}
+            {% set cards = cards.concat([{ title: "Create a CV or make my CV better", href: "./guides/create-CV.html", img:
+            "/public/images/create-better-CV.png",
+            text: "Find out who can help you with your CV and get tips if you’re losing motivation. "
+            }]) %}
+            {% endif %}
 <!-- CV - Create a CV or make my CV better - END -->
-
-
 <!-- WORK EXPERIENCE - I need to get some work experience - START-->
-{% if workexperienceSelected %}
-{% set cards = cards.concat([{ title: "I need to get some work experience", href:
-"./guides/need-to-get-work-experience.html", img:
-"/public/images/not-done-yet.png",
-text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
-lorem ipusm lorem ipsum"
-}]) %}
-{% endif %}
+            {% if workExperienceSelected %}
+            {% set cards = cards.concat([{ title: "I need to get some work experience", href:
+            "./guides/need-to-get-work-experience.html", img:
+            "/public/images/not-done-yet.png",
+            text: "Find out how tolorem ipsum lorem ipusm lorem lrem ipsum
+            lorem ipusm lorem ipsum"
+            }]) %}
+            {% endif %}
 <!-- WORK EXPERIENCE - I need to get some work experience - END -->
+<!-- Done so far working end -->
+<!-- Others-->
 
 <div class="govuk-width-container">
 
-  <!-- HERO -->
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
- 
-      <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6">
-   
-          <div class="govuk-grid-column-full govuk-!-padding-0 govuk-!-margin-bottom-6">
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-two-thirds">
-            <h1 class="govuk-heading-xl">What you can do next</h1>
-            <p class="govuk-body-l">
-              Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
-              get suggestions of what to say.
-            </p>
-          </div>
-          <div class="govuk-grid-column-one-third govuk-!-text-align-right">
-            <img class="image-hero-landingpage" src="/public/images/image-guide-landing-page.png" alt="What you can do next page has a female and male student working on a computer" style="max-width:100%;">
-          </div>
-        </div>
-        </div>
-        </div>
-  
-
-
-
-      <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
-        <div class="govuk-grid-column-two-thirds">
-          <h2 class="govuk-heading-m">
-            How to use these guides
-          </h2>
-          <p>If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
-            refer to it.</p>
-          <p>You can screenshot, text or email each guide to yourself.</p>
-        </div>
-      </div>
-
-      <!-- CARDS -->
-      <div class="dfe-grid-container">
-        {% for card in cards %}
-        <div class="dfe-card">
-          <img src="{{ card.img }}" alt="">
-          <div class="dfe-card-container">
-            <h3 class="govuk-heading-m">
-              <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
-                {{ card.title }}
-              </a>
-            </h3>
-
-            <p class="govuk-body">
-              {{ card.text or "More information about this option." }}
-            </p>
-
-
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-
-
-
-
-   
-      <!-- MENTAL HEALTH SUPPORT START -->
-      <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
-
-        <div class="govuk-inset-text govuk-!-margin-left-0">
-          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
-            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-            <p class="govuk-body">There are people who can help you.</p>
-            <p class="govuk-body">
-              <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from Mind</a>
-            </p>
-        </div>
-
-        <!--<p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
-          <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of the whole guide</a>
-        </p>-->
-
-      </div>
-      <!-- MENTAL HEALTH SUPPORT END -->
-    </div>
-  </div>
-</div>
-
-
-<!-- FEEDBACK GREY START 
-<div class="feedback-wrapper">
-
-  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
-
-
-    <div id="feedback-question" class="feedback-bar">
-
-      <div class="feedback-bar__left">
-
-        <span class="govuk-body feedback-title">
-          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
-        </span>
-
-        <button
-          type="button"
-          class="govuk-button govuk-button--secondary feedback-btn"
-          onclick="showFeedback()">
-          Yes
-        </button>
-
-        <button
-          type="button"
-          class="govuk-button govuk-button--secondary feedback-btn"
-          onclick="showFeedback()">
-          No
-        </button>
-
-      </div>
-
-      <div class="feedback-bar__right">
-
-        <button
-          type="button"
-          class="govuk-button govuk-button--secondary feedback-btn"
-          onclick="showFeedback()">
-          Give feedback about this page
-        </button>
-
-      </div>
-
-    </div>
-
-
-    <div id="feedback-panel" class="feedback-panel">
-
-      <h2 class="govuk-heading-l">
-        Give feedback about this page
-      </h2>
-
-      <textarea
-        id="feedback-text"
-        class="govuk-textarea"
-        rows="6"
-        maxlength="200"></textarea>
-
-      <p class="govuk-body legend">
-        You can enter up to 200 characters
-      </p>
-
-      <button
-        type="button"
-        class="govuk-button"
-        onclick="submitFeedback()">
-        Submit
-      </button>
-
-      <button
-        type="button"
-        class="govuk-button govuk-button--secondary"
-        onclick="hideFeedback()">
-        Cancel
-      </button>
-
-    </div>
-
-
-    <div
-      id="feedback-success"
-      class="govuk-notification-banner"
-      style="display:none">
-
-      <div class="govuk-notification-banner__content">
-        Thank you for your feedback.
-      </div>
-
-    </div>
-
-  </div>
-
-</div> -->
-
-
-</div>
-</div>
-</div>
-
-<!--{% block pageScripts %}
-
-<script>
-function showFeedback() {
-  document.getElementById('feedback-question').classList.add('hidden');
-  document.getElementById('feedback-panel').classList.add('active');
-}
-
-function hideFeedback() {
-  document.getElementById('feedback-question').classList.remove('hidden');
-  document.getElementById('feedback-panel').classList.remove('active');
-}
-
-function submitFeedback() {
-  document.getElementById('feedback-panel').classList.remove('active');
-  document.getElementById('feedback-success').style.display = 'block';
-}
-
-</script>
-{% endblock %} -->
-
-
-
-<!-- DFE FEEDBACK COMPONENT START -->
-<section class="dfe-feedback">
+    <!-- HERO -->
     <div class="govuk-grid-row">
-      <div class="govuk-grid-column-full">
-        <div class="dfe-feedback-banner">
-          <div class="dfe-feedback-banner--content">
-            <div class="dfe-feedback-banner--flex">
-              <h2 class="govuk-heading-s">Tell us what you think of this page</h2>
-              <button type="button" class="govuk-button" data-module="govuk-button" id="problemButton"
-                data-govuk-button-init="">
-                Give feedback
-              </button>
+        <div class="govuk-grid-column-full">
+
+            <div class="hero-blue govuk-grid-column-full govuk-!-padding-6 govuk-!-margin-bottom-6">
+
+                <div class="govuk-grid-column-full govuk-!-padding-0 govuk-!-margin-bottom-6">
+                    <div class="govuk-grid-row">
+                        <div class="govuk-grid-column-two-thirds">
+                            <h1 class="govuk-heading-xl">What you can do next</h1>
+                            <p class="govuk-body-l">
+                                Thanks for sharing where you’re at. Take a look through who can help, what you might want to do next and
+                                get suggestions of what to say.
+                            </p>
+                        </div>
+                        <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+                            <img class="image-hero-landingpage" src="/public/images/image-guide-landing-page.png" alt="What you can do next page has a female and male student working on a computer" style="max-width:100%;">
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="dfe-feedback-banner--content-message" id="thanksMessage" role="status" hidden="">
-              Thank you for your feedback
+
+
+
+            <div class="govuk-grid-row govuk-!-padding-top-6 govuk-!-padding-bottom-4">
+                <div class="govuk-grid-column-two-thirds">
+                    <h2 class="govuk-heading-m">
+                        How to use these guides
+                    </h2>
+                    <p>
+                        If you’re speaking to someone in person, you might find it useful to take the guide with you so you can
+                        refer to it.
+                    </p>
+                    <p>You can screenshot any sections you find useful.</p>
+                </div>
             </div>
 
-            <div class="dfe-feedback-panel" id="feedback-panel" style="display: none;" aria-hidden="true">
-              <form id="feedback-form">
-                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="400"
-                  data-govuk-character-count-init="">
-                  <div class="govuk-form-group govuk-!-margin-top-5">
-                    <h3 class="govuk-label-wrapper">
-                      <label class="govuk-label govuk-label--m" for="feedback_form_input">
-                        What do you want to tell us?
-                      </label>
-                    </h3>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="feedback_form_input"
-                      name="feedback_form_input" rows="5" aria-describedby="feedback_form_input"></textarea>
-                    <div id="feedback_form_input-info"
-                      class="govuk-hint govuk-character-count__message govuk-visually-hidden">
-                      You can enter up to 400 characters
+            <!-- CARDS -->
+            <div class="dfe-grid-container">
+                {% for card in cards %}
+                <div class="dfe-card">
+                    <img src="{{ card.img }}" alt="">
+                    <div class="dfe-card-container">
+                        <h3 class="govuk-heading-m">
+                            <a href="{{ card.href }}" class="govuk-link govuk-link--no-visited-state">
+                                {{ card.title }}
+                            </a>
+                        </h3>
+
+                        <p class="govuk-body">
+                            {{ card.text or "More information about this option." }}
+                        </p>
+
+
                     </div>
-                    <div class="govuk-hint govuk-character-count__message govuk-character-count__status"
-                      aria-hidden="true">
-                      You have 400 characters remaining
-                    </div>
-                    <div class="govuk-character-count__sr-status govuk-visually-hidden" aria-live="polite">
-                      You have 400 characters remaining
-                    </div>
-                  </div>
+                </div>
+                {% endfor %}
+            </div>
+
+
+
+
+
+            <!-- MENTAL HEALTH SUPPORT START -->
+            <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
+
+                <div class="govuk-inset-text govuk-!-margin-left-0">
+                    <h2 class="govuk-heading-m">
+                        Talk to someone about your mental health</h3>
+                        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+                        <p class="govuk-body">There are people who can help you.</p>
+                        <p class="govuk-body">
+                            <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from Mind</a>
+                        </p>
                 </div>
 
-                <div class="govuk-button-group">
-                  <button class="govuk-button" data-module="govuk-button" type="submit" data-govuk-button-init="">
-                    Submit
-                  </button>
-                  <button class="govuk-button govuk-button--secondary" type="button" data-module="govuk-button"
-                    id="cancelButton" data-govuk-button-init="">
-                    Cancel
-                  </button>
-                </div>
-              </form>
+                <!--<p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
+                  <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of the whole guide</a>
+                </p>-->
+
             </div>
-          </div>
+            <!-- MENTAL HEALTH SUPPORT END -->
         </div>
-      </div>
     </div>
-</section>
-<!-- DFE FEEDBACK COMPONENT END -->
+</div>
 
 {% endblock %}
 
@@ -508,4 +370,4 @@ function submitFeedback() {
 
 
 
- 
+
