@@ -1,0 +1,222 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+I'm struggling to pass my college course – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-6">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                I'm struggling to pass my college course</h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                If you're struggling with your college course and worried you may not pass, there are people who can
+                help you decide your next steps.
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/struggling-pass-college-course.png" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+      <!-- FULL ACCORDION START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
+
+
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section ">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                  Who to speak to and when
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Course tutor</strong></p>
+              <p class="govuk-body">You should speak to your tutor as soon as possible. They'll be able to offer advice
+                on specific things you could do to help. </p>
+
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Any teacher or member of staff</strong></p>
+              <p class="govuk-body">If you prefer, it's okay to speak to any teacher or member of staff you feel
+                comfortable with. For example, you might prefer to speak to your personal tutor first. They can
+                listen to you and help you to create a plan.</p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0"><strong>Student support services</strong></p>
+              <p class="govuk-body">Your college will likely have a pastoral officer as part of their student support
+                services if you'd rather talk to them about how you're feeling.  They might be called something
+                different at your college. If you're not sure, you can ask a teacher.</p>
+
+
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong>Learning support or SEND department</strong>
+              </p>
+              <p class="govuk-body">
+                You might feel that you're finding things difficult because of a learning difficulty, neurodivergence or
+                disability. You can speak to a staff member who works in the learning support or special educational needs and 
+                disabilities (SEND) department. If you're not sure who this might be, you can ask your tutor for advice.
+              </p>
+
+              <p class="govuk-body govuk-!-margin-bottom-0">
+                <strong>Careers adviser</strong>
+              </p>
+              <p class="govuk-body">
+                A careers adviser can help you understand how different options might affect your future plans. They can
+                also help you think through alternative routes if you're worried about passing your course.
+              </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                  Think about why you're struggling
+                </span>
+              </h2>
+
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">There are many reasons why you might be struggling with one or more of your courses
+                in college. </p>
+              <p class="govuk-body">It could be that you found the subject easier during GCSEs, but it seems to be
+                different or more difficult at college. </p>
+              <p class="govuk-body">This is completely normal and could be due to:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>
+                  the course covering different topics than it did at GCSE</li>
+                <li>the subject is different or harder than you expected </li>
+                <li>new tutors in college, or different teaching styles  </li>
+                <li>struggling with essays or exams – you may find coursework more suited to the way you learn, for
+                  example </li>
+                <li>something in your personal life that is affecting your studies</li>
+              </ul>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  What you can do next
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+              <p class="govuk-body">Depending on what stage you're at in college, not passing your course can mean
+                different things. It's normal to feel stressed, but there are things you can do that can help.  
+              </p>
+              <p class="govuk-body">You may be able to:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li><a href="./college-switch-different-course.html" class="govuk-link">change your subject or course </a> if it's still early in the
+                  academic year </li>
+                <li>drop a course or subject if you're doing more than one so you can reduce your timetable and focus
+                  on the courses you feel more confident in </li>
+                <li>swap to another class if there's more than one class of this subject</li>
+                <li>resit anything you did not pass</li>
+                <li>get feedback on assessments you did not pass, so you can focus on what to improve </li>
+              </ul>
+              <p class="govuk-body">Your teacher can help you decide what option might suit you best. Think about what's
+                important to you now and for your next step. For example, if you need certain grades or qualifications
+                for further study or job applications. This will help you narrow down what to do.</p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  What you can ask
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+              <p class="govuk-body">Whoever you choose to talk to, it's a good step towards changing things for the
+                better.</p>
+              <p class="govuk-body">It can be hard knowing how to get the most out of conversations or even how to start
+                them.</p>
+              <p class="govuk-body">Here are a few prompts of what to say to a tutor or teacher if you're struggling to
+                pass your course at college:</p>
+              <p class="govuk-body blue-quote">“I am struggling to pass this course. Are you the best person to speak
+                to about that, or is there someone else I should speak to in college?”
+              </p>
+              <p class="govuk-body blue-quote">“Can you help me work out what to do or what will happen if I want to
+                drop this course?” </p>
+              <p class="govuk-body blue-quote">“What are my options if I don't pass my resits?”</p>
+              <p class="govuk-body blue-quote">“Is it possible for me to drop or change one of my courses or subjects?”
+              </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+        </div>
+      </div>
+      <!-- FULL ACCORDION END -->
+
+      <!-- MENTAL HEALTH SUPPORT START -->
+      <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
+
+        <div class="govuk-inset-text govuk-!-margin-left-0">
+          <h2 class="govuk-heading-m">Talk to someone about your mental health</h3>
+            <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
+            <p class="govuk-body">There are people who can help you.</p>
+            <p class="govuk-body">
+              <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from
+                Mind</a>
+            </p>
+        </div>
+
+      </div>
+      <!-- MENTAL HEALTH SUPPORT END -->
+
+    </div>
+  </div>
+
+
+</div>
+</div>
+</div>
+
+
+{% endblock %}
