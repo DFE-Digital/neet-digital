@@ -22,6 +22,9 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
     {% set phaseBanner = 'This is a new service.<a href="https://dferesearch.fra1.qualtrics.com/jfe/form/SV_e8ui8jFzOcUXsgK" class="govuk-link" rel="noreferrer noopener" target="_blank">Give your feedback to help us improve it (opens in new tab)</a>.' %}
 {% else %}
     {% set phaseBanner = 'This is a new service.' %}
+    {% set serviceName %}
+       Find out who can help you as a young person
+    {% endset%}
 {% endif %}
 
 {% block beforeContent %}

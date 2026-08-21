@@ -201,8 +201,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% set cards = cards.concat([{ title: "I do not hear back from applications", href:
             "./guides/do-not-hear-back-applications.html", img:
             "/public/images/do-not-hear-back-applications.png",
-            text: "It’s tough to keep not hearing back from jobs you’ve applied to.
-                   Learn what can help and who you can speak to if you feel like you’re getting nowhere."
+            text: "Learn what can help and who you can speak to if you feel like you’re getting nowhere."
             }]) %}
             {% endif %}
 <!-- DO NOT HEAR APPLICATIONS - I do not hear back from applications - END-->
@@ -211,8 +210,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href:
             "./guides/never-get-feedback.html", img:
             "/public/images/never-get-feedback.png",
-            text: "It’s normal to be frustrated about not getting feedback.
-                  Get a template for how to ask for feedback and see who else can help improve your job applications."
+            text: "Get a template for how to ask for feedback and see who else can give you advice."
             }]) %}
             {% endif %}
 <!-- FEEDBACK AND IMPROVE - I never get feedback so do not know what to improve - END-->
@@ -220,7 +218,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% if showAll or firstJobSelected %}
             {% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "./guides/trying-get-first-job.html", img:
             "/public/images/trying-get-first-job.png",
-            text: "Whether you’re looking for a Saturday job or a full time role, get tips on where to start and who can help."
+            text: "Whether you’re looking for a Saturday job or full time role, get tips omn where to start."
             }]) %}
             {% endif %}
 <!-- START FIRST JOB - I’m trying to get my first job - END-->
@@ -229,8 +227,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href:
             "./guides/done-volunteering.html", img:
             "/public/images/done-volunteering.png",
-            text: "Finding a job can be tough, even with valuable experience.
-                   Learn how to write about the skills you gained from volunteering in your CV and job applications."
+            text: "See who can help you make the most of your volunteering experience in job applications."
             }]) %}
             {% endif %}
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - END-->
@@ -239,8 +236,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href:
             "./guides/cannot-find-apprenticeship.html", img:
             "/public/images/cannot-find-apprenticeship.png",
-            text: "It’s normal to be frustrated if you have limited options near you.
-                   See who can help you and get advice about other work-based options that might suit you."
+            text: "Learn who can help you find an apprenticeship and get advice about work-based options."
             }]) %}
             {% endif %}
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - END-->
@@ -248,8 +244,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% if showAll or createCvSelected %}
             {% set cards = cards.concat([{ title: "I want to create a CV or make my CV better", href: "./guides/create-CV.html", img:
             "/public/images/create-CV.png",
-            text: "If you’re struggling to know what to include in your CV, you’re not alone. 
-            Find out who can help you and see examples CVs from other young people."
+            text: "Find out who can help you with your CV and get tips if you’re losing motivation."
             }]) %}
             {% endif %}
 <!-- CV - Create a CV or make my CV better - END -->
@@ -258,8 +253,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% set cards = cards.concat([{ title: "I need to get some work experience", href:
             "./guides/need-to-get-work-experience.html", img:
             "/public/images/need-to-get-work-experience.png",
-            text: "It’s hard to be told you need experience for a job when you cannot find anyone that will give you a chance.
-                   Learn who can help you get a placement at any age."
+            text: "See how to get work experience at any age and learn who can help you get a placement."
             }]) %}
             {% endif %}
 <!-- WORK EXPERIENCE - I need to get some work experience - END -->
@@ -327,30 +321,11 @@ text: "Find out who to speak to and what your options are if you’re worried ab
                 </div>
                 {% endfor %}
             </div>
+                      
+      <!-- MENTAL HEALTH SUPPORT START -->
+            {% include "../../assets/html-templates/ViewHelpLinesFooter.html" %}
+      <!-- MENTAL HEALTH SUPPORT END -->
 
-
-
-
-
-            <!-- MENTAL HEALTH SUPPORT START -->
-            <div class="govuk-width-container govuk-!-margin-top-9 govuk-!-margin-left-0">
-
-                <div class="govuk-inset-text govuk-!-margin-left-0">
-                    <h2 class="govuk-heading-m">
-                        Talk to someone about your mental health</h3>
-                        <p class="govuk-body">If you need help urgently, you do not have to deal with it by yourself. </p>
-                        <p class="govuk-body">There are people who can help you.</p>
-                        <p class="govuk-body">
-                            <a class="govuk-link" href="https://www.mind.org.uk/for-young-people/">Get mental health support from Mind</a>
-                        </p>
-                </div>
-
-                <!--<p class="govuk-body-s govuk-!-margin-top-9 govuk-!-margin-left-0">
-                  <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">View a printable version of the whole guide</a>
-                </p>-->
-
-            </div>
-            <!-- MENTAL HEALTH SUPPORT END -->
         </div>
     </div>
 </div>
