@@ -399,6 +399,8 @@ module.exports = () => {
     // ----------------------------------------------------------------------------------------------------------------
 
     router.get('/round4-mvp/What-you-can-do-next', navigationValidation(steps.what_you_can_do_next), (req, res) => {
+        res.locals.showAllGuides = typeof req.query["all"] !== 'undefined';
+
         updateStepReached(req, steps.what_you_can_do_next);
         return res.render('round4-mvp/What-you-can-do-next');
     });
