@@ -85,30 +85,31 @@ href: "\check-your-answers"
 {# ---------- BUILD CARDS ---------- #}
 {% set cards = [] %}
 
+{% set showAll = showAllGuides %}
 
 <!-- Done so far working start -->
-{% if notSureWhatToDoSelected and (collegeSelected or sixthFormCollegeSelected) %}
+{% if showAll or (notSureWhatToDoSelected and (collegeSelected or sixthFormCollegeSelected)) %}
 {% set cards = cards.concat([{
-title: "I’m not sure what to do when I leave college",
+title: "I'm not sure what to do when I leave college",
 href: "./guides/college-not-sure-what-to-do.html",
 img: "/public/images/what-do-leave-college.png",
-text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
+text: "Learn who to talk to if you're feeling unsure about your future and what options are available."
 }]) %}
 {% endif %}
 
 
-{% if notSureWhatToDoSelected and sixthFormSecSchoolSelected %}
+{% if showAll or (notSureWhatToDoSelected and sixthFormSecSchoolSelected) %}
 {% set cards = cards.concat([{
-title: "I’m not sure what to do when I leave sixth form",
+title: "I'm not sure what to do when I leave sixth form",
 href: "./guides/sixth-form-not-sure-what-to-do.html",
 img: "/public/images/what-do-leave-sixth-form.png",
-text: "Learn who to talk to if you’re feeling unsure about your future and what options are available."
+text: "Learn who to talk to if you're feeling unsure about your future and what options are available."
 }]) %}
 {% endif %}
 
 
 
-{% if switchCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
+{% if showAll or (switchCourseSelected and (collegeSelected or sixthFormCollegeSelected)) %}
 {% set cards = cards.concat([{
 title: "I want to switch to a different course at college",
 href: "./guides/college-switch-different-course.html",
@@ -119,7 +120,7 @@ text: "Find out who to speak to about changing course and what you can do if it�
 
 
 
-{% if switchCourseSelected and sixthFormSecSchoolSelected %}
+{% if showAll or (switchCourseSelected and sixthFormSecSchoolSelected) %}
 {% set cards = cards.concat([{
 title: "I want to switch subjects at sixth form",
 href: "./guides/sixth-form-switch-different-subject.html",
@@ -130,7 +131,7 @@ text: "Find out who to speak to about changing subjects and what you can do if i
 
 
 
-{% if  stuckCourseSelected %}
+{% if showAll or stuckCourseSelected %}
 {% set cards = cards.concat([{
 title: "I’m stuck on a course I do not like",
 href: "./guides/stuck-course.html",
@@ -142,7 +143,7 @@ text: "See how your course can help you in the future, even if it is not what yo
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and (collegeSelected or sixthFormCollegeSelected) %}
+{% if showAll or (strugglingPassCourseSelected and (collegeSelected or sixthFormCollegeSelected)) %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass my college course",
 href: "./guides/college-struggling-pass-college-course.html",
@@ -153,7 +154,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 
 {# Struggling to pass #}
-{% if strugglingPassCourseSelected and sixthFormSecSchoolSelected %}
+{% if showAll or (strugglingPassCourseSelected and sixthFormSecSchoolSelected) %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass a subject in sixth form",
 href: "./guides/sixth-form-struggling-pass-subject.html",
@@ -163,8 +164,19 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {% endif %}
 
 <!-- MATHS AND ENGLISH START-->
+
+{# English only #}
+{% if showAll or (englishSelected and not mathsSelected) %}
+  {% set cards = cards.concat([{
+    title: "I need to pass my GCSE English resit",
+    href: "./guides/GCSE-english-resit.html",
+    img: "/public/images/GCSE-English-resit.png",
+    text: "See who can help you with your resit, what you can ask and learn about other options."
+  }]) %}
+{% endif %}
+
 {# Combined guide #}
-{% if mathsSelected and englishSelected %}
+{% if showAll or (mathsSelected and englishSelected) %}
   {% set cards = cards.concat([{
     title: "I need to pass my GCSE maths and English resits",
     href: "./guides/GCSE-maths-and-English.html",
@@ -174,7 +186,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 {% endif %}
 
 {# Maths only #}
-{% if mathsSelected and not englishSelected %}
+{% if showAll or (mathsSelected and not englishSelected) %}
   {% set cards = cards.concat([{
     title: "I need to pass my GCSE maths resit",
     href: "./guides/GCSE-maths-resit.html",
@@ -183,19 +195,9 @@ text: "Find out who to speak to and what your options are if you’re worried ab
   }]) %}
 {% endif %}
 
-{# English only #}
-{% if englishSelected and not mathsSelected %}
-  {% set cards = cards.concat([{
-    title: "I need to pass my GCSE English resit",
-    href: "./guides/GCSE-english-resit.html",
-    img: "/public/images/GCSE-English-resit.png",
-    text: "See who can help you with your resit, what you can ask and learn about other options."
-  }]) %}
-{% endif %}
-
 <!-- MATHS AND ENGLISH END-->
 <!-- DO NOT HEAR APPLICATIONS - I do not hear back from applications - START-->
-            {% if hearBackapplicationsSelected %}
+            {% if showAll or hearBackapplicationsSelected %}
             {% set cards = cards.concat([{ title: "I do not hear back from applications", href:
             "./guides/do-not-hear-back-applications.html", img:
             "/public/images/do-not-hear-back-applications.png",
@@ -205,7 +207,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- DO NOT HEAR APPLICATIONS - I do not hear back from applications - END-->
 <!-- FEEDBACK AND IMPROVE - I never get feedback so do not know what to improve - START-->
-            {% if notHearSelected %}
+            {% if showAll or notHearSelected %}
             {% set cards = cards.concat([{ title: "I never get feedback so do not know what to improve", href:
             "./guides/never-get-feedback.html", img:
             "/public/images/never-get-feedback.png",
@@ -215,7 +217,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- FEEDBACK AND IMPROVE - I never get feedback so do not know what to improve - END-->
 <!-- START FIRST JOB - I’m trying to get my first job - START-->
-            {% if firstJobSelected %}
+            {% if showAll or firstJobSelected %}
             {% set cards = cards.concat([{ title: "I’m trying to get my first job", href: "./guides/trying-get-first-job.html", img:
             "/public/images/trying-get-first-job.png",
             text: "Whether you’re looking for a Saturday job or a full time role, get tips on where to start and who can help."
@@ -223,7 +225,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- START FIRST JOB - I’m trying to get my first job - END-->
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - START-->
-            {% if volunteeringSelected %}
+            {% if showAll or volunteeringSelected %}
             {% set cards = cards.concat([{ title: "I’ve done volunteering but cannot seem to get a paid job", href:
             "./guides/done-volunteering.html", img:
             "/public/images/done-volunteering.png",
@@ -233,7 +235,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - END-->
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - START-->
-            {% if apprenticeshipSelected %}
+            {% if showAll or apprenticeshipSelected %}
             {% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href:
             "./guides/cannot-find-apprenticeship.html", img:
             "/public/images/cannot-find-apprenticeship.png",
@@ -243,7 +245,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - END-->
 <!-- CV - Create a CV or make my CV better - START-->
-            {% if createCvSelected %}
+            {% if showAll or createCvSelected %}
             {% set cards = cards.concat([{ title: "I want to create a CV or make my CV better", href: "./guides/create-CV.html", img:
             "/public/images/create-CV.png",
             text: "If you’re struggling to know what to include in your CV, you’re not alone. 
@@ -252,7 +254,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- CV - Create a CV or make my CV better - END -->
 <!-- WORK EXPERIENCE - I need to get some work experience - START-->
-            {% if workExperienceSelected %}
+            {% if showAll or workExperienceSelected %}
             {% set cards = cards.concat([{ title: "I need to get some work experience", href:
             "./guides/need-to-get-work-experience.html", img:
             "/public/images/need-to-get-work-experience.png",
@@ -354,6 +356,22 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 </div>
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
