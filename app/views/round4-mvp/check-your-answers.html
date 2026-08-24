@@ -26,7 +26,7 @@ href: "\where-are-you-at-with-education"
         <dl class="govuk-summary-list">
             <!-- Name -->
             <div class="govuk-summary-list__row">
-                <dt class="govuk-summary-list__key">Name</dt>
+                <dt class="govuk-summary-list__key">First name</dt>
                 <dd class="govuk-summary-list__value">
                     {{ data.firstName if data.firstName else 'Not provided' }}
                 </dd>
@@ -133,7 +133,7 @@ href: "\where-are-you-at-with-education"
 
         <form action="./What-you-can-do-next" method="get">
             <div class="govuk-button-group govuk-!-margin-bottom-7">
-                {{ govukButton({ text: "See relevant advice for your situation" }) }}
+                {{ govukButton({ text: "See advice" }) }}
             </div>
         </form>
 
