@@ -183,6 +183,25 @@ module.exports = () => {
     }
 
     // ----------------------------------------------------------------------------------------------------------------
+    // Landing page
+    // ----------------------------------------------------------------------------------------------------------------
+
+    router.post('/round4-mvp/landing-page', (req, res) => {
+        resetJourneyData(req);
+        return res.redirect(`/round4-mvp/whats-your-first-name`);
+    });
+
+    resetJourneyData = function (req) {
+        const externalReferrer = req.session.data.externalReferrer;
+        const analyticsConsent = req.session.data.analyticsConsent;
+
+        req.session.data = {};
+
+        req.session.data.externalReferrer = externalReferrer;
+        req.session.data.analyticsConsent = analyticsConsent;
+    }
+
+    // ----------------------------------------------------------------------------------------------------------------
     // Whats your first name
     // ----------------------------------------------------------------------------------------------------------------
 
@@ -213,7 +232,7 @@ module.exports = () => {
 
         if (!(req.session?.data?.feeling) || req.session.data.feeling.length == 0) {
             errors['page'] = {
-                "text": "Select at least one option that reflects how you’re doing, or select 'I do not want to say how I’m feeling today",
+                "text": "Select at least one option that reflects how you’re doing, or select 'I do not want to say how I’m feeling",
                 "href": "#feeling"
             };
         }

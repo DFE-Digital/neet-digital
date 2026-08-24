@@ -85,18 +85,19 @@ Find out who can help you as a young person – {{ serviceName }} – GOV.UK Pro
 
             <ul class="govuk-list govuk-list--bullet">
 
-              <li>information about how the system works</li>
+              <li>advice about what you can do</li>
               <li>advice on who to speak to</li>
               <li>suggestions of what to say or how to ask for help</li>
             </ul>
 
-            <div class="govuk-button-group govuk-!-margin-top-6">
-              {{ govukButton({
-              text: "Start now",
-              href: "whats-your-first-name",
-              isStartButton: true
-              }) }}
-            </div>
+            <form class="form" method="post">
+                <div class="govuk-button-group govuk-!-margin-top-6">
+                  {{ govukButton({
+                  text: "Start",
+                  isStartButton: true
+                  }) }}
+                </div>
+            </form>
 
           </div>
         </div>

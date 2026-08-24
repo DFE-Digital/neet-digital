@@ -25,7 +25,7 @@ href: "\whats-your-first-name"
 {% set valueOkay             = "Okay" %}
 {% set valueHopeful          = "Hopeful" %}
 {% set valueExcited          = "Excited" %}
-{% set valueNotWantToSay     = "I do not want to say how I’m feeling today" %}
+{% set valueNotWantToSay     = "I do not want to say how I’m feeling" %}
 
 {% macro checkedIfSelected(values, option) %}
   {% if values and values.includes(option) %}checked{% endif %}
@@ -131,7 +131,7 @@ href: "\whats-your-first-name"
                                    data-behaviour="exclusive"
                                    value="{{valueNotWantToSay}}" {{ checkedIfSelected(data["feeling"], valueNotWantToSay) }}>
                             <label class="govuk-label govuk-checkboxes__label" for="feeling-10">
-                                I do not want to say how I’m feeling today
+                                I do not want to say how I’m feeling
                             </label>
                         </div>
 
@@ -153,8 +153,8 @@ href: "\whats-your-first-name"
                 <div class="govuk-grid-column-two-thirds">
                     <div class="govuk-details__text">
                         <p class="govuk-body">
-                            We're asking this so you can pause to reflect on how you’re doing. This information
-                            does not get collected or reported to anyone.
+                            We're asking this so you can pause to reflect on how you’re doing. 
+                            This information does not get reported to anyone.
                         </p>
                     </div>
                 </div>

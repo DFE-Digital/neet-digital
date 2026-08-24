@@ -29,29 +29,29 @@ href: "\check-your-answers"
 {# ---------- FLAGS ---------- #}
 {# ===  what-help-dynamic ==================== #}
 
-{% set notSureWhatToDoSelected = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
-{% set switchCourseSelected = routes.indexOf("I want to switch to a different course or subject") > -1 %}
-{% set stuckCourseSelected = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
+{% set notSureWhatToDoSelected      = routes.indexOf("I’m not sure what to do after college or sixth form") > -1 %}
+{% set switchCourseSelected         = routes.indexOf("I want to switch to a different course or subject") > -1 %}
+{% set stuckCourseSelected          = routes.indexOf("I’m stuck on a course I do not like") > -1 %}
 {% set strugglingPassCourseSelected = routes.indexOf("I’m struggling to pass my course") > -1 %}
 
-{% set mathsSelected = routes.indexOf("Maths") > -1 %}
+{% set mathsSelected   = routes.indexOf("Maths") > -1 %}
 {% set englishSelected = routes.indexOf("English") > -1 %}
 
 {% set hearBackapplicationsSelected = routes.indexOf("I do not hear back from applications") > -1 %}
-{% set notHearSelected = routes.indexOf("I never get feedback so do not know what to improve") > -1 %}
-{% set firstJobSelected = routes.indexOf("I’m trying to get my first job") > -1 %}
-{% set volunteeringSelected = routes.indexOf("I’ve done volunteering but cannot seem to get a paid job") > -1 %}
-{% set apprenticeshipSelected = routes.indexOf("I cannot find an apprenticeship where I live") > -1 %}
+{% set notHearSelected              = routes.indexOf("I never get feedback so do not know what to improve") > -1 %}
+{% set firstJobSelected             = routes.indexOf("I’m trying to get my first job") > -1 %}
+{% set volunteeringSelected         = routes.indexOf("I’ve done volunteering but cannot seem to get a paid job") > -1 %}
+{% set cantFindApprenticeship       = routes.indexOf("I cannot find an apprenticeship where I live") > -1 %}
 
-{% set createCvSelected = routes.indexOf("Create a CV or make my CV better") > -1 %}
-{% set workExperienceSelected = routes.indexOf("I need to get some work experience") > -1 %}
+{% set createCvSelected             = routes.indexOf("Create a CV or make my CV better") > -1 %}
+{% set workExperienceSelected       = routes.indexOf("I need to get some work experience") > -1 %}
 
 {# ===  education ==================== #}
 
-{% set collegeSelected            = (data.educationStatus == "College") %}
-{% set sixthFormCollegeSelected   = (data.educationStatus == "Sixth form college") %}
-{% set sixthFormSecSchoolSelected = (data.educationStatus == "Sixth form (attached to a secondary school)") %}
-{% set apprenticeshipSelected     = (data.educationStatus == "Apprenticeship") %}  {# ---------- NEW ---------- #}
+{% set collegeEducation            = (data.educationStatus == "College") %}
+{% set sixthFormCollegeEducation   = (data.educationStatus == "Sixth form college") %}
+{% set sixthFormSchoolEducation    = (data.educationStatus == "Sixth form (attached to a secondary school)") %}
+{% set apprenticeEducation         = (data.educationStatus == "Apprenticeship") %}  {# ---------- NEW ---------- #}
 
 {% if DEBUG %}
 
@@ -68,15 +68,15 @@ href: "\check-your-answers"
 <br />notHearSelected              : {{ notHearSelected              }}
 <br />firstJobSelected             : {{ firstJobSelected             }}
 <br />volunteeringSelected         : {{ volunteeringSelected         }}
-<br />apprenticeshipSelected       : {{ apprenticeshipSelected       }}
+<br />cantFindApprenticeship       : {{ cantFindApprenticeship       }}
 <br />
 <br />createCvSelected             : {{ createCvSelected             }}
 <br />workExperienceSelected       : {{ workExperienceSelected       }}
 <br />
-<br />collegeSelected              : {{ collegeSelected              }}
-<br />sixthFormCollegeSelected     : {{ sixthFormCollegeSelected     }}
-<br />sixthFormSecSchoolSelected   : {{ sixthFormSecSchoolSelected   }}
-<br />apprenticeshipSelected       : {{ apprenticeshipSelected       }}
+<br />collegeEducation             : {{ collegeEducation             }}
+<br />sixthFormCollegeEducation    : {{ sixthFormCollegeEducation    }}
+<br />sixthFormSchoolEducation     : {{ sixthFormSchoolEducation     }}
+<br />apprenticeEducation          : {{ apprenticeEducation          }}
 <br />
 =================================
 <br />
@@ -88,7 +88,7 @@ href: "\check-your-answers"
 {% set showAll = showAllGuides %}
 
 <!-- Done so far working start -->
-{% if showAll or (notSureWhatToDoSelected and (collegeSelected or sixthFormCollegeSelected)) %}
+{% if showAll or (notSureWhatToDoSelected and (collegeEducation or sixthFormCollegeEducation)) %}
 {% set cards = cards.concat([{
 title: "I'm not sure what to do when I leave college",
 href: "./guides/college-not-sure-what-to-do.html",
@@ -98,7 +98,7 @@ text: "Learn who to talk to if you're feeling unsure about your future and what 
 {% endif %}
 
 
-{% if showAll or (notSureWhatToDoSelected and sixthFormSecSchoolSelected) %}
+{% if showAll or (notSureWhatToDoSelected and sixthFormSchoolEducation) %}
 {% set cards = cards.concat([{
 title: "I'm not sure what to do when I leave sixth form",
 href: "./guides/sixth-form-not-sure-what-to-do.html",
@@ -109,7 +109,7 @@ text: "Learn who to talk to if you're feeling unsure about your future and what 
 
 
 
-{% if showAll or (switchCourseSelected and (collegeSelected or sixthFormCollegeSelected)) %}
+{% if showAll or (switchCourseSelected and (collegeEducation or sixthFormCollegeEducation)) %}
 {% set cards = cards.concat([{
 title: "I want to switch to a different course at college",
 href: "./guides/college-switch-different-course.html",
@@ -120,7 +120,7 @@ text: "Find out who to speak to about changing course and what you can do if it�
 
 
 
-{% if showAll or (switchCourseSelected and sixthFormSecSchoolSelected) %}
+{% if showAll or (switchCourseSelected and sixthFormSchoolEducation) %}
 {% set cards = cards.concat([{
 title: "I want to switch subjects at sixth form",
 href: "./guides/sixth-form-switch-different-subject.html",
@@ -143,7 +143,7 @@ text: "See how your course can help you in the future, even if it is not what yo
 
 
 {# Struggling to pass #}
-{% if showAll or (strugglingPassCourseSelected and (collegeSelected or sixthFormCollegeSelected)) %}
+{% if showAll or (strugglingPassCourseSelected and (collegeEducation or sixthFormCollegeEducation)) %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass my college course",
 href: "./guides/college-struggling-pass-college-course.html",
@@ -154,7 +154,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
 
 
 {# Struggling to pass #}
-{% if showAll or (strugglingPassCourseSelected and sixthFormSecSchoolSelected) %}
+{% if showAll or (strugglingPassCourseSelected and sixthFormSchoolEducation) %}
 {% set cards = cards.concat([{
 title: "I’m struggling to pass a subject in sixth form",
 href: "./guides/sixth-form-struggling-pass-subject.html",
@@ -232,7 +232,7 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             {% endif %}
 <!-- VOLUNTEERING - I’ve done volunteering but cannot seem to get a paid job - END-->
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - START-->
-            {% if showAll or apprenticeshipSelected %}
+            {% if showAll or cantFindApprenticeship %}
             {% set cards = cards.concat([{ title: "I cannot find an apprenticeship where I live", href:
             "./guides/cannot-find-apprenticeship.html", img:
             "/public/images/cannot-find-apprenticeship.png",
