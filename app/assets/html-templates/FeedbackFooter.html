@@ -58,3 +58,25 @@
       </div>
     </div>
 </section>
+
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} 
