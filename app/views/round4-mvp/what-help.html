@@ -50,13 +50,11 @@ href: "\current-situation"
         <form class="form" method="post" action="{{actionUrl}}">
             <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
                 <fieldset class="govuk-fieldset" aria-describedby="routes-hint routes-error">
-                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                        <h1 class="govuk-fieldset__heading">
-                            What do you need help with?
-                        </h1>
-                    </legend>
+                    <h1 class="govuk-heading-l">
+                        What do you need help with?
+                    </h1>
 
-                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
+                    <div class="govuk-body">
                         <p class="govuk-body">
                             It's okay if you're not sure or feeling stuck with lots of things. Lots of young people feel that way.
                         </p>
@@ -65,8 +63,7 @@ href: "\current-situation"
                         </p>
                     </div>
 
-
-                    <div class="govuk-grid-column-three-quarters govuk-!-padding-left-0">
+                    <div class="govuk-body">
 
                         <div id="routes-hint" class="govuk-hint">
                             Select all that apply
@@ -78,8 +75,8 @@ href: "\current-situation"
                         </p>
                         {% endif %}
                         <!--<p id="what-help-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> Select at least one option that reflects what you need help with
-                    </p>-->
+                            <span class="govuk-visually-hidden">Error:</span> Select at least one option that reflects what you need help with
+                        </p>-->
 
                         <div class="govuk-checkboxes" data-module="govuk-checkboxes">
                             <div class="govuk-checkboxes__item">
