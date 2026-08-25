@@ -1,6 +1,6 @@
 <input name="cvOptionsIncluded" type="hidden" value="true">
 
-{% set valueCvBetter       = "Create a CV or make my CV better" %}
+{% set valueCvBetter       = "I want to create a CV or make my CV better" %}
 {% set valueWorkExperience = "I need to get some work experience" %}
 
 {% macro checkedIfSelected(values, option) %}
@@ -24,7 +24,7 @@
             <input class="govuk-checkboxes__input" id="Create-CV-better" name="cv-checkbox" type="checkbox"
                    value="{{valueCvBetter}}" {{ checkedIfSelected(data["cv-checkbox"], valueCvBetter) }}>
             <label class="govuk-label govuk-checkboxes__label" for="Create-CV-better">
-                Create a CV or make my CV better
+                I want to create a CV or make my CV better
             </label>
         </div>
 

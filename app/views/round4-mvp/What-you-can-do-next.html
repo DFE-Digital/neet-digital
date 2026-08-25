@@ -43,7 +43,7 @@ href: "\check-your-answers"
 {% set volunteeringSelected         = routes.indexOf("I’ve done volunteering but cannot seem to get a paid job") > -1 %}
 {% set cantFindApprenticeship       = routes.indexOf("I cannot find an apprenticeship where I live") > -1 %}
 
-{% set createCvSelected             = routes.indexOf("Create a CV or make my CV better") > -1 %}
+{% set createCvSelected             = routes.indexOf("I want to create a CV or make my CV better") > -1 %}
 {% set workExperienceSelected       = routes.indexOf("I need to get some work experience") > -1 %}
 
 {# ===  education ==================== #}
@@ -240,14 +240,14 @@ text: "Find out who to speak to and what your options are if you’re worried ab
             }]) %}
             {% endif %}
 <!-- APPRENTICESHIP - I cannot find an apprenticeship where I live - END-->
-<!-- CV - Create a CV or make my CV better - START-->
+<!-- CV - I want to create a CV or make my CV better - START-->
             {% if showAll or createCvSelected %}
             {% set cards = cards.concat([{ title: "I want to create a CV or make my CV better", href: "./guides/create-CV.html", img:
             "/public/images/create-CV.png",
             text: "Find out who can help you with your CV and get tips if you’re losing motivation."
             }]) %}
             {% endif %}
-<!-- CV - Create a CV or make my CV better - END -->
+<!-- CV - I want to create a CV or make my CV better - END -->
 <!-- WORK EXPERIENCE - I need to get some work experience - START-->
             {% if showAll or workExperienceSelected %}
             {% set cards = cards.concat([{ title: "I need to get some work experience", href:
