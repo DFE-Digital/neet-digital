@@ -9,6 +9,7 @@ if (config.RouteVersion) {
 else {
     router.use(`/exam-results`, require(`./views/exam-results/routing`)());
     router.use(`/round4-mvp`, require(`./views/round4-mvp/routing`)());
+    router.use(`/round5-local`, require(`./views/round5-local/routing`)());
 }
 
 module.exports = router;

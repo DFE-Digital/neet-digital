@@ -1,0 +1,76 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Which part of applying for jobs do you need help with – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        Which part of applying for jobs do you need help with?
+      </h1>
+       <p>[ADD STAT & Content]</p>
+       <p>It's okay to be honest if you're having a hard time.</p>
+      <form class="form" action="/check-your-answers" method="post">
+         
+        <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="job-help-hint">
+    <div id="job-help-hint" class="govuk-hint">
+      Select all that apply
+    </div>
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="job-help" name="job-help" type="checkbox" value="I’m trying to get my first job and don’t know where to start">
+        <label class="govuk-label govuk-checkboxes__label" for="job-help">I’m trying to get my first job and don’t know where to start</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="job-help-2" name="job-help" type="checkbox" value="I never get feedback from applications so do not know what to improve">
+        <label class="govuk-label govuk-checkboxes__label" for="job-help-2">I never get feedback from applications so do not know what to improve</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="job-help-3" name="job-help" type="checkbox" value="I do not know what to put on my CV as I’ve not had a job before">
+        <label class="govuk-label govuk-checkboxes__label" for="job-help-3">I do not know what to put on my CV as I’ve not had a job before</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="job-help-4" name="job-help" type="checkbox" value="I have a CV but want to make it better">
+        <label class="govuk-label govuk-checkboxes__label" for="job-help-4">I have a CV but want to make it better</label>
+      </div>
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="job-help-5" name="job-help" type="checkbox" value="I’ve done volunteering but cannot seem to get a paid job">
+        <label class="govuk-label govuk-checkboxes__label" for="job-help-5">I’ve done volunteering but cannot seem to get a paid job  </label>
+      </div>
+    </div>
+    </div>
+  </fieldset>
+         <h1 class="govuk-label-wrapper">
+    <label class="govuk-label govuk-label--m" for="more-detail">
+      None of these sound right? (optional)
+    </label>
+  </h1>
+  <div id="more-detail-hint" class="govuk-hint">
+    Let us know in your own words what you need help with.
+  </div>
+  <textarea class="govuk-textarea" id="more-detail" name="jobHelpMoreDetail" rows="5" aria-describedby="more-detail-hint"></textarea>
+  <div class="govuk-button-group">
+         {{ govukButton({
+           text: "Continue"
+         }) }}
+         <a class="govuk-link" href="#">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

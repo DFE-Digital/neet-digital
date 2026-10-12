@@ -1,0 +1,386 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+I never get feedback so do not know what to improve – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-top-0 govuk-!-margin-bottom-6 govuk-!-padding-6">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                I never get feedback so do not know what to improve </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                  We know it’s tough to keep applying for jobs and apprenticeships if you’re not hearing anything back. It can be hard to keep motivated if you feel like you’re going in circles. 
+              </p>
+              <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/never-get-feedback.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+           <!-- FULL ACCORDION START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
+
+            
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                   Who can help in Norfolk and Suffolk 
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body">
+                We know 55% of young people have said something would stop them asking for help. Asking for support does not mean you’ve failed. It could be helpful to get an outside perspective and some useful advice on your situation. </p>
+                <p class="govuk-body">
+                  See what support you can get near where you live.
+                </p>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://www.jobs.service.gov.uk/" class="govuk-link" target="_blank" rel="noopener noreferrer">Speak to a careers advisor</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">National</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">You can speak to a careers adviser on the phone. They can help with your CV, give you job or career advice and help you work out what to do next.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Who can get help</h4>
+                  <p class="govuk-body">If you’re not in school, training or are 18 or older, you can speak to a careers adviser through the Jobs and Careers Service. You can also <a href="https://nationalcareers.service.gov.uk/help-and-support" class="govuk-link" target="_blank" rel="noopener noreferrer">see who you can speak to depending on your situation.</a></p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2">You can speak to a careers adviser for free on 0800 072 088.</p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://www.west-norfolk.gov.uk/info/20007/people_and_communities/755/boost_-_helping_young_people_succeed_in_west_norfolk" class="govuk-link" target="_blank" rel="noopener noreferrer">BOOST</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">West Norfolk and Breckland</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">You can get personalised help and ongoing support. This might be in person or online. Activities include: 121 mentoring, CV skills, mock interviews and work experience opportunities.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Who can get help</h4>
+                  <p class="govuk-body">You can get support if you’re aged 16 to 24, live in West Norfolk or Breckland and are not in education, employment or training.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">What to expect</h4>
+                  <p class="govuk-body">You’ll first meet with a member of the BOOST team. This will be a friendly chat so they can understand more about you and what you’re interested in.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>Self refer using the <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fhcZFOBXD0-v8P1htUnRDtKsQlRVKMhFqe-t8o6eYh9UMjVXTEZJRFlMRjZZWTdLRzNaTFZEVlE1MSQlQCN0PWcu" class="govuk-link" target="_blank" rel="noopener noreferrer">online form for BOOST</a></li>
+                        <li>For West Norfolk, email: boost@norfolk.gov.uk </li>
+                        <li>For Breckland, email: boostbreckland@norfolk.gov.uk</li>
+                      </ul>
+                  </p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://www.helpyouchoose.org/" class="govuk-link" target="_blank" rel="noopener noreferrer">Help You Choose</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">Norfolk</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">Help you Choose is designed to help you plan what to do next as a young person in Norfolk. You might also be able to speak to an adviser. They’ll listen to you and help you take a next step with things like choosing a new course, thinking about your career or finding a job.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Who can get help</h4>
+                  <p class="govuk-body">You can speak to an adviser if you live in Norfolk and are not in education, training or work. You need to be aged 16 to 19, or up to 25 if you have an EHCP.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">What to expect</h4>
+                  <p class="govuk-body">You’ll be able to talk to an adviser about what you’re worried about and what you might need help with. If you send an email or message, you should expect to hear back within 1 working day.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2">You can contact them by email, phone or online. <a href="https://www.helpyouchoose.org/contact" class="govuk-link" target="_blank" rel="noopener noreferrer">View contact details for Help you Choose</a>.
+                  </p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://thesource.me.uk/yourfuture/stuck/" class="govuk-link" target="_blank" rel="noopener noreferrer">The Source</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">Suffolk</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">The Source is run by Suffolk County Council for young people who are feeling stuck. You might be able to get help from an adviser. They can chat to you if you’re not sure what to do next with things like college, jobs or your career. You can also find out about local events or job fairs.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Who can get help</h4>
+                  <p class="govuk-body">You can speak to a member of the youth services support team if you live in Suffolk and are not in further education, training or work. You need to be aged 16 to 18, or up to 25 if you have an EHCP.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">What to expect</h4>
+                  <p class="govuk-body">You’ll be able to talk to an adviser about what you’re worried about and what you might need help with. They might reach out by phone or email.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2">You can contact them by email, phone or online form. <a href="https://www.helpyouchoose.org/contact" class="govuk-link" target="_blank" rel="noopener noreferrer">View contact details for the Suffolk Youth Support Services team</a>.</p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://inspirecharityuk.org/courses/yes-youth-employment-service-inspire/" class="govuk-link" target="_blank" rel="noopener noreferrer">YES (Youth employment service)</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">East Suffolk</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">You can get a free coach to help you with your next step. They can support you with anything from figuring out your next step to feeling more confident with job applications. They’ll be there to chat to so you’re never figuring it out on your own.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Who can get help</h4>
+                  <p class="govuk-body">You need to be aged 16 to 24 and live in East Suffolk.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">What to expect</h4>
+                  <p class="govuk-body">In your first session, you’ll chat about what you might need and make sure you’re eligible. Your first call will be over the phone or online.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><a href="https://volunteersuffolk.org.uk/next-generation-youth-volunteering/" class="govuk-link" target="_blank" rel="noopener noreferrer">You can <a href="https://bookings.cloud.microsoft/book/InspireYouthEmploymentService@InspireSuffolk.onmicrosoft.com/?ismsaljsauthenabled=true" class="govuk-link" target="_blank" rel="noopener noreferrer">book a session with a coach</a>. You can choose a date and time that works for you.</p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://volunteersuffolk.org.uk/" class="govuk-link" target="_blank" rel="noopener noreferrer">Volunteer Suffolk</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">East Suffolk</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">Volunteer Suffolk helps you find volunteering opportunities across Suffolk. You can search for opportunities near you to build your skills and confidence. New volunteering positions are added each week so it’s worth checking back if you do not spot anything you’re interested.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">What age you can be</h4>
+                  <p class="govuk-body">There are volunteer positions for all ages. Check the page of roles you’re interested into check if there is a minimum age. </p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">How to contact</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><a href="https://volunteersuffolk.org.uk/next-generation-youth-volunteering/" class="govuk-link" target="_blank" rel="noopener noreferrer">Volunteer Suffolk also have a youth volunteering programme</a> for young people aged 14 to 25. You can contact them if you’re interested in joining.</p>
+                </div>
+                <!-- -- -- -->
+                <div class="govuk-body local-support-option">
+                  <h3 class="govuk-heading-m govuk-!-margin-bottom-1 local-support-option__name"><a href="https://www.icanbea.org.uk/" class="govuk-link" target="_blank" rel="noopener noreferrer">I can be a</a></h3>
+                  <p class="govuk-body govuk-!-margin-bottom-2 local-support-option__location">Norfolk and Suffolk</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Support you can get</h4>
+                  <p class="govuk-body">I can be a is a website for young people in Norfolk and Suffolk up to the age of 25.</p>
+                  <h4 class="govuk-heading-s govuk-!-margin-bottom-1 local-support-option__subheading">Where to start</h4>
+                  <p class="govuk-body govuk-!-margin-bottom-2">There are lots of tools and information to explore. Here are some of the main features.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2">You can:</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2">
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li><a href="https://www.icanbea.org.uk/app/explore/industries/" class="govuk-link" target="_blank" rel="noopener noreferrer">discover job industries</a> that are popular in the area and learn about local employers</li>
+                        <li>browse a <a href="https://www.icanbea.org.uk/app/explore/organisations/" class="govuk-link" target="_blank" rel="noopener noreferrer">directory of employers</a></li>
+                        <li>find <a href="https://www.icanbea.org.uk/app/my-feed/?relevance=A&post_type=J&distance=&custom_postcode=&q=" class="govuk-link" target="_blank" rel="noopener noreferrer">local job opportunities</a> that may not appear on larger job sites like Indeed</li>
+                      </ul>
+                  </p>
+                </div>
+                <!-- -- -- -->
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                   What you can try next 
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">If you’ve asked for feedback from employers and have been ignored, you’re not alone. It can be demotivating to not understand why your application was rejected. It can make it difficult to know what to change.</p>
+              <p class="govuk-body">Here are some things to try if you’re feeling stuck. If you’ve already tried some or all of these, that’s okay. It can be unclear why one application succeeds while another does not. Try not to be too hard on yourself. Sometimes the best thing to do is to pause and come back with a fresher head tomorrow.</p>
+              <p class="govuk-body">Today you could:</p>
+              <p class="govuk-body govuk-!-margin-bottom-2">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>contact one of the local organisations on this page</li>
+                    <li>see if a friend or family member can look at your most recent job application</li>
+                    <li>ask for feedback on your CV or cover letter on a forum like Reddit, <a href="https://www.reddit.com/r/UKJobs/" class="govuk-link" target="_blank" rel="noopener noreferrer">r/UKjobs</a> is a useful subreddit</li>
+                    <li>look back at one application and see if you would change anything</li>
+                    <li>set one small goal for tomorrow rather than thinking of everything all at once</li>
+                    <li>take a break from applications and make time for things you enjoy</li>
+                  </ul>
+              </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                   How to ask for feedback from an interview 
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body">If you had an interview, an employer should take the time to give you feedback after the interview. We know this does not always happen, even when you ask for it. If you need help asking for feedback, you can see <a href="https://www.youthemployment.org.uk/how-to-write-a-professional-email/" class="govuk-link" target="_blank" rel="noopener noreferrer">how to write an email from Youth Employment UK</a>.</p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                   Online resources for help with job applications
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>See an <a href="https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/example-cvs/school-leaver-cv-example/" class="govuk-link" target="_blank" rel="noopener noreferrer">example CV from a 16 year old who does not have much work experience</a> from Prospects</li>
+                    <li>Use the <a href="https://www.jobs.service.gov.uk/chat/start" class="govuk-link" target="_blank" rel="noopener noreferrer">AI work assistant from GOV.UK</a> to get feedback on a job application. You’ll need an email address and a phone number for this.</li>
+                    <li>Find out <a href="https://www.youthemployment.org.uk/write-first-cv-tips-students-school-leavers/" class="govuk-link" target="_blank" rel="noopener noreferrer">what to include if this is your first CV</a> from Youth Employment UK</li>
+                  </ul>
+              </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+                  What you can ask
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-5" class="govuk-accordion__section-content">
+              <p class="govuk-body">If you need to send an email, we know this can feel daunting. You can get a template for <a href="https://www.youthemployment.org.uk/how-to-write-a-professional-email/ class="govuk-link" target="_blank" rel="noopener noreferrer">how to write an email from Youth Employment UK</a>.</p>
+              <p class="govuk-body">Here are a few prompts of what to say to a friend, careers adviser or work coach if you need help:</p>
+              <p class="govuk-body blue-quote">“I’ve applied for quite a few jobs but I’m not hearing back. Can you look at one of my applications and see what you think?”</p>
+              <p class="govuk-body blue-quote">“I’m not sure if it’s my CV, my application or the jobs I’m applying for. Can you help me work out what to try next?”</p>
+              <p class="govuk-body blue-quote">“Can you read my application and tell me if you think it meets what they're looking for in the job advert?”</p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+        </div>
+      </div>
+      <!-- FULL ACCORDION END -->
+
+      <!-- MENTAL HEALTH SUPPORT START -->
+            {% include "../../../assets/html-templates/ViewHelpLinesFooter.html" %}
+      <!-- MENTAL HEALTH SUPPORT END -->
+
+    </div>
+  </div>
+
+
+  
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+
+<!--
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} -->
+
+{% endblock %}
