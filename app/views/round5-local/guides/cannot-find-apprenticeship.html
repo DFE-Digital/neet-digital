@@ -1,0 +1,220 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+I cannot find an apprenticeship where I live – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-6 ">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl">
+                I cannot find an apprenticeship where I live</h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                  It’s normal to be frustrated if you have limited options near you. 
+                  See who can help you and get advice about other work-based options that might suit you.
+              </p>
+              <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/cannot-find-apprenticeship.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+      <!-- FULL ACCORDION START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
+
+          
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-1">
+                   Who can help and when
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-1" class="govuk-accordion__section-content">
+              <p class="govuk-body"></p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                   What you can ask
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+              <p class="govuk-body"></p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+        </div>
+      </div>
+      <!-- FULL ACCORDION END -->
+
+      <!-- MENTAL HEALTH SUPPORT START -->
+            {% include "../../../assets/html-templates/ViewHelpLinesFooter.html" %}
+      <!-- MENTAL HEALTH SUPPORT END -->
+
+    </div>
+  </div>
+
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+
+
+<!--
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} -->
+
+
+
+{% endblock %}

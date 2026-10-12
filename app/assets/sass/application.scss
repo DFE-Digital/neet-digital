@@ -3237,3 +3237,37 @@ p,
     padding-bottom: 10px;
 }
 
+
+/* ==========================================================================
+   STYLES / #LOCAL GUIDES
+   ========================================================================== */
+
+   .local-support-option {
+    margin:60px 0px 0px 0px;
+    position:relative;
+
+    &::before {
+      content:'';
+      width:100%;
+      height:1px;
+      display:block;
+      position:absolute;
+      top:-30px;
+      left:0px;
+      right:0px;
+      background-image: linear-gradient(to right, #858585 33%, rgba(255,255,255,0) 0%);
+      background-position: bottom;
+      background-size: 10px 4px;
+      background-repeat: repeat-x;
+    }
+
+    &:first-of-type &::before {
+      display:none;
+    }
+
+    .local-support-option__location {
+      color:#484949;
+    }
+   }
+
+   

@@ -1,0 +1,30 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName="Home" %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-xl">{{ serviceName }}</h1>
+
+    <p class="govuk-body-l">Prototype index page</p>
+
+    <hr class="govuk-section-break govuk-section-break--m govuk-section-break--visible">
+
+    <h2 class="govuk-heading-m">Error messages</h2>
+
+
+    <h2 class="govuk-heading-m">Individual pages</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a class="govuk-link" href="./error-messages/whats-your-first-name.html">Name text field error message</a></li>
+      <li><a class="govuk-link" href="#">Item</a></li>
+      <li><a class="govuk-link" href="#">Item</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}
