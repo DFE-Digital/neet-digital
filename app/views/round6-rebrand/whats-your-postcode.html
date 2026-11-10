@@ -1,0 +1,65 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What's your postcode – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "\whats-your-first-name"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\whats-your-first-name') %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l govuk-!-margin-top-0">What's your postcode? (optional)</h1>
+    <!--<p class="govuk-body govuk-!-margin-bottom-6"></p>-->
+     <form class="form" method="post" action="{{actionUrl}}">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="postcode">
+          Postcode
+        </label>
+        <input class="govuk-input" id="postcode" name="postcode" type="text" 
+               value="{{data.postcode}}"
+               autocomplete="postal-code">
+      </div>
+
+
+      <!-- DETAILS START -->
+      <details class="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text">
+            Why we’re asking this question
+          </span>
+        </summary>
+        <div class="govuk-grid-column-two-thirds">
+          <div class="govuk-details__text">
+              <p class="govuk-body">We use your postcode to know which support organisations and services are local to you. This data is not saved anywhere.</p>
+          </div>
+        </div>
+      </details>
+      <!-- DETAILS END -->
+
+      <!-- CONTINUE BUTTON START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0 govuk-!-margin-top-5">
+        <div class="govuk-button-group govuk-!-margin-bottom-7">
+          {{ govukButton({
+          text: "Continue"
+          }) }}
+        </div>
+      </div>
+      <!-- CONTINUE BUTTON END -->
+
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

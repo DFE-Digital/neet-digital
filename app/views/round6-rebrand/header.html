@@ -1,0 +1,38 @@
+{% macro sfcNavLinks() %}
+  <li class="sfc-header__nav-item"><a class="sfc-header__nav-link" href="/round6-rebrand/landing-page">Home</a></li>
+  <li class="sfc-header__nav-item"><a class="sfc-header__nav-link" href="https://www.skillsforcareers.education.gov.uk/pages/common/career-ideas">Career ideas</a></li>
+  <li class="sfc-header__nav-item"><a class="sfc-header__nav-link" href="https://www.skillsforcareers.education.gov.uk/your-training-options">Training options</a></li>
+  <li class="sfc-header__nav-item"><a class="sfc-header__nav-link" href="https://www.skillsforcareers.education.gov.uk/pages/common/find-work-and-training">Find work and training</a></li>
+  <li class="sfc-header__nav-item sfc-header__nav-item--active"><a class="sfc-header__nav-link" href="https://www.skillsforcareers.education.gov.uk/pages/common/help-and-advice" aria-current="page">Help and advice</a></li>
+{% endmacro %}
+
+<header class="sfc-header">
+  <div class="sfc-header__brand-wrap">
+    <a class="sfc-header__brand" href="/round6-rebrand/landing-page" aria-label="Skills for Careers home">
+      <span class="sfc-header__name">Skills for Careers</span>
+      <span class="sfc-header__department" aria-hidden="true">
+        <span class="sfc-header__department-crest"></span>
+        <span class="sfc-header__department-name">Department<br>for Education</span>
+      </span>
+    </a>
+  </div>
+  <nav class="sfc-header__nav" aria-label="Primary navigation">
+    <div class="sfc-header__nav-wrap">
+      <ul class="sfc-header__nav-list sfc-header__nav-list--desktop">
+        {{ sfcNavLinks() }}
+      </ul>
+      <details class="sfc-header__menu">
+        <summary>Menu</summary>
+        <ul class="sfc-header__nav-list">
+          {{ sfcNavLinks() }}
+        </ul>
+      </details>
+    </div>
+  </nav>
+</header>
+<div class="sfc-beta">
+  <div class="sfc-beta__inner">
+    <span class="sfc-beta__tag">Beta</span>
+    <p class="sfc-beta__message">This is a new service - your <a class="govuk-link" href="https://dferesearch.fra1.qualtrics.com/jfe/form/SV_cM8EVSAj1a0PIYS">feedback</a> will help us to improve it.</p>
+  </div>
+</div>

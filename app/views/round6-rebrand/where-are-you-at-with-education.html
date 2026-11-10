@@ -1,0 +1,114 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+What education or training are you doing? – {{ serviceName }}
+{% endblock %}
+
+{% block pageBefore %}
+{{
+ govukBackLink({
+text: "Back",
+href: "\are-you-in"
+})
+}}
+{% endblock %}
+
+{% block content %}
+
+{% set valueSecondarySchool = "Secondary school" %}
+{% set valueCollege         = "College or sixth form college" %}
+{% set valueSixthForm       = "Sixth form" %}
+{% set valueApprenticeship  = "Apprenticeship" %}
+{% set valueUniversity      = "University" %}
+{% set valueOtherTraining   = "Another type of training" %}
+
+{% macro checkedIfSelected(values, option) %}
+  {% if values and values.includes(option) %}checked{% endif %}
+{% endmacro %}
+
+{% include "../../assets/html-templates/error-summary.html" %}
+
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\what-help-dynamic') %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post" action="{{actionUrl}}">
+            <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset">
+
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            What education or training are you doing?
+                        </h1>
+                    </legend>
+
+                    <p class="govuk-body govuk-!-margin-bottom-6">
+                        You might have already started or be about to start.
+                    </p>
+
+                    {% if errors.HasErrors %}
+                    <p id="education-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-1" name="educationStatus" type="radio"
+                                   value="{{valueSecondarySchool}}" {{ checkedIfSelected(data["educationStatus"], valueSecondarySchool) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-1">Secondary school</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-2" name="educationStatus" type="radio"
+                                   value="{{valueCollege}}" {{ checkedIfSelected(data["educationStatus"], valueCollege) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-2">College or sixth form college</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-3" name="educationStatus" type="radio"
+                                   value="{{valueSixthForm}}" {{ checkedIfSelected(data["educationStatus"], valueSixthForm) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-3">Sixth form</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-4" name="educationStatus" type="radio"
+                                   value="{{valueApprenticeship}}" {{ checkedIfSelected(data["educationStatus"], valueApprenticeship) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-4">Apprenticeship</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-5" name="educationStatus" type="radio"
+                                   value="{{valueUniversity}}" {{ checkedIfSelected(data["educationStatus"], valueUniversity) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-5">University</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="education-status-6" name="educationStatus" type="radio"
+                                   value="{{valueOtherTraining}}" {{ checkedIfSelected(data["educationStatus"], valueOtherTraining) }}>
+                            <label class="govuk-label govuk-radios__label" for="education-status-6">Another type of training</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <details class="govuk-details">
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        Why we’re asking this question
+                    </span>
+                </summary>
+                <div class="govuk-details__text">
+                    <p class="govuk-body">
+                        We want to get to know your situation so we can give you better advice about who to speak to.
+                    </p>
+
+                    <p class="govuk-body">
+                        This information does not get reported to anyone.
+                    </p>
+                </div>
+            </details>
+            <div class="govuk-button-group govuk-!-margin-bottom-7">
+                {{ govukButton({ text: "Continue" }) }}
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

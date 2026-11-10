@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Are you in education, training or an apprenticeship at the moment? – {{ serviceName }}
+{% endblock %}
+
+{% block pageBefore %}
+{{
+ govukBackLink({
+text: "Back",
+href: "\what-help-dynamic"
+})
+}}
+{% endblock %}
+
+{% block content %}
+
+{% macro checkedIfSelected(value, option) %}
+  {% if value == option %}checked{% endif %}
+{% endmacro %}
+
+{% include "../../assets/html-templates/error-summary.html" %}
+
+{% set actionUrl = ('?redirectUrl=' ~ backlinkUrl) if backlinkUrl|default('') != '' else '' %}
+{% set backlinkUrl = backlinkUrl | default('\what-help-dynamic') %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <form class="form" method="post" action="{{actionUrl}}">
+            <div class="govuk-form-group {% if errors.HasErrors %}govuk-form-group--error{% endif %}">
+                <fieldset class="govuk-fieldset" aria-describedby="are-you-in-hint are-you-in-error">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">
+                            Are you in education, training or an apprenticeship at the moment?
+                        </h1>
+                    </legend>
+
+                    <p class="govuk-body">We want to get to know your situation to give you better advice about who to speak to.</p>
+                    <p class="govuk-body">This does not get reported to anyone.</p>
+
+                    {% if errors.HasErrors %}
+                    <p id="are-you-in-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span>{{errors.page.text}}
+                    </p>
+                    {% endif %}
+
+                    <div id="are-you-in-hint" class="govuk-hint">Select one option</div>
+
+                    <div class="govuk-radios" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="are-you-in-yes" name="areYouInEducation" type="radio"
+                                   value="Yes" {{ checkedIfSelected(data.areYouInEducation, "Yes") }}>
+                            <label class="govuk-label govuk-radios__label" for="are-you-in-yes">Yes</label>
+                        </div>
+                        <div class="govuk-radios__item">
+                            <input class="govuk-radios__input" id="are-you-in-no" name="areYouInEducation" type="radio"
+                                   value="No" {{ checkedIfSelected(data.areYouInEducation, "No") }}>
+                            <label class="govuk-label govuk-radios__label" for="are-you-in-no">No</label>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="govuk-button-group govuk-!-margin-bottom-7">
+                {{ govukButton({ text: "Continue" }) }}
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

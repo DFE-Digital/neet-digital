@@ -1,0 +1,310 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Create a CV or make my CV better – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-bottom-7">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl govuk-!-margin-top-0 govuk-!-margin-bottom-4">
+                  I want to create a CV or make my CV better
+                </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                  If you’re struggling to know what to include in your CV, you’re not alone. Find out who can help you and see examples CVs from other young people.
+              </p>
+              <!-- <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
+              </p> -->
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/create-CV.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+      <!-- FULL ACCORDION START -->
+      <div class="govuk-grid-column-two-thirds govuk-!-padding-left-0">
+        <div class="govuk-accordion govuk-!-margin-left-0" data-module="govuk-accordion" id="accordion-default">
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-3">
+                  Create a few tailored CVs for different types of jobs
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-3" class="govuk-accordion__section-content">
+                <p class="govuk-body">
+                    We know tailoring your CV for every job application can feel exhausting.
+                </p>
+
+                <p class="govuk-body">
+                    If you have the energy to do it for every single one, that’s great. However, it’s common to lose motivation, especially if you’re been applying for a while.
+                </p>
+
+                <p class="govuk-body">
+                    We recommend you have a few tailored CVs for the types of jobs you’re applying for. You can make sure each CV emphasises the skills and experience needed for that type of role. This might help make it feel more manageable going forward.
+                </p>
+
+                <p class="govuk-body">
+                    For example, you might have a CV tailored towards:
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>working in a pub, restaurant or cafe</li>
+                        <li>seasonal retail jobs in shops or supermarkets like Tesco</li>
+                        <li>babysitting and nursery work experience</li>
+                    </ul>
+                </p>
+
+                <p class="govuk-body">
+                    You can see if a friend or family member can read your tailored CV. It’s useful to get a fresh perspective. They might spot things you had not thought about. There are also <a class="govuk-link" href="local-support-listing">local organisations</a> that can look through your CV with you.
+                </p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-4">
+                  Online resources and example CVs 
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-4" class="govuk-accordion__section-content">
+                <p class="govuk-body">
+                  You might want to feel like you’re making progress now. Here are some articles and tools we know other young people have found useful.
+                </p>
+
+                <p class="govuk-body">
+                    You can:
+                    <ul class="govuk-list govuk-list--bullet">
+                        <li>see an <a class="govuk-link"href="https://www.prospects.ac.uk/careers-advice/cvs-and-cover-letters/example-cvs/school-leaver-cv-example/" target="_blank" rel="noopener noreferrer">example CV from a 16 year old who does not have much work experience</a> from Prospects</li>
+                        <li>find out <a class="govuk-link" href="https://www.youthemployment.org.uk/write-first-cv-tips-students-school-leavers/" target="_blank" rel="noopener noreferrer">what to include if this is your first CV</a> from Youth Employment UK </li>
+                        <li>get a <a class="govuk-link" href="https://www.youngwomenstrust.org/get-support/help-cv-job-applications/" target="_blank" rel="noopener noreferrer">professional person to review your CV for free</a> from Young Women’s Trust</li>
+                        <li><a class="govuk-link" href="https://www.jobs.service.gov.uk/cv" target="_blank" rel="noopener noreferrer">build a CV for free</a> on GOV.UK if you’re not sure where to start</li>
+                        <li>ask for feedback on your CV on a forum like Reddit, <a class="govuk-link" href="https://www.reddit.com/r/UKjobs/" target="_blank" rel="noopener noreferrer">r/UKjobs</a> is a useful subreddit</li>
+                    </ul>
+                </p>
+            </div> 
+          </div>
+
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-2">
+                    Find help with jobs in your local area
+                </span>
+              </h2>
+            </div>
+
+            <div id="accordion-default-content-2" class="govuk-accordion__section-content">
+                
+              <p class="govuk-body">
+              Sometimes it can be confusing to know where to start. If you’re feeling stuck with applying for jobs, there are organisations that can help.
+              </p>
+
+              <h3 class="govuk-heading-s govuk-!-margin-top-2 govuk-!-margin-bottom-2">Enter a postcode</h3>
+
+              {% from "govuk/components/input/macro.njk" import govukInput %}
+              {% from "govuk/components/button/macro.njk" import govukButton %}
+              <form action="./local-support-listing.html" method="get">
+                {{ govukInput({
+                  classes: "govuk-input--width-10",
+                  id: "postcode",
+                  name: "postcode",
+                  autocomplete: "postal-code",
+                  value: data.postcode
+                }) }}
+                {{ govukButton({
+                  text: "Search organisations near you",
+                  type: "submit"
+                }) }}
+              </form>
+
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+          <!-- ACCORDION SECTION START -->
+          <div class="govuk-accordion__section">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="accordion-default-heading-5">
+                  What you can ask
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-5" class="govuk-accordion__section-content">
+              <p class="govuk-body">Here are a few prompts of what to say to a careers adviser or work coach about your CV:</p>
+              <p class="govuk-body blue-quote">“I have a CV but want to see if what I’m doing to tailor it works well or not” 
+              </p>
+              <p class="govuk-body blue-quote">“Do you have any example CVs you can show me of other people who don’t have lots of experience?”</p>
+              <p class="govuk-body blue-quote">“Can you help me understand what experience I can put on my CV?”</p>
+            </div>
+          </div>
+          <!-- ACCORDION SECTION END -->
+
+        </div>
+      </div>
+      <!-- FULL ACCORDION END -->
+
+      <!-- MENTAL HEALTH SUPPORT START -->
+            {% include "../../../assets/html-templates/ViewHelpLinesFooter.html" %}
+      <!-- MENTAL HEALTH SUPPORT END -->
+
+    </div>
+  </div>
+
+  
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+
+<!--
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} -->
+
+{% endblock %}

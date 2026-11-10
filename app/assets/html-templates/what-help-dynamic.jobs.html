@@ -1,7 +1,6 @@
 <input name="jobsOptionsIncluded" type="hidden" value="true">
 
-{% set valueHearBackApplications = "I do not hear back from applications" %}
-{% set valueNeverGetFeedback     = "I never get feedback so do not know what to improve" %}
+{% set valueHearBackApplications = "I never hear back from applications" %}
 {% set valueGettingFirstJob      = "I’m trying to get my first job" %}
 {% set valueDoneVolunteering     = "I’ve done volunteering but cannot seem to get a paid job" %}
 {% set valueFindApprenticeship   = "I cannot find an apprenticeship where I live" %}
@@ -27,18 +26,9 @@
             <input class="govuk-checkboxes__input" id="do-hear-applications" name="jobs-checkbox" type="checkbox"
                    value="{{valueHearBackApplications}}" {{ checkedIfSelected(data["jobs-checkbox"], valueHearBackApplications) }}>
             <label class="govuk-label govuk-checkboxes__label" for="do-hear-applications">
-                I do not hear back from applications
+                I never hear back from applications
             </label>
             <!-- <div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
-        </div>
-
-        <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="never-get-feedback" name="jobs-checkbox" type="checkbox"
-                   value="{{valueNeverGetFeedback}}" {{ checkedIfSelected(data["jobs-checkbox"], valueNeverGetFeedback) }}>
-            <label class="govuk-label govuk-checkboxes__label" for="never-get-feedback">
-                I never get feedback so do not know what to improve
-            </label>
-            <!--<div class="govuk-hint govuk-checkboxes__hint">e.g. something like example</div> -->
         </div>
 
         <div class="govuk-checkboxes__item">
