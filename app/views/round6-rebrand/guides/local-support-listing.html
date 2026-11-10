@@ -1,0 +1,498 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Find support for young people – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set postcode = req.query.postcode or data.postcode or "AB1 2DC" %}
+{% set editingPostcode = req.query.changePostcode == "true" or data.changePostcode == "true" %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+          <h1 class="govuk-heading-xl govuk-!-margin-top-0">Find support for young people</h1>
+          <p class="govuk-body-l">See what local organisations can help you find a job, work out your next step or help if you’re struggling in education.</p>
+        </div>
+      </div>
+
+      <!-- LISTING INTRO START
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">55% of young people have said something would stop them asking for help. Asking for support does not mean you’ve failed. It can be useful to get a new perspective on your situation.</p>
+          <p class="govuk-body">See what support you can get near where you live.</p>
+        </div>
+      </div>
+      LISTING INTRO END -->
+
+      <!-- LISTING START -->
+
+      <div class="local-listing__wrapper govuk-!-margin-bottom-9">
+        <div class="local-listing__topbar">
+          <p class="govuk-body local-listing__results-count" aria-live="polite">Displaying 7 results of 43</p>
+          {% if editingPostcode %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+            <form action="./local-support-listing.html" method="get" class="local-listing__postcode-form">
+              <input type="hidden" name="changePostcode" value="false">
+              {{ govukInput({
+                label: { text: "Change postcode" },
+                classes: "govuk-input--width-10",
+                id: "postcode",
+                name: "postcode",
+                autocomplete: "postal-code",
+                value: postcode
+              }) }}
+              {{ govukButton({
+                text: "Update results",
+                type: "submit"
+              }) }}
+            </form>
+          {% else %}
+            <p class="govuk-body local-listing__postcode-summary">Showing results near:<br class="local-listing__mobile-break"> <strong>{{ postcode }}</strong> <a class="govuk-link govuk-!-padding-left-1" href="./local-support-listing.html?changePostcode=true">Change postcode</a></p>
+          {% endif %}
+        </div>
+
+        <div class="local-listing__layout">
+          <button class="govuk-button govuk-button--secondary local-listing__filters-toggle" id="local-listing-filters-toggle" type="button" aria-expanded="false" aria-controls="local-listing-filters">
+            Show filter options
+          </button>
+          <aside class="local-listing__filters" id="local-listing-filters" aria-labelledby="local-listing-filters-heading">
+            <h2 class="govuk-heading-s govuk-!-margin-top-0 govuk-!-margin-bottom-0" id="local-listing-filters-heading">Filter options</h2>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="local-listing-view">Type of support:</label>
+              <select class="govuk-select" id="local-listing-view" name="view">
+                <option value="in-person" selected>In person</option>
+                <option value="online">Online</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="local-listing-order">Sort by:</label>
+              <select class="govuk-select" id="local-listing-order" name="order">
+                <option selected>Distance</option>
+                <option>Service name</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Location</legend>
+                <p class="govuk-hint">Show options within:</p>
+                <label class="govuk-visually-hidden" for="local-listing-distance">Distance</label>
+                <select class="govuk-select" id="local-listing-distance" name="distance">
+                  <option>5 miles</option>
+                  <option selected>10 miles</option>
+                  <option>20 miles</option>
+                </select>
+              </fieldset>
+            </div>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Education or training</legend>
+              <p class="govuk-hint">If you’re in education, select what you’re currently doing</p>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-secondary-school" name="education" type="checkbox" value="secondary-school">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-secondary-school">Secondary school</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-college" name="education" type="checkbox" value="college">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-college">College or sixth form college</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-sixth-form" name="education" type="checkbox" value="sixth-form">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-sixth-form">Sixth form</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-university" name="education" type="checkbox" value="university">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-university">University</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-apprenticeship" name="education" type="checkbox" value="apprenticeship">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-apprenticeship">Apprenticeship</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-other-training" name="education" type="checkbox" value="another-type-of-training">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-other-training">Another type of training</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Type of support</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-finding-a-job" name="supportType" type="checkbox" value="finding-a-job">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-finding-a-job">Finding a job</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-apprenticeship" name="supportType" type="checkbox" value="apprenticeship">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-apprenticeship">Apprenticeship</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-mental-health" name="supportType" type="checkbox" value="mental-health-wellbeing">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-mental-health">Mental health or wellbeing</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-disability" name="supportType" type="checkbox" value="disability">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-disability">Disability</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-young-parent-or-carer" name="supportType" type="checkbox" value="young-parent-or-carer">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-young-parent-or-carer">Young parent or carer</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Age</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="age-15-or-younger" name="age" type="checkbox" value="15-or-younger">
+                  <label class="govuk-label govuk-checkboxes__label" for="age-15-or-younger">15 or younger</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="age-16-to-24" name="age" type="checkbox" value="16-to-24">
+                  <label class="govuk-label govuk-checkboxes__label" for="age-16-to-24">16 to 24</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="age-25-or-older" name="age" type="checkbox" value="25-or-older">
+                  <label class="govuk-label govuk-checkboxes__label" for="age-25-or-older">25 or older</label>
+                </div>
+              </div>
+            </fieldset>
+          </aside>
+
+          <section class="local-listing__results" aria-label="Local support services">
+            <ul class="local-listing__results-list">
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://www.west-norfolk.gov.uk/info/20007/people_and_communities/755/boost_-_helping_young_people_succeed_in_west_norfolk" target="_blank" rel="noopener noreferrer">BOOST</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">1.2 Miles</strong>
+                  </div>
+                  <p class="govuk-body">West Norfolk and Breckland</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">get help with finding a job, including your CV and mock interviews</li>
+                    <li class="govuk-!-margin-bottom-0">take part in work experience opportunities</li>
+                    <li class="govuk-!-margin-bottom-0">get 121 mentoring to help with confidence and work skills</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You need to be:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">age 16 to 24</li>
+                    <li class="govuk-!-margin-bottom-0">not in education, employment or training</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">Get in contact by:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">using the <a class="govuk-link" href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=fhcZFOBXD0-v8P1htUnRDtKsQlRVKMhFqe-t8o6eYh9UMjVXTEZJRFlMRjZZWTdLRzNaTFZEVlE1MSQlQCN0PWcu" target="_blank" rel="noopener noreferrer">online form for BOOST</a> to self refer</li>
+                    <li class="govuk-!-margin-bottom-0">emailing <a class="govuk-link" href="mailto:boost@norfolk.gov.uk">boost@norfolk.gov.uk</a> for West Norfolk</li>
+                    <li class="govuk-!-margin-bottom-0">emailing <a class="govuk-link" href="mailto:boostbreckland@norfolk.gov.uk">boostbreckland@norfolk.gov.uk</a> for Breckland</li>
+                  </ul>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://www.helpyouchoose.org/" target="_blank" rel="noopener noreferrer">Help You Choose</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">2.4 Miles</strong>
+                  </div>
+                  <p class="govuk-body">Norfolk</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">get help with making decisions about what you want to do next</li>
+                    <li class="govuk-!-margin-bottom-0">see local career events, open days and jobs</li>
+                    <li class="govuk-!-margin-bottom-0">get personalised help from an adviser if you’re not in education</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body">You need to be a young person living in Norfolk.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body">You can contact them by email, phone or online. <a class="govuk-link" href="https://www.helpyouchoose.org/contact" target="_blank" rel="noopener noreferrer">View contact details for Help You Choose</a>.</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://www.icanbea.org.uk/" target="_blank" rel="noopener noreferrer">I can be a</a></h2>
+                  </div>
+                  <p class="govuk-body">Norfolk and Suffolk (online)</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0"><a class="govuk-link" href="https://www.icanbea.org.uk/app/explore/industries/" target="_blank" rel="noopener noreferrer">discover job industries</a> that are popular in the area</li>
+                    <li class="govuk-!-margin-bottom-0">browse a <a class="govuk-link" href="https://www.icanbea.org.uk/app/explore/organisations/" target="_blank" rel="noopener noreferrer">directory of local employers</a></li>
+                    <li class="govuk-!-margin-bottom-0">find <a class="govuk-link" href="https://www.icanbea.org.uk/app/my-feed/?relevance=A&post_type=J&distance=&custom_postcode=&q=" target="_blank" rel="noopener noreferrer">local job opportunities</a> that may not appear on larger job sites like Indeed</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body">Young people in Norfolk and Suffolk up to the age of 25.</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://inspirecharityuk.org/courses/yes-youth-employment-service-inspire/" target="_blank" rel="noopener noreferrer">YES (Youth employment service)</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">3.5 Miles</strong>
+                  </div>
+                  <p class="govuk-body">East Suffolk</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body">You can get a coach to help you with your next step. This can be anything from figuring out your next step to feeling more confident with job applications.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body">You need to be aged 16 to 24 and live in East Suffolk to get a coach.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body">You can <a class="govuk-link" href="https://bookings.cloud.microsoft/book/InspireYouthEmploymentService@InspireSuffolk.onmicrosoft.com/?ismsaljsauthenabled=true" target="_blank" rel="noopener noreferrer">book a session with a coach</a>. You can choose a date and time that works for you.</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://thesource.me.uk/yourfuture/stuck/" target="_blank" rel="noopener noreferrer">The Source</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">1.2 Miles</strong>
+                  </div>
+                  <p class="govuk-body">Suffolk</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">get help if you feel stuck or are unsure what to do next</li>
+                    <li class="govuk-!-margin-bottom-0">get help finding a job, including details of local job fairs</li>
+                    <li class="govuk-!-margin-bottom-0">find out about other local services</li>
+                    <li class="govuk-!-margin-bottom-0">access personalised adviser support by phone or email</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You need to:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">be aged 11 to 19, or up to 25 if you have additional needs</li>
+                    <li class="govuk-!-margin-bottom-0">live in Suffolk</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body">Get in contact by using the <a class="govuk-link" href="https://thesource.me.uk/home-page-the-source/about/have-we-contacted-you/" target="_blank" rel="noopener noreferrer">online form for The Source</a>.</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://volunteersuffolk.org.uk/" target="_blank" rel="noopener noreferrer">Volunteer Suffolk</a></h2>
+                  </div>
+                  <p class="govuk-body">East Suffolk</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">search for volunteering opportunities across Suffolk</li>
+                    <li class="govuk-!-margin-bottom-0">join the youth volunteering programme if you’re aged 14 to 25</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body">You can call <a class="govuk-link" href="tel:01473345400">01473 345 400</a> or email <a class="govuk-link" href="mailto:volunteering@communityactionsuffolk.org.uk">volunteering@communityactionsuffolk.org.uk</a> to join the youth programme.</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading govuk-!-margin-bottom-0">
+                    <h2 class="govuk-heading-m govuk-!-margin-bottom-0"><a class="govuk-link" href="https://www.jobs.service.gov.uk/" target="_blank" rel="noopener noreferrer">Work Hub on GOV.UK</a></h2>
+                  </div>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Support you can get</strong></p>
+                  <p class="govuk-body govuk-!-margin-bottom-1">You can:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li class="govuk-!-margin-bottom-0">use an AI work assistant to get feedback on a job application</li>
+                    <li class="govuk-!-margin-bottom-0">build a CV</li>
+                    <li class="govuk-!-margin-bottom-0">speak to a careers adviser who can help you work out your next step</li>
+                  </ul>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>Who can get help</strong></p>
+                  <p class="govuk-body">You can speak to a careers adviser if you’re aged 18 or older or not in education or training. You can <a class="govuk-link" href="https://nationalcareers.service.gov.uk/help-and-support" target="_blank" rel="noopener noreferrer">see who you can speak to depending on your situation</a>.</p>
+                  <p class="govuk-body govuk-!-margin-bottom-2"><strong>How to contact</strong></p>
+                  <p class="govuk-body">You can speak to a DWP careers adviser on <a class="govuk-link" href="tel:0800072088">0800 072 088</a>.</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- LISTING END -->
+
+    </div>
+  </div>
+
+  
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+
+{% block pageScripts %}
+<script>
+  (() => {
+    const showFilter = document.getElementById('local-listing-view');
+    const filtersToggle = document.getElementById('local-listing-filters-toggle');
+    const filtersPanel = document.getElementById('local-listing-filters');
+    if (filtersToggle.dataset.filterTrayInitialized === 'true') return;
+    filtersToggle.dataset.filterTrayInitialized = 'true';
+
+    const results = Array.from(document.querySelectorAll('.local-listing__result'));
+    const resultsList = document.querySelector('.local-listing__results-list');
+    const resultsCount = document.querySelector('.local-listing__results-count');
+    const totalResults = resultsCount.textContent.match(/of\s+(\d+)/)?.[1] || results.length;
+    const mobileFilters = window.matchMedia('(max-width: 1023px)');
+
+    function getDistance(result) {
+      const distanceTag = result.querySelector('.govuk-tag--blue');
+      return distanceTag ? Number.parseFloat(distanceTag.textContent) : Number.POSITIVE_INFINITY;
+    }
+
+    results.sort((first, second) => getDistance(first) - getDistance(second));
+    results.forEach((result) => resultsList.appendChild(result));
+
+    function updateResults() {
+      const showOnline = showFilter.value === 'online';
+      let visibleCount = 0;
+
+      results.forEach((result) => {
+        const isOnline = !result.querySelector('.govuk-tag--blue');
+        result.hidden = isOnline !== showOnline;
+
+        if (!result.hidden) {
+          visibleCount += 1;
+        }
+      });
+
+      resultsCount.textContent = `Displaying ${visibleCount} results of ${totalResults}`;
+    }
+
+    function syncFiltersForViewport() {
+      if (!mobileFilters.matches) {
+        filtersPanel.classList.remove('is-open');
+        filtersToggle.textContent = 'Show filter options';
+      }
+
+      const collapsed = mobileFilters.matches && !filtersPanel.classList.contains('is-open');
+      filtersToggle.setAttribute('aria-expanded', String(!collapsed));
+      filtersPanel.setAttribute('aria-hidden', String(collapsed));
+    }
+
+    filtersToggle.addEventListener('click', () => {
+      const isOpen = filtersPanel.classList.toggle('is-open');
+      filtersToggle.textContent = isOpen ? 'Hide filter options' : 'Show filter options';
+      syncFiltersForViewport();
+    });
+
+    mobileFilters.addEventListener('change', syncFiltersForViewport);
+    syncFiltersForViewport();
+    showFilter.addEventListener('change', updateResults);
+    updateResults();
+  })();
+</script>
+{% endblock %}
+
+{% endblock %}

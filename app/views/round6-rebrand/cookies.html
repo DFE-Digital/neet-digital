@@ -1,0 +1,66 @@
+{% extends "layouts/main.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+Cookies - Guidance Service
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+        <h1 class="govuk-heading-l">
+            Cookies on {Name} Service
+        </h1>
+
+        <p class="govuk-body">
+            We use some essential cookies to make this service work.
+        </p>
+
+        <p class="govuk-body">
+            We would also like to use analytics cookies to understand how people use the service and help us improve it.
+        </p>
+
+        <form method="post">
+
+        { cookie information}
+
+        {{
+ govukRadios({
+        name: "analyticsConsent",
+        fieldset: {
+          legend: {
+            text: "Do you want to accept analytics cookies?",
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "yes",
+            text: "Yes",
+            checked: data.analyticsConsent == "yes"
+          },
+          {
+            value: "no",
+            text: "No",
+            checked: data.analyticsConsent == "no"
+          }
+        ]
+      })
+        }}
+
+        {{
+ govukButton({
+        text: "Save cookie settings"
+      })
+        }}
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,347 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Find support for young people – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+text: "Back",
+href: "javascript:window.history.back()"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set postcode = req.query.postcode or data.postcode or "AB1 2DC" %}
+{% set editingPostcode = req.query.changePostcode == "true" or data.changePostcode == "true" %}
+
+{% if data.feeling is string %}
+{% set feelingText = data.feeling | lower %}
+{% elif data.feeling %}
+{% set feelingText %}{% for item in data.feeling %}{% if not loop.first %}{% if loop.last %} and {% else %}, {% endif
+%}{% endif %}{{ item | lower }}{% endfor %}{% endset %}
+{% else %}
+{% set feelingText = "stuck and anxious" %}
+{% endif %}
+
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <!-- HERO SECTION START -->
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-6 ">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+                <h1 class="govuk-heading-xl govuk-!-margin-bottom-7" style="line-height: 50px;">
+                    Find support for young people
+                </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                  See what local organisations can help you find a job, work out your next step or help if you’re struggling in education. 
+              </p>
+              <!-- <p class="govuk-body-s govuk-!-margin-bottom-0">
+                <a href="#" class="govuk-link govuk-!-padding-bottom-0 govuk-!-margin-bottom-0">Text or email this
+                  page</a>
+              </p> -->
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/create-CV.png"
+                alt="Student inside library picking up a book for revision to prepare for GCSE English resit">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- HERO SECTION END -->
+
+      <!-- LISTING INTRO START -->
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">55% of young people have said something would stop them asking for help. Asking for support does not mean you’ve failed. It can be useful to get a new perspective on your situation.</p>
+          <p class="govuk-body">See what support you can get near where you live.</p>
+        </div>
+      </div>
+      <!-- LISTING INTRO END -->
+
+      <!-- LISTING START -->
+
+      <div class="local-listing__wrapper govuk-!-margin-bottom-9">
+        <div class="local-listing__topbar">
+          <p class="govuk-body local-listing__results-count">Displaying 10 results of 43</p>
+          {% if editingPostcode %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+            <form action="./local-support-listing.html" method="get" class="local-listing__postcode-form">
+              <input type="hidden" name="changePostcode" value="false">
+              {{ govukInput({
+                label: { text: "Change postcode" },
+                classes: "govuk-input--width-10",
+                id: "postcode",
+                name: "postcode",
+                autocomplete: "postal-code",
+                value: postcode
+              }) }}
+              {{ govukButton({
+                text: "Update results",
+                type: "submit"
+              }) }}
+            </form>
+          {% else %}
+            <p class="govuk-body">Showing results near: <strong>{{ postcode }}</strong> <a class="govuk-link govuk-!-padding-left-1" href="./local-support-listing.html?changePostcode=true">Change postcode</a></p>
+          {% endif %}
+        </div>
+
+        <div class="local-listing__layout">
+          <aside class="local-listing__filters" aria-labelledby="local-listing-filters-heading">
+            <h2 class="govuk-heading-s" id="local-listing-filters-heading">Filter options</h2>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="local-listing-order">Order by:</label>
+              <select class="govuk-select" id="local-listing-order" name="order">
+                <option selected>Distance</option>
+                <option>Service name</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Location</legend>
+                <p class="govuk-hint">Show options within:</p>
+                <label class="govuk-visually-hidden" for="local-listing-distance">Distance</label>
+                <select class="govuk-select" id="local-listing-distance" name="distance">
+                  <option selected>10 Miles</option>
+                  <option>5 Miles</option>
+                  <option>20 Miles</option>
+                </select>
+              </fieldset>
+            </div>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Education</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-secondary-school" name="education" type="checkbox" value="secondary-school">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-secondary-school">Secondary school</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-college" name="education" type="checkbox" value="college">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-college">College</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-sixth-form" name="education" type="checkbox" value="sixth-form">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-sixth-form">Sixth form</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="education-university" name="education" type="checkbox" value="university">
+                  <label class="govuk-label govuk-checkboxes__label" for="education-university">Uni</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Type of support</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-finding-a-job" name="supportType" type="checkbox" value="finding-a-job">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-finding-a-job">Finding a job</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-apprenticeship" name="supportType" type="checkbox" value="apprenticeship">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-apprenticeship">Apprenticeship</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-mental-health" name="supportType" type="checkbox" value="mental-health-wellbeing">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-mental-health">Mental health or wellbeing</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-disability" name="supportType" type="checkbox" value="disability">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-disability">Disability</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="support-young-parent-or-carer" name="supportType" type="checkbox" value="young-parent-or-carer">
+                  <label class="govuk-label govuk-checkboxes__label" for="support-young-parent-or-carer">Young parent or carer</label>
+                </div>
+              </div>
+            </fieldset>
+          </aside>
+
+          <section class="local-listing__results" aria-label="Local support services">
+            <ul class="local-listing__results-list">
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading">
+                    <h2 class="govuk-heading-s"><a class="govuk-link" href="#">Example service name</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">1.2 Miles</strong>
+                  </div>
+                  <p class="govuk-body"><strong>Areas of support they offer</strong><br>Lorem ipsum dolor sit amet consectetur adipiscing elit eos blanditiis eiusmod anim autem excepturi ut cupiditate animi.</p>
+                  <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@exampleservice.com">examplemail@exampleservice.com</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Operating hours: Monday to Friday, 9am to 5pm (except public holidays)</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading">
+                    <h2 class="govuk-heading-s"><a class="govuk-link" href="#">Example service name</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">1.8 Miles</strong>
+                  </div>
+                  <p class="govuk-body"><strong>Areas of support they offer</strong><br>Lorem ipsum dolor sit amet consectetur adipiscing elit eos blanditiis eiusmod anim autem excepturi ut cupiditate animi.</p>
+                  <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@exampleservice.com">examplemail@exampleservice.com</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Operating hours: Monday to Friday, 9am to 5pm (except public holidays)</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading">
+                    <h2 class="govuk-heading-s"><a class="govuk-link" href="#">Example service name</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">2.4 Miles</strong>
+                  </div>
+                  <p class="govuk-body"><strong>Areas of support they offer</strong><br>Lorem ipsum dolor sit amet consectetur adipiscing elit eos blanditiis eiusmod anim autem excepturi ut cupiditate animi.</p>
+                  <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@exampleservice.com">examplemail@exampleservice.com</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Operating hours: Monday to Friday, 9am to 5pm (except public holidays)</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading">
+                    <h2 class="govuk-heading-s"><a class="govuk-link" href="#">Example service name</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">2.9 Miles</strong>
+                  </div>
+                  <p class="govuk-body"><strong>Areas of support they offer</strong><br>Lorem ipsum dolor sit amet consectetur adipiscing elit eos blanditiis eiusmod anim autem excepturi ut cupiditate animi.</p>
+                  <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@exampleservice.com">examplemail@exampleservice.com</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Operating hours: Monday to Friday, 9am to 5pm (except public holidays)</p>
+                </article>
+              </li>
+              <li class="local-listing__result">
+                <article>
+                  <div class="local-listing__result-heading">
+                    <h2 class="govuk-heading-s"><a class="govuk-link" href="#">Example service name</a></h2>
+                    <strong class="govuk-tag govuk-tag--blue">3.5 Miles</strong>
+                  </div>
+                  <p class="govuk-body"><strong>Areas of support they offer</strong><br>Lorem ipsum dolor sit amet consectetur adipiscing elit eos blanditiis eiusmod anim autem excepturi ut cupiditate animi.</p>
+                  <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@exampleservice.com">examplemail@exampleservice.com</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Operating hours: Monday to Friday, 9am to 5pm (except public holidays)</p>
+                </article>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- LISTING END -->
+
+    </div>
+  </div>
+
+  
+<!-- FEEDBACK GREY START
+<div class="feedback-wrapper">
+
+  <div class="govuk-width-container feedback-container grey govuk-!-margin-top-8 govuk-!-margin-left-0">
+
+    <div id="feedback-question" class="feedback-bar">
+
+      <div class="feedback-bar__left">
+
+        <span class="govuk-body feedback-title">
+          <h2 class="govuk-heading-m govuk-!-padding-top-3">Is this page useful?</h2>
+        </span>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Yes
+        </button>
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          No
+        </button>
+
+      </div>
+
+      <div class="feedback-bar__right">
+
+        <button
+          type="button"
+          class="govuk-button govuk-button--secondary feedback-btn"
+          onclick="showFeedback()">
+          Give feedback about this page
+        </button>
+
+      </div>
+
+    </div>
+
+    <div id="feedback-panel" class="feedback-panel">
+
+      <h2 class="govuk-heading-l">
+        Give feedback about this page
+      </h2>
+
+      <textarea
+        id="feedback-text"
+        class="govuk-textarea"
+        rows="6"
+        maxlength="200"></textarea>
+
+      <p class="govuk-body legend">
+        You can enter up to 200 characters
+      </p>
+
+      <button
+        type="button"
+        class="govuk-button"
+        onclick="submitFeedback()">
+        Submit
+      </button>
+
+      <button
+        type="button"
+        class="govuk-button govuk-button--secondary"
+        onclick="hideFeedback()">
+        Cancel
+      </button>
+
+    </div>
+
+    <div
+      id="feedback-success"
+      class="govuk-notification-banner"
+      style="display:none">
+
+      <div class="govuk-notification-banner__content">
+        Thank you for your feedback.
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+FEEDBACK GREY END -->
+
+</div>
+
+<!--
+
+{% block pageScripts %}
+
+<script>
+function showFeedback() {
+  document.getElementById('feedback-question').classList.add('hidden');
+  document.getElementById('feedback-panel').classList.add('active');
+}
+
+function hideFeedback() {
+  document.getElementById('feedback-question').classList.remove('hidden');
+  document.getElementById('feedback-panel').classList.remove('active');
+}
+
+function submitFeedback() {
+  document.getElementById('feedback-panel').classList.remove('active');
+  document.getElementById('feedback-success').style.display = 'block';
+}
+
+</script>
+{% endblock %} -->
+
+{% endblock %}

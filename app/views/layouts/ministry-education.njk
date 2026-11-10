@@ -2,6 +2,10 @@
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{% if routeVersion == "round6-rebrand" %}
+  {% set bodyClasses = (bodyClasses | default('', true) ~ ' sfc-rebrand__body') | trim %}
+{% endif %}
+
 
 {# 
   Import ServiceNavigation for when the Kit runs and GOV.UK Frontend is
@@ -26,7 +30,9 @@
 {% endblock %}
 
 {% block header %}
-  {% if pluginVersionSatisfies('govuk-frontend', '>=6.0.0') %}
+  {% if routeVersion == "round6-rebrand" %}
+    {% include "round6-rebrand/header.html" %}
+  {% elif pluginVersionSatisfies('govuk-frontend', '>=6.0.0') %}
     {{ super() }}
   {% else %}
     {{ govukHeader({
@@ -118,7 +124,9 @@
 {% endblock %}
 
 {% block footer %}
-  {% if pluginVersionSatisfies('govuk-frontend', '>=6.0.0') %}
+  {% if routeVersion == "round6-rebrand" %}
+    {% include "round6-rebrand/footer.html" %}
+  {% elif pluginVersionSatisfies('govuk-frontend', '>=6.0.0') %}
     {{ super() }}
   {% else %}
     {{govukFooterHtml | safe }}

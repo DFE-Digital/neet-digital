@@ -132,6 +132,7 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% endif %}
 
 {% block beforeContent %}
+{% if routeVersion != "round6-rebrand" %}
 {{
  govukPhaseBanner({
 tag: {
@@ -140,6 +141,7 @@ text: "Experimental"
 html: phaseBanner
 })
 }}
+{% endif %}
 {% block pageBefore %}
 {% endblock %}
 {% endblock %}

@@ -1,0 +1,218 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+Find support for young people – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block pageBefore %}
+{{ govukBackLink({
+  text: "Back",
+  href: "./local-support-listing.html"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% set postcode = req.query.postcode or data.postcode or "AB1 2DC" %}
+{% set editingPostcode = req.query.mockupChangePostcode == "true" or data.mockupChangePostcode == "true" %}
+
+<div class="govuk-width-container">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full govuk-!-margin-left-0 govuk-!-padding-left-0">
+
+      <div class="hero-blue govuk-grid-column-full govuk-!-margin-bottom-6 govuk-!-margin-top-0 govuk-!-padding-6">
+        <div class="govuk-width-container">
+          <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <h1 class="govuk-heading-xl govuk-!-margin-bottom-7" style="line-height: 50px;">
+                Find support for young people
+              </h1>
+              <p class="govuk-body-l govuk-!-margin-bottom-6">
+                See what local and online organisations can help you find a job, work out your next step or get support with education.
+              </p>
+            </div>
+            <div class="govuk-grid-column-one-third govuk-!-text-align-right">
+              <img class="image-hero-landingpage" src="/public/images/create-CV.png" alt="Young person using a laptop">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="govuk-grid-row govuk-!-margin-bottom-6">
+        <div class="govuk-grid-column-two-thirds">
+          <p class="govuk-body">Asking for support does not mean you’ve failed. It can be useful to get a new perspective on your situation.</p>
+          <p class="govuk-body">Browse nearby services and online support options.</p>
+        </div>
+      </div>
+
+      <div class="local-listing__wrapper">
+        <div class="local-listing__topbar">
+          {% if editingPostcode %}
+            {% from "govuk/components/input/macro.njk" import govukInput %}
+            {% from "govuk/components/button/macro.njk" import govukButton %}
+            <form action="./local-support-listing-mockup.html" method="get" class="local-listing__postcode-form">
+              <input type="hidden" name="mockupChangePostcode" value="false">
+              {{ govukInput({
+                label: { text: "Change postcode" },
+                classes: "govuk-input--width-10",
+                id: "mockup-postcode",
+                name: "postcode",
+                autocomplete: "postal-code",
+                value: postcode
+              }) }}
+              {{ govukButton({ text: "Update results", type: "submit" }) }}
+            </form>
+          {% else %}
+            <p class="govuk-body">Showing 3 local and 2 online options near: <strong>{{ postcode }}</strong> <a class="govuk-link" href="./local-support-listing-mockup.html?mockupChangePostcode=true">Change postcode</a></p>
+          {% endif %}
+        </div>
+
+        <div class="local-listing__layout">
+          <aside class="local-listing__filters" aria-labelledby="mockup-filters-heading">
+            <h2 class="govuk-heading-s" id="mockup-filters-heading">Filter options</h2>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--s" for="mockup-order">Order local results by:</label>
+              <select class="govuk-select" id="mockup-order" name="order">
+                <option selected>Distance</option>
+                <option>Service name</option>
+              </select>
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Location</legend>
+                <p class="govuk-hint">Show local options within:</p>
+                <label class="govuk-visually-hidden" for="mockup-distance">Distance</label>
+                <select class="govuk-select" id="mockup-distance" name="distance">
+                  <option selected>10 miles</option>
+                  <option>5 miles</option>
+                  <option>20 miles</option>
+                </select>
+              </fieldset>
+            </div>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Education</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-education-school" name="education" type="checkbox" value="secondary-school">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-education-school">Secondary school</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-education-college" name="education" type="checkbox" value="college">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-education-college">College</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-education-sixth-form" name="education" type="checkbox" value="sixth-form">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-education-sixth-form">Sixth form</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-education-uni" name="education" type="checkbox" value="university">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-education-uni">Uni</label>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="govuk-fieldset local-listing__filter-group">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--s">Type of support</legend>
+              <div class="govuk-checkboxes">
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-support-job" name="supportType" type="checkbox" value="finding-a-job">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-support-job">Finding a job</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-support-apprenticeship" name="supportType" type="checkbox" value="apprenticeship">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-support-apprenticeship">Apprenticeship</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-support-wellbeing" name="supportType" type="checkbox" value="mental-health-wellbeing">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-support-wellbeing">Mental health or wellbeing</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-support-disability" name="supportType" type="checkbox" value="disability">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-support-disability">Disability</label>
+                </div>
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="mockup-support-parent-carer" name="supportType" type="checkbox" value="young-parent-or-carer">
+                  <label class="govuk-label govuk-checkboxes__label" for="mockup-support-parent-carer">Young parent or carer</label>
+                </div>
+              </div>
+            </fieldset>
+          </aside>
+
+          <section class="local-listing__results" aria-label="Support options">
+            <section class="local-listing__result-section" aria-labelledby="local-results-heading">
+              <h2 class="govuk-heading-m" id="local-results-heading">Local support</h2>
+              <p class="govuk-body local-listing__section-intro">Within 10 miles of {{ postcode }}, shown nearest first.</p>
+              <ul class="local-listing__results-list">
+                <li class="local-listing__result">
+                  <article>
+                    <div class="local-listing__result-heading">
+                      <h3 class="govuk-heading-s">Example local service</h3>
+                      <strong class="govuk-tag govuk-tag--blue">1.2 miles away</strong>
+                    </div>
+                    <p class="govuk-body"><strong>Areas of support they offer</strong><br>Help with finding work, CVs and interview preparation.</p>
+                    <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:examplemail@example.org">examplemail@example.org</a><br>Phone: <a class="govuk-link" href="tel:02079460101">020 7946 0101</a><br>Monday to Friday, 9am to 5pm</p>
+                  </article>
+                </li>
+                <li class="local-listing__result">
+                  <article>
+                    <div class="local-listing__result-heading">
+                      <h3 class="govuk-heading-s">Example education service</h3>
+                      <strong class="govuk-tag govuk-tag--blue">2.4 miles away</strong>
+                    </div>
+                    <p class="govuk-body"><strong>Areas of support they offer</strong><br>Advice about education, training and next steps.</p>
+                    <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:hello@example.org">hello@example.org</a><br>Phone: <a class="govuk-link" href="tel:02079460102">020 7946 0102</a><br>Monday to Friday, 9am to 5pm</p>
+                  </article>
+                </li>
+                <li class="local-listing__result">
+                  <article>
+                    <div class="local-listing__result-heading">
+                      <h3 class="govuk-heading-s">Example youth support service</h3>
+                      <strong class="govuk-tag govuk-tag--blue">3.5 miles away</strong>
+                    </div>
+                    <p class="govuk-body"><strong>Areas of support they offer</strong><br>Support for young people who are unsure what to do next.</p>
+                    <p class="govuk-body"><strong>Contact:</strong><br>Email: <a class="govuk-link" href="mailto:support@example.org">support@example.org</a><br>Phone: <a class="govuk-link" href="tel:02079460103">020 7946 0103</a><br>Monday to Friday, 9am to 5pm</p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+
+            <section class="local-listing__result-section local-listing__result-section--online" aria-labelledby="online-results-heading">
+              <h2 class="govuk-heading-m" id="online-results-heading">Online support</h2>
+              <p class="govuk-body local-listing__section-intro">These services are available online. The distance filter does not apply; support-type filters apply to both sections.</p>
+              <ul class="local-listing__results-list">
+                <li class="local-listing__result">
+                  <article>
+                    <div class="local-listing__result-heading">
+                      <h3 class="govuk-heading-s">Example online careers service</h3>
+                      <strong class="govuk-tag govuk-tag--blue">Online</strong>
+                    </div>
+                    <p class="govuk-body"><strong>Areas of support they offer</strong><br>Online advice about finding work, training and planning your next steps.</p>
+                    <p class="govuk-body"><strong>Availability:</strong><br>Available across England by webchat and video call.</p>
+                    <p class="govuk-body"><strong>Contact:</strong><br><a class="govuk-link" href="mailto:online@example.org">online@example.org</a></p>
+                  </article>
+                </li>
+                <li class="local-listing__result">
+                  <article>
+                    <div class="local-listing__result-heading">
+                      <h3 class="govuk-heading-s">Example online wellbeing service</h3>
+                      <strong class="govuk-tag govuk-tag--blue">Online</strong>
+                    </div>
+                    <p class="govuk-body"><strong>Areas of support they offer</strong><br>Confidential online support for young people who want to talk.</p>
+                    <p class="govuk-body"><strong>Availability:</strong><br>Available across the UK by phone and webchat.</p>
+                    <p class="govuk-body"><strong>Contact:</strong><br><a class="govuk-link" href="mailto:help@example.org">help@example.org</a></p>
+                  </article>
+                </li>
+              </ul>
+            </section>
+          </section>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

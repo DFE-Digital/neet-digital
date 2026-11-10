@@ -10,6 +10,7 @@ else {
     router.use(`/exam-results`, require(`./views/exam-results/routing`)());
     router.use(`/round4-mvp`, require(`./views/round4-mvp/routing`)());
     router.use(`/round5-local`, require(`./views/round5-local/routing`)());
+    router.use(`/round6-rebrand`, require(`./views/round6-rebrand/routing`)());
 }
 
 module.exports = router;
